@@ -1,6 +1,7 @@
 ﻿-------------------------------------------------------------------------------------------------------------
 --
--- MangAdmin Version 1.0
+-- TrinityAdmin Version 3.x
+-- TrinityAdmin is a derivative of MangAdmin.
 --
 -- Copyright (C) 2007 Free Software Foundation, Inc.
 -- License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -11,10 +12,10 @@
 -- along with this program; if not, write to the Free Software
 -- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 --
--- Official Forums: http://www.manground.org/forum/
--- GoogleCode Website: http://code.google.com/p/mangadmin/
--- Subversion Repository: http://mangadmin.googlecode.com/svn/
---
+-- Official Forums: http://groups.google.com/group/trinityadmin
+-- GoogleCode Website: http://code.google.com/p/trinityadmin/
+-- Subversion Repository: http://trinityadmin.googlecode.com/svn/
+-- Dev Blog: http://trinityadmin.blogspot.com/
 -------------------------------------------------------------------------------------------------------------
 
 -- Initializing dynamic frames with LUA and FrameLib
@@ -39,7 +40,7 @@ function MangAdmin:CreateChar2Section()
     name = "ma_char2placeholder",
     group = "char2",
     parent = ma_midframe,
-    text = "Parameterized Commands",
+    text = Locale["ma_ParameterizedCommands"],
     setpoint = {
       pos = "TOPLEFT",
       offX = 10,
@@ -51,7 +52,7 @@ function MangAdmin:CreateChar2Section()
     name = "ma_parameterboxtext",
     group = "char2",
     parent = ma_midframe,
-    text = "Parameter(s)",
+    text = Locale["ma_parameter"],
     setpoint = {
       pos = "BOTTOMLEFT",
       offX = 10,
@@ -77,11 +78,11 @@ function MangAdmin:CreateChar2Section()
   })
 
 FrameLib:BuildButton({
-    name = "ma_r1c1button",
+    name = "ma_banbutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r1c1button_texture",
+      name = "ma_banbutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -93,7 +94,7 @@ FrameLib:BuildButton({
       offX = 10,
       offY = -15
     },
-    text = Locale["ma_r1c1Button"]
+    text = Locale["ma_banbutton"]
     })
 
 FrameLib:BuildButton({
@@ -113,15 +114,15 @@ FrameLib:BuildButton({
       offX = 10,
       offY = -103
     },
-    text = Locale["Morph"]
+    text = Locale["ma_Morph"]
     })
 
 FrameLib:BuildButton({
-    name = "ma_r1c2button",
+    name = "ma_gonamebutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r1c2button_texture",
+      name = "ma_gonamebutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -133,15 +134,15 @@ FrameLib:BuildButton({
       offX = 92,
       offY = -15
     },
-    text = Locale["ma_r1c2Button"]
+    text = Locale["ma_gonamebutton"]
     })
 
 FrameLib:BuildButton({
-    name = "ma_r1c3button",
+    name = "ma_createguildbutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r1c3button_texture",
+      name = "ma_createguildbutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -153,15 +154,15 @@ FrameLib:BuildButton({
       offX = 174,
       offY = -15
     },
-    text = Locale["ma_r1c3Button"]
+    text = Locale["ma_createguildbutton"]
     })
 
 FrameLib:BuildButton({
-    name = "ma_r1c4button",
+    name = "ma_teleaddbutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r1c4button_texture",
+      name = "ma_teleaddbutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -173,15 +174,15 @@ FrameLib:BuildButton({
       offX = 256,
       offY = -15
     },
-    text = Locale["ma_r1c4Button"]
+    text = Locale["ma_teleaddbutton"]
     })
 
 FrameLib:BuildButton({
-    name = "ma_r2c1button",
+    name = "ma_baninfobutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r2c1button_texture",
+      name = "ma_baninfobutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -193,15 +194,15 @@ FrameLib:BuildButton({
       offX = 10,
       offY = -37
     },
-    text = Locale["ma_r2c1Button"]
+    text = Locale["ma_baninfobutton"]
     })
 
 FrameLib:BuildButton({
-    name = "ma_r2c2button",
+    name = "ma_groupgobutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r2c2button_texture",
+      name = "ma_groupgobutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -213,15 +214,15 @@ FrameLib:BuildButton({
       offX = 92,
       offY = -37
     },
-    text = Locale["ma_r2c2Button"]
+    text = Locale["ma_groupgobutton"]
     })
 
 FrameLib:BuildButton({
-    name = "ma_r2c3button",
+    name = "ma_guildinvitebutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r2c3button_texture",
+      name = "ma_guildinvitebutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -233,15 +234,15 @@ FrameLib:BuildButton({
       offX = 174,
       offY = -37
     },
-    text = Locale["ma_r2c3Button"]
+    text = Locale["ma_guildinvitebutton"]
     })
 
 FrameLib:BuildButton({
-    name = "ma_r2c4button",
+    name = "ma_teledelbutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r2c4button_texture",
+      name = "ma_teledelbutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -253,15 +254,15 @@ FrameLib:BuildButton({
       offX = 256,
       offY = -37
     },
-    text = Locale["ma_r2c4Button"]
+    text = Locale["ma_teledelbutton"]
     })
 
 FrameLib:BuildButton({
-    name = "ma_r3c1button",
+    name = "ma_banlistbutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r3c1button_texture",
+      name = "ma_banlistbutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -273,15 +274,15 @@ FrameLib:BuildButton({
       offX = 10,
       offY = -59
     },
-    text = Locale["ma_r3c1Button"]
+    text = Locale["ma_banlistbutton"]
     })
 
 FrameLib:BuildButton({
-    name = "ma_r3c2button",
+    name = "ma_namegobutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r3c2button_texture",
+      name = "ma_namegobutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -293,15 +294,15 @@ FrameLib:BuildButton({
       offX = 92,
       offY = -59
     },
-    text = Locale["ma_r3c2Button"]
+    text = Locale["ma_namegobutton"]
     })
 
 FrameLib:BuildButton({
-    name = "ma_r3c3button",
+    name = "ma_guildrankbutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r3c3button_texture",
+      name = "ma_guildrankbutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -313,15 +314,15 @@ FrameLib:BuildButton({
       offX = 174,
       offY = -59
     },
-    text = Locale["ma_r3c3Button"]
+    text = Locale["ma_guildrankbutton"]
     })
 
 FrameLib:BuildButton({
-    name = "ma_r3c4button",
+    name = "ma_telegroupbutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r3c4button_texture",
+      name = "ma_telegroupbutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -333,15 +334,15 @@ FrameLib:BuildButton({
       offX = 256,
       offY = -59
     },
-    text = Locale["ma_r3c4Button"]
+    text = Locale["ma_telegroupbutton"]
     })
 
 FrameLib:BuildButton({
-    name = "ma_r4c1button",
+    name = "ma_unbanbutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r4c1button_texture",
+      name = "ma_unbanbutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -353,15 +354,15 @@ FrameLib:BuildButton({
       offX = 10,
       offY = -81
     },
-    text = Locale["ma_r4c1Button"]
+    text = Locale["ma_unbanbutton"]
     })
 
 FrameLib:BuildButton({
-    name = "ma_r4c2button",
+    name = "ma_guilddeletebutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r4c2button_texture",
+      name = "ma_guilddeletebutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -373,15 +374,15 @@ FrameLib:BuildButton({
       offX = 92,
       offY = -81
     },
-    text = Locale["ma_r4c2Button"]
+    text = Locale["ma_guilddeletebutton"]
     })
 
 FrameLib:BuildButton({
-    name = "ma_r4c3button",
+    name = "ma_guilduninvitebutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r4c3button_texture",
+      name = "ma_guilduninvitebutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -393,15 +394,15 @@ FrameLib:BuildButton({
       offX = 174,
       offY = -81
     },
-    text = Locale["ma_r4c3Button"]
+    text = Locale["ma_guilduninvitebutton"]
     })
 
 FrameLib:BuildButton({
-    name = "ma_r4c4button",
+    name = "ma_telenamebutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r4c4button_texture",
+      name = "ma_telenamebutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -413,15 +414,15 @@ FrameLib:BuildButton({
       offX = 256,
       offY = -81
     },
-    text = Locale["ma_r4c4Button"]
+    text = Locale["ma_telenamebutton"]
     })
 
   FrameLib:BuildButton({
-    name = "ma_r4c5button",
+    name = "ma_mutebutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_r4c5button_texture",
+      name = "ma_mutebutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -433,7 +434,7 @@ FrameLib:BuildButton({
       offX = 256,
       offY = -103
     },
-    text = Locale["ma_r4c5Button"]
+    text = Locale["ma_mutebutton"]
 })
 
 FrameLib:BuildButton({
@@ -453,7 +454,7 @@ FrameLib:BuildButton({
       offX = 92,
       offY = -103
     },
-    text = "Aura"
+    text = Locale["ma_Aura"]
     })
 
 FrameLib:BuildButton({
@@ -473,7 +474,7 @@ FrameLib:BuildButton({
       offX = 174,
       offY = -103
     },
-    text = "UnAura"
+    text = Locale["ma_UnAura"]
     })
       
   FrameLib:BuildButton({
@@ -537,11 +538,11 @@ FrameLib:BuildButton({
   })
 
   FrameLib:BuildButton({
-    name = "ma_damagebutton",
+    name = "ma_unmutebutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_damagebutton_texture",
+      name = "ma_unmutebutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -551,9 +552,9 @@ FrameLib:BuildButton({
     setpoint = {
       pos = "TOPLEFT",
       offX = 256,
-      offY = -147
+      offY = -125
     },
-    text = Locale["ma_DamageButton"]
+    text = Locale["ma_UnMuteButton"]
   })
 
   FrameLib:BuildButton({
@@ -617,11 +618,11 @@ FrameLib:BuildButton({
   })
 
   FrameLib:BuildButton({
-    name = "ma_unmutebutton",
+    name = "ma_damagebutton",
     group = "char2",
     parent = ma_midframe,
     texture = {
-      name = "ma_unmutebutton_texture",
+      name = "ma_damagebutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -631,10 +632,11 @@ FrameLib:BuildButton({
     setpoint = {
       pos = "TOPLEFT",
       offX = 256,
-      offY = -125
+      offY = -147
     },
-    text = Locale["ma_UnMuteButton"]
+    text = Locale["ma_DamageButton"]
   })
+
 
   FrameLib:BuildButton({
     name = "ma_hideareabutton",

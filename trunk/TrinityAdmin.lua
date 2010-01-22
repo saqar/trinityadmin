@@ -1,6 +1,7 @@
 ﻿-------------------------------------------------------------------------------------------------------------
 --
--- MangAdmin Version 1.0
+-- TrinityAdmin Version 3.x
+-- TrinityAdmin is a derivative of MangAdmin.
 --
 -- Copyright (C) 2007 Free Software Foundation, Inc.
 -- License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -11,11 +12,12 @@
 -- along with this program; if not, write to the Free Software
 -- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 --
--- Official Forums: http://www.manground.org/forum/
--- GoogleCode Website: http://code.google.com/p/mangadmin/
--- Subversion Repository: http://mangadmin.googlecode.com/svn/
---
+-- Official Forums: http://groups.google.com/group/trinityadmin
+-- GoogleCode Website: http://code.google.com/p/trinityadmin/
+-- Subversion Repository: http://trinityadmin.googlecode.com/svn/
+-- Dev Blog: http://trinityadmin.blogspot.com/
 -------------------------------------------------------------------------------------------------------------
+
 local genv = getfenv(0)
 local Mang = genv.Mang
 
@@ -207,7 +209,8 @@ function MangAdmin:OnInitialize()
   self:SetLanguage()
   self:CreateFrames()
   self:RegisterChatCommand(Locale["slashcmds"], self.consoleOpts) -- this registers the chat commands
-  self:InitButtons() -- this prepares the actions and tooltips of nearly all MangAdmin buttons  
+  self:InitButtons()  -- this prepares the actions and tooltips of nearly all MangAdmin buttons  
+  InitControls()
   self:SearchReset()
   -- FuBar plugin config
   MangAdmin.hasNoColor = true
@@ -231,7 +234,7 @@ function MangAdmin:OnInitialize()
   self:InitSliders()
   self:InitScrollFrames()
   self:InitCheckButtons()
-  self:InitModelFrame()
+  
   --clear color buffer
   self.db.account.style.color.buffer = {}
   --altering the function setitemref, to make it possible to click links
@@ -281,12 +284,12 @@ function MangAdmin:ZONE_CHANGED()
 end
 
 function MangAdmin:UNIT_MODEL_CHANGED()
-  self:ModelChanged()
+  ModelChanged()
 end
 
 function MangAdmin:PLAYER_TARGET_CHANGED()
-  self:ModelChanged()
-  self:NpcModelChanged()
+  ModelChanged()
+  NpcModelChanged()
   if UnitIsPlayer("target") then
     ma_savebutton:Enable()
     if UnitIsDead("target") then
@@ -301,19 +304,19 @@ function MangAdmin:PLAYER_TARGET_CHANGED()
     else
       ma_kickbutton:Disable()
     end
-    ma_respawnbutton:Disable()
+    --ma_respawnbutton:Disable()
   elseif not UnitName("target") then
     ma_savebutton:Enable()
     ma_revivebutton:Disable()
     ma_killbutton:Disable()
     ma_kickbutton:Disable()
-    ma_respawnbutton:Disable()
+    --ma_respawnbutton:Disable()
   else
     ma_savebutton:Disable()
     ma_revivebutton:Disable()
     ma_kickbutton:Disable()
     if UnitIsDead("target") then
-      ma_respawnbutton:Enable()
+      --ma_respawnbutton:Enable()
       ma_killbutton:Disable()
     else
       if self.db.char.instantKillMode then
@@ -321,7 +324,7 @@ function MangAdmin:PLAYER_TARGET_CHANGED()
           self:KillSomething()
         end
       end
-      ma_respawnbutton:Disable()
+      --ma_respawnbutton:Disable()
       ma_killbutton:Enable()
     end
   end
@@ -604,7 +607,7 @@ function MangAdmin:AddMessage(frame, text, r, g, b, id)
     for x, y in string.gmatch(text, Strings["ma_GmatchGPS"]) do
       for k,v in pairs(self.db.char.functionQueue) do
         if v == "GridNavigate" then
-          self:GridNavigate(string.format("%.1f", x), string.format("%.1f", y), nil)
+          GridNavigate(string.format("%.1f", x), string.format("%.1f", y), nil)
           table.remove(self.db.char.functionQueue, k)
           break
         end
@@ -617,15 +620,15 @@ function MangAdmin:AddMessage(frame, text, r, g, b, id)
 --**********************************************************************************************************************
 --**********************************************************************************************************************
 
-if ID_Setting_Start_Read() then    
+if MangAdmin:ID_Setting_Start_Read() then    
     local b1,e1,pattern = string.find(text, "GUID: (%d+)%.")
     --local b1,e1,pattern = string.find(text, "GUID:")
     if b1 then
       	b1,e1,pattern = string.find(text, "([0-9]+)")
     	if b1 then
-    		ID_Setting_Start_Write(0)
+    		MangAdmin:ID_Setting_Start_Write(0)
       		
-      		ID_Setting_Write(0,pattern)
+      		MangAdmin:ID_Setting_Write(0,pattern)
       		ma_NPC_guidbutton:SetText(pattern)
       		self:LogAction("NPC_GUID_Get id "..pattern..".")
       	end	
@@ -637,7 +640,7 @@ if ID_Setting_Start_Read() then
       	b1,e1,pattern = string.find(text, "([0-9]+)")
     	if b1 then
       		
-      		ID_Setting_Write(1,pattern)
+      		MangAdmin:ID_Setting_Write(1,pattern)
       		ma_NPC_idbutton:SetText(pattern)
       		self:LogAction("NPC_EntryID_Get id "..pattern..".")
       	end	
@@ -646,16 +649,16 @@ if ID_Setting_Start_Read() then
     
 end
 
-if OID_Setting_Start_Read() then    
+if MangAdmin:OID_Setting_Start_Read() then    
     local b1,e1,pattern = string.find(text, "GUID: (%d+) ")
     --local b1,e1,pattern = string.find(text, "GUID:")
     if b1 then
       	b1,e1,pattern = string.find(text, "([0-9]+)")
     	if b1 then
-    		OID_Setting_Start_Write(0)
+    		MangAdmin:OID_Setting_Start_Write(0)
       		
-      		OID_Setting_Write(0,pattern)
-      		ma_NPC_guidbutton:SetText(pattern)
+      		MangAdmin:OID_Setting_Write(0,pattern)
+      		ma_Obj_guidbutton:SetText(pattern)
       		self:LogAction("OBJECT_GUID_Get id "..pattern..".")
       	end	
     else
@@ -669,8 +672,8 @@ if OID_Setting_Start_Read() then
       	b1,e1,pattern = string.find(xpattern, "([0-9]+)")
     	if b1 then
       		
-      		OID_Setting_Write(1,pattern)
-      		ma_NPC_idbutton:SetText(pattern)
+      		MangAdmin:OID_Setting_Write(1,pattern)
+      		ma_Obj_idbutton:SetText(pattern)
       		self:LogAction("OBJECT_EntryID_Get id "..pattern..".")
       		
       	end	
@@ -679,10 +682,10 @@ if OID_Setting_Start_Read() then
     
 end
 
-if Way_Point_Add_Start_Read() then    
+if MangAdmin:Way_Point_Add_Start_Read() then    
     b1,e1,pattern = string.find(text, "Waypoint (%d+)")
     if b1 then
-    	Way_Point_Add_Start_Write(0)
+    	MangAdmin:Way_Point_Add_Start_Write(0)
     	
     	local wnpc =	ma_NPC_guidbutton:GetText()
     	self:ChatMsg(".wp show on "..wnpc)
@@ -1002,128 +1005,18 @@ function MangAdmin:ChangeLanguage(locale)
   self.db.account.language = locale
   ReloadUI()
 end
-
+--[[
 function MangAdmin:ToggleGMMode(value)
   MangAdmin:ChatMsg(".gm "..value)
   MangAdmin:LogAction("Turned GM-mode to "..value..".")
 end
+]]
 
-function MangAdmin:ToggleFlyMode(value)
-  --if self:Selection("player") or self:Selection("self") or self:Selection("none") then
-    local player = UnitName("target") or UnitName("player")
-    MangAdmin:ChatMsg(".gm fly "..value)
-    MangAdmin:LogAction("Turned Fly-mode "..value.." for "..player..".")
-  --[[else
-    self:Print(Locale["selectionerror1"])
-  end]]
-end
 
-function MangAdmin:ToggleHoverMode(value)
-  MangAdmin:ChatMsg(".hover "..value)
-  local status
-  if value == 1 then
-    status = "on"
-  else
-    status = "off"
-  end
-  MangAdmin:LogAction("Turned Hover-mode "..status..".")
-end
 
-function MangAdmin:ToggleWhisper(value)
-  MangAdmin:ChatMsg(".whispers "..value)
-  MangAdmin:LogAction("Turned accepting whispers to "..value..".")
-end
 
-function MangAdmin:ToggleVisible(value)
-  MangAdmin:ChatMsg(".gm visible "..value)
-  if value == "on" then
-    MangAdmin:LogAction("Turned you visible.")
-  else
-    MangAdmin:LogAction("Turned you invisible.")
-  end  
-end
 
-function MangAdmin:ToggleTaxicheat(value)
-  if self:Selection("player") or self:Selection("self") or self:Selection("none") then
-    local player = UnitName("target") or UnitName("player")
-    MangAdmin:ChatMsg(".taxicheat "..value)
-    if value == 1 then
-      MangAdmin:LogAction("Activated taxicheat to "..player..".")
-    else
-      MangAdmin:LogAction("Disabled taxicheat to "..player..".")
-    end
-  else
-    self:Print(Locale["selectionerror1"])
-  end
-end
 
-function MangAdmin:SetSpeed()
-  local value = string.format("%.1f", ma_speedslider:GetValue())
-  if self:Selection("player") or self:Selection("self") or self:Selection("none") then
-    local player = UnitName("target") or UnitName("player")
-    --self:ChatMsg(".modify speed "..value)
-    --self:ChatMsg(".modify fly "..value)
-    --self:ChatMsg(".modify swim "..value)
-    self:ChatMsg(".modify aspeed "..value)
-    self:LogAction("Set speed of "..player.." to "..value..".")
-  else
-    self:Print(Locale["selectionerror1"])
-    ma_speedslider:SetValue(1)
-  end
-end
-
-function MangAdmin:SetScale()
-  local value = string.format("%.1f", ma_scaleslider:GetValue())
-  if self:Selection("player") or self:Selection("self") or self:Selection("none") then
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".modify scale "..value)
-    self:LogAction("Set scale of "..player.." to "..value..".")
-  else
-    self:Print(Locale["selectionerror1"])
-    ma_scaleslider:SetValue(1)
-  end
-end
-
-function MangAdmin:LearnSpell(value, state)
-  if self:Selection("player") or self:Selection("self") or self:Selection("none") then
-    local player = UnitName("target") or UnitName("player")
-    local class = UnitClass("target") or UnitClass("player")
-    local command = ".learn"
-    local logcmd = "Learned"
-    if state == "RightButton" then
-      command = ".unlearn"
-      logcmd = "Unlearned"
-    end
-    if type(value) == "string" then
-      if value == "all" then
-        self:ChatMsg(command.." all")
-        self:LogAction(logcmd.." all spells to "..player..".")
-      elseif value == "all_crafts" then
-        self:ChatMsg(command.." all_crafts")
-        self:LogAction(logcmd.." all professions and recipes to "..player..".")
-      elseif value == "all_gm" then
-        self:ChatMsg(command.." all_gm")
-        self:LogAction(logcmd.." all default spells for Game Masters to "..player..".")
-      elseif value == "all_lang" then
-        self:ChatMsg(command.." all_lang")
-        self:LogAction(logcmd.." all languages to "..player..".")
-      elseif value == "all_myclass" then
-        self:ChatMsg(command.." all_myclass")
-        self:LogAction(logcmd.." all spells available to the "..class.."-class to "..player..".")
-      else
-        self:ChatMsg(command.." "..value)
-        self:LogAction(logcmd.." spell "..value.." to "..player..".")
-      end
-    elseif type(value) == "table" then
-      for k,v in pairs(value) do
-        self:ChatMsg(command.." "..v)
-        self:LogAction(logcmd.." spell "..v.." to "..player..".")
-      end
-    end
-  else
-    self:Print(Locale["selectionerror1"])
-  end
-end
 
 function MangAdmin:SetSkill(value, skill, maxskill)
   if self:Selection("player") or self:Selection("self") or self:Selection("none") then
@@ -1267,65 +1160,13 @@ function MangAdmin:TelePlayer(value, player)
   end
 end
 
-function MangAdmin:KickPlayer()
-  if self:Selection("player") or self:Selection("self") or self:Selection("none") then
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".kick")
-    self:LogAction("Kicked player "..player..".")
-  else
-    self:Print(Locale["selectionerror1"])
-  end
-end
 
-function MangAdmin:Cooldown()
-  if self:Selection("player") or self:Selection("self") or self:Selection("none") then
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".cooldown")
-    self:LogAction("Cooled player "..player..".")
-  else
-    self:Print(Locale["selectionerror1"])
-  end
-end
 
-function MangAdmin:Demorph()
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".demorph")
-    self:LogAction("Demorphed player "..player..".")
-end
 
-function MangAdmin:GPS()
-  if self:Selection("player") or self:Selection("self") or self:Selection("none") then
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".gps")
-    self:LogAction("Got GPS coordinates for player "..player..".")
-  else
-    self:Print(Locale["selectionerror1"])
-  end
-end
 
-function MangAdmin:ShowGUID()
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".guid")
-    self:LogAction("Got GUID for player "..player..".")
-end
 
-function MangAdmin:ShowMove()
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".movegens")
-    self:LogAction("Got Movement Stack for player "..player..".")
-end
 
-function MangAdmin:NPCFreeze()
-    local player = UnitName("target") or UnitName("player") 
-    self:ChatMsg(".npc setmovetype stay NODEL")          
-    self:LogAction("Set NPC movement to STAY for player "..player..".")
-end
 
-function MangAdmin:NPCUnFreeze_Way()
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".npc setmovetype way NODEL")
-    self:LogAction("Set NPC movement type to WAYPOINT for player "..player..".")
-end
 
 --***************[루틴 변경 시작]***************************************************************************************
 --**********************************************************************************************************************
@@ -1341,31 +1182,31 @@ local mang_OID_start = 0
 local mang_OID_guid = ""
 local mang_OID_entryid = ""
 
-function Way_Point_Add_Start_Write(num)
+function MangAdmin:Way_Point_Add_Start_Write(num)
 
     mang_Waypoint_start = num
 
 end
 
-function Way_Point_Add_Start_Read()
+function MangAdmin:Way_Point_Add_Start_Read()
 
     return mang_Waypoint_start
 
 end
 
-function ID_Setting_Start_Write(num)
+function MangAdmin:ID_Setting_Start_Write(num)
     
     mang_ID_start = num
 
 end    
 
-function ID_Setting_Start_Read()
+function MangAdmin:ID_Setting_Start_Read()
     
     return mang_ID_start
 
 end    
 
-function ID_Setting_Write(num,val)
+function MangAdmin:ID_Setting_Write(num,val)
     
     if num == 0 then
     -- GUID
@@ -1377,7 +1218,7 @@ function ID_Setting_Write(num,val)
 
 end    
 
-function ID_Setting_Read(num)
+function MangAdmin:ID_Setting_Read(num)
            
 local val = "" 
            
@@ -1392,19 +1233,19 @@ local val = ""
     return val
 end    
 
-function OID_Setting_Start_Write(num)
+function MangAdmin:OID_Setting_Start_Write(num)
     
     mang_OID_start = num
 
 end    
 
-function OID_Setting_Start_Read()
+function MangAdmin:OID_Setting_Start_Read()
     
     return mang_OID_start
 
 end    
 
-function OID_Setting_Write(num,val)
+function MangAdmin:OID_Setting_Write(num,val)
     
     if num == 0 then
     -- GUID
@@ -1416,7 +1257,7 @@ function OID_Setting_Write(num,val)
 
 end    
 
-function OID_Setting_Read(num)
+function MangAdmin:OID_Setting_Read(num)
            
 local val = "" 
            
@@ -1431,26 +1272,11 @@ local val = ""
     return val
 end    
 
-function MangAdmin:NPCUnFreeze_Random()
-    local player = UnitName("target") or UnitName("player")
-    local rdistancecname = ma_npcunfreeze_random_distancebutton:GetText()
-    self:ChatMsg(".npc spawndist "..rdistancecname)
-    self:LogAction("Set NPC spawndist "..rdistancecname..".")
-    self:ChatMsg(".npc setmovetype random NODEL")
-    self:LogAction("Set NPC movement type to RANDOM for player "..player..".")
-end
 
-function MangAdmin:NPCFreezeDEL()
-    local player = UnitName("target") or UnitName("player") 
-    self:ChatMsg(".npc setmovetype stay")          
-    self:LogAction("Set NPC movement to STAY for player "..player..".")
-end
 
-function MangAdmin:NPCMove()
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".npc move")
-    self:LogAction("Set NPC move for player "..player..".")
-end
+
+
+
 
 function MangAdmin:NPC_Test()                            
 
@@ -1494,51 +1320,16 @@ function MangAdmin:NPCAdd_Way_o()
     self:LogAction("WayPoint Add for player "..player..".")
 end
 
-function MangAdmin:NPCAdd_Way()                            
-    local player = UnitName("target") or UnitName("player")
-    local npc =	ma_NPC_guidbutton:GetText()
-    self:ChatMsg(".wp add "..npc) 
-    Way_Point_Add_Start_Write(1)
-    --self:ChatMsg(".wp show on "..npc)
-    self:LogAction("WayPoint Add for player "..player..".")
-end
 
-function MangAdmin:NPCAdd_WayShowOn()                            
-    local player = UnitName("target") or UnitName("player")
-    local npc =	ma_NPC_guidbutton:GetText()
-    self:ChatMsg(".wp show on "..npc)
-    self:LogAction("WayPoint Show On for player "..player..".")
-end
 
-function MangAdmin:WayEndAdd()                            
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".wp add")
-    self:LogAction("WayPoint Add for player "..player..".")
-end
 
-function MangAdmin:WayShowOn()
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".wp show on")
-    self:LogAction("WayPoint Show On for player "..player..".")
-end
 
-function MangAdmin:WayShowOff()
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".wp show off")
-    self:LogAction("WayPoint Show Off for player "..player..".")
-end
 
-function MangAdmin:WayModifyAdd()
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".wp modify add")
-    self:LogAction("WayPoint(Modify) Add for player "..player..".")
-end
 
-function MangAdmin:WayModifyDel()
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".wp modify del")
-    self:LogAction("WayPoint(Modify) Del for player "..player..".")
-end
+
+
+
+
 
 function MangAdmin:WayModify()
     local player = UnitName("target") or UnitName("player")
@@ -1564,80 +1355,13 @@ function MangAdmin:NPC_GUID_Get_org()
 
 end
 
-function MangAdmin:NPC_GUID_Get()
-	ID_Setting_Start_Write(1)
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".npc info")
-    self:LogAction("Got NPC_GUID_Get for player "..player..".")
-end
 
-function MangAdmin:NPC_Add()                            
-    local player = UnitName("target") or UnitName("player")
-    local npc = ma_NPC_idbutton:GetText()
-    self:ChatMsg(".npc add "..npc)
-    self:LogAction("NPC Spawn mob "..npc..".")
-end
 
-function MangAdmin:NPCDel()
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".npc del")
-    self:LogAction("Set NPC deleted for player "..player..".")
-end
 
-function MangAdmin:NPCGo()
-    local player = UnitName("target") or UnitName("player")
-    local npc =	ma_NPC_guidbutton:GetText()
-    self:ChatMsg(".go creature "..npc)
-    self:LogAction("Go NPC for player "..player..".")
-end
 
-function MangAdmin:OBJGo()
-    local player = UnitName("target") or UnitName("player")
-    local obj =	ma_NPC_guidbutton:GetText()
-    self:ChatMsg(".go object "..obj)
-    self:LogAction("Go Object for player "..player..".")
-end
 
-function MangAdmin:OBJAdd()
-    local player = UnitName("target") or UnitName("player")
-    local obj =	ma_NPC_idbutton:GetText()
-    self:ChatMsg(".gobject add "..obj)
-    self:LogAction("Object Add for player "..player..".")
-end
 
-function MangAdmin:OBJMove()
-    local player = UnitName("target") or UnitName("player")
-    local obj =	ma_NPC_guidbutton:GetText()
-    self:ChatMsg(".gobject move "..obj)
-    self:LogAction("Object Move for player "..player..".")
-end
 
-function MangAdmin:OBJTurn()
-    local player = UnitName("target") or UnitName("player")
-    local obj =	ma_NPC_guidbutton:GetText()
-    self:ChatMsg(".gobject turn "..obj)
-    self:LogAction("Object Turn for player "..player..".")
-end
-
-function MangAdmin:OBJDel()
-    local player = UnitName("target") or UnitName("player")
-    local obj =	ma_NPC_guidbutton:GetText()
-    self:ChatMsg(".gobject delete "..obj)
-    self:LogAction("Object Delete for player "..player..".")
-end
-
-function MangAdmin:OBJNear()
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".gobject near")
-    self:LogAction("Object Near for player "..player..".")
-end
-
-function MangAdmin:OBJTarget()
-	OID_Setting_Start_Write(1)
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".gobject target")
-    self:LogAction("Object Target for player "..player..".")
-end
 
 --**********************************************************************************************************************
 --**********************************************************************************************************************
@@ -1645,206 +1369,25 @@ end
 --**********************************************************************************************************************
 --***************[루틴 변경 끝]*****************************************************************************************
 
-function MangAdmin:NPCInfo()
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".npc info")
-    self:LogAction("Got NPC info for player "..player..".")
-end
 
-function MangAdmin:Pinfo()
-  if self:Selection("player") or self:Selection("self") or self:Selection("none") then
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".pinfo")
-    self:LogAction("Got Player Info for player "..player..".")
-  else
-    self:Print(Locale["selectionerror1"])
-  end
-end
 
-function MangAdmin:Distance()
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".distance")
-    self:LogAction("Got distance to player "..player..".")
-end
 
-function MangAdmin:SetJail_A()
-    self:ChatMsg(".tele del ma_AllianceJail")
-    i=1
-    while i<100 do
-        i=i+1
-        self:ChatMsg(".")
-    end
-    self:ChatMsg(".tele add ma_AllianceJail")
-    self:LogAction("Set location of Alliance Jail")
-end
 
-function MangAdmin:SetJail_H()
-    self:ChatMsg(".tele del ma_HordeJail")
-    i=1
-    while i<100 do
-        i=i+1
-        self:ChatMsg(".")
-    end
-    self:ChatMsg(".tele add ma_HordeJail")
-    self:LogAction("Set location of Horde Jail")
-end
 
-function MangAdmin:JailA()
-    cname=ma_charactertarget:GetText()
-    self:ChatMsg(".tele name "..cname.." ma_AllianceJail")
-    self:LogAction("Jailed player "..player..".")
-    self:ChatMsg(".notify "..cname.." has been found guilty and jailed.")
-end
 
-function MangAdmin:JailH()
-    cname=ma_charactertarget:GetText()
-    --self:ChatMsg("Selected "..cname)
-    self:ChatMsg(".tele name "..cname.." ma_HordeJail")
-    self:LogAction("Jailed player "..player..".")
-    self:ChatMsg(".notify "..cname.." has been found guilty and jailed.")
-end
 
-function MangAdmin:UnJail()
-    cname=ma_charactertarget:GetText()
-    self:ChatMsg(".recall "..cname)
-    self:LogAction("UnJailed player "..player..".")
-    self:ChatMsg(".notify "..cname.." has been pardoned and released from jail.")
-end
 
-function MangAdmin:Recall()
-  if self:Selection("player") or self:Selection("self") or self:Selection("none") then
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".recall")
-    self:LogAction("Recalled player "..player..".")
-  else
-    self:Print(Locale["selectionerror1"])
-  end
-end
 
-function MangAdmin:RevivePlayer()
-  if self:Selection("player") or self:Selection("self") or self:Selection("none") then
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".revive")
-    self:LogAction("Revived player "..player..".")
-  else
-    self:Print(Locale["selectionerror1"])
-  end
-end
 
-function MangAdmin:DismountPlayer()
-  if self:Selection("player") or self:Selection("self") or self:Selection("none") then
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".dismount")
-    self:LogAction("Dismounted player "..player..".")
-  else
-    self:Print(Locale["selectionerror1"])
-  end
-end
 
-function MangAdmin:SavePlayer()
-  if self:Selection("player") or self:Selection("self") or self:Selection("none") then
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".save")
-    self:LogAction("Saved player "..player..".")
-  else
-    self:Print(Locale["selectionerror1"])
-  end
-end
 
-function MangAdmin:KillSomething()
-  local target = UnitName("target") or UnitName("player")
-  self:ChatMsg(".die")
-  self:LogAction("Killed "..target..".")
-end
 
-function MangAdmin:Respawn()
-  self:ChatMsg(".respawn")
-  self:LogAction("Respawned creatures near you.")
-end
-
-function MangAdmin:Modify(case, value) 
-  -- to dxers: I think it's better to do switch case with names (so other devs can see quicker what it is for) 
-  -- and level down is possible: pass negative amount with .levelup
-  if self:Selection("player") or self:Selection("self") or self:Selection("none") then
-    local player = UnitName("target") or UnitName("player")
-    if case == "money" then
-      self:ChatMsg(".modify money "..value)
-      self:LogAction("Give player "..player.." "..value.." copper).")
-    elseif case == "levelup" then
-      self:ChatMsg(".levelup "..value)
-      self:LogAction("Leveled up player "..player.." by "..value.." levels.")
-    elseif case == "leveldown" then
-      self:ChatMsg(".levelup "..value*(-1))
-      self:LogAction("Leveled down player "..player.." by "..value.." levels.")
-    elseif case == "energy" then
-      self:ChatMsg(".modify energy "..value)
-      self:LogAction("Modified energy for "..player.." to "..value.." energy.")
-    elseif case == "rage" then
-      self:ChatMsg(".modify rage "..value)
-      self:LogAction("Modified rage for "..player.." to "..value.." rage.")
-    elseif case == "health" then
-      self:ChatMsg(".modify hp "..value)
-      self:LogAction("Modified hp for "..player.." to "..value.." healthpoints")
-    elseif case == "mana" then
-      self:ChatMsg(".modify mana "..value)
-      self:LogAction("Modified mana for "..player.." to "..value.." mana")
-    end
-  else
-    self:Print(Locale["selectionerror1"])
-  end
-end
-
-function MangAdmin:Reset(value)
-  if self:Selection("player") or self:Selection("self") or self:Selection("none") then
-    local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".reset "..value)
-    self:LogAction("Reset "..value.."' for player "..player..".")
-  else
-    self:Print(Locale["selectionerror1"])
-  end
-end
-
-function MangAdmin:GridNavigate(x, y)
-  local way = self.db.char.nextGridWay
-  if not x and not y then
-    table.insert(self.db.char.functionQueue, "GridNavigate")
-    self:ChatMsg(".gps")
-  else
-    if pcall(function() return ma_gridnavieditbox:GetText() + 10 end) then
-      local step = ma_gridnavieditbox:GetText()
-      local newy
-      local newx
-      if way == "back" then
-        newy = y - step
-        newx = x
-      elseif way == "right" then
-        newy = y
-        newx = x + step
-      elseif way == "left" then
-        newy = y
-        newx = x - step
-      else
-        newy = y + step
-        newx = x
-      end
-      self:ChatMsg(".go xy "..newx.." "..newy)
-      self:LogAction("Teleported to grid position: X: "..newx.." Y: "..newy)
-    else
-      self:Print("Value must be a number!")
-    end
-  end
-end
 
 function MangAdmin:CreateGuild(leader, name)
   self:ChatMsg(".guild create "..leader.." "..name)
   self:LogAction("Created guild '"..name.."' with leader "..leader..".")
 end
 
-function MangAdmin:Screenshot()
-  UIParent:Hide()
-  Screenshot()
-  UIParent:Show()
-end
 
 function MangAdmin:Announce(value)
   self:ChatMsg(".announce "..value)
@@ -1881,113 +1424,7 @@ function MangAdmin:ReloadTable(tablename)
     end
   end
 end
-function MangAdmin:QuickCommand(v)
-  local cname = ma_charactertarget:GetText()
-  local npccname = ma_npccharactertarget:GetText()
-  if(v == 1) then --.ban
-    self:ChatMsg(".ban "..cname)
-    self:LogAction("Banned player: "..cname..".")
-  elseif(v == 2) then --.goname
-    self:ChatMsg(".goname "..cname)
-    self:LogAction("Teleported TO player: "..cname..".")
-  elseif(v == 3) then --.guild create
-    self:ChatMsg(".guild create "..cname)
-    self:LogAction("Created Guild: "..cname..".")
-  elseif(v == 4) then --.tele add
-    self:ChatMsg(".tele add "..cname)
-    self:LogAction("Added .tele location: "..cname..".")
-  elseif(v == 5) then --.baninfo
-    self:ChatMsg(".baninfo "..cname)
-    self:LogAction("Listed .baninfo: "..cname..".")
-  elseif(v == 6) then --.groupgo
-    self:ChatMsg(".groupgo "..cname)
-    self:LogAction("Teleported "..cname.." and his/her group TO me.")
-  elseif(v == 7) then --.guild invite 
-    self:ChatMsg(".guild invite "..cname)
-    self:LogAction("Guild invitation: "..cname..".")
-  elseif(v == 8) then --.tele del
-    self:ChatMsg(".tele del "..cname)
-    self:LogAction("Deleted .tele location: "..cname..".")
-  elseif(v == 9) then --.banlist
-    self:ChatMsg(".banlist "..cname)
-    self:LogAction("Listed bans matching: "..cname..".")
-  elseif(v == 10) then --.namego
-    self:ChatMsg(".namego "..cname)
-    self:LogAction("Teleported "..cname.." TO me.")
-  elseif(v == 11) then --.guild rank
-    self:ChatMsg(".guild rank "..cname)
-    self:LogAction("Guild rank change: "..cname..".")
-  elseif(v == 12) then --.tele group
-    self:ChatMsg(".tele group "..cname)
-    self:LogAction("Group teleported: "..cname..".")
-  elseif(v == 13) then --.unban
-    self:ChatMsg(".unban "..cname)
-    self:LogAction("Unbanned "..cname..".")
-  elseif(v == 14) then --.guild delete
-    self:ChatMsg(".guild delete "..cname)
-    self:LogAction("Deleted guild: "..cname..".")
-  elseif(v == 15) then --.guild uninvite
-    self:ChatMsg(".guild uninvite "..cname)
-    self:LogAction("Removed from guild: "..cname..".")
-  elseif(v == 16) then --.tele name
-    self:ChatMsg(".tele name "..cname)
-    self:LogAction("Teleported: "..cname..".")
-  elseif(v == 17) then --.mute
-    self:ChatMsg(".mute "..cname)
-    self:LogAction("Muted "..cname..".")
-  elseif(v == 18) then --.npc say
-    self:ChatMsg(".npc say "..npccname)
-    self:LogAction(".npc say "..npccname..".")
-  elseif(v == 19) then --.npc yell
-    self:ChatMsg(".npc yell "..npccname)
-    self:LogAction(".npc yell "..npccname..".")
-  elseif(v == 20) then --.modify morph
-    self:ChatMsg(".modify morph "..cname)
-    self:LogAction(".modify morph "..cname..".")
-  elseif(v == 21) then --.modify morph
-    self:ChatMsg(".modify morph "..npccname)
-    self:LogAction(".modify morph "..npccname..".")
-  elseif(v == 22) then --.aura
-    self:ChatMsg(".aura "..cname)
-    self:LogAction(".aura "..cname..".")
-  elseif(v == 23) then --.unaura
-    self:ChatMsg(".unaura "..cname)
-    self:LogAction(".unaura "..cname..".")
-  elseif(v == 24) then --.aura (npc)
-    self:ChatMsg(".aura "..npccname)
-    self:LogAction(".aura "..npccname..".")
-  elseif(v == 25) then --.unaura (npc)
-    self:ChatMsg(".unaura "..npccname)
-    self:LogAction(".unaura "..npccname..".")
-  elseif(v == 26) then --.damage
-    self:ChatMsg(".damage "..cname)
-    self:LogAction(".damage "..cname..".")
-  elseif(v == 27) then --.quest add
-    self:ChatMsg(".quest add "..cname)
-    self:LogAction(".quest add "..cname..".")
-  elseif(v == 28) then --.quest complete
-    self:ChatMsg(".quest complete "..cname)
-    self:LogAction(".quest complete "..cname..".")
-  elseif(v == 29) then --.quest remove
-    self:ChatMsg(".quest remove "..cname)
-    self:LogAction(".quest remove "..cname..".")
-  elseif(v == 30) then --.unmute
-    self:ChatMsg(".unmute "..cname)
-    self:LogAction(".unmute "..cname..".")
-  elseif(v == 31) then --.hidearea
-    self:ChatMsg(".hidearea "..cname)
-    self:LogAction(".hidearea "..cname..".")
-  elseif(v == 32) then --.showarea
-    self:ChatMsg(".showarea "..cname)
-    self:LogAction(".showarea "..cname..".")
-  elseif(v == 33) then --.honor add
-    self:ChatMsg(".honor add "..cname)
-    self:LogAction(".honor add "..cname..".")
-  elseif(v == 34) then --.honor update
-    self:ChatMsg(".honor update ")
-    self:LogAction(".honor update.")
-  end
-end
+
 
 function MangAdmin:ReloadScripts()
   self:ChatMsg(".loadscripts")
@@ -2001,10 +1438,6 @@ function MangAdmin:ChangeWeather(status)
   end
 end
 
-function MangAdmin:NpcEmote(emote)
-    self:ChatMsg(".npc playemote "..emote)
-    self:LogAction("Played emote ("..emote..").")
-end
 
 function MangAdmin:UpdateMailBytesLeft()
   local bleft = 246 - strlen(ma_searcheditbox:GetText()) - strlen(ma_var1editbox:GetText()) - strlen(ma_maileditbox:GetText())
@@ -2039,14 +1472,6 @@ end]]
   MangAdmin:LogAction("Turned receiving new tickets "..value..".")
 end]]
 
-function MangAdmin:ToggleMaps(value)
-  MangAdmin:ChatMsg(".explorecheat "..value)
-  if value == 1 then
-    MangAdmin:LogAction("Revealed all maps for selected player.")
-  else
-    MangAdmin:LogAction("Hide all unexplored maps for selected player.")
-  end
-end
 
 function MangAdmin:ShowTicketTab()
   ma_tpinfo_text:SetText(Locale["ma_TicketsNoInfo"])
@@ -2330,6 +1755,7 @@ function MangAdmin:PrepareScript(object, text, script)
   --end
 end
 
+
 --[[INITIALIZION FUNCTIONS]]
 function MangAdmin:InitButtons()
   -- start tab buttons
@@ -2358,8 +1784,6 @@ function MangAdmin:InitButtons()
   self:PrepareScript(ma_mm_logbutton         , Locale["tt_LogButton"]          , function() MangAdmin:InstantGroupToggle("log") end)
   --end mini buttons
   self:PrepareScript(ma_languagebutton       , Locale["tt_LanguageButton"]     , function() MangAdmin:ChangeLanguage(UIDropDownMenu_GetSelectedValue(ma_languagedropdown)) end)
-  self:PrepareScript(ma_speedslider          , Locale["tt_SpeedSlider"]        , {{"OnMouseUp", function() MangAdmin:SetSpeed() end},{"OnValueChanged", function() ma_speedsliderText:SetText(string.format("%.1f", ma_speedslider:GetValue())) end}})
-  self:PrepareScript(ma_scaleslider          , Locale["tt_ScaleSlider"]        , {{"OnMouseUp", function() MangAdmin:SetScale() end},{"OnValueChanged", function() ma_scalesliderText:SetText(string.format("%.1f", ma_scaleslider:GetValue())) end}})  
   self:PrepareScript(ma_itembutton           , Locale["tt_ItemButton"]         , function() MangAdmin:TogglePopup("search", {type = "item"}) end)
   self:PrepareScript(ma_itemsetbutton        , Locale["tt_ItemSetButton"]      , function() MangAdmin:TogglePopup("search", {type = "itemset"}) end)
   self:PrepareScript(ma_spellbutton          , Locale["tt_SpellButton"]        , function() MangAdmin:TogglePopup("search", {type = "spell"}) end)
@@ -2369,140 +1793,21 @@ function MangAdmin:InitButtons()
   self:PrepareScript(ma_objectbutton         , Locale["tt_ObjectButton"]       , function() MangAdmin:TogglePopup("search", {type = "object"}) end)
   self:PrepareScript(ma_telesearchbutton     , Locale["ma_TeleSearchButton"]   , function() MangAdmin:TogglePopup("search", {type = "tele"}) end)
   self:PrepareScript(ma_sendmailbutton       , Locale["ma_Mail"]               , function() MangAdmin:TogglePopup("mail", {}) end)
-  self:PrepareScript(ma_screenshotbutton     , Locale["tt_ScreenButton"]       , function() MangAdmin:Screenshot() end)
-  self:PrepareScript(ma_displaylevelbutton   , Locale["tt_DisplayAccountLvl"]  , function() MangAdmin:ChatMsg(".account") end)
-  self:PrepareScript(ma_gmonbutton           , Locale["tt_GMOnButton"]         , function() MangAdmin:ToggleGMMode("on") end)
-  self:PrepareScript(ma_gmoffbutton          , Locale["tt_GMOffButton"]        , function() MangAdmin:ToggleGMMode("off") end)
-  self:PrepareScript(ma_flyonbutton          , Locale["tt_FlyOnButton"]        , function() MangAdmin:ToggleFlyMode("on") end)
-  self:PrepareScript(ma_flyoffbutton         , Locale["tt_FlyOffButton"]       , function() MangAdmin:ToggleFlyMode("off") end)
-  self:PrepareScript(ma_hoveronbutton        , Locale["tt_HoverOnButton"]      , function() MangAdmin:ToggleHoverMode(1) end)
-  self:PrepareScript(ma_hoveroffbutton       , Locale["tt_HoverOffButton"]     , function() MangAdmin:ToggleHoverMode(0) end)
-  self:PrepareScript(ma_whisperonbutton      , Locale["tt_WhispOnButton"]      , function() MangAdmin:ToggleWhisper("on") end)
-  self:PrepareScript(ma_whisperoffbutton     , Locale["tt_WhispOffButton"]     , function() MangAdmin:ToggleWhisper("off") end)
-  self:PrepareScript(ma_invisibleonbutton    , Locale["tt_InvisOnButton"]      , function() MangAdmin:ToggleVisible("off") end)
-  self:PrepareScript(ma_invisibleoffbutton   , Locale["tt_InvisOffButton"]     , function() MangAdmin:ToggleVisible("on") end)
-  self:PrepareScript(ma_taxicheatonbutton    , Locale["tt_TaxiOnButton"]       , function() MangAdmin:ToggleTaxicheat("on") end)
-  self:PrepareScript(ma_taxicheatoffbutton   , Locale["tt_TaxiOffButton"]      , function() MangAdmin:ToggleTaxicheat("off") end)
---  self:PrepareScript(ma_ticketonbutton       , Locale["tt_TicketOn"]           , function() MangAdmin:ToggleTickets("on") end)
---  self:PrepareScript(ma_ticketoffbutton      , Locale["tt_TicketOff"]          , function() MangAdmin:ToggleTickets("off") end)
-  self:PrepareScript(ma_mapsonbutton         , Locale["tt_ShowMapsButton"]     , function() MangAdmin:ToggleMaps(1) end)
-  self:PrepareScript(ma_mapsoffbutton        , Locale["tt_HideMapsButton"]     , function() MangAdmin:ToggleMaps(0) end)
-  self:PrepareScript(ma_bankbutton           , Locale["tt_BankButton"]         , function() MangAdmin:ChatMsg(".bank") end)
-  self:PrepareScript(ma_r1c1button           , Locale["tt_r1c1Button"]         , function() MangAdmin:QuickCommand(1) end)
-  self:PrepareScript(ma_r1c2button           , Locale["tt_r1c2Button"]         , function() MangAdmin:QuickCommand(2) end)
-  self:PrepareScript(ma_r1c3button           , Locale["tt_r1c3Button"]         , function() MangAdmin:QuickCommand(3) end)
-  self:PrepareScript(ma_r1c4button           , Locale["tt_r1c4Button"]         , function() MangAdmin:QuickCommand(4) end)
-  self:PrepareScript(ma_r2c1button           , Locale["tt_r2c1Button"]         , function() MangAdmin:QuickCommand(5) end)
-  self:PrepareScript(ma_r2c2button           , Locale["tt_r2c2Button"]         , function() MangAdmin:QuickCommand(6) end)
-  self:PrepareScript(ma_r2c3button           , Locale["tt_r2c3Button"]         , function() MangAdmin:QuickCommand(7) end)
-  self:PrepareScript(ma_r2c4button           , Locale["tt_r2c4Button"]         , function() MangAdmin:QuickCommand(8) end)
-  self:PrepareScript(ma_r3c1button           , Locale["tt_r3c1Button"]         , function() MangAdmin:QuickCommand(9) end)
-  self:PrepareScript(ma_r3c2button           , Locale["tt_r3c2Button"]         , function() MangAdmin:QuickCommand(10) end)
-  self:PrepareScript(ma_r3c3button           , Locale["tt_r3c3Button"]         , function() MangAdmin:QuickCommand(11) end)
-  self:PrepareScript(ma_r3c4button           , Locale["tt_r3c4Button"]         , function() MangAdmin:QuickCommand(12) end)
-  self:PrepareScript(ma_r4c1button           , Locale["tt_r4c1Button"]         , function() MangAdmin:QuickCommand(13) end)
-  self:PrepareScript(ma_r4c2button           , Locale["tt_r4c2Button"]         , function() MangAdmin:QuickCommand(14) end)
-  self:PrepareScript(ma_r4c3button           , Locale["tt_r4c3Button"]         , function() MangAdmin:QuickCommand(15) end)
-  self:PrepareScript(ma_r4c4button           , Locale["tt_r4c4Button"]         , function() MangAdmin:QuickCommand(16) end)
-  self:PrepareScript(ma_r4c5button           , Locale["tt_r4c5Button"]         , function() MangAdmin:QuickCommand(17) end)
-  self:PrepareScript(ma_npcsaybutton         , "Make selected npc say [parameters]"         , function() MangAdmin:QuickCommand(18) end)
-  self:PrepareScript(ma_npcyellbutton        , "Make selected npc yell [parameters]"         , function() MangAdmin:QuickCommand(19) end)
-  self:PrepareScript(ma_setjail_a_button     , Locale["tt_SetJail_A_Button"]   , function() MangAdmin:SetJail_A() end)
-  self:PrepareScript(ma_setjail_h_button     , Locale["tt_SetJail_H_Button"]   , function() MangAdmin:SetJail_H() end)
-  self:PrepareScript(ma_damagebutton         , Locale["tt_DamageButton"]       , function() MangAdmin:QuickCommand(26) end) 
-  self:PrepareScript(ma_unmutebutton         , Locale["tt_UnMuteButton"]       , function() MangAdmin:QuickCommand(30) end) 
-  self:PrepareScript(ma_questaddbutton       , Locale["tt_QuestAddButton"]     , function() MangAdmin:QuickCommand(27) end) 
-  self:PrepareScript(ma_questcompletebutton  , Locale["tt_QuestCompleteButton"], function() MangAdmin:QuickCommand(28) end) 
-  self:PrepareScript(ma_questremovebutton    , Locale["tt_QuestRemoveButton"]  , function() MangAdmin:QuickCommand(29) end) 
-  self:PrepareScript(ma_hideareabutton       , Locale["tt_HideAreaButton"]     , function() MangAdmin:QuickCommand(31) end) 
-  self:PrepareScript(ma_showareabutton       , Locale["tt_ShowAreaButton"]     , function() MangAdmin:QuickCommand(32) end) 
-  self:PrepareScript(ma_honoraddbutton       , Locale["tt_HonorAddButton"]     , function() MangAdmin:QuickCommand(33) end) 
-  self:PrepareScript(ma_honorupdatebutton    , Locale["tt_HonorUpdateButton"]  , function() MangAdmin:QuickCommand(34) end) 
-  self:PrepareScript(ma_jailabutton          , Locale["tt_JailAButton"]        , function() MangAdmin:JailA() end)
-  self:PrepareScript(ma_jailabutton          , Locale["tt_JailAButton"]        , function() MangAdmin:JailA() end)
-  self:PrepareScript(ma_charmorphbutton      , "Parameters = #DisplayID [[Enter the DisplayID of the morph you want to apply]]"        , function() MangAdmin:QuickCommand(20) end)
-  self:PrepareScript(ma_charaurabutton       , "Parameters = #AuraID [[Enter the AuraID of the aura you want to apply]]"        , function() MangAdmin:QuickCommand(22) end)
-  self:PrepareScript(ma_charunaurabutton     , "Parameters = #AuraID [[Enter the AuraID of the aura you want to remove]]"        , function() MangAdmin:QuickCommand(23) end)
-  self:PrepareScript(ma_npcaurabutton       , "Parameters = #AuraID [[Enter the AuraID of the aura you want to apply]]"        , function() MangAdmin:QuickCommand(24) end)
-  self:PrepareScript(ma_npcunaurabutton     , "Parameters = #AuraID [[Enter the AuraID of the aura you want to remove]]"        , function() MangAdmin:QuickCommand(25) end)
-  self:PrepareScript(ma_npcmorphbutton       , "Parameters = #DisplayID [[Enter the DisplayID of the morph you want to apply]]"        , function() MangAdmin:QuickCommand(21) end)
-  self:PrepareScript(ma_unjailbutton         , Locale["tt_UnJailButton"]       , function() MangAdmin:UnJail() end)
   --self:PrepareScript(ma_learnallbutton       , nil                             , function() MangAdmin:LearnSpell("all") end)
   --self:PrepareScript(ma_learncraftsbutton    , nil                             , function() MangAdmin:LearnSpell("all_crafts") end)
   --self:PrepareScript(ma_learngmbutton        , nil                             , function() MangAdmin:LearnSpell("all_gm") end)
   --self:PrepareScript(ma_learnlangbutton      , nil                             , function() MangAdmin:LearnSpell("all_lang") end)
   --self:PrepareScript(ma_learnclassbutton     , nil                             , function() MangAdmin:LearnSpell("all_myclass") end)
-  self:PrepareScript(ma_modifybutton         , nil                             , function() MangAdmin:Modify(UIDropDownMenu_GetSelectedValue(ma_modifydropdown),ma_modifyeditbox:GetText()) end)
   self:PrepareScript(ma_searchbutton         , nil                             , function() MangAdmin:SearchStart("item", ma_searcheditbox:GetText()) end)
   self:PrepareScript(ma_resetsearchbutton    , nil                             , function() MangAdmin:SearchReset() end)
-  self:PrepareScript(ma_revivebutton         , nil                             , function() MangAdmin:RevivePlayer() end)
-  self:PrepareScript(ma_killbutton           , nil                             , function() MangAdmin:KillSomething() end)
-  self:PrepareScript(ma_npckillbutton        , nil                             , function() MangAdmin:KillSomething() end)
-  self:PrepareScript(ma_savebutton           , nil                             , function() MangAdmin:SavePlayer() end)
-  self:PrepareScript(ma_dismountbutton       , nil                             , function() MangAdmin:DismountPlayer() end)
-  self:PrepareScript(ma_kickbutton           , Locale["tt_KickButton"]         , function() MangAdmin:KickPlayer() end)
-  self:PrepareScript(ma_cooldownbutton       , Locale["tt_CooldownButton"]     , function() MangAdmin:Cooldown() end)
-  self:PrepareScript(ma_demorphbutton        , Locale["tt_DemorphButton"]      , function() MangAdmin:Demorph() end)
-  self:PrepareScript(ma_npcdemorphbutton     , "Demorphs selected NPC"         , function() MangAdmin:Demorph() end)
-  self:PrepareScript(ma_showmapsbutton       , Locale["tt_ShowMapsButton"]     , function() MangAdmin:ToggleMaps(1) end)
-  self:PrepareScript(ma_hidemapsbutton       , Locale["tt_HideMapsButton"]     , function() MangAdmin:ToggleMaps(0) end)
-  self:PrepareScript(ma_gpsbutton            , Locale["tt_GPSButton"]          , function() MangAdmin:GPS() end)
-  self:PrepareScript(ma_guidbutton           , Locale["tt_GUIDButton"]         , function() MangAdmin:ShowGUID() end)
-  self:PrepareScript(ma_npcguidbutton        , Locale["tt_GUIDButton"]         , function() MangAdmin:ShowGUID() end)
-  self:PrepareScript(ma_movestackbutton      , Locale["tt_MoveStackButton"]    , function() MangAdmin:ShowMove() end)
-  self:PrepareScript(ma_npcfreezebutton      , Locale["tt_NPCFreezeButton"]    , function() MangAdmin:NPCFreeze() end)
-  self:PrepareScript(ma_npcunfreeze_waybutton , Locale["tt_NPCUnFreeze_WayButton"]  , function() MangAdmin:NPCUnFreeze_Way() end)
 
---***************[루틴 변경 시작]***************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
 
-  -- self:PrepareScript(ma_npcunfreeze_randombutton , Locale["tt_NPCUnFreeze_RandomButton"]  , function() MangAdmin:NPCUnFreeze_Random() end)
-  self:PrepareScript(ma_npcunfreeze_randombutton , Locale["tt_NPCUnFreeze_RandomButton"]  , function() MangAdmin:NPCUnFreeze_Random() end)
 
-  self:PrepareScript(ma_npcfreezedelbutton      , nil    , function() MangAdmin:NPCFreezeDEL() end)
-  self:PrepareScript(ma_npcmovebutton      , nil    , function() MangAdmin:NPCMove() end)
-  self:PrepareScript(ma_npcunfreeze_addwaybutton , nil  , function() MangAdmin:NPCAdd_Way() end)
-  self:PrepareScript(ma_npcunfreeze_addway_showonbutton , nil  , function() MangAdmin:NPCAdd_WayShowOn() end)
   
-  self:PrepareScript(ma_way_endaddbutton , nil  , function() MangAdmin:WayEndAdd() end)
-  self:PrepareScript(ma_way_showonbutton , nil  , function() MangAdmin:WayShowOn() end)
-  self:PrepareScript(ma_way_showoffbutton , nil  , function() MangAdmin:WayShowOff() end)
-  self:PrepareScript(ma_way_modifyaddbutton , nil  , function() MangAdmin:WayModifyAdd() end)
-  self:PrepareScript(ma_way_modifydelbutton , nil  , function() MangAdmin:WayModifyDel() end)
 
-  self:PrepareScript(ma_NPC_guidgetbutton , nil  , function() MangAdmin:NPC_GUID_Get() end)
-  self:PrepareScript(ma_NPC_addbutton , nil  , function() MangAdmin:NPC_Add() end)
-  self:PrepareScript(ma_npcdelbutton      , nil    , function() MangAdmin:NPCDel() end)
-  self:PrepareScript(ma_npcgobutton      , nil    , function() MangAdmin:NPCGo() end)
-  self:PrepareScript(ma_objgobutton      , nil    , function() MangAdmin:OBJGo() end)
-  self:PrepareScript(ma_objaddbutton      , nil    , function() MangAdmin:OBJAdd() end)
-  self:PrepareScript(ma_objmovebutton      , nil    , function() MangAdmin:OBJMove() end)
-  self:PrepareScript(ma_objturnbutton      , nil    , function() MangAdmin:OBJTurn() end)
-  self:PrepareScript(ma_objdelbutton      , nil    , function() MangAdmin:OBJDel() end)
-  self:PrepareScript(ma_objnearbutton      , nil    , function() MangAdmin:OBJNear() end)
-  self:PrepareScript(ma_objtargetbutton      , nil    , function() MangAdmin:OBJTarget() end)
 
-  self:PrepareScript(ma_npcemotebutton_a       , nil                             , function() MangAdmin:NpcEmote(UIDropDownMenu_GetSelectedValue(ma_npcemotedropdown_a)) end)
 
---**********************************************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
---***************[루틴 변경 끝]*****************************************************************************************
 
-  self:PrepareScript(ma_npcinfobutton        , Locale["tt_NPCInfoButton"]      , function() MangAdmin:NPCInfo() end)
-  self:PrepareScript(ma_pinfobutton          , Locale["tt_PinfoButton"]        , function() MangAdmin:Pinfo() end)
-  self:PrepareScript(ma_npcdistancebutton    , Locale["tt_DistanceButton"]     , function() MangAdmin:Distance() end)
-  self:PrepareScript(ma_distancebutton       , Locale["tt_DistanceButton"]     , function() MangAdmin:Distance() end)
-  self:PrepareScript(ma_recallbutton         , Locale["tt_RecallButton"]       , function() MangAdmin:Recall() end)
-  self:PrepareScript(ma_respawnbutton        , nil                             , function() MangAdmin:Respawn() end)
-  self:PrepareScript(ma_gridnaviaheadbutton  , nil                             , function() MangAdmin:GridNavigate(nil, nil); self.db.char.nextGridWay = "ahead" end)
-  self:PrepareScript(ma_gridnavibackbutton   , nil                             , function() MangAdmin:GridNavigate(nil, nil); self.db.char.nextGridWay = "back" end)
-  self:PrepareScript(ma_gridnavirightbutton  , nil                             , function() MangAdmin:GridNavigate(nil, nil); self.db.char.nextGridWay = "right" end)
-  self:PrepareScript(ma_gridnavileftbutton   , nil                             , function() MangAdmin:GridNavigate(nil, nil); self.db.char.nextGridWay = "left" end)
   self:PrepareScript(ma_announcebutton       , Locale["tt_AnnounceButton"]     , function() MangAdmin:Announce(ma_announceeditbox:GetText()) end)
   self:PrepareScript(ma_resetannouncebutton  , nil                             , function() ma_announceeditbox:SetText("") end)
   self:PrepareScript(ma_shutdownbutton       , Locale["tt_ShutdownButton"]     , function() MangAdmin:Shutdown(ma_shutdowneditbox:GetText()) end)
@@ -2524,17 +1829,11 @@ function MangAdmin:InitButtons()
   self:PrepareScript(ma_loadtablebutton      , nil                             , function() MangAdmin:ReloadTable(UIDropDownMenu_GetSelectedValue(ma_reloadtabledropdown)) end)
   self:PrepareScript(ma_loadscriptsbutton    , nil                             , function() MangAdmin:ReloadScripts() end)
   self:PrepareScript(ma_changeweatherbutton  , nil                             , function() MangAdmin:ChangeWeather(UIDropDownMenu_GetSelectedValue(ma_weatherdropdown)) end)
-  self:PrepareScript(ma_npcemotebutton       , nil                             , function() MangAdmin:NpcEmote(UIDropDownMenu_GetSelectedValue(ma_npcemotedropdown)) end)
-  self:PrepareScript(ma_resetbutton          , nil                             , function() MangAdmin:Reset(UIDropDownMenu_GetSelectedValue(ma_resetdropdown)) end)
-  self:PrepareScript(ma_learnlangbutton      , nil                             , function() MangAdmin:LearnSpell(UIDropDownMenu_GetSelectedValue(ma_learnlangdropdown)) end)
   self:PrepareScript(ma_inforefreshbutton    , nil                             , function() MangAdmin:ChatMsg(".server info") end)
-  self:PrepareScript(ma_modelrotatelbutton   , Locale["tt_RotateLeft"]         , function() MangAdmin:ModelRotateLeft() end)
-  self:PrepareScript(ma_modelrotaterbutton   , Locale["tt_RotateRight"]        , function() MangAdmin:ModelRotateRight() end)
-  self:PrepareScript(ma_npcmodelrotatelbutton   , Locale["tt_RotateLeft"]      , function() MangAdmin:NpcModelRotateLeft() end)
-  self:PrepareScript(ma_npcmodelrotaterbutton   , Locale["tt_RotateRight"]     , function() MangAdmin:NpcModelRotateRight() end)
+
   self:PrepareScript(ma_frmtrslider          , Locale["tt_FrmTrSlider"]        , {{"OnMouseUp", function() MangAdmin:ChangeTransparency("frames") end},{"OnValueChanged", function() ma_frmtrsliderText:SetText(string.format("%.2f", ma_frmtrslider:GetValue())) end}})  
   self:PrepareScript(ma_btntrslider          , Locale["tt_BtnTrSlider"]        , {{"OnMouseUp", function() MangAdmin:ChangeTransparency("buttons") end},{"OnValueChanged", function() ma_btntrsliderText:SetText(string.format("%.2f", ma_btntrslider:GetValue())) end}})  
-  self:PrepareScript(ma_instantkillbutton    , nil                             , function() self.db.char.instantKillMode = ma_instantkillbutton:GetChecked() end)
+--  self:PrepareScript(ma_instantkillbutton    , nil                             , function() self.db.char.instantKillMode = ma_instantkillbutton:GetChecked() end)
   self:PrepareScript(ma_mm_revivebutton      , nil                             , function() SendChatMessage(".revive", "GUILD", nil, nil) end)
   self:PrepareScript(ma_ContScrollBarEntry1      , nil                      , function() 
     MangAdmin.db.char.selectedCont = "EK_N"
@@ -2587,6 +1886,8 @@ function MangAdmin:InitButtons()
     TeleScrollUpdate() 
     end)
 end
+
+
 
 function MangAdmin:InitDropDowns()
   -- RELOAD TABLES
@@ -2832,6 +2133,12 @@ function MangAdmin:InitDropDowns()
 --**********************************************************************************************************************
 --***************[루틴 변경 끝]*****************************************************************************************
 
+
+  
+
+
+
+
   --LANGUAGE
   local function LangDropDownInitialize()
     local level = 1
@@ -2870,111 +2177,10 @@ function MangAdmin:InitDropDowns()
   UIDropDownMenu_SetWidth(ma_languagedropdown, 100)
   UIDropDownMenu_SetButtonWidth(ma_languagedropdown, 20)
 
-  
-  -- MODIFY
-  local function ModifyDropDownInitialize()
-    local level = 1
-    local info = UIDropDownMenu_CreateInfo()
-    local buttons = {
-      {Locale["ma_LevelUp"],"levelup"},
-      {Locale["ma_LevelDown"],"leveldown"},
-      {Locale["ma_Money"],"money"},
-      {Locale["ma_Energy"],"energy"},
-      {Locale["ma_Rage"],"rage"},
-      {Locale["ma_Mana"],"mana"},
-      {Locale["ma_Healthpoints"],"health"}
-    }
-    for k,v in pairs(buttons) do
-      info.text = v[1]
-      info.value = v[2]
-      info.func = function() UIDropDownMenu_SetSelectedValue(ma_modifydropdown, this.value) end
-      info.checked = nil
-      info.icon = nil
-      info.keepShownOnClick = nil
-      UIDropDownMenu_AddButton(info, level)
-    end
-    UIDropDownMenu_SetSelectedValue(ma_modifydropdown, "levelup")
-  end  
-  UIDropDownMenu_Initialize(ma_modifydropdown, ModifyDropDownInitialize)
-  UIDropDownMenu_SetWidth(ma_modifydropdown, 100)
-  UIDropDownMenu_SetButtonWidth(ma_modifydropdown, 20)
 
-  -- RESET
-  local function ResetDropDownInitialize()
-    local level = 1
-    local info = UIDropDownMenu_CreateInfo()
-    local buttons = {
-      {Locale["ma_Talents"],"talents"},
-      {Locale["ma_Stats"],"stats"},
-      {Locale["ma_Spells"],"spells"},
-      {Locale["ma_Honor"],"honor"},
-      {Locale["ma_Level"],"level"}
-    }
-    for k,v in pairs(buttons) do
-      info.text = v[1]
-      info.value = v[2]
-      info.func = function() UIDropDownMenu_SetSelectedValue(ma_resetdropdown, this.value) end
-      info.checked = nil
-      info.icon = nil
-      info.keepShownOnClick = nil
-      UIDropDownMenu_AddButton(info, level)
-    end
-    UIDropDownMenu_SetSelectedValue(ma_resetdropdown, "talents")
-  end  
-  UIDropDownMenu_Initialize(ma_resetdropdown, ResetDropDownInitialize)
-  UIDropDownMenu_SetWidth(ma_resetdropdown, 100)
-  UIDropDownMenu_SetButtonWidth(ma_resetdropdown, 20)
-
-  -- LEARN LANG
-  local function LearnLangDropDownInitialize()
-    local level = 1
-    local info = UIDropDownMenu_CreateInfo()
-    local buttons = {
-      {Locale["ma_AllLang"],"all_lang"},
-      {Locale["Common"],"668"},
-      {Locale["Orcish"],"669"},
-      {Locale["Taurahe"],"670"},
-      {Locale["Darnassian"],"671"},
-      {Locale["Dwarvish"],"672"},
-      {Locale["Thalassian"],"813"},
-      {Locale["Demonic"],"815"},
-      {Locale["Draconic"],"814"},
-      {Locale["Titan"],"816"},
-      {Locale["Kalimag"],"817"},
-      {Locale["Gnomish"],"7340"},
-      {Locale["Troll"],"7341"},
-      {Locale["Gutterspeak"],"17737"},
-      {Locale["Draenei"],"29932"}
-    }
-    for k,v in pairs(buttons) do
-      info.text = v[1]
-      info.value = v[2]
-      info.func = function() UIDropDownMenu_SetSelectedValue(ma_learnlangdropdown, this.value) end
-      info.checked = nil
-      info.icon = nil
-      info.keepShownOnClick = nil
-      UIDropDownMenu_AddButton(info, level)
-    end
-    UIDropDownMenu_SetSelectedValue(ma_learnlangdropdown, "all_lang")
-  end  
-  UIDropDownMenu_Initialize(ma_learnlangdropdown, LearnLangDropDownInitialize)
-  UIDropDownMenu_SetWidth(ma_learnlangdropdown,100)
-  UIDropDownMenu_SetButtonWidth(ma_learnlangdropdown,20)
 end
 
 function MangAdmin:InitSliders()
-  -- Speed Slider
-  ma_speedslider:SetOrientation("HORIZONTAL")
-  ma_speedslider:SetMinMaxValues(1, 10)
-  ma_speedslider:SetValueStep(0.1)
-  ma_speedslider:SetValue(1)
-  ma_speedsliderText:SetText("1.0")
-  -- Scale Slider
-  ma_scaleslider:SetOrientation("HORIZONTAL")
-  ma_scaleslider:SetMinMaxValues(0.1, 3)
-  ma_scaleslider:SetValueStep(0.1)
-  ma_scaleslider:SetValue(1)
-  ma_scalesliderText:SetText("1.0")
   -- Frame Transparency Slider
   ma_frmtrslider:SetOrientation("HORIZONTAL")
   ma_frmtrslider:SetMinMaxValues(0.1, 1.0)
@@ -3009,69 +2215,12 @@ function MangAdmin:InitScrollFrames()
   ma_logframe:SetScript("OnUpdate", function() MangAdminLogOnUpdate(self, 0, ma_logframe) end)
 end
 
-function MangAdmin:InitModelFrame()
-  ma_modelframe:SetScript("OnUpdate", function() MangAdminModelOnUpdate(arg1) end)
-  ma_modelframe.rotation = 0.61;
-  ma_modelframe:SetRotation(ma_modelframe.rotation)
-  ma_modelframe:SetUnit("player")
-  ma_npcmodelframe:SetScript("OnUpdate", function() MangAdminNpcModelOnUpdate(arg1) end)
-  ma_npcmodelframe.rotation = 0.61;
-  ma_npcmodelframe:SetRotation(ma_npcmodelframe.rotation)
-  ma_npcmodelframe:SetUnit("player")
 
-end
 
-function MangAdmin:NpcModelChanged()
-  if not self:Selection("none") then
-    ma_npcmodelframe:SetUnit("target")
-  else
-    ma_npcmodelframe:SetUnit("player")
-  end
-  ma_npcmodelframe:RefreshUnit()
-end
 
-function MangAdmin:ModelChanged()
-  if not self:Selection("none") then
-    ma_modelframe:SetUnit("target")
-  else
-    ma_modelframe:SetUnit("player")
-  end
-  ma_modelframe:RefreshUnit()
-end
 
-function MangAdminNpcModelOnUpdate(elapsedTime)
-  if ( ma_npcmodelrotatelbutton:GetButtonState() == "PUSHED" ) then
-    this.rotation = this.rotation + (elapsedTime * 2 * PI * ROTATIONS_PER_SECOND)
-    if ( this.rotation < 0 ) then
-      this.rotation = this.rotation + (2 * PI)
-    end
-    this:SetRotation(this.rotation);
-  end
-  if ( ma_npcmodelrotaterbutton:GetButtonState() == "PUSHED" ) then
-    this.rotation = this.rotation - (elapsedTime * 2 * PI * ROTATIONS_PER_SECOND)
-    if ( this.rotation > (2 * PI) ) then
-      this.rotation = this.rotation - (2 * PI)
-    end
-    this:SetRotation(this.rotation);
-  end
-end
 
-function MangAdminModelOnUpdate(elapsedTime)
-  if ( ma_modelrotatelbutton:GetButtonState() == "PUSHED" ) then
-    this.rotation = this.rotation + (elapsedTime * 2 * PI * ROTATIONS_PER_SECOND)
-    if ( this.rotation < 0 ) then
-      this.rotation = this.rotation + (2 * PI)
-    end
-    this:SetRotation(this.rotation);
-  end
-  if ( ma_modelrotaterbutton:GetButtonState() == "PUSHED" ) then
-    this.rotation = this.rotation - (elapsedTime * 2 * PI * ROTATIONS_PER_SECOND)
-    if ( this.rotation > (2 * PI) ) then
-      this.rotation = this.rotation - (2 * PI)
-    end
-    this:SetRotation(this.rotation);
-  end
-end
+
 
 function MangAdminLogOnUpdate(elapsedTime)
   if ( ma_logscrollupbutton:GetButtonState() == "PUSHED" ) then
@@ -3082,27 +2231,8 @@ function MangAdminLogOnUpdate(elapsedTime)
   end
 end
 
-function MangAdmin:NpcModelRotateLeft()
-  ma_npcmodelframe.rotation = ma_npcmodelframe.rotation - 0.03
-  ma_npcmodelframe:SetRotation(ma_npcmodelframe.rotation)
-  PlaySound("igInventoryRotateCharacter")
-end
-function MangAdmin:ModelRotateLeft()
-  ma_modelframe.rotation = ma_modelframe.rotation - 0.03
-  ma_modelframe:SetRotation(ma_modelframe.rotation)
-  PlaySound("igInventoryRotateCharacter")
-end
-function MangAdmin:NpcModelRotateRight()
-  ma_npcmodelframe.rotation = ma_npcmodelframe.rotation + 0.03
-  ma_npcmodelframe:SetRotation(ma_npcmodelframe.rotation)
-  PlaySound("igInventoryRotateCharacter")
-end
 
-function MangAdmin:ModelRotateRight()
-  ma_modelframe.rotation = ma_modelframe.rotation + 0.03
-  ma_modelframe:SetRotation(ma_modelframe.rotation)
-  PlaySound("igInventoryRotateCharacter")
-end
+
 
 function MangAdmin:NoResults(var)
   if var == "ticket" then

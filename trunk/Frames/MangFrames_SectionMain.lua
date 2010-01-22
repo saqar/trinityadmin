@@ -50,7 +50,7 @@ function MangAdmin:CreateMainSection()
       offX = 10,
       offY = -10
     },
-    text = "Display Account Level"
+    text = Locale["ma_displaylevelbutton"]
   })
   
   FrameLib:BuildButton({
@@ -483,7 +483,7 @@ FrameLib:BuildButton({
       offX = 180,
       offY = -10
     },
-    text = "Instantly kill enemy creatures",
+    text = Locale["ma_instakill"],
     inherits = "OptionsCheckButtonTemplate"
   })
   
@@ -566,7 +566,7 @@ FrameLib:BuildButton({
       offX = -34,
       offY = 58
     },
-    text = "^"
+    text = Locale["N"]
   })
   
   FrameLib:BuildButton({
@@ -586,7 +586,7 @@ FrameLib:BuildButton({
       offX = -34,
       offY = 10
     },
-    text = "v"
+    text = Locale["S"]
   })
   
   FrameLib:BuildButton({
@@ -606,7 +606,7 @@ FrameLib:BuildButton({
       offX = -10,
       offY = 34
     },
-    text = ">"
+    text = Locale["E"]
   })
   
   FrameLib:BuildButton({
@@ -626,6 +626,8 @@ FrameLib:BuildButton({
       offX = -58,
       offY = 34
     },
-    text = "<"
+    text = Locale["W"]
   })  
 end
+
+
