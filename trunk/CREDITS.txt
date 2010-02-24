@@ -1,15 +1,14 @@
 TrinityAdmin is derived from MangAdmin.
 TrinityAdmin is maintained and developed by iotech
 
-MangAdmin is developed by:
-Josh (Project Owner), 
-iotech,
-infamousblob,
-Atreus420,
-killat200623,
-dragonfrost, 
-and Necroblack
-
 TrinityAdmin also contains code donated by:
 Pryd (teleport work)
+Gimp (teleport work)
 
+Locale Team:
+iotech, Ravenheart, Gimp, Dracula70, MrLakeC, Namida, Amok, Lyrr123, borgotech, Morpheux, Georgios
+
+
+
+MangAdmin is developed by:
+Josh (Project Owner), iotech, infamousblob, Atreus420, killat200623, dragonfrost, and Necroblack

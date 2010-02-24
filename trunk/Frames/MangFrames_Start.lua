@@ -58,7 +58,7 @@ function MangAdmin:CreateStartFrames()
     group = "bg",
     parent = ma_bgframe,
     texture = {
-      color = {color.bg.r, color.bg.g, color.bg.b, transparency.bg}
+      color = {color.frm.r, color.frm.g, color.frm.b, transparency.frm}
     },
     size = {
       width = 750,
@@ -67,7 +67,7 @@ function MangAdmin:CreateStartFrames()
     setpoint = {
       pos = "TOPLEFT",
       offY = 22,
-      offX = 4
+      offX = 0
     },
     inherits = nil
   })
