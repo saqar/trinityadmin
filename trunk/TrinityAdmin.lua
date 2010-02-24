@@ -21,8 +21,8 @@
 local genv = getfenv(0)
 local Mang = genv.Mang
 
-MAJOR_VERSION = "TrinityAdmin-3.2.2a"
-MINOR_VERSION = "$Revision: 012 $"
+MAJOR_VERSION = "TrinityAdmin-3.3.2"
+MINOR_VERSION = "$Revision: 014 $"
 ROOT_PATH     = "Interface\\AddOns\\TrinityAdmin\\"
 local cont = ""
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
