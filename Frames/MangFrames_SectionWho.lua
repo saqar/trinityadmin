@@ -19,10 +19,10 @@
 -------------------------------------------------------------------------------------------------------------
 
 -- Initializing dynamic frames with LUA and FrameLib
--- This script must be listed in the .toc after "MangFrames_SectionChar.lua"
+-- This script must be listed in the .toc after "MangFrames_SectionTicket.lua"
 -- Also some variables are globally taken from MangAdmin.lua
 
-function MangAdmin:CreateTicketSection()
+function MangAdmin:CreateWhoSection()
   local transparency = {
     bg = MangAdmin.db.account.style.transparency.backgrounds,
     btn = MangAdmin.db.account.style.transparency.buttons,
@@ -31,15 +31,17 @@ function MangAdmin:CreateTicketSection()
   local color = {
     bg = MangAdmin.db.account.style.color.backgrounds,
     btn = MangAdmin.db.account.style.color.buttons,
-    frm = MangAdmin.db.account.style.color.frames
+    frm = MangAdmin.db.account.style.color.frames,
+    linkifier = MangAdmin.db.account.style.color.linkifier
   }
   
+ 
   FrameLib:BuildButton({
-    name = "ma_showticketsbutton",
-    group = "ticket",
+    name = "ma_showwhobutton",
+    group = "who",
     parent = ma_midframe,
     texture = {
-      name = "ma_loadticketsbutton_texture",
+      name = "ma_showwhobutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -51,15 +53,15 @@ function MangAdmin:CreateTicketSection()
       offX = 10,
       offY = -5
     },
-    text = Locale["ma_LoadTicketsButton"]
+    text = Locale["ma_ShowWhoButton"]
   })
   
   FrameLib:BuildButton({
-    name = "ma_resetticketsbutton",
-    group = "ticket",
+    name = "ma_resetwhobutton",
+    group = "who",
     parent = ma_midframe,
     texture = {
-      name = "ma_loadticketsbutton_texture",
+      name = "ma_resetwhobutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -75,8 +77,8 @@ function MangAdmin:CreateTicketSection()
   })
    
   FrameLib:BuildButton({
-    name = "ma_whisperticketbutton",
-    group = "ticket",
+    name = "ma_whisperwhobutton",
+    group = "who",
     parent = ma_midframe,
     texture = {
       name = "ma_whisperticketbutton_texture",
@@ -91,12 +93,12 @@ function MangAdmin:CreateTicketSection()
       offX = -346,
       offY = 10
     },
-    text = "Whisper" --Locale["ma_WhisperButton"]
+    text = Locale["ma_whisperbutton"]
   })
   
   FrameLib:BuildButton({
-    name = "ma_getcharticketbutton",
-    group = "ticket",
+    name = "ma_summonwhobutton",
+    group = "who",
     parent = ma_midframe,
     texture = {
       name = "ma_getcharticketbutton_texture",
@@ -111,15 +113,15 @@ function MangAdmin:CreateTicketSection()
       offX = -262,
       offY = 10
     },
-    text = Locale["ma_GetCharTicketButton"]
+    text = Locale["ma_SummonWhoButton"]
   })
   
   FrameLib:BuildButton({
-    name = "ma_gocharticketbutton",
-    group = "ticket",
+    name = "ma_gocharwhobutton",
+    group = "who",
     parent = ma_midframe,
     texture = {
-      name = "ma_gocharticketbutton_texture",
+      name = "ma_gocharwhobutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -131,12 +133,12 @@ function MangAdmin:CreateTicketSection()
       offX = -178,
       offY = 10
     },
-    text = Locale["ma_GoCharTicketButton"]
+    text = Locale["ma_GoCharWhoButton"]
   })
   
   FrameLib:BuildButton({
-    name = "ma_answerticketbutton",
-    group = "ticket",
+    name = "ma_answerwhobutton",
+    group = "who",
     parent = ma_midframe,
     texture = {
       name = "ma_answerticketbutton_texture",
@@ -151,15 +153,15 @@ function MangAdmin:CreateTicketSection()
       offX = -94,
       offY = 10
     },
-    text = Locale["ma_AnswerButton"]
+    text = Locale["ma_AnswerWhoButton"]
   })
   
   FrameLib:BuildButton({
-    name = "ma_deleteticketbutton",
-    group = "ticket",
+    name = "ma_deletewhobutton",
+    group = "who",
     parent = ma_midframe,
     texture = {
-      name = "ma_deleteticketbutton_texture",
+      name = "ma_deletewhobutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -171,13 +173,13 @@ function MangAdmin:CreateTicketSection()
       offX = -10,
       offY = 10
     },
-    text = Locale["ma_DeleteButton"]
+    text = Locale["ma_DeleteWhoButton"]
   })
   
   FrameLib:BuildFrame({
     type = "ScrollFrame",
-    name = "ma_ticketscrollframe",
-    group = "ticket",
+    name = "ma_whoscrollframe",
+    group = "who",
     parent = ma_midframe,
     texture = {
       color = {0,0,0,0.7}
@@ -200,41 +202,13 @@ function MangAdmin:CreateTicketSection()
 --    inherits = "UIPanelScrollFrameTemplate"
   })
   
- --[[FrameLib:BuildFrame({
-    type = "EditBox",
-    name = "ma_ticketeditbox",
-    group = "ticket",
-    parent = ma_ticketscrollframe,
-    texture = {
-      name = "ma_ticketeditbox_texture",
-      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
-    },
-    size = {
-      width = 450,
-      height = 200
-    },
-    setpoint = {
-      pos = "TOPLEFT",
-      offX = 0,
-      offY = 0
-    },
-    setpoint2 = {
-      pos = "BOTTOMRIGHT",
-      offX = 0,
-      offY = 0
-    },
-    maxletters = 100000,
-    multiline = true,
-    textcolor = {0, 0, 0, 1.0}
-  })
- ]]
  FrameLib:BuildFrame({
     type = "EditBox",
-    name = "ma_ticketdetail",
-    group = "ticket",
+    name = "ma_whodetail",
+    group = "who",
     parent = ma_midframe,
     texture = {
-      name = "ma_ticketeditbox_texture",
+      name = "ma_whodetail_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
@@ -243,7 +217,7 @@ function MangAdmin:CreateTicketSection()
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 2,
+      offX = 5,
       offY = -55
     },
     maxletters = 100000,
@@ -251,11 +225,34 @@ function MangAdmin:CreateTicketSection()
     textcolor = {1, 1, 1, 1.0}
   })
  
-   FrameLib:BuildFontString({
-    name = "ma_ticketidlabel",
-    group = "ticket",
+ FrameLib:BuildFrame({
+    type = "EditBox",
+    name = "ma_whodetail2",
+    group = "who",
     parent = ma_midframe,
-    text = "ID:",
+    texture = {
+      name = "ma_whodetail2_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 260,
+      height = 300
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 5,
+      offY = -140
+    },
+    maxletters = 100000,
+    multiline = true,
+    textcolor = {1, 1, 1, 1.0}
+  })
+  
+   FrameLib:BuildFontString({
+    name = "ma_whoidlabel",
+    group = "who",
+    parent = ma_midframe,
+    text = "Acct:",
     setpoint = {
       pos = "TOPLEFT",
       offX = 10,
@@ -263,53 +260,53 @@ function MangAdmin:CreateTicketSection()
     }
   })
     FrameLib:BuildFontString({
-    name = "ma_ticketid",
-    group = "ticket",
+    name = "ma_whoid",
+    group = "who",
     parent = ma_midframe,
     text = "",
     setpoint = {
       pos = "TOPLEFT",
-      offX = 30,
+      offX = 40,
       offY = -30
     }
   })
  
     FrameLib:BuildFontString({
-    name = "ma_ticketwholabel",
-    group = "ticket",
+    name = "ma_wholabel",
+    group = "who",
     parent = ma_midframe,
-    text = "Who:",
-    setpoint = {
-      pos = "TOPLEFT",
-      offX = 60,
-      offY = -30
-    }
-  })
-    FrameLib:BuildFontString({
-    name = "ma_ticketwho",
-    group = "ticket",
-    parent = ma_midframe,
-    text = "",
+    text = "Char:",
     setpoint = {
       pos = "TOPLEFT",
       offX = 100,
       offY = -30
     }
   })
+    FrameLib:BuildFontString({
+    name = "ma_who",
+    group = "who",
+    parent = ma_midframe,
+    text = "",
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 140,
+      offY = -30
+    }
+  })
  
     FrameLib:BuildButton({
-    name = "ma_ticketscrollframe1",
+    name = "ma_whoscrollframe1",
     JustifyH = "LEFT",
-    group = "ticket",
+    group = "who",
     parent = ma_midframe,
     setpoint = {
       pos = "TOPLEFT",
-      relTo = "ma_ticketscrollframe",
+      relTo = "ma_whoscrollframe",
       relPos = "TOPLEFT",
       offY = -1
     },
     texture = {
-      name = "ma_ticketeditbox_texture",
+      name = "ma_whoscrollframe_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     text = "",
@@ -321,17 +318,17 @@ function MangAdmin:CreateTicketSection()
   })
   
     FrameLib:BuildButton({
-    name = "ma_ticketscrollframe2",
-    group = "ticket",
+    name = "ma_whoscrollframe2",
+    group = "who",
     parent = ma_midframe,
     setpoint = {
       pos = "TOPLEFT",
-      relTo = "ma_ticketscrollframe1",
+      relTo = "ma_whoscrollframe1",
       relPos = "BOTTOMLEFT",
       offY = -1
     },
     texture = {
-      name = "ma_ticketeditbox_texture",
+      name = "ma_whoscrollframe_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     text = "",
@@ -343,17 +340,17 @@ function MangAdmin:CreateTicketSection()
   })
   
     FrameLib:BuildButton({
-    name = "ma_ticketscrollframe3",
-    group = "ticket",
+    name = "ma_whoscrollframe3",
+    group = "who",
     parent = ma_midframe,
     setpoint = {
       pos = "TOPLEFT",
-      relTo = "ma_ticketscrollframe2",
+      relTo = "ma_whoscrollframe2",
       relPos = "BOTTOMLEFT",
       offY = -1
     },
     texture = {
-      name = "ma_ticketeditbox_texture",
+      name = "ma_whoscrollframe_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     text = "",
@@ -365,17 +362,17 @@ function MangAdmin:CreateTicketSection()
   })
 
     FrameLib:BuildButton({
-    name = "ma_ticketscrollframe4",
-    group = "ticket",
+    name = "ma_whoscrollframe4",
+    group = "who",
     parent = ma_midframe,
     setpoint = {
       pos = "TOPLEFT",
-      relTo = "ma_ticketscrollframe3",
+      relTo = "ma_whoscrollframe3",
       relPos = "BOTTOMLEFT",
       offY = -1
     },
     texture = {
-      name = "ma_ticketeditbox_texture",
+      name = "ma_whoscrollframe_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     text = "",
@@ -387,17 +384,17 @@ function MangAdmin:CreateTicketSection()
   })
 
     FrameLib:BuildButton({
-    name = "ma_ticketscrollframe5",
-    group = "ticket",
+    name = "ma_whoscrollframe5",
+    group = "who",
     parent = ma_midframe,
     setpoint = {
       pos = "TOPLEFT",
-      relTo = "ma_ticketscrollframe4",
+      relTo = "ma_whoscrollframe4",
       relPos = "BOTTOMLEFT",
       offY = -1
     },
     texture = {
-      name = "ma_ticketeditbox_texture",
+      name = "ma_whoscrollframe_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     text = "",
@@ -409,17 +406,17 @@ function MangAdmin:CreateTicketSection()
   })
 
     FrameLib:BuildButton({
-    name = "ma_ticketscrollframe6",
-    group = "ticket",
+    name = "ma_whoscrollframe6",
+    group = "who",
     parent = ma_midframe,
     setpoint = {
       pos = "TOPLEFT",
-      relTo = "ma_ticketscrollframe5",
+      relTo = "ma_whoscrollframe5",
       relPos = "BOTTOMLEFT",
       offY = -1
     },
     texture = {
-      name = "ma_ticketeditbox_texture",
+      name = "ma_whoscrollframe_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     text = "",
@@ -431,17 +428,17 @@ function MangAdmin:CreateTicketSection()
   })
 
     FrameLib:BuildButton({
-    name = "ma_ticketscrollframe7",
-    group = "ticket",
+    name = "ma_whoscrollframe7",
+    group = "who",
     parent = ma_midframe,
     setpoint = {
       pos = "TOPLEFT",
-      relTo = "ma_ticketscrollframe6",
+      relTo = "ma_whoscrollframe6",
       relPos = "BOTTOMLEFT",
       offY = -1
     },
     texture = {
-      name = "ma_ticketeditbox_texture",
+      name = "ma_whoscrollframe_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     text = "",
@@ -453,17 +450,17 @@ function MangAdmin:CreateTicketSection()
   })
 
     FrameLib:BuildButton({
-    name = "ma_ticketscrollframe8",
-    group = "ticket",
+    name = "ma_whoscrollframe8",
+    group = "who",
     parent = ma_midframe,
     setpoint = {
       pos = "TOPLEFT",
-      relTo = "ma_ticketscrollframe7",
+      relTo = "ma_whoscrollframe7",
       relPos = "BOTTOMLEFT",
       offY = -1
     },
     texture = {
-      name = "ma_ticketeditbox_texture",
+      name = "ma_whoscrollframe_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     text = "",
@@ -475,17 +472,17 @@ function MangAdmin:CreateTicketSection()
   })
 
     FrameLib:BuildButton({
-    name = "ma_ticketscrollframe9",
-    group = "ticket",
+    name = "ma_whoscrollframe9",
+    group = "who",
     parent = ma_midframe,
     setpoint = {
       pos = "TOPLEFT",
-      relTo = "ma_ticketscrollframe8",
+      relTo = "ma_whoscrollframe8",
       relPos = "BOTTOMLEFT",
       offY = -1
     },
     texture = {
-      name = "ma_ticketeditbox_texture",
+      name = "ma_whoscrollframe_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     text = "",
@@ -497,17 +494,17 @@ function MangAdmin:CreateTicketSection()
   })
 
     FrameLib:BuildButton({
-    name = "ma_ticketscrollframe10",
-    group = "ticket",
+    name = "ma_whoscrollframe10",
+    group = "who",
     parent = ma_midframe,
     setpoint = {
       pos = "TOPLEFT",
-      relTo = "ma_ticketscrollframe9",
+      relTo = "ma_whoscrollframe9",
       relPos = "BOTTOMLEFT",
       offY = -1
     },
     texture = {
-      name = "ma_ticketeditbox_texture",
+      name = "ma_whoscrollframe_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     text = "",
@@ -519,17 +516,17 @@ function MangAdmin:CreateTicketSection()
   })
 
     FrameLib:BuildButton({
-    name = "ma_ticketscrollframe11",
-    group = "ticket",
+    name = "ma_whoscrollframe11",
+    group = "who",
     parent = ma_midframe,
     setpoint = {
       pos = "TOPLEFT",
-      relTo = "ma_ticketscrollframe10",
+      relTo = "ma_whoscrollframe10",
       relPos = "BOTTOMLEFT",
       offY = -1
     },
     texture = {
-      name = "ma_ticketeditbox_texture",
+      name = "ma_whoscrollframe_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     text = "",
@@ -541,17 +538,17 @@ function MangAdmin:CreateTicketSection()
   })
 
     FrameLib:BuildButton({
-    name = "ma_ticketscrollframe12",
-    group = "ticket",
+    name = "ma_whoscrollframe12",
+    group = "who",
     parent = ma_midframe,
     setpoint = {
       pos = "TOPLEFT",
-      relTo = "ma_ticketscrollframe11",
+      relTo = "ma_whoscrollframe11",
       relPos = "BOTTOMLEFT",
       offY = -1
     },
     texture = {
-      name = "ma_ticketeditbox_texture",
+      name = "ma_whoscrollframe_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     text = "",
@@ -563,3 +560,4 @@ function MangAdmin:CreateTicketSection()
   })
 
 end
+

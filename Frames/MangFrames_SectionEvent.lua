@@ -17,33 +17,35 @@
 -- Subversion Repository: http://trinityadmin.googlecode.com/svn/
 -- Dev Blog: http://trinityadmin.blogspot.com/
 -------------------------------------------------------------------------------------------------------------
-function Announce(value)
-  MangAdmin:ChatMsg(".announce "..value)
-  MangAdmin:LogAction("Announced message: "..value)
-end
 
-function Shutdown(value)
-  if value == "" then
-    MangAdmin:ChatMsg(".server shutdown 0")
-    MangAdmin:LogAction("Shut down server instantly.")
-  else
-    MangAdmin:ChatMsg(".server shutdown "..value)
-    MangAdmin:LogAction("Shut down server in "..value.." seconds.")
-  end
-end
+-- Initializing dynamic frames with LUA and FrameLib
+-- This script must be listed in the .toc after "MangFrames_SectionTicket.lua"
+-- Also some variables are globally taken from MangAdmin.lua
 
-function ReloadTable(tablename)
-  if not (tablename == "") then
-    MangAdmin:ChatMsg(".reload "..tablename)
-    if tablename == "all" then
-      MangAdmin:LogAction("Reloaded all reloadable MaNGOS database tables.")
-    else
-      MangAdmin:LogAction("Reloaded the table "..tablename..".")
-    end
-  end
-end
-
-function ReloadScripts()
-  MangAdmin:ChatMsg(".loadscripts")
-  MangAdmin:LogAction("(Re-)Loaded scripts.")
+function MangAdmin:CreateEventSection()
+  local transparency = {
+    bg = MangAdmin.db.account.style.transparency.backgrounds,
+    btn = MangAdmin.db.account.style.transparency.buttons,
+    frm = MangAdmin.db.account.style.transparency.frames
+  }
+  local color = {
+    bg = MangAdmin.db.account.style.color.backgrounds,
+    btn = MangAdmin.db.account.style.color.buttons,
+    frm = MangAdmin.db.account.style.color.frames,
+    linkifier = MangAdmin.db.account.style.color.linkifier
+  }
+  
+  
+  FrameLib:BuildFontString({
+    name = "ma_eventplaceholder",
+    group = "event",
+    parent = ma_midframe,
+    text = Locale["ma_ParameterizedCommands"],
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 10,
+      offY = 0
+    }
+  })
+  
 end

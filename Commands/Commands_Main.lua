@@ -84,6 +84,12 @@ function ToggleMaps(value)
   end
 end
 
+function KillSomething()
+  local target = UnitName("target") or UnitName("player")
+  MangAdmin:ChatMsg(".die")
+  MangAdmin:LogAction("Killed "..target..".")
+end
+
 function InstantKill()
   MangAdmin.db.char.instantKillMode = ma_instantkillbutton:GetChecked()
 end
@@ -186,4 +192,170 @@ function GridNavigate(x, y)
       MangAdmin:Print("Value must be a number!")
     end
   end
+end
+
+function ToggleChat(value)
+  MangAdmin:ChatMsg(".gm chat "..value)
+  MangAdmin:LogAction("Turned GM-Chat to "..value..".")
+end
+
+function ToggleWaterwalk(value)
+  MangAdmin:ChatMsg(".waterwalk "..value)
+  MangAdmin:LogAction("Turned Waterwalk to "..value..".")
+end
+
+function ToggleAccountlock(value)
+  MangAdmin:ChatMsg(".account lock "..value)
+  MangAdmin:LogAction("Turned GM account lock to "..value..".")
+end
+
+function GMInGame()
+  MangAdmin:ChatMsg(".gm ingame")
+  MangAdmin:LogAction("Listed GMs in-game.")
+end
+
+function GMList()
+  MangAdmin:ChatMsg(".gm list")
+  MangAdmin:LogAction("Listed GM accounts.")
+end
+
+function PetCreate()
+  MangAdmin:ChatMsg(".pet create")
+  MangAdmin:LogAction("Created a pet.")
+end
+
+function PetLearn()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".pet learn "..param)
+  MangAdmin:LogAction("Taught pet spell "..param)
+end
+
+function PetUnLearn()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".pet unlearn "..param)
+  MangAdmin:LogAction("Un-taught pet spell "..param)
+end
+
+function PetTP()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".pet tp "..param)
+  MangAdmin:LogAction("Modified pet training points by "..param)
+end
+
+function LookupTaxi()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".lookup taxi  "..param)
+  MangAdmin:LogAction("Looked up Taxinode "..param)
+end
+
+function GoTaxiNode()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".go taxinode "..param)
+  MangAdmin:LogAction("Teleported to TaxiNode "..param)
+end
+
+function GoTrigger()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".go trigger "..param)
+  MangAdmin:LogAction("Teleported to Trigger "..param)
+end
+
+function GoXY()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".go xy "..param)
+  MangAdmin:LogAction("Teleported to XY "..param)
+end
+
+function GoXYZ()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".go xyz "..param)
+  MangAdmin:LogAction("Teleported to XYZ "..param)
+end
+
+function GoZoneXY()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".go zonexy "..param)
+  MangAdmin:LogAction("Teleported to ZoneXY "..param)
+end
+
+function LookupZone()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".lookup area "..param)
+  MangAdmin:LogAction("Looked up Zone "..param)
+end
+
+function Cast()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".cast "..param)
+  MangAdmin:LogAction("Cast spell "..param)
+end
+
+function CastBack()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".cast back "..param)
+  MangAdmin:LogAction("Cast Back spell "..param)
+end
+
+function CastDist()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".cast dist "..param)
+  MangAdmin:LogAction("Cast Dist spell "..param)
+end
+
+function CastSelf()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".cast self "..param)
+  MangAdmin:LogAction("Cast Self spell "..param)
+end
+
+function CastTarget()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".cast target "..param)
+  MangAdmin:LogAction("Cast Target spell "..param)
+end
+
+function ListItem()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".list item "..param)
+  MangAdmin:LogAction("Listed Item "..param)
+end
+
+function GmClear()
+  ma_parameter:SetText("")
+end
+
+function AcctCreate()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".account create "..param)
+  MangAdmin:LogAction("Created account: "..param)
+end
+
+function AcctDelete()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".account delete "..param)
+  MangAdmin:LogAction("Deleted account: "..param)
+end
+
+function AcctAddon()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".account set addon "..param)
+  MangAdmin:LogAction("Set account addon: "..param)
+end
+
+function AcctGMLvl()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".account set gmlevel "..param)
+  MangAdmin:LogAction("Set account gmlevel: "..param)
+end
+
+function AcctPasswd()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".account set password "..param)
+  MangAdmin:LogAction("Set account password: "..param)
+end
+
+function GMNotify()
+  local param = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".gmnotify "..param)
+  MangAdmin:LogAction("GM Notify: "..param)
 end

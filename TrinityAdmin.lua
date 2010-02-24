@@ -38,10 +38,6 @@ local Tablet = AceLibrary("Tablet-2.0")
 MangAdmin:RegisterDB("MangAdminDb", "MangAdminDbPerChar")
 MangAdmin:RegisterDefaults("char", 
   {
-    --[[getValueCallHandler = {
-      calledGetGuid = false,
-      realGuid = nil
-    },]]
     functionQueue = {},
     requests = {
       tpinfo = false,
@@ -138,39 +134,41 @@ MangAdmin:RegisterDefaults("account",
 Locale:EnableDynamicLocales(true)
 --Locale:EnableDebugging()
 Locale:RegisterTranslations("enUS", function() return Return_enUS() end)
-Locale:RegisterTranslations("deDE", function() return Return_deDE() end)
+--Locale:RegisterTranslations("deDE", function() return Return_deDE() end)
 Locale:RegisterTranslations("frFR", function() return Return_frFR() end)
-Locale:RegisterTranslations("itIT", function() return Return_itIT() end)
-Locale:RegisterTranslations("fiFI", function() return Return_fiFI() end)
-Locale:RegisterTranslations("plPL", function() return Return_plPL() end)
+--Locale:RegisterTranslations("itIT", function() return Return_itIT() end)
+--Locale:RegisterTranslations("fiFI", function() return Return_fiFI() end)
+--Locale:RegisterTranslations("plPL", function() return Return_plPL() end)
 Locale:RegisterTranslations("svSV", function() return Return_svSV() end)
-Locale:RegisterTranslations("liLI", function() return Return_liLI() end)
-Locale:RegisterTranslations("roRO", function() return Return_roRO() end)
-Locale:RegisterTranslations("csCZ", function() return Return_csCZ() end)
-Locale:RegisterTranslations("huHU", function() return Return_huHU() end)
-Locale:RegisterTranslations("esES", function() return Return_esES() end)
-Locale:RegisterTranslations("zhCN", function() return Return_zhCN() end)
-Locale:RegisterTranslations("ptPT", function() return Return_ptPT() end)
-Locale:RegisterTranslations("ruRU", function() return Return_ruRU() end)
-Locale:RegisterTranslations("nlNL", function() return Return_nlNL() end)
+--Locale:RegisterTranslations("liLI", function() return Return_liLI() end)
+--Locale:RegisterTranslations("roRO", function() return Return_roRO() end)
+--Locale:RegisterTranslations("csCZ", function() return Return_csCZ() end)
+--Locale:RegisterTranslations("huHU", function() return Return_huHU() end)
+--Locale:RegisterTranslations("esES", function() return Return_esES() end)
+--Locale:RegisterTranslations("zhCN", function() return Return_zhCN() end)
+--Locale:RegisterTranslations("ptPT", function() return Return_ptPT() end)
+--Locale:RegisterTranslations("ruRU", function() return Return_ruRU() end)
+--Locale:RegisterTranslations("nlNL", function() return Return_nlNL() end)
+--Locale:RegisterTranslations("buBU", function() return Return_buBU() end)
 -- Register String Traslations
 Strings:EnableDynamicLocales(true)
 Strings:RegisterTranslations("enUS", function() return ReturnStrings_enUS() end)
-Strings:RegisterTranslations("deDE", function() return ReturnStrings_deDE() end)
+--Strings:RegisterTranslations("deDE", function() return ReturnStrings_deDE() end)
 Strings:RegisterTranslations("frFR", function() return ReturnStrings_frFR() end)
-Strings:RegisterTranslations("itIT", function() return ReturnStrings_itIT() end)
-Strings:RegisterTranslations("fiFI", function() return ReturnStrings_fiFI() end)
-Strings:RegisterTranslations("plPL", function() return ReturnStrings_plPL() end)
+--Strings:RegisterTranslations("itIT", function() return ReturnStrings_itIT() end)
+--Strings:RegisterTranslations("fiFI", function() return ReturnStrings_fiFI() end)
+--Strings:RegisterTranslations("plPL", function() return ReturnStrings_plPL() end)
 Strings:RegisterTranslations("svSV", function() return ReturnStrings_svSV() end)
-Strings:RegisterTranslations("liLI", function() return ReturnStrings_liLI() end)
-Strings:RegisterTranslations("roRO", function() return ReturnStrings_roRO() end)
-Strings:RegisterTranslations("csCZ", function() return ReturnStrings_csCZ() end)
-Strings:RegisterTranslations("huHU", function() return ReturnStrings_huHU() end)
-Strings:RegisterTranslations("esES", function() return ReturnStrings_esES() end)
-Strings:RegisterTranslations("zhCN", function() return ReturnStrings_zhCN() end)
-Strings:RegisterTranslations("ptPT", function() return ReturnStrings_ptPT() end)
-Strings:RegisterTranslations("ruRU", function() return ReturnStrings_ruRU() end)
-Strings:RegisterTranslations("nlNL", function() return ReturnStrings_nlNL() end)
+--Strings:RegisterTranslations("liLI", function() return ReturnStrings_liLI() end)
+--Strings:RegisterTranslations("roRO", function() return ReturnStrings_roRO() end)
+--Strings:RegisterTranslations("csCZ", function() return ReturnStrings_csCZ() end)
+--Strings:RegisterTranslations("huHU", function() return ReturnStrings_huHU() end)
+--Strings:RegisterTranslations("esES", function() return ReturnStrings_esES() end)
+--Strings:RegisterTranslations("zhCN", function() return ReturnStrings_zhCN() end)
+--Strings:RegisterTranslations("ptPT", function() return ReturnStrings_ptPT() end)
+--Strings:RegisterTranslations("ruRU", function() return ReturnStrings_ruRU() end)
+--Strings:RegisterTranslations("nlNL", function() return ReturnStrings_nlNL() end)
+--Strings:RegisterTranslations("buBU", function() return ReturnStrings_buBU() end)
 --Locale:Debug()
 --Locale:SetLocale("enUS")
 
@@ -212,6 +210,7 @@ function MangAdmin:OnInitialize()
   self:InitButtons()  -- this prepares the actions and tooltips of nearly all MangAdmin buttons  
   InitControls()
   self:SearchReset()
+  MangAdmin.db.account.buffer.who = {}
   -- FuBar plugin config
   MangAdmin.hasNoColor = true
   MangAdmin.hasNoText = false
@@ -228,13 +227,12 @@ function MangAdmin:OnInitialize()
     local cf = getglobal("ChatFrame"..i)
     self:Hook(cf, "AddMessage", true)
   end
---self:ChatMsg("CHECK 1")
   -- initializing Frames, like DropDowns, Sliders, aso
   self:InitDropDowns()
   self:InitSliders()
   self:InitScrollFrames()
   self:InitCheckButtons()
-  
+  MangAdmin.db.account.buffer.who = {}
   --clear color buffer
   self.db.account.style.color.buffer = {}
   --altering the function setitemref, to make it possible to click links
@@ -245,15 +243,17 @@ function MangAdmin:OnInitialize()
   if not self.db.account.style.showminimenu then
     FrameLib:HandleGroup("minimenu", function(frame) frame:Hide() end)
   end
+ 
 end
 
 function MangAdmin:OnEnable()
   self:SetDebugging(true) -- to have debugging through the whole app
   ma_toptext:SetText(Locale["char"].." "..Locale["guid"]..tonumber(UnitGUID("player"),16))
-  ma_top2text:SetText(Locale["realm"].." "..Locale["tickets"].."0")
+  ma_top2text:SetText(Locale["realm"])
   self:SearchReset()
   -- refresh server information
   self:ChatMsg(".server info")
+  self:ChatMsg(".account onlinelist")
   -- register events
   --self:RegisterEvent("ZONE_CHANGED") -- for teleport list update
   self:RegisterEvent("PLAYER_TARGET_CHANGED")
@@ -261,6 +261,7 @@ function MangAdmin:OnEnable()
   self:RegisterEvent("PLAYER_DEAD")
   self:RegisterEvent("PLAYER_ALIVE")
   self:PLAYER_TARGET_CHANGED() --init
+  
 end
 
 --events
@@ -321,7 +322,7 @@ function MangAdmin:PLAYER_TARGET_CHANGED()
     else
       if self.db.char.instantKillMode then
         if not UnitIsFriend("player", "target") then
-          self:KillSomething()
+          KillSomething()
         end
       end
       --ma_respawnbutton:Disable()
@@ -416,8 +417,12 @@ function MangAdmin:ToggleContentGroup(group)
 end
 
 function MangAdmin:InstantGroupToggle(group)
-  if group ~= "ticket" then
+  if group == "ticket" then
     self.db.char.requests.ticket = false
+  end
+  if group== "who" then
+    MangAdmin:ChatMsg(".account onlinelist")
+    ResetWho()
   end
   FrameLib:HandleGroup("bg", function(frame) frame:Show() end)
   MangAdmin:ToggleTabButton(group)
@@ -526,6 +531,11 @@ function MangAdmin:TogglePopup(value, param)
     else
       ma_searcheditbox:SetText(Locale["ma_MailRecipient"])
     end
+    if param.body then
+      ma_maileditbox:SetText(param.body)
+    else
+      ma_maileditbox:SetText(Locale["ma_MailRecipient"])
+    end
     ma_ptabbutton_1:SetText(Locale["ma_Mail"])
     ma_ptabbutton_2:Hide()
     ma_searchbutton:SetText(Locale["ma_Send"])
@@ -555,6 +565,12 @@ function MangAdmin:HideAllGroups()
   FrameLib:HandleGroup("server", function(frame) frame:Hide() end)
   FrameLib:HandleGroup("misc", function(frame) frame:Hide() end)
   FrameLib:HandleGroup("log", function(frame) frame:Hide() end)
+  FrameLib:HandleGroup("pvp", function(frame) frame:Hide() end)
+  FrameLib:HandleGroup("event", function(frame) frame:Hide() end)
+  FrameLib:HandleGroup("rpg", function(frame) frame:Hide() end)
+  FrameLib:HandleGroup("vendor", function(frame) frame:Hide() end)
+  FrameLib:HandleGroup("ahbot", function(frame) frame:Hide() end)
+  FrameLib:HandleGroup("who", function(frame) frame:Hide() end)
 end
 
 --[[function WaitLoop(seconds)
@@ -613,12 +629,6 @@ function MangAdmin:AddMessage(frame, text, r, g, b, id)
         end
       end
     end
-
---***************[루틴 변경 시작]***************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
 
 if MangAdmin:ID_Setting_Start_Read() then    
     local b1,e1,pattern = string.find(text, "GUID: (%d+)%.")
@@ -695,12 +705,6 @@ if MangAdmin:Way_Point_Add_Start_Read() then
     
 end
     
---**********************************************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
---***************[루틴 변경 끝]*****************************************************************************************
-
     if self.db.char.requests.toggle then
       if self.db.char.requests.item then
         -- hook all item lookups
@@ -780,25 +784,18 @@ end
         end
       end
     end
+    for diff in string.gmatch(text, Strings["ma_GmatchUpdateDiff"]) do
+        ma_difftext:SetText(diff)
+        catchedSth = true
+        output = false
+    end
+
     -- hook all new tickets
     for name in string.gmatch(text, Strings["ma_GmatchNewTicket"]) do
---[[    getting rid of newTicketQueue table, obsolete
-        All we need to do here is alert the user that a new ticket arrived. Removed 11/26 iotech
-      table.insert(self.db.char.newTicketQueue, name)]]
       self:SetIcon(ROOT_PATH.."Textures\\icon2.tga")
       PlaySoundFile(ROOT_PATH.."Sound\\mail.wav")
       self:LogAction("Got new ticket from: "..name)
     end
- --[[ Ticket count no longer supported in core.  Removed 11/26 iotech
-    -- hook ticket count
-    for count, status in string.gmatch(text, Strings["ma_GmatchTicketCount"]) do
-      if self.db.char.requests.ticket then
-        catchedSth = true
-        output = false
-        self:LoadTickets(count)
-      end
-    end
-    ]]
     -- hook player account info
     for status, char, guid, account, id, level, ip, login, latency in string.gmatch(text, Strings["ma_GmatchAccountInfo"]) do
       if self.db.char.requests.tpinfo then
@@ -828,47 +825,113 @@ end
     for revision, platform in string.gmatch(text, Strings["ma_GmatchRevision"]) do
       ma_inforevisiontext:SetText(Locale["info_revision"]..revision)
       --ma_infoplatformtext:SetText(Locale["info_platform"]..platform)
+        catchedSth = true
+        output = false
     end
     for users, maxusers in string.gmatch(text, Strings["ma_GmatchOnlinePlayers"]) do
       ma_infoonlinetext:SetText(Locale["info_online"]..users)
       ma_infomaxonlinetext:SetText(Locale["info_maxonline"]..maxusers)
+        catchedSth = true
+        output = false
     end
     for uptime in string.gmatch(text, Strings["ma_GmatchUptime"]) do
       ma_infouptimetext:SetText(Locale["info_uptime"]..uptime)
+        catchedSth = true
+        output = false
     end
-
-    -- Hook full text of tickets before the list text, which is unfortunately very similar.
---[[    for msg in string.gmatch(text, Strings["ma_GmatchTicketsFull"]) do
---        msg = string.match(msg, "%w+%s+")
-        MangAdmin:ChatMsg("MATCHED Full"..msg)
-        MangAdmin.db.account.buffer.ticketsfull = {}
-        table.insert(MangAdmin.db.account.buffer.ticketsfull, {tMsg = msg})
-        MangAdmin:ChatMsg("MATCHED Full"..msg)
-        
-    end       
-]]    
+    for match in string.gmatch(text, Strings["ma_GmatchActiveConnections"]) do
+        catchedSth = true
+        output = false
+    
+    end
     -- get results of ticket list. In Trinity, everything will be constructed off the list
     for id, char, create, update in string.gmatch(text, Strings["ma_GmatchTickets"]) do
---      if MangAdmin.db.char.requests.ticket then
-        --MangAdmin:ChatMsg("MATCHED Basic"..id)
-        --MangAdmin:ChatMsg("ID"..id)
-        --self:LogAction(number)
         table.insert(MangAdmin.db.account.buffer.tickets, {tNumber = id, tChar = char, tLCreate = create, tLUpdate = update, tMsg = ""})
         local ticketCount = 0
         table.foreachi(MangAdmin.db.account.buffer.tickets, function() ticketCount = ticketCount + 1 end)
---        local number = self.db.account.tickets.count - ticketCount
-       -- MangAdmin:ChatMsg("Counte:"..ticketCount)
         ticketCount = 0
-        --self:RequestTickets()
---        InlineScrollUpdate()
-        catchedSth = false
+        catchedSth = true
         output = false
         self.db.char.requests.ticketbody = id
         self.db.char.msgDeltaTime = time()
-        --MangAdmin:ChatMsg("DEBUG YEAH")
-        --self:ChatMsg(".ticket list")
---        self:LoadTickets(id)
---      end
+    end
+
+    for msg in string.gmatch(text, "Ticket Message.-:.-(.*)") do
+        MangAdmin.db.account.buffer.ticketread=true
+        MangAdmin.db.account.buffer.ticketsfull = {}
+        table.remove(MangAdmin.db.account.buffer.ticketsfull, 1)
+        --table.insert(MangAdmin.db.account.buffer.ticketsfull, {tMsg = msg})
+        table.insert(MangAdmin.db.account.buffer.ticketsfull, {tMsg = " "})
+        --ma_ticketdetail:SetText("|cffffffff"..msg)
+        catchedSth = true
+        output = false
+    end       
+
+    if MangAdmin.db.account.buffer.ticketread==true then
+        for msg in string.gmatch(text, "(.*)]|r") do
+            local object = MangAdmin.db.account.buffer.ticketsfull[1]
+            local t_msg = ""
+            t_msg = object["tMsg"]
+            t_msg = t_msg.." ".."|c00000000"..msg
+            table.remove(MangAdmin.db.account.buffer.ticketsfull, 1)
+            table.insert(MangAdmin.db.account.buffer.ticketsfull, {tMsg = t_msg})
+            MangAdmin.db.account.buffer.ticketread=false
+            ma_ticketdetail:SetText("|cffffffff"..t_msg)
+            catchedSth = true
+            output = false
+        end
+        for msg in string.gmatch(text, "(.*)") do
+            local object = MangAdmin.db.account.buffer.ticketsfull[1]
+            local t_msg = "" 
+            t_msg = object["tMsg"]
+            t_msg = t_msg.." ".."|c00000000"..msg
+            table.remove(MangAdmin.db.account.buffer.ticketsfull, 1)
+            table.insert(MangAdmin.db.account.buffer.ticketsfull, {tMsg = t_msg})
+            catchedSth = true
+            output = false
+        end
+    end
+
+    for eraseme in string.gmatch(text, "Showing list of open tickets.") do
+        catchedSth = true
+        output = false
+        
+    end
+    
+    for acc, char, ip, gmlevel, exp in string.gmatch(text, Strings["ma_GmatchWho"]) do
+    	acc= string.gsub(acc, " ", "")
+    	char= string.gsub(char, " ", "")
+    	ip= string.gsub(ip, " ", "")
+    	gmlevel= string.gsub(gmlevel, " ", "")
+    	exp= string.gsub(exp, " ", "")
+
+        --self:ChatMsg("Matched Who")
+        table.insert(MangAdmin.db.account.buffer.who, {tAcc = acc, tChar = char, tIP = ip, tGMLevel = gmlevel, tExp = exp})
+        catchedSth = true
+        output = false
+        WhoUpdate()
+    end
+--    ["ma_GmatchAccountInfo"] = "Player(.*) %(guid: (%d+)%) Account: (.*) %(id: (%d+)%) Email: (.*) GMLevel: (%d+) Last IP: (.*) Last login: (.*) Latency: (%d+)ms",
+--    ["ma_GmatchAccountInfo2"] = "Race: (.*) Class: (.*) Played time: (.*) Level: (%d+) Money: (.*)",
+    for charname, charguid, account, accountid, email, gmlvl, lastip, lastlogin, latency in string.gmatch(text, Strings["ma_GmatchAccountInfo"]) do
+       ma_whodetail:SetText("|c00ff00ffCharacter:|r"..charname.." |cffffffff("..charguid..")|r\n".."|c00ff0000Acct:|r|cffffffff"..account.." ("..accountid..")|r\n".."|c00ff0000IP:|r|cffffffff"..lastip.."|r\n".."|c00ff0000Login:|r|cffffffff"..lastlogin.."|r\n".."|c00ff0000Latency:|r|cffffffff"..latency.."ms|r\n")  
+       catchedSth = true
+       output = false
+    end
+    
+    for race, class, playedtime, level, money in string.gmatch(text, Strings["ma_GmatchAccountInfo2"]) do
+        --self:ChatMsg("Matched Who")
+       ma_whodetail2:SetText("|c00ff0000Race:|r|cffffffff"..race.."|r\n".."|c00ff0000Class|r|cffffffff"..class.."|r\n".."|c00ff0000Level:|r|cffffffff"..level.."|r\n".."|c00ff0000Money:|r|cffffffff"..money.."|r\n".."|c00ff0000Played Time:|r|cffffffff"..playedtime.."|r\n")  
+       catchedSth = true
+       output = false
+    end
+    for mymatch in string.gmatch(text, "=====") do
+        catchedSth = true
+        output = false
+    end
+    for mymatch in string.gmatch(text, "Characters Online:") do
+        catchedSth = true
+        output = false
     end
  --[[   
     -- get ticket content
@@ -943,6 +1006,7 @@ function MangAdmin:LogAction(msg)
   ma_logframe:AddMessage("|cFF00FF00["..date("%H:%M:%S").."]|r "..msg, 1.0, 1.0, 0.0)
 end
 
+
 function MangAdmin:ChatMsg(msg, msgt, recipient)
   if not msgt then local msgt = "say" end
   if msgt == "addon" then
@@ -1005,18 +1069,6 @@ function MangAdmin:ChangeLanguage(locale)
   self.db.account.language = locale
   ReloadUI()
 end
---[[
-function MangAdmin:ToggleGMMode(value)
-  MangAdmin:ChatMsg(".gm "..value)
-  MangAdmin:LogAction("Turned GM-mode to "..value..".")
-end
-]]
-
-
-
-
-
-
 
 function MangAdmin:SetSkill(value, skill, maxskill)
   if self:Selection("player") or self:Selection("self") or self:Selection("none") then
@@ -1160,20 +1212,6 @@ function MangAdmin:TelePlayer(value, player)
   end
 end
 
-
-
-
-
-
-
-
-
---***************[루틴 변경 시작]***************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
-
 local mang_Waypoint_start = 0
 local mang_ID_start = 0
 local mang_ID_guid = ""
@@ -1272,46 +1310,6 @@ local val = ""
     return val
 end    
 
-
-
-
-
-
-
-function MangAdmin:NPC_Test()                            
-
-    ---------------------------------------------------------------------------------------------------------
-    local player = UnitName("target") or UnitName("player") -- 멀록채집꾼	
-    
-    local val1 = UnitGUID("target")                     -- F13000002E013D79 -> Object GUID is lowpart 81273  highpart F130
-    local val2 = string.sub(tostring(val1),13,18)   	-- 013D79 -> string.sub(myString, start, end)
-    local str1 = string.format("0x%s",val2)             -- 0x013D79
-    local str2 = tonumber(str1)
-
-    self:ChatMsg(".npc addmove "..str2)
-    self:ChatMsg(".wp show on")
-    --self:ChatMsg("Set NPC Add WAYPOINT for target "..str2..".")
-    self:LogAction("Set NPC Add WAYPOINT for target "..str2..".")
-    
-    ---------------------------------------------------------------------------------------------------------
-    
-    --self:ChatMsg("Set NPC movement to STAY for player "..player..".") -- 멀록채집꾼
-    --self:ChatMsg("Set NPC movement to STAY for player "..UnitGUID("target")..".") -- F13000002E013D79 -> Object GUID is lowpart 81273  highpart F130
-    --self:ChatMsg("Set NPC movement to STAY for player "..tonumber(UnitGUID("target"),16)..".") -- 4294967295 -> FFFFFFFF
-    --self:ChatMsg("Set NPC movement to STAY for player "..tostring(val)..".")
-    
-    --local waypt = ma_npccharactertarget:GetText()
-    --self:ChatMsg(".npc addmove "..waypt)
-    
-    --self:ChatMsg(".npc addmove "..UnitGUID("target"))
-    --self:ChatMsg(".npc addmove "..tonumber(UnitGUID("target"),16))
-    --self:ChatMsg(".npc addmove "..target)
-    
-    --self:LogAction("Set NPC Add WAYPOINT for player "..player..".")
-    ---------------------------------------------------------------------------------------------------------
-
-end
-
 function MangAdmin:NPCAdd_Way_o()                            
     local player = UnitName("target") or UnitName("player")
     local npc =	ma_NPC_guidbutton:GetText()
@@ -1319,17 +1317,6 @@ function MangAdmin:NPCAdd_Way_o()
     self:ChatMsg(".wp show on "..npc)
     self:LogAction("WayPoint Add for player "..player..".")
 end
-
-
-
-
-
-
-
-
-
-
-
 
 function MangAdmin:WayModify()
     local player = UnitName("target") or UnitName("player")
@@ -1355,54 +1342,12 @@ function MangAdmin:NPC_GUID_Get_org()
 
 end
 
-
-
-
-
-
-
-
-
---**********************************************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
---***************[루틴 변경 끝]*****************************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function MangAdmin:CreateGuild(leader, name)
   self:ChatMsg(".guild create "..leader.." "..name)
   self:LogAction("Created guild '"..name.."' with leader "..leader..".")
 end
 
 
-function MangAdmin:Announce(value)
-  self:ChatMsg(".announce "..value)
-  self:LogAction("Announced message: "..value)
-end
-
-function MangAdmin:Shutdown(value)
-  if value == "" then
-    self:ChatMsg(".server shutdown 0")
-    self:LogAction("Shut down server instantly.")
-  else
-    self:ChatMsg(".server shutdown "..value)
-    self:LogAction("Shut down server in "..value.." seconds.")
-  end
-end
 
 function MangAdmin:SendMail(recipient, subject, body)
   recipient = string.gsub(recipient, " ", "")
@@ -1414,29 +1359,8 @@ function MangAdmin:SendMail(recipient, subject, body)
   self:LogAction("Sent a mail to "..recipient..". Subject was: "..subject)
 end
 
-function MangAdmin:ReloadTable(tablename)
-  if not (tablename == "") then
-    self:ChatMsg(".reload "..tablename)
-    if tablename == "all" then
-      self:LogAction("Reloaded all reloadable MaNGOS database tables.")
-    else
-      self:LogAction("Reloaded the table "..tablename..".")
-    end
-  end
-end
 
 
-function MangAdmin:ReloadScripts()
-  self:ChatMsg(".loadscripts")
-  self:LogAction("(Re-)Loaded scripts.")
-end
-
-function MangAdmin:ChangeWeather(status)
-  if not (status == "") then
-    self:ChatMsg(".wchange "..status)
-    self:LogAction("Changed weather ("..status..").")
-  end
-end
 
 
 function MangAdmin:UpdateMailBytesLeft()
@@ -1448,86 +1372,11 @@ function MangAdmin:UpdateMailBytesLeft()
   end
 end
 
---[[function MangAdmin:Ticket(value)
-  local ticket = self.db.account.tickets.selected
-  if value == "delete" then
-    self:ChatMsg(".delticket "..ticket["tNumber"])
-    self:LogAction("Deleted ticket with number: "..ticket["tNumber"])
-    self:ShowTicketTab()
-    InlineScrollUpdate()
-  elseif value == "gochar" then
-    self:ChatMsg(".goname "..ticket["tChar"])
-  elseif value == "getchar" then
-    self:ChatMsg(".namego "..ticket["tChar"])
-  elseif value == "answer" then
-    self:TogglePopup("mail", {recipient = ticket["tChar"], subject = "Ticket("..ticket["tCat"]..")", body = ticket["tMsg"]})
-  elseif value == "whisper" then
-    ChatFrameEditBox:Show()
-    ChatFrameEditBox:Insert("/w "..ticket["tChar"].." ");
-  end
-end]]
-
---[[function MangAdmin:ToggleTickets(value)
-  MangAdmin:ChatMsg(".ticket "..value)
-  MangAdmin:LogAction("Turned receiving new tickets "..value..".")
-end]]
 
 
-function MangAdmin:ShowTicketTab()
-  ma_tpinfo_text:SetText(Locale["ma_TicketsNoInfo"])
-  ma_ticketeditbox:SetText(Locale["ma_TicketsNotLoaded"])
-  ma_deleteticketbutton:Disable()
-  ma_answerticketbutton:Disable()
-  ma_getcharticketbutton:Disable()
-  ma_gocharticketbutton:Disable()
-  ma_whisperticketbutton:Disable()
-  MangAdmin:InstantGroupToggle("ticket")
-  --self:LoadTickets(nil)
-end
 
---[[function MangAdmin:LoadTickets(number)
-  self.db.char.newTicketQueue = {}
-  --self.db.account.tickets.requested = 0
-  if number then
-    if tonumber(number) > 0 then
-      self.db.account.tickets.count = tonumber(number)
-      if self.db.char.requests.ticket then
-        self:LogAction("Load of tickets requested. Found "..number.." tickets!")
-        self:RequestTickets()
-        self:SetIcon(ROOT_PATH.."Textures\\icon.tga")
-        --ma_resetsearchbutton:Enable()
-      end
-    else
-      --ma_resetsearchbutton:Disable()
-      self:NoResults("ticket")
-    end
-  else
-    self.db.char.requests.ticket = true
-    self.db.account.tickets.count = 0
-    self.db.account.buffer.tickets = {}
-    --self:ChatMsg(".ticket list")
-    --self:LogAction("Requesting ticket numberz!")
-  end
-  InlineScrollUpdate()
-end]]
 
---[[function MangAdmin:RequestTickets()
-  self.db.char.requests.ticket = true
-  local ticketCount = 0
-  table.foreachi(self.db.account.buffer.tickets, function() ticketCount = ticketCount + 1 end)
-  --ma_lookupresulttext:SetText(Locale["ma_TicketCount"]..count)
-  ma_top2text:SetText(Locale["realm"].." "..Locale["tickets"]..self.db.account.tickets.count)
-  local tnumber = self.db.account.tickets.count - ticketCount
-  --self:LogAction("tNumber = "..tnumber..", Tc = "..ticketCount)
-  if tnumber > 0 then
-    self:ChatMsg(".ticket "..tnumber)
-    --self:LogAction(".ticket "..tnumber)
-    self:LogAction("Loading ticket "..tnumber.."...")
-  else
-    self:LogAction("Loaded all available tickets! No more to load...")
-    ma_resetsearchbutton:Disable()
-  end
-end]]
+
 
 function MangAdmin:Favorites(value, searchtype)
   if value == "add" then
@@ -1765,10 +1614,15 @@ function MangAdmin:InitButtons()
   self:PrepareScript(ma_tabbutton_npc        , Locale["tt_NpcButton"]          , function() MangAdmin:InstantGroupToggle("npc"); end)
   self:PrepareScript(ma_tabbutton_go         , Locale["tt_GOButton"]           , function() MangAdmin:InstantGroupToggle("go"); end)
   self:PrepareScript(ma_tabbutton_tele       , Locale["tt_TeleButton"]         , function() MangAdmin:InstantGroupToggle("tele"); end)
-  self:PrepareScript(ma_tabbutton_ticket     , Locale["tt_TicketButton"]       , function() MangAdmin:ShowTicketTab() end)
   self:PrepareScript(ma_tabbutton_misc       , Locale["tt_MiscButton"]         , function() MangAdmin:InstantGroupToggle("misc") end)
   self:PrepareScript(ma_tabbutton_server     , Locale["tt_ServerButton"]       , function() MangAdmin:InstantGroupToggle("server") end)
   self:PrepareScript(ma_tabbutton_log        , Locale["tt_LogButton"]          , function() MangAdmin:InstantGroupToggle("log") end)
+  self:PrepareScript(ma_tabbutton_pvp        , nil          , function() MangAdmin:InstantGroupToggle("pvp") end)
+  self:PrepareScript(ma_tabbutton_event      , nil          , function() MangAdmin:InstantGroupToggle("event") end)
+  self:PrepareScript(ma_tabbutton_rpg        , nil          , function() MangAdmin:InstantGroupToggle("rpg") end)
+  self:PrepareScript(ma_tabbutton_vendor     , nil          , function() MangAdmin:InstantGroupToggle("vendor") end)
+  self:PrepareScript(ma_tabbutton_ahbot      , nil          , function() MangAdmin:InstantGroupToggle("ahbot") end)
+  self:PrepareScript(ma_tabbutton_who        , nil          , function() MangAdmin:InstantGroupToggle("who") end)
   --end tab buttons
   -- start mini buttons
   self:PrepareScript(ma_mm_logoframe         , nil                             , function() MangAdmin:OnClick() end)
@@ -1778,10 +1632,16 @@ function MangAdmin:InitButtons()
   self:PrepareScript(ma_mm_npcbutton         , Locale["tt_NpcButton"]          , function() MangAdmin:InstantGroupToggle("npc") end)
   self:PrepareScript(ma_mm_gobutton          , Locale["tt_GOButton"]           , function() MangAdmin:InstantGroupToggle("go") end)
   self:PrepareScript(ma_mm_telebutton        , Locale["tt_TeleButton"]         , function() MangAdmin:InstantGroupToggle("tele") end)
-  self:PrepareScript(ma_mm_ticketbutton      , Locale["tt_TicketButton"]       , function() MangAdmin:ShowTicketTab() end)
+  self:PrepareScript(ma_mm_ticketbutton      , Locale["tt_TicketButton"]       , function() ShowTicketTab() end)
   self:PrepareScript(ma_mm_miscbutton        , Locale["tt_MiscButton"]         , function() MangAdmin:InstantGroupToggle("misc") end)
   self:PrepareScript(ma_mm_serverbutton      , Locale["tt_ServerButton"]       , function() MangAdmin:InstantGroupToggle("server") end)
   self:PrepareScript(ma_mm_logbutton         , Locale["tt_LogButton"]          , function() MangAdmin:InstantGroupToggle("log") end)
+  self:PrepareScript(ma_mm_pvpbutton        , nil          , function() MangAdmin:InstantGroupToggle("pvp") end)
+  self:PrepareScript(ma_mm_eventbutton      , nil          , function() MangAdmin:InstantGroupToggle("event") end)
+  self:PrepareScript(ma_mm_rpgbutton        , nil          , function() MangAdmin:InstantGroupToggle("rpg") end)
+  self:PrepareScript(ma_mm_vendorbutton     , nil          , function() MangAdmin:InstantGroupToggle("vendor") end)
+  self:PrepareScript(ma_mm_ahbotbutton      , nil          , function() MangAdmin:InstantGroupToggle("ahbot") end)
+  self:PrepareScript(ma_mm_whobutton        , nil          , function() MangAdmin:InstantGroupToggle("who") end)
   --end mini buttons
   self:PrepareScript(ma_languagebutton       , Locale["tt_LanguageButton"]     , function() MangAdmin:ChangeLanguage(UIDropDownMenu_GetSelectedValue(ma_languagedropdown)) end)
   self:PrepareScript(ma_itembutton           , Locale["tt_ItemButton"]         , function() MangAdmin:TogglePopup("search", {type = "item"}) end)
@@ -1800,91 +1660,13 @@ function MangAdmin:InitButtons()
   --self:PrepareScript(ma_learnclassbutton     , nil                             , function() MangAdmin:LearnSpell("all_myclass") end)
   self:PrepareScript(ma_searchbutton         , nil                             , function() MangAdmin:SearchStart("item", ma_searcheditbox:GetText()) end)
   self:PrepareScript(ma_resetsearchbutton    , nil                             , function() MangAdmin:SearchReset() end)
-
-
-
-  
-
-
-
-
-  self:PrepareScript(ma_announcebutton       , Locale["tt_AnnounceButton"]     , function() MangAdmin:Announce(ma_announceeditbox:GetText()) end)
-  self:PrepareScript(ma_resetannouncebutton  , nil                             , function() ma_announceeditbox:SetText("") end)
-  self:PrepareScript(ma_shutdownbutton       , Locale["tt_ShutdownButton"]     , function() MangAdmin:Shutdown(ma_shutdowneditbox:GetText()) end)
   self:PrepareScript(ma_closebutton          , nil                             , function() MangAdmin:CloseButton("bg") end)
   self:PrepareScript(ma_popupclosebutton     , nil                             , function() MangAdmin:CloseButton("popup") end)
   self:PrepareScript(ma_popup2closebutton    , nil                             , function() MangAdmin:CloseButton("popup2") end)
-  self:PrepareScript(ma_resetticketsbutton   , "Not working? Click this, then click Show Tickets!"      , function() MangAdmin:ResetTickets() end)
-  self:PrepareScript(ma_showticketsbutton    , nil                             , function() MangAdmin:RefreshTickets() end)
-  self:PrepareScript(ma_deleteticketbutton   , nil                             , function() MangAdmin:Ticket("delete") end)
-  self:PrepareScript(ma_answerticketbutton   , nil                             , function() MangAdmin:Ticket("answer") end)
-  self:PrepareScript(ma_getcharticketbutton  , nil                             , function() MangAdmin:Ticket("getchar") end)
-  self:PrepareScript(ma_gocharticketbutton   , nil                             , function() MangAdmin:Ticket("gochar") end)
-  self:PrepareScript(ma_whisperticketbutton  , nil                             , function() MangAdmin:Ticket("whisper") end)
-  self:PrepareScript(ma_bgcolorshowbutton    , nil                             , function() MangAdmin:ShowColorPicker("bg") end)
-  self:PrepareScript(ma_frmcolorshowbutton   , nil                             , function() MangAdmin:ShowColorPicker("frm") end)
-  self:PrepareScript(ma_btncolorshowbutton   , nil                             , function() MangAdmin:ShowColorPicker("btn") end)
-  self:PrepareScript(ma_linkifiercolorbutton , nil                             , function() MangAdmin:ShowColorPicker("linkifier") end)
-  self:PrepareScript(ma_applystylebutton     , nil                             , function() MangAdmin:ApplyStyleChanges() end)
-  self:PrepareScript(ma_loadtablebutton      , nil                             , function() MangAdmin:ReloadTable(UIDropDownMenu_GetSelectedValue(ma_reloadtabledropdown)) end)
-  self:PrepareScript(ma_loadscriptsbutton    , nil                             , function() MangAdmin:ReloadScripts() end)
-  self:PrepareScript(ma_changeweatherbutton  , nil                             , function() MangAdmin:ChangeWeather(UIDropDownMenu_GetSelectedValue(ma_weatherdropdown)) end)
   self:PrepareScript(ma_inforefreshbutton    , nil                             , function() MangAdmin:ChatMsg(".server info") end)
-
   self:PrepareScript(ma_frmtrslider          , Locale["tt_FrmTrSlider"]        , {{"OnMouseUp", function() MangAdmin:ChangeTransparency("frames") end},{"OnValueChanged", function() ma_frmtrsliderText:SetText(string.format("%.2f", ma_frmtrslider:GetValue())) end}})  
   self:PrepareScript(ma_btntrslider          , Locale["tt_BtnTrSlider"]        , {{"OnMouseUp", function() MangAdmin:ChangeTransparency("buttons") end},{"OnValueChanged", function() ma_btntrsliderText:SetText(string.format("%.2f", ma_btntrslider:GetValue())) end}})  
---  self:PrepareScript(ma_instantkillbutton    , nil                             , function() self.db.char.instantKillMode = ma_instantkillbutton:GetChecked() end)
   self:PrepareScript(ma_mm_revivebutton      , nil                             , function() SendChatMessage(".revive", "GUILD", nil, nil) end)
-  self:PrepareScript(ma_ContScrollBarEntry1      , nil                      , function() 
-    MangAdmin.db.char.selectedCont = "EK_N"
-    cont=MangAdmin.db.char.selectedCont
-    TeleScrollUpdate() 
-    end)
-  self:PrepareScript(ma_ContScrollBarEntry2      , nil                      , function() 
-    MangAdmin.db.char.selectedCont = "EK_S"
-    cont=MangAdmin.db.char.selectedCont
-    TeleScrollUpdate() 
-    end)
-  self:PrepareScript(ma_ContScrollBarEntry3      , nil                      , function() 
-    MangAdmin.db.char.selectedCont = "K"
-    cont=MangAdmin.db.char.selectedCont
-    TeleScrollUpdate() 
-    end)
-  self:PrepareScript(ma_ContScrollBarEntry4      , nil                      , function() 
-    MangAdmin.db.char.selectedCont = "Ou"
-    cont=MangAdmin.db.char.selectedCont
-    TeleScrollUpdate() 
-    end)
-  self:PrepareScript(ma_ContScrollBarEntry5      , nil                      , function() 
-    MangAdmin.db.char.selectedCont = "BG"
-    cont=MangAdmin.db.char.selectedCont
-    TeleScrollUpdate() 
-    end)
-  self:PrepareScript(ma_ContScrollBarEntry6      , nil                      , function() 
-    MangAdmin.db.char.selectedCont = "I_EK"
-    cont=MangAdmin.db.char.selectedCont
-    TeleScrollUpdate() 
-    end)
-  self:PrepareScript(ma_ContScrollBarEntry7      , nil                      , function() 
-    MangAdmin.db.char.selectedCont = "I_K"
-    cont=MangAdmin.db.char.selectedCont
-    TeleScrollUpdate() 
-    end)
-  self:PrepareScript(ma_ContScrollBarEntry8      , nil                      , function() 
-    MangAdmin.db.char.selectedCont = "I_O"
-    cont=MangAdmin.db.char.selectedCont
-    TeleScrollUpdate() 
-    end)
-  self:PrepareScript(ma_ContScrollBarEntry9      , nil                      , function() 
-    MangAdmin.db.char.selectedCont = "Ot"
-    cont=MangAdmin.db.char.selectedCont
-    TeleScrollUpdate() 
-    end)
-  self:PrepareScript(ma_ContScrollBarEntry10      , nil                      , function() 
-    MangAdmin.db.char.selectedCont = "J"
-    cont=MangAdmin.db.char.selectedCont
-    TeleScrollUpdate() 
-    end)
 end
 
 
@@ -2011,12 +1793,6 @@ function MangAdmin:InitDropDowns()
   UIDropDownMenu_SetWidth(ma_weatherdropdown, 100)
   UIDropDownMenu_SetButtonWidth(ma_weatherdropdown, 20)
 
---***************[루틴 변경 시작]***************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
-
   --NPC EMOTE
   local function NpcEmoteDropDownInitialize()
     local level = 1
@@ -2127,39 +1903,28 @@ function MangAdmin:InitDropDowns()
   UIDropDownMenu_SetWidth(ma_npcemotedropdown_a, 100)
   UIDropDownMenu_SetButtonWidth(ma_npcemotedropdown_a, 20)
 
---**********************************************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
---**********************************************************************************************************************
---***************[루틴 변경 끝]*****************************************************************************************
-
-
-  
-
-
-
-
   --LANGUAGE
   local function LangDropDownInitialize()
     local level = 1
     local info = UIDropDownMenu_CreateInfo()
     local buttons = {
-      {"Czech","csCZ"},
-      {"German","deDE"},
-      {"Dutch","nlNL"},
+--      {"Ceský","csCZ"},
+--      {"Deutsch","deDE"},
+--      {"Dutch","nlNL"},
       {"English","enUS"},
-      {"Spanish","esES"},
-      {"Finnish","fiFI"},
-      {"French","frFR"},
-      {"Hungarian","huHU"},
-      {"Italian","itIT"},
-      {"Lithuanian","liLI"},
-      {"Polish","plPL"},
-      {"Portuguese","ptPT"},
-      {"Romanian","roRO"},
-      {"Russian","ruRU"},
-      {"Swedish","svSV"},
-      {"Chinese","zhCN"}
+--      {"Spanish","esES"},
+--      {"Finnish","fiFI"},
+      {"Français","frFR"},
+--      {"Magyar","huHU"},
+--      {"Italiano","itIT"},
+--      {"Lithuanian","liLI"},
+--      {"Polski","plPL"},
+--      {"Portuguese","ptPT"},
+--      {"Romanian","roRO"},
+--      {"Russkiy","ruRU"},
+      {"Svenska","svSV"},
+--      {"Chinese","zhCN"},
+--      {"Bulgarian", "buBU"}
     }
     for k,v in pairs(buttons) do
       info.text = v[1]
@@ -2204,23 +1969,29 @@ function MangAdmin:InitScrollFrames()
   ma_ZoneScrollBar:SetScript("OnShow", function() TeleScrollUpdate() end)
   ma_SubzoneScrollBar:SetScript("OnVerticalScroll", SubzoneScrollUpdate(), function(self, offset) FauxScrollFrame_OnVerticalScroll(self, offset, 16, SubzoneScrollUpdate()) end)
   ma_SubzoneScrollBar:SetScript("OnShow", function() SubzoneScrollUpdate() end)
-  ma_ticketscrollframe:SetScrollChild(ma_ticketeditbox)
-  self:PrepareScript(ma_ticketeditbox, nil, {{"OnTextChanged", function() ScrollingEdit_OnTextChanged(self, ma_ticketeditbox) end},
+  --ma_ticketscrollframe:SetScrollChild(ma_ticketeditbox)
+  --ma_ticketscrollframe1:SetText("No Data")
+  ma_ticketscrollframe:SetScript("OnVerticalScroll", InlineScrollUpdate(), function(self, offset) FauxScrollFrame_OnVerticalScroll(self, offset-1, 16, InlineScrollUpdate()) end)
+  ma_ticketscrollframe:SetScript("OnShow", function() InlineScrollUpdate() end)
+  ma_whoscrollframe:SetScript("OnVerticalScroll", WhoUpdate(), function(self, offset) FauxScrollFrame_OnVerticalScroll(self, offset-1, 16, WhoUpdate()) end)
+  ma_whoscrollframe:SetScript("OnShow", function() WhoUpdate() end)
+
+  --ma_ticketeditbox:SetScript("OnTextChanged", function() ScrollingEdit_OnTextChanged(self, ma_ticketeditbox) end)
+  --ma_ticketeditbox:SetScript("OnCursorChanged", function() ScrollingEdit_OnCursorChanged(self, x, y, w, h) end)
+ -- ma_ticketeditbox:SetScript("OnUpdate", function() ScrollingEdit_OnUpdate(self, 10, ma_ticketeditbox) end)
+--[[  self:PrepareScript(ma_ticketeditbox, nil, {{"OnTextChanged", function() ScrollingEdit_OnTextChanged(self, ma_ticketeditbox) end},
     {"OnCursorChanged", function() ScrollingEdit_OnCursorChanged(self, x, y, w, h) end},
-    {"OnUpdate", function() ScrollingEdit_OnUpdate(self, 0, ma_ticketeditbox) end}})
+    {"OnUpdate", function() ScrollingEdit_OnUpdate(self, 0, ma_ticketeditbox) end}}) ]]
   ma_mailscrollframe:SetScrollChild(ma_maileditbox)
-  self:PrepareScript(ma_maileditbox, nil, {{"OnTextChanged", function() ScrollingEdit_OnTextChanged(self, ma_maileditbox); MangAdmin:UpdateMailBytesLeft() end},
+  ma_maileditbox:SetScript("OnTextChanged", function() MangAdmin:UpdateMailBytesLeft() end)
+  ma_maileditbox:SetScript("OnCursorChanged", function() ScrollingEdit_OnCursorChanged(self, x, y, w, h) end)
+--  ma_maileditbox:SetScript("OnUpdate", function() ScrollingEdit_OnUpdate(self, 0, ma_maileditbox) end)
+--[[  self:PrepareScript(ma_maileditbox, nil, {{"OnTextChanged", function() ScrollingEdit_OnTextChanged(self, ma_maileditbox); MangAdmin:UpdateMailBytesLeft() end},
     {"OnCursorChanged", function() ScrollingEdit_OnCursorChanged(self, x, y, w, h) end},
     {"OnUpdate", function() ScrollingEdit_OnUpdate(self, 0, ma_maileditbox) end}})
+]]
   ma_logframe:SetScript("OnUpdate", function() MangAdminLogOnUpdate(self, 0, ma_logframe) end)
 end
-
-
-
-
-
-
-
 
 function MangAdminLogOnUpdate(elapsedTime)
   if ( ma_logscrollupbutton:GetButtonState() == "PUSHED" ) then
@@ -2231,14 +2002,11 @@ function MangAdminLogOnUpdate(elapsedTime)
   end
 end
 
-
-
-
 function MangAdmin:NoResults(var)
   if var == "ticket" then
     -- Reset list and make an entry "No Tickets"
     self:LogAction(Locale["ma_TicketsNoTickets"])
-    ma_ticketeditbox:SetText(Locale["ma_TicketsNoTickets"])
+    --ma_ticketeditbox:SetText(Locale["ma_TicketsNoTickets"])
     FauxScrollFrame_Update(ma_ZoneScrollBar,12,12,30);
     for line = 1,12 do
       getglobal("ma_ZoneScrollBarEntry"..line):Disable()
@@ -2565,7 +2333,7 @@ function PopupScrollUpdate()
           getglobal("ma_PopupScrollBarEntry"..line):SetText("Id: |cffffffff"..spell["spId"].."|r Name: |cffffffff"..spell["spName"].."|r")
           getglobal("ma_PopupScrollBarEntry"..line):SetScript("OnEnter", function() --[[Do nothing]] end)
           getglobal("ma_PopupScrollBarEntry"..line):SetScript("OnLeave", function() --[[Do nothing]] end)
-          getglobal("ma_PopupScrollBarEntry"..line):SetScript("OnClick", function() MangAdmin:LearnSpell(spell["spId"], arg1) end)  
+          getglobal("ma_PopupScrollBarEntry"..line):SetScript("OnClick", function() LearnSpell(spell["spId"], arg1) end)  
           getglobal("ma_PopupScrollBarEntry"..line):Enable()
           getglobal("ma_PopupScrollBarEntry"..line):Show()
           if MangAdmin.db.char.requests.spell then
@@ -2770,145 +2538,25 @@ function PopupScrollUpdate()
   end
 end
 
-function MangAdmin:RefreshTickets()
-    --wipe(MangAdmin.db.account.buffer.tickets)
---    MangAdmin.db.account.buffer.tickets = {}
-      MangAdmin.db.char.requests.ticket = true
-      MangAdmin:InlineScrollUpdate()
-end
 
-function MangAdmin:ResetTickets()
-    wipe(MangAdmin.db.account.buffer.tickets)
-    MangAdmin.db.account.buffer.tickets = {}
-    MangAdmin.db.char.requests.ticket = true
-    MangAdmin:InlineScrollUpdate()
-end
-
-function MangAdmin:InlineScrollUpdate()
+function MangAdmin:InlineScrollUpdate_temp()
+    ma_ticketscrollframe:Hide()
     MangAdmin:ChatMsg(".ticket list")
---  if MangAdmin.db.char.requests.ticket then --get tickets
-    --MangAdmin:ChatMsg("InlineScrollUpdate is being used!")
     local ticketCount = 0
     table.foreachi(MangAdmin.db.account.buffer.tickets, function() ticketCount = ticketCount + 1 end)
     if ticketCount > 0 then
-      --FauxScrollFrame_Update(ma_PopupScrollBar,4,7,30); --for paged mode, only load 4 at a time
---MangAdmin:ChatMsg("TickCount"..ticketCount)
-
-      FauxScrollFrame_Update(ma_ticketscrollframe,ticketCount,12,16);
-      for line = 1,12 do
-        --lineplusoffset = line + ((MangAdmin.db.account.tickets.page - 1) * 4)  --for paged mode
-        lineplusoffset = line + FauxScrollFrame_GetOffset(ma_ticketscrollframe)
---MangAdmin:ChatMsg("L+O:"..lineplusoffset.." Count:"..ticketCount)
-
-        if lineplusoffset <= ticketCount then
-          local object = MangAdmin.db.account.buffer.tickets[lineplusoffset]
-          --getglobal("ma_ticketscrollframe"..line):SetJustifyH("LEFT")
-          getglobal("ma_ticketscrollframe"..line):SetText("Id: |cffffffff"..object["tNumber"].."|r Who: |cffffffff"..object["tChar"].."|r When: |cffffffff"..object["tLCreate"].."|r")
---[[          getglobal("ma_ticketscrollframe"..line):SetScript("OnClick", function() 
-            ma_ticketeditbox:SetText(object["tMsg"])
-            ma_tpinfo_text:SetText(string.format(Locale["ma_TicketTicketLoaded"], object["tNumber"]))
-            --MangAdmin.db.char.requests.tpinfo = true
-            --MangAdmin:ChatMsg(".pinfo "..object["tChar"])
-            MangAdmin:LogAction("Displaying ticket number "..object["tNumber"].." from player "..object["tChar"])
-            --MangAdmin:LogAction("Loading player info of ticket creator ("..object["tChar"]..")")
-            --FrameLib:HandleGroup("popup2", function(frame) frame:Show() end)
-            MangAdmin.db.account.tickets.selected = object
-            ma_deleteticketbutton:Enable()
-            ma_answerticketbutton:Enable()
-            ma_getcharticketbutton:Enable()
-            ma_gocharticketbutton:Enable()
-            ma_whisperticketbutton:Enable()
-          end)]]
-          getglobal("ma_ticketscrollframe"..line):SetScript("OnEnter", function() --[[Do nothing]] end)
-          getglobal("ma_ticketscrollframe"..line):SetScript("OnLeave", function() --[[Do nothing]] end)
-          getglobal("ma_ticketscrollframe"..line):SetScript("OnClick", function() MangAdmin:ReadTicket(object["tNumber"], object["tChar"]) end)
-          getglobal("ma_ticketscrollframe"..line):Enable()
-          getglobal("ma_ticketscrollframe"..line):Show()
---MangAdmin:ChatMsg("TickNum"..object["tNumber"])
-
-        else
-          getglobal("ma_ticketscrollframe"..line):Hide()
-        end
-      end
-    else
-      MangAdmin:NoResults("ticket")
-    end
---  else
---  end
-MangAdmin.db.account.buffer.tickets = {}
---MangAdmin.db.char.requests.ticket = false
-end
-
-function MangAdmin:ReadTicket(tNumber, tChar)
-     MangAdmin.db.char.requests.ticket = false
---   MangAdmin:ChatMsg(tNumber)
-     tNumber=string.gsub(tNumber, "00", "")
---   MangAdmin:ChatMsg(tNumber)
-    --x = x - 1 
-    tNumber = string.match(tNumber, "%d+")
-    MangAdmin:ChatMsg(".ticket viewid "..tNumber)
-    MangAdmin:ChatMsg(MangAdmin.db.account.buffer.ticketsfull["tMsg"])
-    local ticketdetail = MangAdmin.db.account.buffer.ticketsfull
-    getglobal("ma_ticketdetail"):SetText("Id: |cffffffff"..tNumber.."|r Who: |cffffffff"..tChar.."|r Msg: |cffffffff"..ticketdetail["tMsg"].."|r")
-
-end
-
-function TeleScrollUpdate()
-    if not ma_ZoneScrollBar then 
-      MangAdmin:ChatMsg("Lost ma_ZoneScrollBar")
-    end
-    cont = MangAdmin.db.char.selectedCont
-    --MangAdmin.db.char.selectedCont = cont
-    --self:ChatMsg("Wrote cont:" ..cont)
-    local TeleTable = {}
-    local zoneCount = 0
-    for index, value in pairsByKeys(ReturnTeleportLocations(cont)) do
-      zoneCount = zoneCount + 1
-      --MangAdmin:ChatMsg("Zone count:" .. zoneCount)
-      if not MangAdmin.db.char.selectedZone and zoneCount == 0 then
-        SubzoneScrollUpdate()
-      end
-      --MangAdmin:LogAction("added index: "..index)
-      table.insert(TeleTable, {name = index, subzones = value})
-    end
-    
-    if zoneCount > -1 then
-      --MangAdmin:ChatMsg("Zone count:" .. zoneCount)
-      if not ma_ZoneScrollBar then 
-        MangAdmin:ChatMsg("Lost ma_ZoneScrollBar")
-      end
-
-      FauxScrollFrame_Update(ma_ZoneScrollBar, zoneCount, 12, 16);
-      for line = 1,12 do
-        --lineplusoffset = line + ((MangAdmin.db.account.tickets.page - 1) * 4)  --for paged mode
-        lineplusoffset = line + FauxScrollFrame_GetOffset(ma_ZoneScrollBar)
-        --self:ChatMsg("L+O:" ..lineplusoffset)
-        if lineplusoffset <= zoneCount then
-          local teleobj = TeleTable[lineplusoffset]
-          if MangAdmin.db.char.selectedZone == teleobj.name then
-            getglobal("ma_ZoneScrollBarEntry"..line):SetText("|cffff0000"..teleobj.name.."|r")
-          else
-            getglobal("ma_ZoneScrollBarEntry"..line):SetText(teleobj.name)
-          end
-          getglobal("ma_ZoneScrollBarEntry"..line):SetScript("OnClick", function()
-            MangAdmin.db.char.selectedZone = teleobj.name
-            --MangAdmin.db.char.selectedCont = cont
-            TeleScrollUpdate()
-            --InlineScrollUpdate(cont)
-            SubzoneScrollUpdate()
-          end)
-          getglobal("ma_ZoneScrollBarEntry"..line):SetScript("OnEnter", function() cont = MangAdmin.db.char.selectedCont end)
-          getglobal("ma_ZoneScrollBarEntry"..line):SetScript("OnLeave", function() cont = MangAdmin.db.char.selectedCont end)
-          getglobal("ma_ZoneScrollBarEntry"..line):Enable()
-          getglobal("ma_ZoneScrollBarEntry"..line):Show()
-        else
-          getglobal("ma_ZoneScrollBarEntry"..line):Hide()
-        end
-      end
-    else
-      MangAdmin:NoResults("zones")
+        MangAdmin:ChatMsg("TickCount"..ticketCount)
+        ma_ticketscrollframe1:SetText("Loading")
+        local lineplusoffset
+        local line
+        ma_ticketscrollframe:Show()
+        FauxScrollFrame_Update(ma_ticketscrollframe,ticketCount,12,16);
     end
 end
+
+
+
+
 
 function pairsByKeys(t, f)
   local a = {}
@@ -2924,46 +2572,7 @@ function pairsByKeys(t, f)
   return iter
 end
 
-function SubzoneScrollUpdate()
-  cont = MangAdmin.db.char.selectedCont
-  local TeleTable = {}
-  local subzoneCount = 0
-  local shownZone = "Alterac Mountains"
-  if MangAdmin.db.char.selectedZone then
-    shownZone = MangAdmin.db.char.selectedZone
-  end
-  ma_telesubzonetext:SetText(Locale["Zone"]..shownZone)
-  for index, value in pairsByKeys(ReturnTeleportLocations(cont)) do
-    if index == shownZone then
-      for i, v in pairsByKeys(value) do
-        table.insert(TeleTable, {name = i, command = v})
-        subzoneCount = subzoneCount + 1
-      end
-    end
-  end
-  --MangAdmin:ChatMsg("subs:" ..subzoneCount)
-  --MangAdmin:ChatMsg("Cont:" ..cont)
-  if subzoneCount > 0 then
-    FauxScrollFrame_Update(ma_SubzoneScrollBar,subzoneCount,12,16);
-    for line = 1,12 do
-      --lineplusoffset = line + ((MangAdmin.db.account.tickets.page - 1) * 4)  --for paged mode
-      lineplusoffset = line + FauxScrollFrame_GetOffset(ma_SubzoneScrollBar)
-      if lineplusoffset <= subzoneCount then
-        local teleobj = TeleTable[lineplusoffset]
-        getglobal("ma_SubzoneScrollBarEntry"..line):SetText(teleobj.name)
-        getglobal("ma_SubzoneScrollBarEntry"..line):SetScript("OnClick", function() MangAdmin:ChatMsg(teleobj.command) end)
-        getglobal("ma_SubzoneScrollBarEntry"..line):SetScript("OnEnter", function() cont = MangAdmin.db.char.selectedCont end)
-        getglobal("ma_SubzoneScrollBarEntry"..line):SetScript("OnLeave", function() cont = MangAdmin.db.char.selectedCont end)
-        getglobal("ma_SubzoneScrollBarEntry"..line):Enable()
-        getglobal("ma_SubzoneScrollBarEntry"..line):Show()
-      else
-        getglobal("ma_SubzoneScrollBarEntry"..line):Hide()
-      end
-    end
-  else
-    MangAdmin:NoResults("subzones")
-  end
-end
+
 
 -- STYLE FUNCTIONS
 function MangAdmin:ToggleTransparency()
@@ -3013,147 +2622,9 @@ function MangAdmin:InitCheckButtons()
   ma_showtooltipsbutton:SetChecked(self.db.account.style.showtooltips)
 end
 
-function MangAdmin:ShowColorPicker(t)
-  if t == "bg" then
-    local r,g,b
-    if MangAdmin.db.account.style.color.buffer.backgrounds then
-      r = MangAdmin.db.account.style.color.buffer.backgrounds.r
-      g = MangAdmin.db.account.style.color.buffer.backgrounds.g
-      b = MangAdmin.db.account.style.color.buffer.backgrounds.b
-    else
-      r = MangAdmin.db.account.style.color.backgrounds.r
-      g = MangAdmin.db.account.style.color.backgrounds.g
-      b = MangAdmin.db.account.style.color.backgrounds.b
-    end
-    ColorPickerFrame.cancelFunc = function(prev)
-      local r,g,b = unpack(prev)
-      ma_bgcolorshowbutton_texture:SetTexture(r,g,b)
-    end
-    ColorPickerFrame.func = function()
-      local r,g,b = ColorPickerFrame:GetColorRGB()
-      ma_bgcolorshowbutton_texture:SetTexture(r,g,b)
-      MangAdmin.db.account.style.color.buffer.backgrounds = {}
-      MangAdmin.db.account.style.color.buffer.backgrounds.r = r
-      MangAdmin.db.account.style.color.buffer.backgrounds.g = g
-      MangAdmin.db.account.style.color.buffer.backgrounds.b = b
-    end
-    ColorPickerFrame:SetColorRGB(r,g,b)
-    ColorPickerFrame.previousValues = {r,g,b}
-  elseif t == "frm" then
-    local r,g,b
-    if MangAdmin.db.account.style.color.buffer.frames then
-      r = MangAdmin.db.account.style.color.buffer.frames.r
-      g = MangAdmin.db.account.style.color.buffer.frames.g
-      b = MangAdmin.db.account.style.color.buffer.frames.b
-    else
-      r = MangAdmin.db.account.style.color.frames.r
-      g = MangAdmin.db.account.style.color.frames.g
-      b = MangAdmin.db.account.style.color.frames.b
-    end
-    ColorPickerFrame.cancelFunc = function(prev)
-      local r,g,b = unpack(prev)
-      ma_frmcolorshowbutton_texture:SetTexture(r,g,b)
-    end
-    ColorPickerFrame.func = function()
-      local r,g,b = ColorPickerFrame:GetColorRGB()
-      ma_frmcolorshowbutton_texture:SetTexture(r,g,b)
-      MangAdmin.db.account.style.color.buffer.frames = {}
-      MangAdmin.db.account.style.color.buffer.frames.r = r
-      MangAdmin.db.account.style.color.buffer.frames.g = g
-      MangAdmin.db.account.style.color.buffer.frames.b = b
-    end
-    ColorPickerFrame:SetColorRGB(r,g,b)
-    ColorPickerFrame.previousValues = {r,g,b}
-  elseif t == "btn" then
-    local r,g,b
-    if MangAdmin.db.account.style.color.buffer.buttons then
-      r = MangAdmin.db.account.style.color.buffer.buttons.r
-      g = MangAdmin.db.account.style.color.buffer.buttons.g
-      b = MangAdmin.db.account.style.color.buffer.buttons.b
-    else
-      r = MangAdmin.db.account.style.color.buttons.r
-      g = MangAdmin.db.account.style.color.buttons.g
-      b = MangAdmin.db.account.style.color.buttons.b
-    end
-    ColorPickerFrame.cancelFunc = function(prev)
-      local r,g,b = unpack(prev)
-      ma_btncolorshowbutton_texture:SetTexture(r,g,b)
-    end
-    ColorPickerFrame.func = function()
-      local r,g,b = ColorPickerFrame:GetColorRGB();
-      ma_btncolorshowbutton_texture:SetTexture(r,g,b)
-      MangAdmin.db.account.style.color.buffer.buttons = {}
-      MangAdmin.db.account.style.color.buffer.buttons.r = r
-      MangAdmin.db.account.style.color.buffer.buttons.g = g
-      MangAdmin.db.account.style.color.buffer.buttons.b = b
-    end
-    ColorPickerFrame:SetColorRGB(r,g,b)
-    ColorPickerFrame.previousValues = {r,g,b}
-  elseif t == "linkifier" then
-    local r,g,b
-    if MangAdmin.db.account.style.color.buffer.linkifier then
-      r = MangAdmin.db.account.style.color.buffer.linkifier.r
-      g = MangAdmin.db.account.style.color.buffer.linkifier.g
-      b = MangAdmin.db.account.style.color.buffer.linkifier.b
-    else
-      r = MangAdmin.db.account.style.color.linkifier.r
-      g = MangAdmin.db.account.style.color.linkifier.g
-      b = MangAdmin.db.account.style.color.linkifier.b
-    end
-    ColorPickerFrame.cancelFunc = function(prev)
-      local r,g,b = unpack(prev)
-      ma_linkifiercolorbutton_texture:SetTexture(r,g,b)
-    end
-    ColorPickerFrame.func = function()
-      local r,g,b = ColorPickerFrame:GetColorRGB();
-      ma_linkifiercolorbutton_texture:SetTexture(r,g,b)
-      MangAdmin.db.account.style.color.buffer.linkifier = {}
-      MangAdmin.db.account.style.color.buffer.linkifier.r = r
-      MangAdmin.db.account.style.color.buffer.linkifier.g = g
-      MangAdmin.db.account.style.color.buffer.linkifier.b = b
-    end
-    ColorPickerFrame:SetColorRGB(r,g,b)
-    ColorPickerFrame.previousValues = {r,g,b}
-  end
-  ColorPickerFrame.hasOpacity = false
-  ColorPickerFrame:Show()
-end
 
-function MangAdmin:ApplyStyleChanges()
-  if MangAdmin.db.account.style.color.buffer.backgrounds then
-    MangAdmin.db.account.style.color.backgrounds = MangAdmin.db.account.style.color.buffer.backgrounds
-  end
-  if MangAdmin.db.account.style.color.buffer.frames then
-    MangAdmin.db.account.style.color.frames = MangAdmin.db.account.style.color.buffer.frames
-  end
-  if MangAdmin.db.account.style.color.buffer.buttons then
-    MangAdmin.db.account.style.color.buttons = MangAdmin.db.account.style.color.buffer.buttons
-  end
-  if MangAdmin.db.account.style.color.buffer.linkifier then
-    MangAdmin.db.account.style.color.linkifier = MangAdmin.db.account.style.color.buffer.linkifier
-  end
-  if ma_checktransparencybutton:GetChecked() then
-    self.db.account.style.transparency.backgrounds = 0.5
-  else
-    self.db.account.style.transparency.backgrounds = 1.0
-  end
-  if ma_checklocalsearchstringsbutton:GetChecked() then
-    self.db.account.localesearchstring = true
-  else
-    self.db.account.localesearchstring = false
-  end
-  if ma_showtooltipsbutton:GetChecked() then
-    self.db.account.style.showtooltips = true
-  else
-    self.db.account.style.showtooltips = false
-  end
-  if ma_showminimenubutton:GetChecked() then
-    self.db.account.style.showminimenu = true
-  else
-    self.db.account.style.showminimenu = false
-  end
-  ReloadUI()
-end
+
+
 
 function MangAdmin:CloseButton(name)
   if name == "bg" then

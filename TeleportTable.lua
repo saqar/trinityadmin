@@ -1,24 +1,4 @@
-﻿-------------------------------------------------------------------------------------------------------------
---
--- TrinityAdmin Version 3.x
--- TrinityAdmin is a derivative of MangAdmin.
---
--- Copyright (C) 2007 Free Software Foundation, Inc.
--- License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
--- This is free software: you are free to change and redistribute it.
--- There is NO WARRANTY, to the extent permitted by law.
---
--- You should have received a copy of the GNU General Public License
--- along with this program; if not, write to the Free Software
--- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
---
--- Official Forums: http://groups.google.com/group/trinityadmin
--- GoogleCode Website: http://code.google.com/p/trinityadmin/
--- Subversion Repository: http://trinityadmin.googlecode.com/svn/
--- Dev Blog: http://trinityadmin.blogspot.com/
--------------------------------------------------------------------------------------------------------------
-
-function ReturnTeleportLocations(cont)
+﻿function ReturnTeleportLocations(cont)
 if cont == "EK_N" then
   return {
     ["Alterac Mountains"] = {
@@ -406,7 +386,7 @@ elseif cont == "EK_S" then
       ["Dwarven District"] = ".go -8434.686523 605.974548 94.966866 0",
       ["Mage Quarter"] = ".go -8896.36 834.148 99.5207 0",
       ["Old Town"] = ".go -8662.9 498.212 100.833 0",
-	  ["Stormwind City"] = ".go -8913.23 554.633 93.7944 0",
+      ["Stormwind City"] = ".go -8913.23 554.633 93.7944 0",
       ["Stormwind Keep"] = ".go -8491.708984 397.007629 108.385765 0",
       ["The Park"] = ".go -8755.550781 1094.032959 95.403732 0",
       ["Trade District"] = ".go -8852.03 652.878 96.46 0",
@@ -478,55 +458,55 @@ elseif cont == "EK_S" then
   }
 elseif cont == "K" then
   return {
-     ["Ashenvale"] = {
-      ["Astranaar"] = ".go 2745.85 -378.33 108.253 1",
-      ["Bough Shadow"] = ".go 3141.823730 -3707.343262 121.049583 1",
-      ["Demon Fall Canyon"] = ".go 1626.91 -3057.36 89.4942 1",
-      ["Falfarren River"] = ".go 1685.909546 -1729.628174 101.213547 1",
-      ["Felfire Hill"] = ".go 1992.850952 -2989.656494 107.110558 1",
-      ["Forest Song"] = ".go 2957.463867 -3262.809814 160.133804 1",
-      ["Greenpaw Village"] = ".go 2265.585693 -1475.328369 90.808235 1",
-      ["Maestra's Point"] = ".go 3229.989746 198.252319 8.061512 1",
-      ["Nightsong Woods"] = ".go 2046.821045 -1874.254639 98.503624 1",
-      ["Raynewood Retreat"] = ".go 2673.51 -1859.72 188.112 1",
-      ["Ruins of Stardust"] = ".go 2178.007324 -288.449829 97.349899 1",
-      ["Satyrnaar"] = ".go 2757.590088 -2967.58 143.882 1",
-      ["Silverwind Refuge"] = ".go 2135.270020 -1189.903320 98.820641 1",
-      ["Splintertree Post"] = ".go 2188.609863 -2514.278564 81.024620 1",
-      ["The Dor'Danil Barrow Den"] = ".go 1775.1 -2679.19 111.666 1",
-      ["The Master's Glaive"] = ".go 4577.61 419.307 33.7161 1",
-      ["The Shrine of Aessina"] = ".go 2681.045166 377.692535 67.860809 1",
-      ["The Talondeep Path"] = ".go 1943.135132 -741.766113 113.109909 1",
-      ["The Zoram Strand"] = ".go 3652.24 928.308 7.01517 1",
-      ["Warsong Lumber Camp"] = ".go 2442.092285 -3470.109131 91.967857 1",
-      ["Xavian"] = ".go 2867.03 -2595.67 219.911 1",
-      ["Zoram'gar Outpost"] = ".go 3361 1007 3.766 1",
+    ["Ashenvale"] = {
+        ["Astranaar"] = ".go 2745.85 -378.33 108.253 1",
+        ["Bough Shadow"] = ".go 3141.823730 -3707.343262 121.049583 1",
+        ["Demon Fall Canyon"] = ".go 1626.91 -3057.36 89.4942 1",
+        ["Falfarren River"] = ".go 1685.909546 -1729.628174 101.213547 1",
+        ["Felfire Hill"] = ".go 1992.850952 -2989.656494 107.110558 1",
+        ["Forest Song"] = ".go 2957.463867 -3262.809814 160.133804 1",
+        ["Greenpaw Village"] = ".go 2265.585693 -1475.328369 90.808235 1",
+        ["Maestra's Point"] = ".go 3229.989746 198.252319 8.061512 1",
+        ["Nightsong Woods"] = ".go 2046.821045 -1874.254639 98.503624 1",
+        ["Raynewood Retreat"] = ".go 2673.51 -1859.72 188.112 1",
+        ["Ruins of Stardust"] = ".go 2178.007324 -288.449829 97.349899 1",
+        ["Satyrnaar"] = ".go 2757.590088 -2967.58 143.882 1",
+        ["Silverwind Refuge"] = ".go 2135.270020 -1189.903320 98.820641 1",
+        ["Splintertree Post"] = ".go 2188.609863 -2514.278564 81.024620 1",
+        ["The Dor'Danil Barrow Den"] = ".go 1775.1 -2679.19 111.666 1",
+        ["The Master's Glaive"] = ".go 4577.61 419.307 33.7161 1",
+        ["The Shrine of Aessina"] = ".go 2681.045166 377.692535 67.860809 1",
+        ["The Talondeep Path"] = ".go 1943.135132 -741.766113 113.109909 1",
+        ["The Zoram Strand"] = ".go 3652.24 928.308 7.01517 1",
+        ["Warsong Lumber Camp"] = ".go 2442.092285 -3470.109131 91.967857 1",
+        ["Xavian"] = ".go 2867.03 -2595.67 219.911 1",
+        ["Zoram'gar Outpost"] = ".go 3361 1007 3.766 1",
     },
     ["Azshara"] = {
-      ["Bitter Reaches"] = ".go 4623.242188 -7239.781738 169.330292 1",
-      ["Forlorn Ridge"] = ".go 3230.835449 -4735.763184 142.399078 1",
-      ["Haldarr Encampment"] = ".go 3306.000244 -4319.978027 128.709229 1",
-      ["Hetaera's Clutch"] = ".go 3554.121338 -6232.785156 44.276176 1",
-      ["Jagged Reef East"] = ".go 4815.409180 -7616.796875 49.077629 1",
-      ["Jagged Reef West"] = ".go 5026.466797 -6746.182617 7.429204 1",
-      ["Lake Mennar"] = ".go 2647.066895 -5373.742676 78.616829 1",
-      ["Legash Encampment"] = ".go 4539.822266 -6290.512695 114.273201 1",
-      ["On Ravencrest Monument"] = ".go 2449.459473 -6953.133789 238.022369 1",
-      ["Ravencrest Monument"] = ".go 2403.753906 -6786.962402 142.771896 1",
-      ["Rethress Sanctum"] = ".go 2209.154541 -6439.119141 1.823270 1",
-      ["Scalebeard's Cave"] = ".go 3705.1 -6043.45 2.508 1",
-      ["Shadowsong Shrine"] = ".go 2905.621582 -4035.082031 144.921371 1",
-      ["Southridge Beach"] = ".go 2946.593750 -6036.697754 3.806004 1",
-      ["Talrendis Point"] = ".go 2706.663086 -3877.953125 105.175400 1",
-      ["Temple of Arkkoran"] = ".go 4060.069092 -7258.750000 7.643451 1",
-      ["Temple of Zin-Malor"] = ".go 3546.8 -5287.96 109.935 1",
-      ["Thalassian Base Camp"] = ".go 4370.713867 -6246.862793 96.659889 1",
-      ["The Ruined Reaches"] = ".go 2089.575439 -6625.696777 4.423138 1",
-      ["The Shattered Strand"] = ".go 4266.963379 -6277.396973 92.9008711",
-      ["Timbermaw Hold"] = ".go 4192.953125 -5287.344238 129.046387 1",
-      ["Tower of Eldara"] = ".go 4212.527832 -7824.383301 11.125220 1",
-      ["Ursolan"] = ".go 4219.368652 -5609.947754 118.165573 1",
-      ["Valormok"] = ".go 3595.803711 -4412.858887 113.286484 1",
+        ["Bitter Reaches"] = ".go 4623.242188 -7239.781738 169.330292 1",
+        ["Forlorn Ridge"] = ".go 3230.835449 -4735.763184 142.399078 1",
+        ["Haldarr Encampment"] = ".go 3306.000244 -4319.978027 128.709229 1",
+        ["Hetaera's Clutch"] = ".go 3554.121338 -6232.785156 44.276176 1",
+        ["Jagged Reef East"] = ".go 4815.409180 -7616.796875 49.077629 1",
+        ["Jagged Reef West"] = ".go 5026.466797 -6746.182617 7.429204 1",
+        ["Lake Mennar"] = ".go 2647.066895 -5373.742676 78.616829 1",
+        ["Legash Encampment"] = ".go 4539.822266 -6290.512695 114.273201 1",
+        ["On Ravencrest Monument"] = ".go 2449.459473 -6953.133789 238.022369 1",
+        ["Ravencrest Monument"] = ".go 2403.753906 -6786.962402 142.771896 1",
+        ["Rethress Sanctum"] = ".go 2209.154541 -6439.119141 1.823270 1",
+        ["Scalebeard's Cave"] = ".go 3705.1 -6043.45 2.508 1",
+        ["Shadowsong Shrine"] = ".go 2905.621582 -4035.082031 144.921371 1",
+        ["Southridge Beach"] = ".go 2946.593750 -6036.697754 3.806004 1",
+        ["Talrendis Point"] = ".go 2706.663086 -3877.953125 105.175400 1",
+        ["Temple of Arkkoran"] = ".go 4060.069092 -7258.750000 7.643451 1",
+        ["Temple of Zin-Malor"] = ".go 3546.8 -5287.96 109.935 1",
+        ["Thalassian Base Camp"] = ".go 4370.713867 -6246.862793 96.659889 1",
+        ["The Ruined Reaches"] = ".go 2089.575439 -6625.696777 4.423138 1",
+        ["The Shattered Strand"] = ".go 4266.963379 -6277.396973 92.9008711",
+        ["Timbermaw Hold"] = ".go 4192.953125 -5287.344238 129.046387 1",
+        ["Tower of Eldara"] = ".go 4212.527832 -7824.383301 11.125220 1",
+        ["Ursolan"] = ".go 4219.368652 -5609.947754 118.165573 1",
+        ["Valormok"] = ".go 3595.803711 -4412.858887 113.286484 1",
     },
     ["Azuremyst Isle"] = {
       ["Ammen Fields"] = ".go -4156.72 -13486 46.1999 530",
@@ -722,7 +702,7 @@ elseif cont == "K" then
       ["Cleft of Shadow"] = ".go 1805.406006 -4337.110352 -11.187704 1",
       ["Grommash Hold"] = ".go 1926.922119 -4220.349609 40.946449 1",
       ["Hall of Legends"] = ".go 242.91675 84.9821 25.81 450",
-	  ["Ogrimmar"] = ".go 1403.081177 -4367.187988 25.235533 1", 
+      ["Ogrimmar"] = ".go 1403.081177 -4367.187988 25.235533 1", 
       ["Second Entrance"] = ".go 1719.052124 -3948.284912 49.056252 1",
       ["The Drag"] = ".go 1860.462280 -4513.910645 23.657042 1",
       ["Valley of Honor"] = ".go 2002.989502 -4698.967285 24.646027 1",
@@ -740,7 +720,7 @@ elseif cont == "K" then
       ["Ravaged Twilight Camp"] = ".go -6158.899902 1779.536377 28.599594 1",
       ["Southwind Village"] = ".go -7200.202637 392.123505 24.907322 1",
       ["The Crystal Vale"] = ".go -6322.533203 1680.257324 14.482635 1",
-	  ["The Scarab Wall"] = ".go -7990.291504 1555.718018 4.641033 1",
+      ["The Scarab Wall"] = ".go -7990.291504 1555.718018 4.641033 1",
       ["Twilight Base Camp"] = ".go -7006.766113 1156.217285 10.367116 1",
       ["Twilight Post"] = ".go -6750.621582 1593.255127 6.716227 1",
       ["Valor's Rest"] = ".go -6379.740234 -304.356720 -1.866578 1",
@@ -1161,7 +1141,105 @@ elseif cont == "Ou" then
       ["Umbrafen Village"] = ".go -855.415 5222.56 18.4855 530",
       ["Zabra'jin"] = ".go 261.398 7859.78 23.3885 530",
     },
-
+ }   
+elseif cont == "N_A" then
+  return {
+    ["Stormwind"] = {                                                                    
+      ["Thargold Ironwing"] = ".go -8338.3603 1107.0100 57.2599 0",
+    },
+    ["Ebon Hold"] = {
+      ["Acherus"] = ".go 2352.3701 -5666.9101 382.2399 0",                                    
+      ["The Scarlet Enclave"] = ".go 2356.5100 -5664.1801 382.25 609",                                   
+      ["Death's Beach"] = ".go 2431 -5730.2099 157.9400 609",
+    },
+    ["Wintergrasp"] = {
+      ["Wintergrasp"] = ".go 5100.8100 2185.6499 365.6199 571",
+    },
+    ["Howling Fjord"] = {
+      ["Kamagua"] = ".go 787.755 -2889.060 6.5919 571",                            		       
+      ["Valgarde"] = ".go 567.4149 -5012.5800 11.6673 571",                          		        
+      ["West Guard Keep"] = ".go 1343.0976 -3288.1374 174.4545 571",                   	    
+      ["Fort Wildervar"] = ".go 2467.521 -5028.960 283.6737 571",
+    },
+    ["Borean Tundra"] = {
+      ["Transitus Shield"] = ".go 3573.8999 6661.0698 195.3630 571",                        		      
+      ["Unu'pe"] = ".go 2917.2099 4043.4399 1.9677 571",                             		 
+      ["Valiance Keep"] = ".go 2272.9799 5171.8198 11.3460 571",                          		        
+      ["Fizzcrank Airstrip"] = ".go 4126.7109 5309.6601 28.7086 571",
+    },
+    ["Grizzly Hills"] = {
+      ["Amberpine Lodge"] = ".go 3447.812 -2754.3974 199.3689 571",                  	       
+      ["Westfall Brigade Encampment"] = ".go 4582.6298 -4254.8598 182.2910 571",
+    },
+    ["Zul'Drak"] = {
+      ["Argent Stand"] = ".go 5523.6801 -2674.9699 304.1369 571",                      	  
+      ["Zimi Torga"] = ".go 5780.8398 -3598.1599 387.2380 571",                          		       
+      ["Light Breach"] = ".go 5189.6699 -2206.8500 239.3999 571",                          		         
+      ["Dubra'jin"] = ".go 6897.6499 -4118.2299	467.3500 571",
+      ["Ebon Watch"] = ".go 5218.8999 -1302.2199 242.1600 571",
+    },
+    ["Sholazar Basin  "] = {
+      ["Nesingwary Base Camp"] = ".go 5590.0297 5828.5600 -68.1586 571",                      	      
+      ["Lakeside Landing"] = ".go 5506.2299 4748.1000 -194.4299 571",
+    },
+    ["Crystal Song Forest"] = {
+      ["Windrunner's Overlook"] = ".go 5033.1699 -521.2290 225.9449 571",
+    },
+    ["Icecrown"] = {
+      ["The Argent Vanguard"] = ".go 6162.6201 -62.0920 388.3640 571",                     	      
+      ["Death's Rise"] = ".go 7430.9399 4211.9902 314.1099 571",                      		          
+      ["The Shadow Vault"] = ".go 8412.0634 2693.3571 655.0952 571",
+    },
+    ["Dragonblight"] = {
+      ["Moa'ki Harbor"] = ".go 2793.1899 906.3599 22.6437 571",                          		         
+      ["Wyrmrest Temple Nethestrasz"] = ".go 3647.2600 244.0509 52.4397 571",                         	     
+      ["Wyrmrest Temple Tariolstraz"] = ".go 3547.2199 381.4899 52.2599 571",                         	        
+      ["Wintergarde Keep"] = ".go 3713.0559 -691.9813 215.5497 571",                       	        
+      ["Fordragon Hold"] = ".go 4606.0898 1410.7099 194.9310 571",                       	      
+      ["Star's Rest"] = ".go 3506.0700 1990.4200 65.3657 571",
+    },
+    ["Dalaran"] = {
+      ["Krasus' Landing"] = ".go 5813.3701 453.4030 658.9340 571",
+    },
+    ["Storm Peaks"] = {
+      ["K3"] = ".go 6188.9702 -1056.5300 410.0060 571",                         			        
+      ["Frosthold"] = ".go 6672.8779 -256.9667 962.0960 571",                        		         
+      ["Ulduar"] = ".go 8862.4443 -1323.7862 1033.1953 571",
+      ["Bouldercrag's Refuge"] = ".go 8474.9316 -335.2430 906.1583 571",                          
+    },
+  }
+elseif cont == "N_H" then
+  return {
+    ["Winter Grasp"] = {                                                                    		                                        
+      ["The Chilled Quagmire"] = ".go 5024.9902 3685.5500 362.9400 571",                                 
+    },
+    ["Howling Fjord"] = {  
+      ["Vengence Landing"] = ".go 1919.0300 -6176.7202 24.6655 571",                      	        
+      ["New Agamand"] = ".go 400.2497 -4542.5307 244.9554 571",                       	          
+      ["Apothecary Camp"] = ".go 2106.0500 -2968.8100 148.7669 571",                   	         
+      ["Camp Winterhoof"] = ".go 2649.2700 -4394.5000 283.4880 571",
+    },
+    ["Borean Tundra"] = {    
+      ["Bor'gorok Outpost"] = ".go 4473.2402 5708.7900 81.4462 571",                     	                              		         
+      ["Taunka'le Village"] = ".go 3446.1101 4088.4099 16.9603 571",                         		          
+      ["Warsong Hold"] = ".go 2920.2900 6242.8500 208.8000 571",
+    },
+    ["Grizzly Hills"] = {    
+      ["Conquest Hold"] = ".go 3261.520 -2265.4499 114.2809 571",                        		         
+      ["Camp Oneqwah"] = ".go 3874.2121 -4520.4833 217.0700 571",                      	          
+    },
+    ["Crystal Song Forest"] = {                                                	         
+      ["Sunreaver's Command"] = ".go 5587.2597 -694.6900 206.8099 571",                      	        
+    },
+    ["Dragonblight"] = {              	         
+      ["Kor'kron Vanguard"] = ".go 4941.5898 1167.9499 239.5019 571",                    	         
+      ["Agmar Hammer"] = ".go 3863.6298 1523.1099 90.3258 571",                       	         
+      ["Venomspite"] = ".go 3242.9599 -666.1599 166.7899 571",                       	           
+    },
+    ["Storm Peaks"] = {                      		                      			         
+      ["Grom,arsh Crash-site"] = ".go 7857.2998 -735.0200 1177.1500 571",                 	                             
+      ["Camp Tunka'lo"] = ".go 7793.8500 -2810.0900 1217.0300 571",                            
+    },
   }
 elseif cont == "BG" then
   return {
@@ -1195,78 +1273,78 @@ elseif cont == "I_EK" then
   return {
     ["Blackrock Depths"] = {
       ["Detention Block"] = ".go 459.455994 27.085884 -70.655228 230",
-	},
-	["Blackrock Spire - Upper"] = {
-	  ["Hall of Blackhand"] = ".go 79.99 -233.34 52.02 229",
-	},
-	["Blackwing Lair"] = {
+    },
+    ["Blackrock Spire - Upper"] = {
+      ["Hall of Blackhand"] = ".go 79.99 -233.34 52.02 229",
+    },
+    ["Blackwing Lair"] = {
       ["Blackwing Lair"] = ".go -7653.554688 -1093.969116 404.183105 469",
-	 },
-	["The Deadmines"] = {
+    },
+    ["The Deadmines"] = {
       ["The Deadmines"] = ".go -16.40 -383.07 61.78 36",
-	},
-	  ["Gnomeregan"] = {
-	  ["The Clockwerk Run"] = ".go -337.437408 -0.258742 -152.845917 90",
+    },
+    ["Gnomeregan"] = {
+      ["The Clockwerk Run"] = ".go -337.437408 -0.258742 -152.845917 90",
       ["Gnomeregan Train Depot"] = ".go -4858.270020 756.434875 244.922714 0",
-	},
-	["Karazhan"] = {
-	  ["The Gatehouse"] = ".go -11109.36 -2002.97 49.9 532",
-	  ["Karazhan Netherspace Tower"] = ".go -10844.8 -2271.81 424.578 532",
     },
-	["Magisters' Terrace"] = {
-	  ["Magisters' Terrace - Inside"] = ".go 7.090000 -0.450000 -2.800000 585",
+    ["Karazhan"] = {
+      ["The Gatehouse"] = ".go -11109.36 -2002.97 49.9 532",
+      ["Karazhan Netherspace Tower"] = ".go -10844.8 -2271.81 424.578 532",
     },
-	["Molten Core"] = {
+    ["Magisters' Terrace"] = {
+      ["Magisters' Terrace - Inside"] = ".go 7.090000 -0.450000 -2.800000 585",
+    },
+    ["Molten Core"] = {
       ["The Molten Core"] = ".go 1071.902954 -488.489014 -108.219124 409",
-	},
-  	["Naxxramas"] = {
-	  ["Naxxramas"] = ".go 3005.870 -3435.010 293.882 533",
-      ["Naxxramas - Sapphiron's Lair"] = ".go 3498.270 -5349.450 144.968 533",
-	},
-	["Scholomance"] = {
-	  ["Scholomance"] = ".go 199.427017 126.463890 134.911682 289",
-	},
-	["Shadowfang Keep"] = {
-	  ["Shadowfang Keep"] = ".go -228.19 2110.56 76.89 33",
-	},
-	["Scarlet Monastery Armory"] = {
-	  ["Scarlet Monastery Armory"] = ".go 1608.380005 -320.500000 18.670000 189",
-	},
-	["Scarlet Monastery Cathedral"] = {
-      ["Scarlet Monastery Cathedral"] = ".go 855.109985 1320.760010 18.670000 189",
-	},
-	["Scarlet Monastery Graveyard"] = {
-      ["Scarlet Monastery Graveyard"] = ".go 1688.57 1052.42 18.68 189",
-	},
-	["Scarlet Monastery Library"] = {
-      ["Scarlet Monastery Library"] = ".go 254.989990 -206.820007 18.677361 189",
-	},
-	["The Stockade"] = {
-	  ["Stormwind Stockade"] = ".go 49.821239 0.870144 -16.713627 34",
-	},
-	["Stratholme"] = {
-	  ["Stratholme"] = ".go 3593.15 -3646.56 138.50 329",
     },
-	["Temple of Atal'Hakkar"] = {
-	  ["Temple of Atal'Hakkar"] = ".go -314.229004 99.879997 -131.848694 109",
-	},
-	["Sunwell Plateau"] = {
-	  ["Parhelion Plaza"] = ".go 1788.095459 924.653748 15.271888 580",
-	},
-	["Uldaman"] = {
-	  ["Hall of the Keepers"] = ".go -228.192993 46.160198 -46.018631 70",
-	},
-	["Zul'Aman"] = {
-	  ["Zul'Aman"] = ".go 120 1772 43.441681 568",
-	},
-	["Zul'Gurub"] = {
-	  ["Zul'Gurub"] = ".go -11916.095703 -1239.402832 92.287262 309",
-	},
+    ["Naxxramas"] = {
+      ["Naxxramas"] = ".go 3005.870 -3435.010 293.882 533",
+      ["Naxxramas - Sapphiron's Lair"] = ".go 3498.270 -5349.450 144.968 533",
+    },
+    ["Scholomance"] = {
+      ["Scholomance"] = ".go 199.427017 126.463890 134.911682 289",
+    },
+    ["Shadowfang Keep"] = {
+      ["Shadowfang Keep"] = ".go -228.19 2110.56 76.89 33",
+    },
+    ["Scarlet Monastery Armory"] = {
+      ["Scarlet Monastery Armory"] = ".go 1608.380005 -320.500000 18.670000 189",
+    },
+    ["Scarlet Monastery Cathedral"] = {
+      ["Scarlet Monastery Cathedral"] = ".go 855.109985 1320.760010 18.670000 189",
+    },
+    ["Scarlet Monastery Graveyard"] = {
+      ["Scarlet Monastery Graveyard"] = ".go 1688.57 1052.42 18.68 189",
+    },
+    ["Scarlet Monastery Library"] = {
+      ["Scarlet Monastery Library"] = ".go 254.989990 -206.820007 18.677361 189",
+    },
+    ["The Stockade"] = {
+      ["Stormwind Stockade"] = ".go 49.821239 0.870144 -16.713627 34",
+    },
+    ["Stratholme"] = {
+      ["Stratholme"] = ".go 3593.15 -3646.56 138.50 329",
+    },
+    ["Temple of Atal'Hakkar"] = {
+      ["Temple of Atal'Hakkar"] = ".go -314.229004 99.879997 -131.848694 109",
+    },
+    ["Sunwell Plateau"] = {
+      ["Parhelion Plaza"] = ".go 1788.095459 924.653748 15.271888 580",
+    },
+    ["Uldaman"] = {
+      ["Hall of the Keepers"] = ".go -228.192993 46.160198 -46.018631 70",
+    },
+    ["Zul'Aman"] = {
+      ["Zul'Aman"] = ".go 120 1772 43.441681 568",
+    },
+    ["Zul'Gurub"] = {
+      ["Zul'Gurub"] = ".go -11916.095703 -1239.402832 92.287262 309",
+    },
   }
 elseif cont == "I_K" then
   return {
     ["Caverns of Time"] = {
-	  ["Caverns of Time"] = ".go -8195.938477 -4500.128418 8.608192 1",
+      ["Caverns of Time"] = ".go -8195.938477 -4500.128418 8.608192 1",
       ["Caverns of Time End"] = ".go -8481.9 -4312.3 -208.442 1",
       ["Hyjal Summit - Entrance"] = ".go -8186.544922 -4211.952148 -174.163620 1",
       ["Hyjal Summit - Alliance Base"] = ".go 5033.57 -1780.95 1321.83 534",
@@ -1281,347 +1359,296 @@ elseif cont == "I_K" then
       ["Old Hillsbrad Foothills - Southshore"] = ".go 1810.65 1067.53 9.71897 560",
       ["The Black Morass - Dark Portal"] = ".go -2033.498413 7120.973633 22.664389 269",
       ["The Black Morass - Entrance"] = ".go -8732.529297 -4220.262695 -209.499771 1",
+      ["The Culling of Stratholme"] = ".go 1431.1 556.92 36.69 595",                         	                   
+ 
     },
     ["Blackfathom Deeps"] = {
-	  ["Blackfathom Deeps"] = ".go -152.983551 106.329994 -40.095310 48",
-	  },
+      ["Blackfathom Deeps"] = ".go -152.983551 106.329994 -40.095310 48",
+    },
     ["Dire Maul East"] = {
-	  ["Warpwood Quarter"] = ".go 47.629997 -155.270004 -2.714379 429",
-	  },
+      ["Warpwood Quarter"] = ".go 47.629997 -155.270004 -2.714379 429",
+    },
     ["Dire Maul North"] = {
       ["Dire Maul North"] = ".go 254.588248 -24.739523 -2.560616 429",
-	  },
+    },
     ["Dire Maul West"] = {
       ["Capital Gardens"] = ".go 34.35 160.70 -3.47 429",
-	  },
-	["Maraudon"] = {
-	  ["Foulspore Cavern"] = ".go 1019.69 -458.31 -43.43 349",
-	  },
+    },
+    ["Maraudon"] = {
+      ["Foulspore Cavern"] = ".go 1019.69 -458.31 -43.43 349",
+    },
     ["Onyxia's Lair"] = {
-	  ["Onyxia's Lair"] = ".go 29.454847 -68.960884 -6.984023 249",
-	  },
+      ["Onyxia's Lair"] = ".go 29.454847 -68.960884 -6.984023 249",
+    },
     ["Ragefire Chasm"] = {
       ["Ragefire Chasm"] = ".go 1.784903 -14.368461 -17.553291 389",
-	},
+    },
     ["Razorfen Downs "] = {
-	  ["Razorfen Downs "] = ".go 2591.989502 1101.246460 51.859333 129",
-	  },
-	["Razorfen Kraul"] = {
-	  ["Razorfen Kraul"] = ".go 1941.789551 1543.693604 81.661453 47",
-	  },
-	["Ahn'Qiraj"] = {
-	  ["Ahn'Qiraj"] = ".go -8231.330078 2010.599976 129.330505 531",
-	  ["Ruins of Ahn'Qiraj"] = ".go -8429.743164 1512.136475 31.907234 509",
-	  },
-	["The Wailing Caverns"] = {
-	  ["The Wailing Caverns"] = ".go -160.004120 131.63653 -74.079254 43",
-	  },
-	  ["Zul'Farrak"] = {
-	  ["Zul'Farrak"] = ".go 1221.820557 840.745728 8.976474 209",
-	  },
-	  }
+      ["Razorfen Downs "] = ".go 2591.989502 1101.246460 51.859333 129",
+    },
+    ["Razorfen Kraul"] = {
+      ["Razorfen Kraul"] = ".go 1941.789551 1543.693604 81.661453 47",
+    },
+    ["Ahn'Qiraj"] = {
+      ["Ahn'Qiraj"] = ".go -8231.330078 2010.599976 129.330505 531",
+      ["Ruins of Ahn'Qiraj"] = ".go -8429.743164 1512.136475 31.907234 509",
+    },
+    ["The Wailing Caverns"] = {
+      ["The Wailing Caverns"] = ".go -160.004120 131.63653 -74.079254 43",
+    },
+    ["Zul'Farrak"] = {
+      ["Zul'Farrak"] = ".go 1221.820557 840.745728 8.976474 209",
+    },
+  }
 elseif cont == "I_O" then
   return {
-	["Auchindoun"] = {
+    ["Auchindoun"] = {
       ["Auchenai Crypts"] = ".go 0 0 0 558",
       ["Mana-Tombs"] = ".go 0.013477 0.930826 -0.954333 557",
       ["Sethekk Halls"] = ".go 0 0 0.006213 556",
       ["Shadow Labyrinth"] = ".go 0 0 -1.12795 555",
-	  },
-	["Azshara"] = {
+    },
+    ["Azshara"] = {
       ["Alliance Entrance"] = ".go 1064.89 -16.6092 317.148 37",
       ["Horde Entrance"] = ".go -124.097 856.033 298.296 37",
-	  },
-	["The Black Temple"] = {
+    },
+    ["The Black Temple"] = {
       ["Karabor Sewers"] = ".go 97.688789 1002.600830 -86.826843 564",
       ["Chamber of Command"] = ".go 647.760559 314.342865 271.678192 564",
-	  },
-	["Coilfang Reservoir"] = {
+    },
+    ["Coilfang Reservoir"] = {
       ["Serpentshrine Cavern"] = ".go 42.980713 -27.924601 -70.534996 548",
       ["The Slave Pens"] = ".go 0 0 -1.09796 547",
       ["The Steamvault"] = ".go 0 0 -4.19087 545",
       ["The Underbog"] = ".go 0 0 -2.75242 546",
-	  },
-	["Gruul's Lair"] = {
+    },
+    ["Gruul's Lair"] = {
       ["Gruul's Lair"] = ".go 65.5905 41.0931 -4.77545 565",
-	  },
-	["Hellfire Citadel"] = {
+    },
+    ["Hellfire Citadel"] = {
       ["Hellfire Ramparts"] = ".go -1348.61 1651.06 68.8195 543",
       ["Magtheridon's Lair"] = ".go 188.158 25.3929 67.933 544",
       ["The Blood Furnace"] = ".go -3.41257 2.00423 -44.2242 542",
       ["The Shattered Halls"] = ".go -0.509273 3.83735 -13.1962 540",
-	  },
-	["Tempest Keep"] = {
+    },
+    ["Tempest Keep"] = {
       ["The Arcatraz"] = ".go 12.879066 0.525871 -0.205504 552",
       ["The Botanica"] = ".go 0 0 -1.59128 553",
       ["The Phoenix Hall"] = ".go 0 0 -2.42833 550",
       ["The Mechanaar"] = ".go 0 0 -1.81282 554",
+    },
+}
+elseif cont == "I_N" then
+  return {
+  ["The heart of Acherus"] = {                                                                    	                            	                 
+    ["The heart of Acherus"] = ".go 2476.1101 -5515.0400 420.6366 609",
   },
-  }
-elseif cont == "J" then
+  ["Vault of Archavon"] = {   
+    ["Vault of Archavon"] = ".go -503.5889 -103.4430 156.0875 624",
+   },
+  ["Ahn'Kahet"] = {    
+    ["Hall of Conquered Kings"] = ".go 333.3510 -1109.9399 69.7720 619",
+   },
+  ["The Obsidian Sanctum"] = {    
+    ["The Obsidian Sanctum"] = ".go 3228.5800 385.8599 65.5490 615",
+   },
+  ["Azjof_Nerub"] = {    
+    ["The Glided gate"] = ".go 413.314 795.968 831.351 601",
+   },
+  ["Naxxramas"] = {    
+    ["Naxxramas"] = ".go 3005.68 -3447.77 293.93 533",  
+   },
+  ["The Violet Hold"] = {                   	            
+    ["The Violet Hold"] = ".go 1808.8199 803.9299 44.3639 608",
+   },
+  ["Gundrak"] = { 
+    ["Cave of Mamtoth"] = ".go 1891.84 832.169 176.669 604",
+   },
+  ["Gundrak"] = {    
+    ["Den of Ssaratus"] = ".go 1894.58 652.713 176.666 604",
+   },
+  ["Drak'Tharon Keep"] = {    
+    ["Hall of Departure"] = ".go -517.343 -487.976 11.01 600",
+   },
+  ["Halls of Stone"] = {    
+    ["Hall of High Fathers"] = ".go 1153.24 806.164 195.937 599",
+   },
+  ["Halls of Lighting"] = {    
+    ["Halls of Lighting"] = ".go 1331.47 259.619 53.398 602",
+    },
+  ["The Oculus"] = {   
+    ["Band of Variance"] = ".go 1048.16 1108.3 361.07 578",
+   },
+  ["The Nexus Zone"] = {    
+    ["The Nexus"] = ".go 145.87 -10.554 -16.636 576",
+   },
+  ["Utgarde Pinnacle"] = {    
+    ["Utgarde Pinnacle"] = ".go 584.117 -327.974 110.138 575",
+   },
+  ["Utgarde Keep"] = {    
+    ["Utgarde Keep"] = ".go 153.789 -86.548 12.551 574",
+  },
+  ["The Culling of Stratholme"] = {   
+    ["The Culling of Stratholme"] = ".go 1431.1 556.92 36.69 595",                         	                   
+  },
+}
+                                              
+ elseif cont == "OT" then
   return {
-    ["Jails"] = {
-      ["Alliance"] = ".go -98.0155 149.8360 -40.3827 35",
-      ["Horde"] = ".go -11139.1845 -1742.4421 -29.7365 0",
-      ["Official"] = ".go 16228.170898 16403.404297 -63.895161 1",
-    },
-
-  }
-elseif cont == "Ot" then
-  return {
-  		-- ["[City]"] 
-  		-- ["[Eastern Kingdom]"]
-  		-- ["[Kalimdor]"]
-  		-- ["[OutLand]"]
-      ["0-Gryphon Master"] = {                                                                           		-- ["0-Gryphon Master"]
-      ["[CT]StormWind"] = ".go -8835.76 490.084 109.799 0",                                           	-- ["[CT]StormWind"]
-      ["[CT]Ironforge"] = ".go -4821.13 -1152.4 502.295 0",                                           	-- ["[CT]Ironforge"]
-      ["Westfall/Sentinel Hill"] = ".go -10628.3 1037.27 34.1915 0",                   			-- ["[EK]Westfall/Sentinel Hill"]
-      ["Redridge Mountains"] = ".go -9435.21 -2234.88 69.1882 0",                    					-- ["[EK]Redridge Mountains"]
-      ["Wetlands/Menethil Harbor"] = ".go -3793.2 -782.052 9.19773 0",                 					-- ["[EK]Wetlands/Menethil Harbor"]
-      ["Loch Modan/Thelsamar"] = ".go -5424.85 -2929.87 347.645 0",                    				-- ["[EK]Loch Modan/Thelsamar"]
-      ["Burning Steppes/Morgan's Vigil"] = ".go -8365.08 -2736.93 185.691 0",          					-- ["[EK]Burning Steppes/Morgan's Vigil"]
-      ["Duskwood/Darkshire"] = ".go -10513.8 -1258.79 41.5138 0",                      			-- ["[EK]Duskwood/Darkshire"]
-      ["Hillsbrad Foothills/Southshore"] = ".go -715.146 -512.134 26.6278 0",          				-- ["[EK]Hillsbrad Foothills/Southshore"]
-      ["Arathi Highlands/Refuge Point"] = ".go -1240.76 -2514.04 21.8581 0",           					-- ["[EK]Arathi Highlands/Refuge Point"]
-      ["Stranglethorn Vale/Booty Bay"] = ".go -14477.9 464.101 36.4656 0",             					-- ["[EK]Stranglethorn Vale/Booty Bay"]
-      ["Searing Gorge/Thorium Point"] = ".go -6559.06 -1169.38 309.861 0",             		-- ["[EK]Searing Gorge/Thorium Point"]
-      ["Hinterlands/Aeria Peak"] = ".go 282.096 -2001.28 194.823 0",                   		-- ["[EK]Hinterlands/Aerie Peak"]
-      ["Blasted Lands/Nethergarde Keep"] = ".go -11110.2 -3437.1 79.282 0",            				-- ["[EK]Blasted Lands/Nethergarde Keep"]
-      ["Western Plaguelands"] = ".go 928.273 -1429.08 64.8343 0",       				-- ["[EK]Western Plaguelands/Chillwind Camp"]
-      ["Eastern Plaguelands/Light's Hope Chapel"] = ".go 2269.85 -5345.39 87.1242 0", 						-- ["[EK]Eastern Plaguelands/Light's Hope Chapel"]
-      ["Stranglethorn Vale/Rebel Camp"] = ".go -11340.5 -218.939 75.2148 0",         				-- ["[EK]Stranglethorn Vale/Rebel Camp"]
-      ["Dustwallow Marsh/Theramore Isle"] = ".go -3828.88 -4517.51 10.7437 1",                		-- ["[KL]Dustwallow Marsh/Theramore Isle"]
-      ["Tanaris/Gadgetzan"] = ".go -7224.87 -3738.27 8.6198 1",                               		-- ["[KL]Tanaris/Gadgetzan"]
-      ["Hellfire Peninsula/Honor Hold"] = ".go -665.804 2715.48 94.2981 530",                  			-- ["[OT]Hellfire Peninsula/Honor Hold"]
-      ["Terokkar Forest/Allerian Stronghold"] = ".go -2995.4 3873.27 9.72478 530",             				-- ["[OT]Terokkar Forest/Allerian Stronghold"]
-      ["Hellfire Penninsula/The Stair of Destiny"] = ".go -323.81 1027.61 54.2399 530",         					-- ["[OT]Hellfire Peninsula/The Stair of Destiny"]
-      ["Shadowmoon Valley/Wildhammer Stronghold"] = ".go -3980.97 2156.29 105.333 530",        				-- ["[OT]Shadowmoon Valley/Wildhammer Stronghold"]
-      ["Blade's Edge Mountains/Toshley's Station"] = ".go 1860.73 5528.27 276.838 530",        				-- ["[OT]Blade's Edge Mountains/Toshley's Station"]
-    },
-     ["Hippogryph Master"] = {                                                                    			-- ["0-Hippogryph Master"]
-      ["Rut'theran Village"] = ".go 8640.58 841.118 23.3464 1",                                   			-- ["[CT]Rut'theran Village"]
-      ["The Exodar"] = ".go -4058.45 -11789.7 9.23392 530",                                       	-- ["[CT]The Exodar"]
-      ["Darkshore/Auberdine"] = ".go 6343.2 561.651 16.1047 1",                               	-- ["[KL]Darkshore/Auberdine"]
-      ["Ashenvale/Astranaar"] = ".go 2828.38 -284.25 106.76 1",                              -- ["[KL]Ashenvale/Astranaar"]
-      ["Feralas/Thalanaar"] = ".go -4491.12 -778.347 -40.1193 1",                             	-- ["[KL]Feralas/Thalanaar"]
-      ["Stonetalon Mountains/Stonetalon Peak"] = ".go 2682.83 1466.45 233.792 1",             				-- ["[KL]Stonetalon Mountains/Stonetalon Peak"]
-      ["Desolace/Nijel's Point"] = ".go 136.218 1326.33 193.582 1",                           	-- ["[KL]Desolace/Nijel's Point"]
-      ["Feralas/Feathermoon Stronghold"] = ".go -4370.54 3340.11 12.4993 1",                  				-- ["[KL]Feralas/Feathermoon Stronghold"]
-      ["Moonglade"] = ".go 7454.85 -2491.61 462.699 1",                                       		-- ["[KL]Moonglade"]
-      ["Winterspring/Winterfall Village"] = ".go 6800.54 -4742.35 701.581 1",                 			-- ["[KL]Winterspring/Winterfall Village"]
-      ["Azshara/Talrendis Point"] = ".go 2718.18 -3880.75 101.641 1",                        	-- ["[KL]Azshara/Talrendis Point]"]
-      ["Felwood/Irontree Woods"] = ".go 6203.9 -1951.78 571.316 1",                           		-- ["[KL]Felwood/Irontree Woods"]
-      ["Silithus/Cenarion Hold"] = ".go -6758.55 775.594 89.2046 1",                          	-- ["[KL]Silithus/Cenarion Hold"]
-      ["Ashenvale/Forest Song"] = ".go 3002.62 -3207.08 190.053 1",                         		-- ["[KL]Ashenvale/Forest Song"]
-      ["Bloodmyst Isle/Blood Watch"] = ".go -1930.02 -11956.8 57.4743 530",                 		-- ["[KL]Bloodmyst Isle/Blood Watch"]
-      ["Hellfire Peninsula/Temple of Telhamat"] = ".go 199.061 4238.42 121.91 530",          					-- ["[OT]Hellfire Peninsula/Temple of Telhamat"]
-      ["Zangarmarsh/Telredor"] = ".go 210.492 6065.09 148.496 530",                            	-- ["[OT]Zangarmarsh/Telredor"]
-      ["Nagrand/Telaar"] = ".go -2723.1 7302.84 88.8157 530",                                  -- ["[OT]Nagrand/Telaar"]
-      ["Blade's Edge Mountains/Sylvanaar"] = ".go 2187.88 6794 183.513 530",                   -- ["[OT]Blade's Edge Mountains/Sylvanaar"]
-      ["Zangarmarsh/Orebor Harborage"] = ".go 963.428 7399.58 29.4317 530",                    	-- ["[OT]Zangarmarsh/Orebor Harborage"]
-    },
-    ["Wind Rider Master"] = {                                                                         		-- ["0-Wind Rider Master"]
-      ["Thunder Bluff"] = ".go -1196.75 26.0777 177.033 1",                                       	-- ["[CT]Thunder Bluff"]
-      ["Orgrimmar"] = ".go 1676.25 -4313.45 61.7176 1",                                           	-- ["[CT]Orgrimmar"]
-      ["Stranglethorn Vale/Grom'gol Base Camp"] = ".go -12417.5 144.474 3.36881 0",    					-- ["[EK]Stranglethorn Vale/Grom'gol Base Camp"]
-      ["Arathi Highlands/Hammerfall"] = ".go -916.868 -3495.36 70.4501 0",             					-- ["[EK]Arathi Highlands/Hammerfall"]
-      ["Stranglethorn Vale/Booty Bay"] = ".go -14443.4 502.872 27.9469 0",             					-- ["[EK]Stranglethorn Vale/Booty Bay"]
-      ["Badlands/Kargath"] = ".go -6632.22 -2178.42 244.227 0",                        			-- ["[EK]Badlands/Kargath"]
-      ["Searing Gorge/Thorium Point"] = ".go -6559.31 -1100.25 310.372 0",             		-- ["[EK]Searing Gorge/Thorium Point"]
-      ["Hinterlands/Revantusk Village"] = ".go -631.736 -4720.6 5.48226 0",            				-- ["[EK]Hinterlands/Revantusk Village"]
-      ["Swamp of Sorrows/Stonard"] = ".go -10459.2 -3279.76 21.5445 0",                					-- ["[EK]Swamp of Sorrows/Stonard"]
-      ["Burning Steppes/Flame Crest"] = ".go -7504.06 -2190.77 165.302 0",             					-- ["[EK]Burning Steppes/Flame Crest"]
-      ["Barrens/The Crossroads"] = ".go -437.137 -2596 95.8708 1",                            		-- ["[KL]Barrens/The Crossroads"]
-      ["Stonetalon Mountains/Sun Rock Retreat"] = ".go 968.077 1042.29 104.563 1",            				-- ["[KL]Stonetalon Mountains/Sun Rock Retreat"]
-      ["Thousand Needles/Windbreak Canyon"] = ".go -5407.12 -2419.61 89.7094 1",              		-- ["[KL]Thousand Needles/Windbreak Canyon"]
-      ["Desolace/Shadowprey Village"] = ".go -1770.37 3262.19 5.10852 1",                     		-- ["[KL]Desolace/Shadowprey Village"]
-      ["Tanaris/Gadgetzan"] = ".go -7045.24 -3779.4 10.3158 1",                               		-- ["[KL]Tanaris/Gadgetzan"]
-      ["Feralas/Camp Mojache"] = ".go -4421.94 198.146 25.1863 1",                            	-- ["[KL]Feralas/Camp Mojache"]
-      ["Azshara/Valormok"] = ".go 3664.02 -4390.45 113.169 1",                                	-- ["[KL]Azshara/Valormok"]
-      ["Barrens/Camp Taurajo"] = ".go -2384.08 -1880.94 95.9336 1",                          -- ["[KL]Barrens/Camp Taurajo"]
-      ["Winterspring/Winterfall Village"] = ".go 6815.12 -4610.12 710.759 1",                 			-- ["[KL]Winterspring/Winterfall Village"]
-      ["Ashenvale/Greenpaw Village"] = ".go -3149.14 -2842.13 34.6649 1",                     	-- ["[KL]Ashenvale/Greenpaw Village"]
-      ["Felwood/Bloodvenom Post"] = ".go 5064.72 -338.845 367.463 1",                         		-- ["[KL]Felwood/Bloodvenom Post"]
-      ["Ashenvale/Zoram'gar Outpost"] = ".go 3373.69 994.351 5.47043 1",                      	-- ["[KL]Ashenvale/Zoram'gar Outpost"]
-      ["Ashenvale/Warsong Lumber Camp"] = ".go 2305.64 -2520.15 103.893 1",                   		-- ["[KL]Ashenvale/Warsong Lumber Camp"]
-      ["Moonglade"] = ".go 7466.15 -2122.08 492.427 1",                                       		-- ["[KL]Moonglade"]
-      ["Silithus/Cenarion Hold"] = ".go -6810.2 841.704 49.8481 1",                           	-- ["[KL]Silithus/Cenarion Hold"]
-      ["Hellfire Peninsula/Thrallmar"] = ".go 233.137 2632.3 88.3007 530",                     				-- ["[OT]Hellfire Peninsula/Thrallmar"]
-      ["Zangarmarsh/Zabra'jin"] = ".go 223.468 7812.55 22.6859 530",                           	-- ["[OT]Zangarmarsh/Zabra'jin"]
-      ["Terokkar Forest/Stonebreaker Hold"] = ".go -2563.19 4426.77 39.4383 530",              				-- ["[OT]Terokkar Forest/Stonebreaker Hold"]
-      ["Nagrand/Garadar"] = ".go -1256.63 7136.17 57.3484 530",                                	-- ["[OT]Nagrand/Garadar"]
-      ["Hellfire Peninsula/The Stair of Destiny"] = ".go -176.42 1028.53 54.2562 530",         					-- ["[OT]Hellfire Peninsula/The Stair of Destiny"]
-      ["Hellfire Peninsula/Falcon Watch"] = ".go -584.367 4104.07 91.5878 530",                			-- ["[OT]Hellfire Peninsula/Falcon Watch"]
-      ["Blade's Edge Mountains/Thunderlord Stronghold"] = ".go 2451.06 6022.06 154.839 530",   							-- ["[OT]Blade's Edge Mountains/Thunderlord Stronghold"]
-      ["Shadowmoon Valley/Shadowmoon Village"] = ".go -3018.25 2556.32 79.1621 530",           				-- ["[OT]Shadowmoon Valley/Shadowmoon Village"]
-      ["Hellfire Peninsula/Spinebreaker Post"] = ".go -1314.93 2355.39 89.0385 530",           				-- ["[OT]Hellfire Peninsula/Spinebreaker Post"]
-      ["Zangarmarsh/Cenarion Watchpos"] = ".go 87.9806 5213.79 23.3282 530",                   		-- ["[OT]Zangarmarsh/Cenarion Watchpos"]
-    },
-    ["Bat Handler"] = {                                                                                		-- ["0-Bat Handler"]
-      ["Undercity"] = ".go 1567.12 266.345 -43.0194 0",                                           	-- ["[CT]Undercity"]
-      ["Eversong Woods/Silvermoon"] = ".go 9376.4 -7164.92 9.01938 530",                          			-- ["[CT]Eversong Woods/Silvermoon"]
-      ["Silverpine Forest/The Sepulcher"] = ".go 473.939 1533.95 131.96 0",            					-- ["[EK]Silverpine Forest/The Sepulcher"]
-      ["Hillsbrad Foothills/Tarren Mill"] = ".go 2.67556 -857.919 58.8572 0",          				-- ["[EK]Hillsbrad Foothills/Tarren Mill"]
-      ["Eastern Plaguelands/Light's Hope Chapel"] = ".go 2328.48 -5290.72 81.9957 0",  					-- ["[EK]Eastern Plaguelands/Light's Hope Chapel"]
-      ["Ghostlands/Tranquillien"] = ".go 7595.16 -6782.24 86.878 530",                 				-- ["[EK]Ghostlands/Tranquillien"]
-    },                                                                                                                                            
-    ["Zeppelin Master"] = {                                                                					-- ["0-Zeppelin Master"]
-      ["Tirisfal Glades"] = ".go 2054.57 241.679 99.8521 0",                           				-- ["[EK]Tirisfal Glades"]
-      ["Durotar"] = ".go 1331.11 -4649.45 53.6269 1",                                         		-- ["[KL]Durotar"]
-    },
-    ["Northrend Alliance"] = {                                                                    		-- ["0-NorthLand Alla"]
-    ["Zuldrak/Light's Breach"] = ".go -8338.3603 1107.0100 57.2599 0",                                       -- ["????/??"] = "          
-    ["Zuldrak/Above Dubra'Jin"] = ".go 2352.3701 -5666.9101 382.2399 0",                                -- ["????/?????"] = "          
-    ["Dalaran"] = ".go 2356.5100 -5664.1801 382.25 609",                             -- ["????/?????_?"] = "          
-    ["Zuldrak/Argent Strand"] = ".go 2431 -5730.2099 157.9400 609",                                  -- ["????/????_?"] = "          
-    ["Stormwind/Harbor"] = ".go 5100.8100 2185.6499 365.6199 571",                           -- ["?????/??????"] = "          
-    ["Howling Fjord/Kamuga Bay"] = ".go 787.755 -2889.060 6.5919 571",                            		-- ["??????/????"] = "          
-    ["Howling Fjord/Valgarde"] = ".go 567.4149 -5012.5800 11.6673 571",                          		-- ["??????/???"] = ".          
-    ["Howling Fjord/Westguard Keep"] = ".go 1343.0976 -3288.1374 174.4545 571",                   	-- ["??????/???????"]           
-    ["Howling Fjord/Fort Wildervar"] = ".go 2467.521 -5028.960 283.6737 571",                       	-- ["??????/??????"] =          
-    ["Borean Tundra/Transitus Shield"] = ".go 3573.8999 6661.0698 195.3630 571",                        		-- ["????/??????"] = "          
-    ["Borean Tundra/Unu'Pe"] = ".go 2917.2099 4043.4399 1.9677 571",                             		-- ["????/???"] = ".go          
-    ["Borean Tundra/Valiance Keep"] = ".go 2272.9799 5171.8198 11.3460 571",                          		-- ["????/?????"] = ".          
-    ["Borean Tundra/Fizzcrank Airstrip"] = ".go 4126.7109 5309.6601 28.7086 571",                       	-- ["????/????????"] =          
-    ["Grizzly Hills/Amberspine Lodge"] = ".go 3447.812 -2754.3974 199.3689 571",                  	-- ["?????/?????????"]          
-    ["Grizzly Hills/Westfall Brigade Encampment"] = ".go 4582.6298 -4254.8598 182.2910 571",                   	-- ["?????/????????"]           
-    ["Zuldrak/Argent Strand"] = ".go 5523.6801 -2674.9699 304.1369 571",                      	-- ["???/????????"] =           
-    ["Zuldrak/Zim'Torga"] = ".go 5780.8398 -3598.1599 387.2380 571",                          		-- ["???/????"] = ".go          
-    ["Zuldrak/Light's Breach"] = ".go 5189.6699 -2206.8500 239.3999 571",                          		    -- ["???/???"] = ".go          
-    ["Zuldrak/Dubra'Jin"] = ".go 6897.6499 -4118.2299	467.3500 571",                          		-- ["???/????"] = ".go          
-    ["Zuldrak/Ebon Watch"] = ".go 5218.8999 -1302.2199 242.1600 571",                          	-- ["???/???????"] = ".go          
-    ["Sholazar Basin/Nesingway Base Camp"] = ".go 5590.0297 5828.5600 -68.1586 571",                      	-- ["??????/???????"] =          
-    ["Sholazar Basin/Lakeside Landing"] = ".go 5506.2299 4748.1000 -194.4299 571",                      	-- ["??????/??????"] =          
-    ["Crystal Song Forest/Windrunner's Overlook"] = ".go 5033.1699 -521.2290 225.9449 571",                      	-- ["?????/???????"] =          
-    ["Icecrown/The Argent Vanguard"] = ".go 6162.6201 -62.0920 388.3640 571",                     	-- ["????/?????????"]           
-    ["Icecrown/Death's Rise"] = ".go 7430.9399 4211.9902 314.1099 571",                      		    -- ["????/?????"] = "          
-    ["Icecrown/The Shadow Vault"] = ".go 8412.0634 2693.3571 655.0952 571",                      		-- ["????/??????"] = "          
-    ["Dragonblight/Moa'ki Harbor"] = ".go 2793.1899 906.3599 22.6437 571",                          		-- ["?????/?????"] = "          
-    ["Dragonblight/Wyrmrest Temple"] = ".go 3647.2600 244.0509 52.4397 571",                         	-- ["?????/??????"] =           
-    ["Dragonblight/Wyrmrest Temple"] = ".go 3547.2199 381.4899 52.2599 571",                         	-- ["?????/??????1"] =           
-    ["Dragonblight/Wintergarde Keep"] = ".go 3713.0559 -691.9813 215.5497 571",                       	-- ["?????/??????"] =           
-    ["Dragonblight/Fordragon Hold"] = ".go 4606.0898 1410.7099 194.9310 571",                       	-- ["?????/??????"] =           
-    ["Dragonblight/Star's Rest"] = ".go 3506.0700 1990.4200 65.3657 571",                          		-- ["?????/????"] = ".          
-    ["Dalaran"] = ".go 5813.3701 453.4030 658.9340 571",                         		-- ["???/???????"] = "          
-    ["Storm Peaks/K3"] = ".go 6188.9702 -1056.5300 410.0060 571",                         			-- ["??????/K3"] = ".g          
-    ["Storm Peaks/Frosthold"] = ".go 6672.8779 -256.9667 962.0960 571",                        		-- ["??????/????"] = "          
-    ["Storm Peaks/Ulduar"] = ".go 8862.4443 -1323.7862 1033.1953 571",                      		-- ["??????/????"] = "          
-    ["Storm Peaks/Bouldercrag's Refuge"] = ".go 8474.9316 -335.2430 906.1583 571",                   -- ["??????/?????????"] = "          
-    },                                                                              
-    ["Northrend Horde"] = {                                                                    		-- ["0-NorthLand Hord"]
-    ["Eastern Plaguelands/Ebon Hold"] = ".go 2352.3701 -5666.9101 382.2399 0",                                -- ["????/?????"] = "          
-    ["Eastern Plaguelands/Ebon Hold 2"] = ".go 2356.5100 -5664.1801 382.25 609",                             -- ["????/?????_?"] = "          
-    ["Eastern Plaguelands/Death's Breach"] = ".go 2431 -5730.2099 157.9400 609",                                  -- ["????/????_?"] = "          
-    ["Wintergrasp/The Chilled Quagmire"] = ".go 5024.9902 3685.5500 362.9400 571",                           -- ["?????/??????"] = "          
-    ["Howling Fjord/Kamagua"] = ".go 787.755 -2889.060 6.5919 571",                            		-- ["??????/????"] = "          
-    ["Howling Fjord/Vengeance Landing"] = ".go 1919.0300 -6176.7202 24.6655 571",                      	-- ["??????/??????"] =          
-    ["Howling Fjord/New Agamand"] = ".go 400.2497 -4542.5307 244.9554 571",                       	-- ["??????/?????"] =           
-    ["Howling Fjord/Apothecary Camp"] = ".go 2106.0500 -2968.8100 148.7669 571",                   	-- ["??????/???????"]           
-    ["Howling Fjord/Camp Winterhoof"] = ".go 2649.2700 -4394.5000 283.4880 571",                   	-- ["??????/???????"]           
-    ["Borean Tundra/Bor'gorok Outpost"] = ".go 4473.2402 5708.7900 81.4462 571",                     	-- ["????/?????????"]           
-    ["Borean Tundra/Transitus Shield"] = ".go 3573.8999 6661.0698 195.3630 571",                        		-- ["????/??????"] = "          
-    ["Borean Tundra/Unu'pe"] = ".go 2917.2099 4043.4399 1.9677 571",                             		-- ["????/???"] = ".go          
-    ["Borean Tundra/Taunka'le Village"] = ".go 3446.1101 4088.4099 16.9603 571",                         		-- ["????/??????"] = "          
-    ["Borean Tundra/Warsong Hold"] = ".go 2920.2900 6242.8500 208.8000 571",                         -- ["????/????????"] = "          
-    ["Grizzly Hills/Conquest Hold"] = ".go 3261.520 -2265.4499 114.2809 571",                        		-- ["?????/?????"] = "          
-    ["Grizzly Hills/Camp Oneqwah"] = ".go 3874.2121 -4520.4833 217.0700 571",                      	-- ["?????/??????"] =           
-    ["Zuldrak/Argent Stand"] = ".go 5523.6801 -2674.9699 304.1369 571",                      	-- ["???/????????"] =           
-    ["Zuldrak/Zim'Torga"] = ".go 5780.8398 -3598.1599 387.2380 571",                          		-- ["???/????"] = ".go          
-    ["Zuldrak/Light's Breach"] = ".go 5189.6699 -2206.8500 239.3999 571",                          		    -- ["???/???"] = ".go          
-    ["Zuldrak/Dubra'Jin"] = ".go 6897.6499 -4118.2299	467.3500 571",                          		-- ["???/????"] = ".go          
-    ["Zuldrak/Ebon Watch"] = ".go 5218.8999 -1302.2199 242.1600 571",                          	-- ["???/???????"] = ".go          
-    ["Sholazar Basin/Nesingway Base Camp"] = ".go 5590.0297 5828.5600 -68.1586 571",                      	-- ["??????/???????"] =          
-    ["Sholazar Basin/Lakeside Landing"] = ".go 5506.2299 4748.1000 -194.4299 571",                      	-- ["??????/??????"] =          
-    ["Crystalsong Forest/Sunreaver's Command"] = ".go 5587.2597 -694.6900 206.8099 571",                      	-- ["?????/???????"] =          
-    ["Icecrown/Argent Vanguard"] = ".go 6162.6201 -62.0920 388.3640 571",                     	-- ["????/?????????"]           
-    ["Icecrown/Death's Rise"] = ".go 7430.9399 4211.9902 314.1099 571",                      		    -- ["????/?????"] = "          
-    ["Icecrown/Shadow Vault"] = ".go 8412.0634 2693.3571 655.0952 571",                      		-- ["????/??????"] = "          
-    ["Dragonblight/Moa'Ki Harbor"] = ".go 2793.1899 906.3599 22.6437 571",                          		-- ["?????/?????"] = "          
-    ["Dragonblight/Wyrmrest Temple"] = ".go 3647.2600 244.0509 52.4397 571",                         	-- ["?????/??????"] =           
-    ["Dragonblight/Wyrmrest Temple 2"] = ".go 3547.2199 381.4899 52.2599 571",                         	-- ["?????/??????1"] =           
-    ["Dragonblight/Kor'kron Vanguard"] = ".go 4941.5898 1167.9499 239.5019 571",                    	-- ["?????/????????"]           
-    ["Dragonblight/Agmar's Hammer"] = ".go 3863.6298 1523.1099 90.3258 571",                       	-- ["?????/???????"] =          
-    ["Dragonblight/Venomspite"] = ".go 3242.9599 -666.1599 166.7899 571",                       	    -- ["?????/?????"] =          
-    ["Dalaran"] = ".go 5813.3701 453.4030 658.9340 571",                         		-- ["???/???????"] = "          
-    ["Icecrown/K3"] = ".go 6188.9702 -1056.5300 410.0060 571",                         			-- ["??????/K3"] = ".g          
-    ["Storm Peaks/Grom'arsh Crash-Site"] = ".go 7857.2998 -735.0200 1177.1500 571",                 	-- ["??????/????????"]
-    ["Storm Peaks/Ulduar"] = ".go 8862.4443 -1323.7862 1033.1953 571",                      		-- ["??????/????"] = "          
-    ["Storm Peaks/Bouldercrag's Refuge"] = ".go 8474.9316 -335.2430 906.1583 571",                   -- ["??????/?????????"] = "          
-    ["Storm Peaks/Camp Tunka'lo"] = ".go 7793.8500 -2810.0900 1217.0300 571",                      -- ["??????/??? ???"] = "          
-    },
-    ["Northrend Instances"] = {                                                                    	-- ["0-NorthLand Instance"]                                                                   	                            	                 
-    ["The heart of Acherus"] = ".go 2476.1101 -5515.0400 420.6366 609",   
-    ["Vault of Archavon"] = ".go -503.5889 -103.4430 156.0875 624",    
-    ["Hall of Conquered Kings"] = ".go 333.3510 -1109.9399 69.7720 619",    
-    ["The Obsidian Sanctum"] = ".go 3228.5800 385.8599 65.5490 615",    
-    ["The Glided gate"] = ".go 413.314 795.968 831.351 601",    
-    ["Naxxaramas"] = ".go 3005.68 -3447.77 293.93 533",                     	            
-    ["The Violet Hold"] = ".go 1808.8199 803.9299 44.3639 608", 
-    ["Cave of Mamtoth"] = ".go 1891.84 832.169 176.669 604",    
-    ["Den of Ssaratus"] = ".go 1894.58 652.713 176.666 604",    
-    ["Hall of Departure"] = ".go -517.343 -487.976 11.01 600",    
-    ["Hall of High Fathers"] = ".go 1153.24 806.164 195.937 599",    
-    ["Halls of Lighting"] = ".go 1331.47 259.619 53.398 602",  
-    ["Band of Variance"] = ".go 1048.16 1108.3 361.07 578",    
-    ["The Nexus"] = ".go 145.87 -10.554 -16.636 576",    
-    ["Utgarde Pinnacle"] = ".go 584.117 -327.974 110.138 575",    
-    ["Utgarde Keep"] = ".go 153.789 -86.548 12.551 574",   
-    ["The Culling of Stratholme"] = ".go 1431.1 556.92 36.69 595",          
-    },
   ["Other"] = {
-      ["Ahn'Qiraj - Backlands"] = ".go -9479 1783 49.94 1",
-      ["Blackchar Cave"] = ".go -7347 -642 294.586121 0",
-      ["Blackwing Lair Outside"] = ".go -7394.303711 -1074.987549 589.391235 469",
-      ["Deadmines Strange Place"] = ".go -1464.339 500.941 0.000 36",
-      ["Deeprun Tram Deeprun Divers"] = ".go 78.911476 1167.338257 -106.266212 369",
-      ["Deeprun Tram Nessy"] = ".go -129.416702 1212.989502 -103.033546 369",
-      ["Deeprun Tram Underwater Location"] = ".go -33.273006 1234.087402 -126.101425 369",
-      ["Designer Island - Will Crash"] = ".go 16303.5 -16173.5 40.4365 451",
-      ["GM Island"] = ".go 16222.1 16252.1 12.5872 1",
-      ["Gillijim's Isle"] = ".go -13693.5 2806.3 -1.595302 0",
-      ["Karazhan Crypts"] = ".go -11069 -1795 53.731037 0",
-      ["Newman's Landing"] = ".go -6379.61 1260.49 7.18831 0",
-      ["Ortell's Hideout"] = ".go  -5314 -2512 484.233185 0",
-      ["Outside Alterac Valley A"] = ".go 605 -1040.9 264.755127 30",
-      ["Outside Alterac Valley B"] = ".go 669.224 346.28 139.2 30",
-      ["Outside Naxxramas"] = ".go 3598 -4523 198.864639 533",
-      ["Programmer Isle - Will Crash"] = ".go 16304.20 16318.10 69.44 451",
-      ["Ruins of Lordaeron (PvP Zone) Stable "] = ".go 1135 1586 33.792591 572",
-      ["Ruins of Lordaeron (PvP Zone) Crypt "] = ".go 422 2244 57.423981 572",
-      ["Ruins of Lordaeron (PvP Zone) Pyrewood Village "] = ".go 1470 1544 17 572",
-      ["Ruins of Lordaeron (PvP Zone) Toolshed"] = ".go 2240 1104 106.326881 572",
-      ["Shadowfang Keep Silverpine Forest"] = ".go -202.557 1666.88 79.7641 0",
-      ["Stratholme Outside"] = ".go 3176.634277 -4039.275879 105.463600 329",
-      ["Testing - Small Box(Old Jail)"] = ".go 0 0 -.277778 13",
-      ["Testing - Big Box"] = ".go 0 0 -144.70 13",
-      ["Top of Blackrock Mountain"] = ".go -7468 -1082 896.8 0",
-      ["Wetlands Hidden spot"] = ".go -3857 -3485 579.640198 0",
-      ["Zul'Gurub - Alter of storms"] = ".go -12029 -2584 -29.641342 309",
-      ["Zul'Gurub Stranglethorn Vale"] = ".go -12332.519531 -1859.805664 130.321091 0",
-      },
+    ["Ahn'Qiraj - Backlands"] = ".go -9479 1783 49.94 1",
+    ["Blackchar Cave"] = ".go -7347 -642 294.586121 0",
+    ["Blackwing Lair Outside"] = ".go -7394.303711 -1074.987549 589.391235 469",
+    ["Deadmines Strange Place"] = ".go -1464.339 500.941 0.000 36",
+    ["Deeprun Tram Deeprun Divers"] = ".go 78.911476 1167.338257 -106.266212 369",
+    ["Deeprun Tram Nessy"] = ".go -129.416702 1212.989502 -103.033546 369",
+    ["Deeprun Tram Underwater Location"] = ".go -33.273006 1234.087402 -126.101425 369",
+    ["GM Island"] = ".go 16222.1 16252.1 12.5872 1",
+    ["Gillijim's Isle"] = ".go -13693.5 2806.3 -1.595302 0",
+    ["Karazhan Crypts"] = ".go -11069 -1795 53.731037 0",
+    ["Newman's Landing"] = ".go -6379.61 1260.49 7.18831 0",
+    ["Ortell's Hideout"] = ".go  -5314 -2512 484.233185 0",
+    ["Outdoor PVP - Circle of Blood"] = ".go 2839.44 5930.17 11.1002 530",
+    ["Outdoor PVP - Ring of Trials"] = ".go -1999.94 6581.71 11.32 530",
+    ["Outdoor PVP - The Maul"] = ".go -3761.49 1133.43 132.083 1",
+    ["Outdoor PVP - Argent Tournament"] = ".go 8385.92 793.193 547.293 571",
+    ["Outside Alterac Valley A"] = ".go 605 -1040.9 264.755127 30",
+    ["Outside Alterac Valley B"] = ".go 669.224 346.28 139.2 30",
+    ["Outside Naxxramas"] = ".go 3598 -4523 198.864639 533",
+    ["Ruins of Lordaeron (PvP Zone) Stable "] = ".go 1135 1586 33.792591 572",
+    ["Ruins of Lordaeron (PvP Zone) Crypt "] = ".go 422 2244 57.423981 572",
+    ["Ruins of Lordaeron (PvP Zone) Pyrewood Village "] = ".go 1470 1544 17 572",
+    ["Ruins of Lordaeron (PvP Zone) Toolshed"] = ".go 2240 1104 106.326881 572",
+    ["Shadowfang Keep Silverpine Forest"] = ".go -202.557 1666.88 79.7641 0",
+    ["Stratholme Outside"] = ".go 3176.634277 -4039.275879 105.463600 329",
+    ["Top of Blackrock Mountain"] = ".go -7468 -1082 896.8 0",
+    ["Wetlands Hidden spot"] = ".go -3857 -3485 579.640198 0",
+    ["Zul'Gurub - Alter of storms"] = ".go -12029 -2584 -29.641342 309",
+    ["Zul'Gurub Stranglethorn Vale"] = ".go -12332.519531 -1859.805664 130.321091 0",
+  },
+  ["Unfinished Regions"] = {
+    ["Arathi Dwarven Farm"] = ".go -1850.22 -4149.4 9.76771 0",
+    ["badlands - Unfinished Zone"] = ".go -7122 -4122 463.018860 0",
+    ["Behind The Greymane Wall"] = ".go -987.449 1585.69 53.4298 0",
+    ["Dalaran Inside the Dome"] = ".go 258 351 41.9076 0",
+    ["Eastern Plaguelands Unfinished Region"] = ".go 3653.67 -3609.77 45.050037 0",
+    ["Emerald Forest Statue"] = ".go 3105.41 3096.78 27.0032 169",
+    ["Emerald Forest Trees"] = ".go 2732.93 -3319.63 101.284 169",
+    ["Gilneas"] = ".go -1275.483765 1525.656738 189.224091 0",
+    ["Grim Batol Watch Post"] = ".go -4072.695068 -3379.799316 372.380432 0",
+    ["Islands in Unknown Region"] = ".go -9392.479492 -4855.384766 300.868011 0",
+    ["Quel'Thalas"] = ".go 3617 -2821 177.193909 0",
+    ["Quel'Thalas Tower"] = ".go 4299.212402 -2761.831299 16.694981 0",
+    ["Silithus Southern Farm"] = ".go -10736.7 2445 7.531 1",
+    ["Silithus Unfinished Region"] = ".go -9678.11 1530.11 19.302420 1",
+    ["Stranglethorn Vale Unfinished Region"] = ".go -13010.2 -1617.82 143.272476 0",
+    ["The Verdant Fields"] = ".go -2128.12 -1005.89 132.213 169",
+    ["Tirisfal Glades Unfinished Region"] = ".go 2231.971191 2242.839111 99.736877 0",
+    ["Wetlands Dwarven Village"] = ".go -4028.98 -1411.2 156.564 0",
+  },
+  ["Jails"] = {
+    ["Alliance"] = ".go -98.0155 149.8360 -40.3827 35",
+    ["Horde"] = ".go -11139.1845 -1742.4421 -29.7365 0",
+    ["Official"] = ".go 16228.170898 16403.404297 -63.895161 1",
+  },
+  ["1 Gryphon Master"] = {                                                                   
+    ["[CT]StormWind"] = ".go -8835.76 490.084 109.799 0",                                           	
+    ["[CT]Ironforge"] = ".go -4821.13 -1152.4 502.295 0",                                           	
+    ["[EK]Westfall/Sentinel Hill"] = ".go -10628.3 1037.27 34.1915 0",                   		
+    ["[EK]Redridge Mountains"] = ".go -9435.21 -2234.88 69.1882 0",                    		
+    ["[EK]Wetlands/Menethil Harbor"] = ".go -3793.2 -782.052 9.19773 0",                 		
+    ["[EK]Loch Modan/Thelsamar"] = ".go -5424.85 -2929.87 347.645 0",                    		
+    ["[EK]Burning Steppes/Morgan's Vigil"] = ".go -8365.08 -2736.93 185.691 0",          		
+    ["[EK]Duskwood/Darkshire"] = ".go -10513.8 -1258.79 41.5138 0",                      		
+    ["[EK]Hillsbrad Foothills/Southshore"] = ".go -715.146 -512.134 26.6278 0",          		
+    ["[EK]Arathi Highlands/Refuge Point"] = ".go -1240.76 -2514.04 21.8581 0",           		
+    ["[EK]Stranglethorn Vale/Booty Bay"] = ".go -14477.9 464.101 36.4656 0",             		
+    ["[EK]Searing Gorge/Thorium Point"] = ".go -6559.06 -1169.38 309.861 0",             		
+    ["[EK]Hinterlands/Aerie Peak"] = ".go 282.096 -2001.28 194.823 0",                   		
+    ["[EK]Blasted Lands/Nethergarde Keep"] = ".go -11110.2 -3437.1 79.282 0",            		
+    ["[EK]Western Plaguelands/Chillwind Camp"] = ".go 928.273 -1429.08 64.8343 0",       		
+    ["[EK]Eastern Plaguelands/Light's Hope Chapel"] = ".go 2269.85 -5345.39 87.1242 0", 		
+    ["[EK]Stranglethorn Vale/Rebel Camp"] = ".go -11340.5 -218.939 75.2148 0",         		
+    ["[KL]Dustwallow Marsh/Theramore Isle"] = ".go -3828.88 -4517.51 10.7437 1",                	
+    ["[KL]Tanaris/Gadgetzan"] = ".go -7224.87 -3738.27 8.6198 1",                               	
+    ["[OT]Hellfire Peninsula/Honor Hold"] = ".go -665.804 2715.48 94.2981 530",                  	
+    ["[OT]Terokkar Forest/Allerian Stronghold"] = ".go -2995.4 3873.27 9.72478 530",             	
+    ["[OT]Hellfire Peninsula/The Stair of Destiny"] = ".go -323.81 1027.61 54.2399 530",         	
+    ["[OT]Shadowmoon Valley/Wildhammer Stronghold"] = ".go -3980.97 2156.29 105.333 530",        	
+    ["[OT]Blade's Edge Mountains/Toshley's Station"] = ".go 1860.73 5528.27 276.838 530",        	
+  },
+  ["2 Hippogryph Master"] = {                                                                 
+    ["[CT]Rut'theran Village"] = ".go 8640.58 841.118 23.3464 1",                                   	
+    ["[CT]The Exodar"] = ".go -4058.45 -11789.7 9.23392 530",                                       	
+    ["[KL]Darkshore/Auberdine"] = ".go 6343.2 561.651 16.1047 1",                               	
+    ["[KL]Ashenvale/Astranaar"] = ".go 2828.38 -284.25 106.76 1",                                    
+    ["[KL]Feralas/Thalanaar"] = ".go -4491.12 -778.347 -40.1193 1",                             	
+    ["[KL]Stonetalon Mountains/Stonetalon Peak"] = ".go 2682.83 1466.45 233.792 1",             	
+    ["[KL]Desolace/Nijel's Point"] = ".go 136.218 1326.33 193.582 1",                           	
+    ["[KL]Feralas/Feathermoon Stronghold"] = ".go -4370.54 3340.11 12.4993 1",                  	
+    ["[KL]Moonglade"] = ".go 7454.85 -2491.61 462.699 1",                                       	
+    ["[KL]Winterspring/Winterfall Village"] = ".go 6800.54 -4742.35 701.581 1",                 	
+    ["[KL]Azshara/Talrendis Point"] = ".go 2718.18 -3880.75 101.641 1",                        
+    ["[KL]Felwood/Irontree Woods"] = ".go 6203.9 -1951.78 571.316 1",                           	
+    ["[KL]Silithus/Cenarion Hold"] = ".go -6758.55 775.594 89.2046 1",                          	
+    ["[KL]Ashenvale/Forest Song"] = ".go 3002.62 -3207.08 190.053 1",                         	
+    ["[KL]Bloodmyst Isle/Blood Watch"] = ".go -1930.02 -11956.8 57.4743 530",                 	
+    ["[OT]Hellfire Peninsula/Temple of Telhamat"] = ".go 199.061 4238.42 121.91 530",          	
+    ["[OT]Zangarmarsh/Telredor"] = ".go 210.492 6065.09 148.496 530",                            	
+    ["[OT]Nagrand/Telaar"] = ".go -2723.1 7302.84 88.8157 530",                                       
+    ["[OT]Blade's Edge Mountains/Sylvanaar"] = ".go 2187.88 6794 183.513 530",                       
+    ["[OT]Zangarmarsh/Orebor Harborage"] = ".go 963.428 7399.58 29.4317 530",                    	
+  },
+  ["3 Wind Rider Master"] = {                                                                 
+    ["[CT]Thunder Bluff"] = ".go -1196.75 26.0777 177.033 1",                                       	
+    ["[CT]Orgrimmar"] = ".go 1676.25 -4313.45 61.7176 1",                                           	
+    ["[EK]Stranglethorn Vale/Grom'gol Base Camp"] = ".go -12417.5 144.474 3.36881 0",    	        
+    ["[EK]Arathi Highlands/Hammerfall"] = ".go -916.868 -3495.36 70.4501 0",             	       
+    ["[EK]Stranglethorn Vale/Booty Bay"] = ".go -14443.4 502.872 27.9469 0",             		
+    ["[EK]Badlands/Kargath"] = ".go -6632.22 -2178.42 244.227 0",                        		
+    ["[EK]Searing Gorge/Thorium Point"] = ".go -6559.31 -1100.25 310.372 0",             		
+    ["[EK]Hinterlands/Revantusk Village"] = ".go -631.736 -4720.6 5.48226 0",            		
+    ["[EK]Swamp of Sorrows/Stonard"] = ".go -10459.2 -3279.76 21.5445 0",                		
+    ["[EK]Burning Steppes/Flame Crest"] = ".go -7504.06 -2190.77 165.302 0",             		
+    ["[KL]Barrens/The Crossroads"] = ".go -437.137 -2596 95.8708 1",                            	
+    ["[KL]Stonetalon Mountains/Sun Rock Retreat"] = ".go 968.077 1042.29 104.563 1",            	
+    ["[KL]Thousand Needles/Windbreak Canyon"] = ".go -5407.12 -2419.61 89.7094 1",              	
+    ["[KL]Desolace/Shadowprey Village"] = ".go -1770.37 3262.19 5.10852 1",                     	
+    ["[KL]Tanaris/Gadgetzan"] = ".go -7045.24 -3779.4 10.3158 1",                               	
+    ["[KL]Feralas/Camp Mojache"] = ".go -4421.94 198.146 25.1863 1",                            	
+    ["[KL]Azshara/Valormok"] = ".go 3664.02 -4390.45 113.169 1",                                	
+    ["[KL]Barrens/Camp Taurajo"] = ".go -2384.08 -1880.94 95.9336 1",                                 
+    ["[KL]Winterspring/Winterfall Village"] = ".go 6815.12 -4610.12 710.759 1",               	
+    ["[KL]Ashenvale/Greenpaw Village"] = ".go -3149.14 -2842.13 34.6649 1",                     	
+    ["[KL]Felwood/Bloodvenom Post"] = ".go 5064.72 -338.845 367.463 1",                         	
+    ["[KL]Ashenvale/Zoram'gar Outpost"] = ".go 3373.69 994.351 5.47043 1",                      	
+    ["[KL]Ashenvale/Warsong Lumber Camp"] = ".go 2305.64 -2520.15 103.893 1",                   	
+    ["[KL]Moonglade"] = ".go 7466.15 -2122.08 492.427 1",                                       	
+    ["[KL]Silithus/Cenarion Hold"] = ".go -6810.2 841.704 49.8481 1",                           	
+    ["[OT]Hellfire Peninsula/Thrallmar"] = ".go 233.137 2632.3 88.3007 530",                     	
+    ["[OT]Zangarmarsh/Zabra'jin"] = ".go 223.468 7812.55 22.6859 530",                           	
+    ["[OT]Terokkar Forest/Stonebreaker Hold"] = ".go -2563.19 4426.77 39.4383 530",              	
+    ["[OT]Nagrand/Garadar"] = ".go -1256.63 7136.17 57.3484 530",                                	
+    ["[OT]Hellfire Peninsula/The Stair of Destiny"] = ".go -176.42 1028.53 54.2562 530",         	
+    ["[OT]Hellfire Peninsula/Falcon Watch"] = ".go -584.367 4104.07 91.5878 530",                	
+    ["[OT]Blade's Edge Mountains/Thunderlord Stronghold"] = ".go 2451.06 6022.06 154.839 530",   	
+    ["[OT]Shadowmoon Valley/Shadowmoon Village"] = ".go -3018.25 2556.32 79.1621 530",           	
+    ["[OT]Hellfire Peninsula/Spinebreaker Post"] = ".go -1314.93 2355.39 89.0385 530",           	
+    ["[OT]Zangarmarsh/Cenarion Watchpos"] = ".go 87.9806 5213.79 23.3282 530",                   	
+  },
+  ["4 Bat Handler"] = {                                                                       
+    ["[CT]Undercity"] = ".go 1567.12 266.345 -43.0194 0",                                           	
+    ["[CT]Eversong Woods/Silvermoon"] = ".go 9376.4 -7164.92 9.01938 530",                          	
+    ["[EK]Silverpine Forest/The Sepulcher"] = ".go 473.939 1533.95 131.96 0",            		
+    ["[EK]Hillsbrad Foothills/Tarren Mill"] = ".go 2.67556 -857.919 58.8572 0",          		
+    ["[EK]Eastern Plaguelands/Light's Hope Chapel"] = ".go 2328.48 -5290.72 81.9957 0",  		
+    ["[EK]Ghostlands/Tranquillien"] = ".go 7595.16 -6782.24 86.878 530",                 		
+  },                                                                                                                                            
+  ["5 Zeppelin Master"] = {                                                                	
+    ["[EK]Tirisfal Glades"] = ".go 2054.57 241.679 99.8521 0",                           		
+    ["[KL]Durotar"] = ".go 1331.11 -4649.45 53.6269 1",                                         	
+  },
 
-    ["Unfinished Regions"] = {
-	  ["Arathi Dwarven Farm"] = ".go -1850.22 -4149.4 9.76771 0",
-	  ["badlands - Unfinished Zone"] = ".go -7122 -4122 463.018860 0",
-      ["Behind The Greymane Wall"] = ".go -987.449 1585.69 53.4298 0",
-      ["Dalaran Inside the Dome"] = ".go 258 351 41.9076 0",
-      ["Eastern Plaguelands Unfinished Region"] = ".go 3653.67 -3609.77 45.050037 0",
-      ["Emerald Forest Statue"] = ".go 3105.41 3096.78 27.0032 169",
-      ["Emerald Forest Trees"] = ".go 2732.93 -3319.63 101.284 169",
-      ["Gilneas"] = ".go -1275.483765 1525.656738 189.224091 0",
-      ["Grim Batol Watch Post"] = ".go -4072.695068 -3379.799316 372.380432 0",
-      ["Islands in Unknown Region"] = ".go -9392.479492 -4855.384766 300.868011 0",
-      ["Quel'Thalas"] = ".go 3617 -2821 177.193909 0",
-      ["Quel'Thalas Tower"] = ".go 4299.212402 -2761.831299 16.694981 0",
-      ["Silithus Southern Farm"] = ".go -10736.7 2445 7.531 1",
-      ["Silithus Unfinished Region"] = ".go -9678.11 1530.11 19.302420 1",
-      ["Stranglethorn Vale Unfinished Region"] = ".go -13010.2 -1617.82 143.272476 0",
-      ["The Verdant Fields"] = ".go -2128.12 -1005.89 132.213 169",
-      ["Tirisfal Glades Unfinished Region"] = ".go 2231.971191 2242.839111 99.736877 0",
-      ["Wetlands Dwarven Village"] = ".go -4028.98 -1411.2 156.564 0",
-    },
-  }
-
- end 
+}
+ end
 end

@@ -1,0 +1,63 @@
+TrinityAdmin Changelog
+-=[ Revision 13 - "Lucky 13"]=-
+This is a major release, incorporating many, mnay fixes along with
+some major new features (Tickets, Who). This release would NOT have 
+happened without the generous and patient assistance of Kitharo (from 
+Land of Legends). All of us owe Kitharo a great debt for testing TrinityAdmin
+on one of the world's largest servers and providing detailed feedback 
+so that I could make Tickets work again. Thank you, my friend!
+
+- Added 'GM Chat' command to GM tab
+- Added Waterwalk command to GM tab
+- Added acccount lock/unlock command to GM tab
+- Added PvP tab
+- Modified sizes of tabs
+- Added Event tab
+- Added RPG tab
+- Added Vendor tab
+- Added AhBot tab
+- Added Who tab
+- Mail error fixed. Note you still cant send big messages.. 230 apprx charatcers is the server limit
+- TICKET TAB NOW FULLY FUNCTIONAL
+- Update frequency of the Udate Diff graph changed to approx 1 minute
+- Server info auto refreshes every 1 minute
+- Added complete WHO system on WHO tab: see who is online, click for detailed info
+- Integrated MUCh more complete teleport table from old MangAdmin (thanks, Gimp & Pryd!!!)
+- Updated localisation for enUS, frFR, svSV
+- Localisation for csCZ, deDE, plPL, huHU, itIT, ptPT, ruRU are in-progress
+- Removed support for fiFI, liLI, zhCN, nlNL languages until translators can be found
+- Added .gm ingame, .gm list, and .pet create
+- Added .pet learn, .pet unlearn, .pet tp
+- Added .lookup taxinode, .go taxinode
+- Added .go trigger
+- Added .cast, .cast back, .cast dist, .cast self, .cast target
+- added .list item
+- Added .account create, .account delete, .account set addon, .account set gmlevel, .account set password
+- added .gmnotify
+- Logo updated (Thanks Lyrr123!!!)
+
+Locale Team:
+Supported Locales & translator:
+enUS: iotech
+frFR: Namida 
+svSV: Lyrr123
+
+Locales in-progress:
+csCZ: Ravenheart 
+huHU: Gimp 
+itIT: dracula70 
+ruRU: mrlakec 
+deDE: Amok 
+roRO: borgotech 
+ptPT: Morpheux 
+ptBR: Morpheux 
+esES: Georgios 
+
+Unsupported Locales: (Can you read/write/speak one of these languages as well as English? Want to join the project?)
+bgBG: 
+fiFI:
+liLI:
+zhCN:
+nlNL:
+plPL:
+

@@ -17,17 +17,61 @@
 -- Subversion Repository: http://trinityadmin.googlecode.com/svn/
 -- Dev Blog: http://trinityadmin.blogspot.com/
 -------------------------------------------------------------------------------------------------------------
+--[[
+How to add a localised string:
+1. Look below and find the functional area(Tab) your string belongs in.
+2. In that section, find the appropriate type of string (Tooltip, Label, Other)
+3. Each line is an assignment equation. On the left side is the 'token' which represents the string. The token is used
+   in the source code, and is replaced by the actual string at runtime. The token is quoted, and contained in square brackets ([]).
+   Eaxample: ["strength"]
+4. Now assign a value to the token for the language you are working with. For example, if I am editing the enUS file, I want to 
+   assign the value, in US English, to the token:
+   ["strength"] = "Strength",
+   Please note the line is terminated with a comma (,).
+5. A given token must exist in all supported languages. If we edit the deDE file, we would use:
+   ["strength"] = "Stärke",
+6. Some of these lines also contain color codes (example: |cFF00FF00 and |r) Don't alter these, please.
 
+TrinityAdmin Locale Team:
+You have received this file which currently contains enUS strings, but will actually be the file for your 
+selected language. 
+1. Edit the first un-commented line below, which should resemble: function Return_enUS(). Change
+   the 'enUS' to the four letter code for your locale (example: deDE).
+2. Proceed to localisation by examining each line in the file, and altering the US English strings on 
+   the RIGHT of each equation to your selected language. DO NOT alter anything on the LEFT sides 
+   (the tokens). Example: ["token_do_not_edit"] = "Edit this string to your language",
+3. Some text includes color codes:     ["info_revision"] = "|cFF00FF00Trinity Revision:|r ",
+   The Color code should NOT be localised/edited. The color code is a tag, with an opening element 
+   and a closing element. The opening element is "|c" followed by 8 numbers. The closing element
+   is "|r". In the example above, "|cFF00FF00" and "|r" are the color code and should NOT be changed.
+   That leaves "Trinity Revision:" as the string to edit in the above example.
+4. Some strings may not be edited at all because they are used in code or contain code. They
+   are marked.
+5. Please do not edit comments. In LUA, the programming language we use here, code comments are seperated from code by the 
+   use of "" (makes anything AFTER it a comment, to the end of the line) or comments
+   can be enclosed between.
+
+If you have any questions, contact iotech.
+]]
 function Return_enUS()
   return {
 --[[General]]
   --[[Tooltips]]
+    ["ma_IconHint"] = "|cffeda55fClick|r to open TrinityAdmin. |cffeda55fShift-Click|r to reload the user interface.",
+    ["tt_Default"] = "Move your cursor over an element to toggle the tooltip!",
+    ["tt_LanguageButton"] = "Change the language and reload TrinityAdmin.",
   --[[Control Labels]]
+    ["ma_LanguageButton"] = "Change language",
+    ["info_revision"] = "|cFF00FF00Trinity Revision:|r ",
+    ["info_platform"] = "|cFF00FF00Server Platform:|r ",
+    ["info_online"] = "|cFF00FF00Players Online:|r ",
+    ["info_maxonline"] = "|cFF00FF00Maximum Online:|r ",
+    ["info_uptime"] = "|cFF00FF00Uptime:|r ",
   --[[Other]]
-    ["slashcmds"] = { "/mangadmin", "/ma" },
+    ["slashcmds"] = { "/trinityadmin", "/ta" },
     ["lang"] = "English",
-    ["realm"] = "|cFF00FF00Realm:|r "..GetCVar("realmName"),
-    ["char"] = "|cFF00FF00Char:|r "..UnitName("player"),
+    ["realm"] = "|cFF00FF00Realm:|r "..GetCVar("realmName"), --do not change this line!
+    ["char"] = "|cFF00FF00Char:|r "..UnitName("player"), --do not change this line!
     ["guid"] = "|cFF00FF00Guid:|r ",
     ["tickets"] = "|cFF00FF00Tickets:|r ",
     ["selectionerror1"] = "Please select only yourself, another player or nothing!",
@@ -36,7 +80,9 @@ function Return_enUS()
     ["selectionerror4"] = "Please select only a NPC!",
     ["searchResults"] = "|cFF00FF00Search-Results:|r ",
 
---[GM tab]]
+
+
+--[[GM tab]]
   --[[Name]]
     ["tabmenu_Main"] = "GM",
   --[[Tooltips]]
@@ -68,6 +114,13 @@ function Return_enUS()
     ["tt_S"] = "Navigate South",
     ["tt_E"] = "Navigate East",
     ["tt_W"] = "Navigate West",
+    ["tt_chatonbutton"] = "Turn GM Chat ON"      , 
+    ["tt_chatoffbutton"] = "Turn GM Chat OFF"      , 
+    ["tt_waterwalkonbutton"] = "Turn Waterwalk ON for the selected creature"  , 
+    ["tt_watewrwalkoffbutton"] = "Turn Waterwalk OFF for the selected creature", 
+    ["tt_accountlockonbutton"] = "Lock your account",  
+    ["tt_accountlockoffbutton"] = "UnLock your account",
+    ["tt_DisplayAccountLvl"] = "Display your account level.",
   --[[Control Labels]]
     ["ma_OffButton"] = "Off",
     ["ma_displaylevelbutton"] = "Display Account Level",
@@ -90,11 +143,18 @@ function Return_enUS()
     ["S"] = "S", --Abbreviation for South
     ["E"] = "E", --Abbreviation for East
     ["W"] = "W", --Abbreviation for West
+    ["ma_chatbutton"] = "GM Chat On",
+    ["ma_mapsbutton"] = "View All Maps",
+    ["ma_waterwalkbutton"] = "Waterwalk On",
+    ["ma_accountlockbutton"] = "Account Lock",
   --[[Other]]
+
+
 
 --[[Char Tab]]
   --[[Name]]
     ["tabmenu_Char"] = "Char",
+    ["tt_CharButton"] = "Toggle a window with character-specific actions.",
   --[[Tooltips]]
     ["tt_RotateLeft"] = "Rotate left.",
     ["tt_RotateRight"] = "Rotate right.",
@@ -131,7 +191,40 @@ function Return_enUS()
     ["ma_Modify"] = "Modify",
     ["ma_Reset"] = "Reset",
   --[[Other]]
+      ["ma_LevelUp"] = "Level up",
+    ["ma_LevelDown"] = "Level down",
+    ["ma_Money"] = "Money",
+    ["ma_Energy"] = "Energy",
+    ["ma_Rage"] = "Rage",
+    ["ma_Mana"] = "Mana",
+    ["ma_Healthpoints"] = "Healthpoints",
+    ["ma_Talents"] = "Talents",
+    ["ma_Stats"] = "Stats",
+    ["ma_Spells"] = "Spells",
+    ["ma_Honor"] = "Honor",
+    ["ma_Level"] = "Level",
+    ["ma_AllLang"] = "All Languages",
+    -- languages
+    ["Common"] = "Common",
+    ["Orcish"] = "Orcish",
+    ["Taurahe"] = "Taurahe",
+    ["Darnassian"] = "Darnassian",
+    ["Dwarvish"] = "Dwarvish",
+    ["Thalassian"] = "Thalassian",
+    ["Demonic"] = "Demonic",
+    ["Draconic"] = "Draconic",
+    ["Titan"] = "Titan",
+    ["Kalimag"] = "Kalimag",
+    ["Gnomish"] = "Gnomish",
+    ["Troll"] = "Troll",
+    ["Gutterspeak"] = "Gutterspeak",
+    ["Draenei"] = "Draenei",
+  
+  
+  
 --[[Char2 Tab]]
+  --[[Name]]
+    ["tt_Char2Button"] = "Toggle a window with character-specific actions.",
   --[[Tooltips]]
     ["tt_banbutton"] = "Parameters= <account|ip|character> $NameOrIp <-1|xxdyyhzzm> $reason   [[Ban acct/IP & kick. -1=permban, or a string like 4d3h24m16s]]",
     ["tt_gonamebutton"] = "Parameter= $charactername  [[Teleports you to the specified character]]",
@@ -201,7 +294,13 @@ function Return_enUS()
     ["ma_HonorAddButton"] = "HonorAdd",
     ["ma_HonorUpdateButton"] = "HonorUpdt",
   --[[Other]]
+
+
+
 --[[NPC Tab]]
+  --[[Name]]
+    ["tabmenu_NPC"] = "NPC",
+    ["tt_NpcButton"] = "Toggle a window with npc related functions.",
   --[[Tooltips]]
     ["tt_NPCRotateLeft"] = "Rotate left",
     ["tt_NPCRotateRight"] = "Rotate right",
@@ -234,6 +333,7 @@ function Return_enUS()
     ["tt_NPCAura"] = "Parameters = #AuraID [[Enter the AuraID of the aura you want to apply]]",
     ["tt_NPCUnaura"] = "Parameters = #AuraID [[Enter the AuraID of the aura you want to remove]]",
     ["tt_PlayEmote"] = "Play Emote from list at left",
+    ["tt_GPSButton"] = "Shows coordinates for the selected character.",
   --[[Control Labels]]
     ["Morph"] = "Morph",
     ["ma_NPCKillButton"] = "Kill",
@@ -267,113 +367,59 @@ function Return_enUS()
     ["ma_ParameterBox"] = "Parameter(s)",
     ["ma_PlayEmote"] = "Play Emote",
   --[[Other]]
+
+
+
 --[[GObjects Tab]]
+  --[[Name]]
+    ["tabmenu_GO"] = "GOB",
+    ["tt_GOButton"] = "Toggle a window with GObject functions.",
   --[[Tooltips]]
-  ["tt_ObjGo"] = "Go to the selected object",
-  ["tt_ObjAdd"] = "Add a copy of the targeted object at your location and orientation",
-  ["tt_ObjMove"] = "Move the targeted object to your location",
-  ["tt_ObjTurn"] = "Turns the targeted object to mathc your orientation",
-  ["tt_ObjDel"] = "Deletes the targeted object",
-  ["tt_ObjNear"] = "Returns info on objects near you",
-  ["tt_ObjTarget"] = "Targets the nearest object",
+    ["tt_ObjGo"] = "Go to the selected object",
+    ["tt_ObjAdd"] = "Add a copy of the targeted object at your location and orientation",
+    ["tt_ObjMove"] = "Move the targeted object to your location",
+    ["tt_ObjTurn"] = "Turns the targeted object to mathc your orientation",
+    ["tt_ObjDel"] = "Deletes the targeted object",
+    ["tt_ObjNear"] = "Returns info on objects near you",
+    ["tt_ObjTarget"] = "Targets the nearest object",
   --[[Control Labels]]
-  ["ma_OBJGo"] = "Obj Go",
-  ["ma_OBJAdd"] = "Obj Add",
-  ["ma_OBJMove"] = "Obj Move",
-  ["ma_OBJTurn"] = "Obj Turn",
-  ["ma_OBJDel"] = "Obj Del",
-  ["ma_OBJNear"] = "Obj Near",
-  ["ma_OBJTarget"] = "Obj Target",
+    ["ma_OBJGo"] = "Obj Go",
+    ["ma_OBJAdd"] = "Obj Add",
+    ["ma_OBJMove"] = "Obj Move",
+    ["ma_OBJTurn"] = "Obj Turn",
+    ["ma_OBJDel"] = "Obj Del",
+    ["ma_OBJNear"] = "Obj Near",
+    ["ma_OBJTarget"] = "Obj Target",
   --[[Other]]
 --[[Tele Tab]]
-  --[[Tooltips]]
-  --[[Control Labels]]
-  --[[Other]]
---[[Tickets Tab]]
-  --[[Tooltips]]
-  --[[Control Labels]]
-  --[[Other]]
---[[Misc Tab]]
-  --[[Tooltips]]
-  --[[Control Labels]]
-  --[[Other]]
---[[Server Tab]]
-  --[[Tooltips]]
-  --[[Control Labels]]
-  --[[Other]]
---[[Log Tab]]
-  --[[Tooltips]]
-  --[[Control Labels]]
-  --[[Other]]
-  
+  --[[Name]]
     ["tabmenu_Tele"] = "Tele",
-    ["tabmenu_Ticket"] = "Tickets",
-    ["tabmenu_Misc"] = "Misc",
-    ["tabmenu_Server"] = "Server",
-    ["tabmenu_Log"] = "Log",
-    ["tabmenu_NPC"] = "NPC",
-    ["tabmenu_GO"] = "GOB",
-    ["tt_Default"] = "Move your cursor over an element to toggle the tooltip!",
-    ["tt_CharButton"] = "Toggle a window with character-specific actions.",
-    ["tt_Char2Button"] = "Toggle a window with character-specific actions.",
-    ["tt_NpcButton"] = "Toggle a window with npc related functions.",
-    ["tt_GOButton"] = "Toggle a window with GObject functions.",
     ["tt_TeleButton"] = "Toggle a window with teleport-functions.",
+  --[[Tooltips]]
+  --[[Control Labels]]
+    ["Zone"] = "|cFF00FF00Zone:|r ",
+  --[[Other]]
+    ["ma_NoZones"] = "No zones!",
+    ["ma_NoSubZones"] = "No subzones!",
+
+
+
+--[[Tickets Tab]]
+  --[[Name]]
+    ["tabmenu_Ticket"] = "Tickets",
     ["tt_TicketButton"] = "Toggle a window which shows all tickets and lets you administrate them.",
-    ["tt_MiscButton"] = "Toggle a window with miscellaneous actions.",
-    ["tt_ServerButton"] = "Show several server informations and do actions concerning the server.",
-    ["tt_LogButton"] = "Show the log of all actions done with MangAdmin.",
-    ["tt_LanguageButton"] = "Change the language and reload MangAdmin.",
-    ["tt_ItemButton"] = "Toggle a popup with the function to search for items and manage your favorites.",
-    ["tt_ItemSetButton"] = "Toggle a popup with the function to search for itemsets and manage your favorites.",
-    ["tt_SpellButton"] = "Toggle a popup with the function to search for spells and manage your favorites.",
-    ["tt_QuestButton"] = "Toggle a popup with the function to search for quests and manage your favorites.",
-    ["tt_CreatureButton"] = "Toggle a popup with the function to search for creatures and manage your favorites.",
-    ["tt_ObjectButton"] = "Toggle a popup with the function to search for objects and manage your favorites.",
-    ["tt_SearchDefault"] = "Now you can enter a keyword and start the search.",
-    ["tt_AnnounceButton"] = "Announce a system message.",
-    ["tt_GPSButton"] = "Shows coordinates for the selected character.",
-    ["tt_ShutdownButton"] = "Shut down the server in the amount of seconds from the field, if omitted shut down immediately!",
-    ["ma_ItemButton"] = "Item-Search",
-    ["ma_ItemSetButton"] = "ItemSet-Search",
-    ["ma_SpellButton"] = "Spell-Search",
-    ["ma_QuestButton"] = "Quest-Search",
-    ["ma_CreatureButton"] = "Creature-Search",
-    ["ma_ObjectButton"] = "Object-Search",
-    ["ma_TeleSearchButton"] = "Teleport-Search",
-    ["ma_LanguageButton"] = "Change language",
-    ["ma_LearnAllButton"] = "All spells",
-    ["ma_LearnCraftsButton"] = "All professions and recipes",
-    ["ma_LearnGMButton"] = "Default GM spells",
-    ["ma_LearnClassButton"] = "All class-spells",
-    ["ma_SearchButton"] = "Search...",
-    ["ma_ResetButton"] = "Reset",
-    ["ma_GPSButton"] = "GPS",
-    ["ma_AnnounceButton"] = "Announce",
-    ["ma_ShutdownButton"] = "Shutdown!",
-    ["ma_ItemVar1Button"] = "Amount",
-    ["ma_ObjectVar1Button"] = "Loot Template",
-    ["ma_ObjectVar2Button"] = "Spawn Time",
-    ["ma_LoadTicketsButton"] = "Show Tickets",
-    ["ma_GetCharTicketButton"] = "Get Player",
-    ["ma_GoCharTicketButton"] = "Go to Player",
-    ["ma_AnswerButton"] = "Answer",
-    ["ma_DeleteButton"] = "Delete",
+  --[[Tooltips]]
+  --[[Control Labels]]
+    ["ma_LoadTicketsButton"] = "Refresh",
+    ["ma_GetCharTicketButton"] = "Summon",
+    ["ma_GoCharTicketButton"] = "Go Player",
+    ["ma_AnswerButton"] = "Mail",
+    ["ma_DeleteButton"] = "Close",
     ["ma_TicketCount"] = "|cFF00FF00Tickets:|r ",
     ["ma_TicketsNoNew"] = "You have no new tickets.",
     ["ma_TicketsNewNumber"] = "You have |cffeda55f%s|r new tickets!",
     ["ma_TicketsGoLast"] = "Go to last ticket creator (%s).",
     ["ma_TicketsGetLast"] = "Bring %s to you.",
-    ["ma_IconHint"] = "|cffeda55fClick|r to open MangAdmin. |cffeda55fShift-Click|r to reload the user interface. |cffeda55fAlt-Click|r to reset the ticket count.",
-    ["ma_Reload"] = "Reload",
-    ["ma_LoadMore"] = "Load more...",
-    ["ma_MailRecipient"] = "Recipient",
-    ["ma_Mail"] = "Send a Mail",
-    ["ma_Send"] = "Send",
-    ["ma_MailSubject"] = "Subject",
-    ["ma_MailYourMsg"] = "Here your message!",
-    ["ma_Online"] = "Online",
-    ["ma_Offline"] = "Offline",
     ["ma_TicketsInfoPlayer"] = "|cFF00FF00Player:|r ",
     ["ma_TicketsInfoStatus"] = "|cFF00FF00Status:|r ",
     ["ma_TicketsInfoAccount"] = "|cFF00FF00Account:|r ",
@@ -387,67 +433,164 @@ function Return_enUS()
     ["ma_TicketsNotLoaded"] = "No ticket loaded...",
     ["ma_TicketsNoTickets"] = "No tickets available!",
     ["ma_TicketTicketLoaded"] = "|cFF00FF00Loaded Ticket-Nr:|r %s\n\nPlayer Information\n\n",
-    ["ma_FavAdd"] = "Add selected",
-    ["ma_FavRemove"] = "Remove selected",
-    ["ma_SelectAllButton"] = "Select all",
-    ["ma_DeselectAllButton"] = "Deselect all",
-    ["ma_MailBytesLeft"] = "Bytes left: ",
+    ["ma_Reload"] = "Reload",
+    ["ma_LoadMore"] = "Load more...",
+    ["tt_TicketOn"] = "Announce new tickets.",
+    ["tt_TicketOff"] = "Don't announce new tickets.",
+  --[[Other]]
+
+
+
+--[[Misc Tab]]
+  --[[Name]]
+    ["tabmenu_Misc"] = "Misc",
+    ["tt_MiscButton"] = "Toggle a window with miscellaneous actions.",
+  --[[Tooltips]]
+    ["tt_FrmTrSlider"] = "Change frame transparency.",
+    ["tt_BtnTrSlider"] = "Change button transparency.",
+  --[[Control Labels]]
+    ["cmd_toggle"] = "Toggle the main window",
+    ["cmd_transparency"] = "Toggle the basic transparency (0.5 or 1.0)",
+    ["cmd_tooltip"] = "Toggle wether the button tooltips are shown or not",
+  --[[Other]]
     ["ma_WeatherFine"] = "Fine",
     ["ma_WeatherFog"] = "Fog",
     ["ma_WeatherRain"] = "Rain",
     ["ma_WeatherSnow"] = "Snow",
     ["ma_WeatherSand"] = "Sand",
-    ["ma_LevelUp"] = "Level up",
-    ["ma_LevelDown"] = "Level down",
-    ["ma_Money"] = "Money",
-    ["ma_Energy"] = "Energy",
-    ["ma_Rage"] = "Rage",
-    ["ma_Mana"] = "Mana",
-    ["ma_Healthpoints"] = "Healthpoints",
-    ["ma_Talents"] = "Talents",
-    ["ma_Stats"] = "Stats",
-    ["ma_Spells"] = "Spells",
-    ["ma_Honor"] = "Honor",
-    ["ma_Level"] = "Level",
-    ["ma_AllLang"] = "All Languages",
-    -- languages
-    ["Common"] = "Common",
-    ["Orcish"] = "Orcish",
-    ["Taurahe"] = "Taurahe",
-    ["Darnassian"] = "Darnassian",
-    ["Dwarvish"] = "Dwarvish",
-    ["Thalassian"] = "Thalassian",
-    ["Demonic"] = "Demonic",
-    ["Draconic"] = "Draconic",
-    ["Titan"] = "Titan",
-    ["Kalimag"] = "Kalimag",
-    ["Gnomish"] = "Gnomish",
-    ["Troll"] = "Troll",
-    ["Gutterspeak"] = "Gutterspeak",
-    ["Draenei"] = "Draenei",
-    ["ma_NoFavorites"] = "There are currently no saved favorites!",
-    ["ma_NoZones"] = "No zones!",
-    ["ma_NoSubZones"] = "No subzones!",
-    ["favoriteResults"] = "|cFF00FF00Favorites:|r ",
-    ["Zone"] = "|cFF00FF00Zone:|r ",
-    ["tt_TicketOn"] = "Announce new tickets.",
-    ["tt_TicketOff"] = "Don't announce new tickets.",
-    ["info_revision"] = "|cFF00FF00MaNGOS Revision:|r ",
-    ["info_platform"] = "|cFF00FF00Server Platform:|r ",
-    ["info_online"] = "|cFF00FF00Players Online:|r ",
-    ["info_maxonline"] = "|cFF00FF00Maximum Online:|r ",
-    ["info_uptime"] = "|cFF00FF00Uptime:|r ",
-    ["cmd_toggle"] = "Toggle the main window",
-    ["cmd_transparency"] = "Toggle the basic transparency (0.5 or 1.0)",
-    ["cmd_tooltip"] = "Toggle wether the button tooltips are shown or not",
+
+
+
+--[[Server Tab]]
+    ["tabmenu_Server"] = "Server",
+    ["tt_ServerButton"] = "Show several server informations and do actions concerning the server.",
+  --[[Tooltips]]
+    ["tt_AnnounceButton"] = "Announce a system message.",
+    ["tt_ShutdownButton"] = "Shut down the server in the amount of seconds from the field, if omitted shut down immediately!",
+  --[[Control Labels]]
+    ["ma_AnnounceButton"] = "Announce",
+    ["ma_ShutdownButton"] = "Shutdown!",
+  --[[Other]]
+
+
+
+--[[Log Tab]]
+    ["tabmenu_Log"] = "Log",
+    ["tt_LogButton"] = "Show the log of all actions done with MangAdmin.",
+  --[[Tooltips]]
+  --[[Control Labels]]
+  --[[Other]]
+
+
+
+--[[PvP Tab]]
+    ["tabmenu_pvp"] = "PvP",
+  --[[Tooltips]]
+  --[[Control Labels]]
+  --[[Other]]
+
+
+
+--[[Event Tab]]
+    ["tabmenu_event"] = "Event",
+  --[[Tooltips]]
+  --[[Control Labels]]
+  --[[Other]]
+
+
+
+--[[RPG Tab]]
+    ["tabmenu_rpg"] = "RPG",
+  --[[Tooltips]]
+  --[[Control Labels]]
+  --[[Other]]
+
+
+
+--[[Vendor Tab]]
+    ["tabmenu_vendor"] = "Vendor",
+  --[[Tooltips]]
+  --[[Control Labels]]
+  --[[Other]]
+
+
+
+--[[AhBot Tab]]
+    ["tabmenu_ahbot"] = "AhBot",
+  --[[Tooltips]]
+  --[[Control Labels]]
+  --[[Other]]
+  
+
+    
+--[[Who Tab]]
+    ["tabmenu_who"] = "Who",
+  --[[Tooltips]]
+  --[[Control Labels]]
+    ["ma_ShowWhoButton"] = "Refresh",
+    ["ma_SummonWhoButton"] = "Summon",
+    ["ma_GoCharWhoButton"] = "Go Player",
+    ["ma_AnswerWhoButton"] = "Mail",
+    ["ma_DeleteWhoButton"] = "Kick",
+    ["ma_whisperbutton"] = "Whisper",
+  --[[Other]]
+
+    
+    
+--[[Pop UPs]]
+   --[[General]]
+   --[[ToolTips]]
+    ["tt_ItemButton"] = "Toggle a popup with the function to search for items and manage your favorites.",
+    ["tt_ItemSetButton"] = "Toggle a popup with the function to search for itemsets and manage your favorites.",
+    ["tt_SpellButton"] = "Toggle a popup with the function to search for spells and manage your favorites.",
+    ["tt_QuestButton"] = "Toggle a popup with the function to search for quests and manage your favorites.",
+    ["tt_CreatureButton"] = "Toggle a popup with the function to search for creatures and manage your favorites.",
+    ["tt_ObjectButton"] = "Toggle a popup with the function to search for objects and manage your favorites.",
+    ["tt_SearchDefault"] = "Now you can enter a keyword and start the search.",
     ["tt_SkillButton"] = "Toggle a popup with the function to search for skills and manage your favorites.",
-    ["tt_FrmTrSlider"] = "Change frame transparency.",
-    ["tt_BtnTrSlider"] = "Change button transparency.",
+  --[[Labels]]
+    ["ma_ItemButton"] = "Item-Search",
+    ["ma_ItemSetButton"] = "ItemSet-Search",
+    ["ma_SpellButton"] = "Spell-Search",
+    ["ma_QuestButton"] = "Quest-Search",
+    ["ma_CreatureButton"] = "Creature-Search",
+    ["ma_ObjectButton"] = "Object-Search",
+    ["ma_TeleSearchButton"] = "Teleport-Search",
+    ["ma_MailRecipient"] = "Recipient",
+    ["ma_Mail"] = "Send a Mail",
+    ["ma_Send"] = "Send",
+    ["ma_MailSubject"] = "Subject",
+    ["ma_MailYourMsg"] = "Here your message!",
+    ["ma_SearchButton"] = "Search...",
+    ["ma_ResetButton"] = "Reset",
+    ["ma_FavAdd"] = "Add selected",
+    ["ma_FavRemove"] = "Remove selected",
+    ["ma_SelectAllButton"] = "Select all",
+    ["ma_DeselectAllButton"] = "Deselect all",
+    ["ma_MailBytesLeft"] = "Bytes left: ",
     ["ma_SkillButton"] = "Skill-Search",
     ["ma_SkillVar1Button"] = "Skill",
     ["ma_SkillVar2Button"] = "Max Skill",
-    ["tt_DisplayAccountLvl"] = "Display your account level.",
-    --linkifier
+    ["ma_ItemVar1Button"] = "Amount",
+    ["ma_ObjectVar1Button"] = "Loot Template",
+    ["ma_ObjectVar2Button"] = "Spawn Time",
+    ["ma_NoFavorites"] = "There are currently no saved favorites!",
+    ["favoriteResults"] = "|cFF00FF00Favorites:|r ",
+  
+  
+  
+--[[Deprecated, but may be used again.]]  
+    ["ma_LearnAllButton"] = "All spells",
+    ["ma_LearnCraftsButton"] = "All professions and recipes",
+    ["ma_LearnGMButton"] = "Default GM spells",
+    ["ma_LearnClassButton"] = "All class-spells",
+    ["ma_GPSButton"] = "GPS",
+    ["ma_Online"] = "Online",
+    ["ma_Offline"] = "Offline",
+
+
+
+--[[Linkifier]]
     ["lfer_Spawn"] = "Spawn",
     ["lfer_List"] = "List",
     ["lfer_Goto"] = "Goto",
@@ -460,6 +603,62 @@ function Return_enUS()
     ["lfer_Remove"] = "Remove",
     ["lfer_Learn"] = "Learn",
     ["lfer_Unlearn"] = "Unlearn",
-    ["lfer_Error"] = "Error Search String Matched but an error occured or unable to find type"
-  }
+    ["lfer_Error"] = "Error Search String Matched but an error occured or unable to find type",
+    
+--[[New additions]]
+    ["parameters"]= "Parameter(s):",
+    ["gmingame"] = "GMs InGame",
+    ["gmlist"] = "GM List",
+    ["petcreate"] = "Pet Create",
+    ["petlearn"] = "Pet Learn",
+    ["petunlearn"] = "Pet UnLearn",
+    ["pettp"] = "Pet TP",
+    ["lookuptaxi"] = "Lookup Taxi",
+    ["gotaxinode"] = "Go TaxiNode",
+    ["gotrigger"] = "Go Trigger",
+    ["goxy"] = "Go XY",
+    ["goxyz"] = "Go XYZ",
+    ["gozonexy"] = "Go ZoneXY",
+    ["lookupzone"] = "Lookup Zone",
+    ["cast"] = "Cast",
+    ["castback"] = "Cast Back",
+    ["castdist"] = "Cast Dist",
+    ["castself"] = "Cast Self",
+    ["casttarget"] = "Cast Target",
+    ["listitem"] = "List Item",
+    ["GmClear"] = "Clear",
+    ["acctcreate"] = "Acct Create",
+    ["acctdelete"] = "Acct Delete",
+    ["acctaddon"] = "Acct Addon",
+    ["acctgmlvl"] = "Acct GMLvl",
+    ["acctpasswd"] = "Acct Passwd",
+    ["gmnotify"] = "GM Notify",
+    ["tt_gmingamebutton"] = "Shows GMs who are logged in.",
+    ["tt_gmlistbutton"] = "Shows the GM accounts on this server",
+    ["tt_petcreatebutton"] = "Makes the selected ANIMAL your pet.",
+    ["tt_petlearnbutton"] = "Teaches your pet spell [[Parameter: #SPELLID]]",
+    ["tt_petunlearnbutton"] = "Un-Teaches your pet spell [[Parameter: #SPELLID]]",
+    ["tt_pettpbutton"] = "Modifies pet's training points [[Parameter: #points]]",
+    ["tt_lookuptaxibutton"] = "Lookup a TaxiNode [[Parameter: $Areanamepart]]",
+    ["tt_gotaxinodebutton"] = "Teleports to given TaxiNode [[Parameter: #taxinode]]",
+    ["tt_gotriggerbutton"] = "Teleports to given area trigger [[Parameter: #trigger_id]]",
+    ["tt_goxybutton"] = "Teleports to given coordinates at ground/water level on MapID. If MapID omitted, current map [[Parameters: #x #y [#mapid]]]",
+    ["tt_goxyzbutton"] = "Teleports to given coordinates at #z level on MapID. If MapID omitted, current map [[Parameters: #x #y #z [#mapid]]]",
+    ["tt_gozonexybutton"] = "Teleports to given coordinates at ground/water level in ZoneID. If ZoneID omitted, current zone [[Parameters: #x #y [#zoneid]]]",
+    ["tt_lookupzonebutton"] = "Lookup a Zone. [[Parameters: $Areanamepart]]",
+    ["tt_castbutton"] = "Cast a spell. [[Parameters: #SpellID]]",
+    ["tt_castbackbutton"] = "Selected creature will cast spell [SpellID] at YOU. [[Parameters: #SpellID]]",
+    ["tt_castdistbutton"] = "You cast a spell [SpellID] at distance [#Dist]. [[Parameters: #SpellID #Dist]]",
+    ["tt_castselfbutton"] = "Selected creature casts spell [SpellID] at itself. [[Parameters: #SpellID]]",
+    ["tt_casttargetbutton"] = "Selected creature casts spell [SpellID] at it's target. [[Parameters: #SpellID]]",
+    ["tt_gmclearbutton"] = "Clears the parameter box.",
+    ["tt_listitembutton"] = "Lists all occurences of [#itemID]. [[Parameters: #ItemID]]",
+    ["tt_acctcreatebutton"] = "Creates a player account [[Parameters: $accountname $password]]",
+    ["tt_acctdeletebutton"] = "Deletes a player account and all characters [[Parameters: $accountname]]",
+    ["tt_acctaddonbutton"] = "Sets $account to use #addon(0=WoW, 1=TBC, 2=WotLK) [[Parameters: $accountname #addon]]",
+    ["tt_acctgmlvlbutton"] = "Sets $account to #gmlevel (0=Player, 1=Helper, 2=Assistant, 3=GM, 4=Admin) [[Parameters: $accountname #gmlevel]]",
+    ["tt_acctpasswdbutton"] = "Sets $account $password [[Parameters: $accountname $password $password]]",
+    ["tt_gmnotifybutton"] = "Sends message $message to all online GMs [[Parameters: $message]]"
+    
+}
 end

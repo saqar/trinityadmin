@@ -703,7 +703,8 @@ function MangAdmin:CreatePopupFrames()
       offX = -10,
       offY = -10
     },
-    inherits = "UIPanelScrollFrameTemplate"
+    inherits = "FauxScrollFrameTemplate"
+    --inherits = "UIPanelScrollFrameTemplate"
   })
   
   FrameLib:BuildFrame({

@@ -45,7 +45,7 @@ function MangAdmin:CreateMiniMenu()
     draggable = true,
     size = {
       width = 28,
-      height = 240
+      height = 374
     },
     setpoint = {
       pos = "RIGHT"
@@ -62,7 +62,7 @@ function MangAdmin:CreateMiniMenu()
     },
     size = {
       width = 24,
-      height = 236
+      height = 368
     },
     setpoint = {
       pos = "TOPLEFT",
@@ -307,6 +307,138 @@ function MangAdmin:CreateMiniMenu()
       offY = -2
     },
     text = "Lo"
+  })
+  
+  FrameLib:BuildButton({
+    name = "ma_mm_pvpbutton",
+    group = "minimenu",
+    parent = ma_miniframe,
+    texture = {
+      name = "ma_mm_pvpbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 20,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      relTo = "ma_mm_logbutton",
+      relPos = "BOTTOMLEFT",
+      offX = 0,
+      offY = -2
+    },
+    text = "Pv"
+  })
+  
+    FrameLib:BuildButton({
+    name = "ma_mm_eventbutton",
+    group = "minimenu",
+    parent = ma_miniframe,
+    texture = {
+      name = "ma_mm_eventbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 20,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      relTo = "ma_mm_pvpbutton",
+      relPos = "BOTTOMLEFT",
+      offX = 0,
+      offY = -2
+    },
+    text = "Ev"
+  })
+  
+    FrameLib:BuildButton({
+    name = "ma_mm_rpgbutton",
+    group = "minimenu",
+    parent = ma_miniframe,
+    texture = {
+      name = "ma_mm_rpgbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 20,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      relTo = "ma_mm_eventbutton",
+      relPos = "BOTTOMLEFT",
+      offX = 0,
+      offY = -2
+    },
+    text = "Rp"
+  })
+  
+    FrameLib:BuildButton({
+    name = "ma_mm_vendorbutton",
+    group = "minimenu",
+    parent = ma_miniframe,
+    texture = {
+      name = "ma_mm_vendorbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 20,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      relTo = "ma_mm_rpgbutton",
+      relPos = "BOTTOMLEFT",
+      offX = 0,
+      offY = -2
+    },
+    text = "Ve"
+  })
+  
+    FrameLib:BuildButton({
+    name = "ma_mm_ahbotbutton",
+    group = "minimenu",
+    parent = ma_miniframe,
+    texture = {
+      name = "ma_mm_ahbotbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 20,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      relTo = "ma_mm_vendorbutton",
+      relPos = "BOTTOMLEFT",
+      offX = 0,
+      offY = -2
+    },
+    text = "Ah"
+  })
+  
+    FrameLib:BuildButton({
+    name = "ma_mm_whobutton",
+    group = "minimenu",
+    parent = ma_miniframe,
+    texture = {
+      name = "ma_mm_whobutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 20,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      relTo = "ma_mm_ahbotbutton",
+      relPos = "BOTTOMLEFT",
+      offX = 0,
+      offY = -2
+    },
+    text = "Wh"
   })
   
   FrameLib:BuildButton({

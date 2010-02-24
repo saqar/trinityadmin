@@ -1,8 +1,8 @@
-## Interface: 30200
+## Interface: 30300
 ## Title: TrinityAdmin
 ## Author: TrinityAdmin Dev team + Manground Dev Team
 ## Version: 3.2.2a
-## Notes: This addon only works with Trinity-Servers and 3.2.x clients. Derived from MangAdmin.
+## Notes: This addon only works with Trinity-Servers and 3.x clients. Derived from MangAdmin.
 ## URL: http://www.assembla.com/spaces/trinityadmin
 ## Name: TrinityAdmin
 ## License: GPLv3
@@ -44,6 +44,7 @@ Locales\zhCN.lua
 Locales\ptPT.lua
 Locales\ruRU.lua
 Locales\nlNL.lua
+Locales\buBU.lua
 Locales\strings.lua
 Commands\Commands_Main.lua
 Commands\Commands_Tele.lua
@@ -55,6 +56,12 @@ Commands\Commands_Misc.lua
 Commands\Commands_Server.lua
 Commands\Commands_NPC.lua
 Commands\Commands_GO.lua
+Commands\Commands_PvP.lua
+Commands\Commands_Event.lua
+Commands\Commands_RPG.lua
+Commands\Commands_Vendor.lua
+Commands\Commands_Ahbot.lua
+Commands\Commands_Who.lua
 TeleportTable.lua
 FunctionInit.lua
 TrinityAdmin.lua
@@ -75,4 +82,10 @@ Frames\MangFrames_SectionMisc.lua
 Frames\MangFrames_SectionServer.lua
 Frames\MangFrames_SectionNpc.lua
 Frames\MangFrames_SectionGO.lua
+Frames\MangFrames_SectionPvP.lua
+Frames\MangFrames_SectionEvent.lua
+Frames\MangFrames_SectionRPG.lua
+Frames\MangFrames_SectionVendor.lua
+Frames\MangFrames_SectionAhbot.lua
+Frames\MangFrames_SectionWho.lua
 MangFrames.lua

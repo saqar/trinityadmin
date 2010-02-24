@@ -57,7 +57,7 @@ function MangAdmin:CreateServerSection()
     name = "ma_lagmetertext",
     group = "server",
     parent = ma_midframe,
-    text = "^Server Lag",
+    text = "^Server Latency",
     setpoint = {
       pos = "TOPLEFT",
       offX = 10,
@@ -82,7 +82,7 @@ function MangAdmin:CreateServerSection()
       end
       local down, up, lag = GetNetStats();
       g:AddBar(lag)
-      ma_lagmetertext:SetText("^Server Lag: "..lag.." milliseconds")
+      ma_lagmetertext:SetText("^Server Latency: "..lag.." ms")
       f.NextUpdate=f.NextUpdate + 1
     end)
   f:Show()
@@ -180,7 +180,7 @@ function MangAdmin:CreateServerSection()
     text = "Reload table"
   })
   
-  FrameLib:BuildButton({
+ --[[ FrameLib:BuildButton({
     name = "ma_saveallbutton",
     group = "server",
     parent = ma_midframe,
@@ -199,7 +199,7 @@ function MangAdmin:CreateServerSection()
     },
     text = "Save all"
   })
-  
+  ]]
   FrameLib:BuildButton({
     name = "ma_loadscriptsbutton",
     group = "server",
@@ -256,4 +256,86 @@ function MangAdmin:CreateServerSection()
     },
     text = Locale["ma_ShutdownButton"]
   })
+  
+  
+    FrameLib:BuildFrame({
+    name = "ma_netgraphframe2",
+    group = "server",
+    parent = ma_midframe,
+    texture = {
+      color = {0,0,0,0.7}
+    },
+    size = {
+      width = 152,
+      height = 152
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 170,
+      offY = -10
+    },
+    inherits = nil
+  })
+  
+    FrameLib:BuildFontString({
+    name = "ma_lagmetertext2",
+    group = "server",
+    parent = ma_midframe,
+    text = "^Update Diff",
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 170,
+      offY = -170
+    }
+  })
+    FrameLib:BuildFontString({
+    name = "ma_difftext",
+    group = "server",
+    parent = ma_midframe,
+    text = "",
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 250,
+      offY = -170
+    }
+  })
+  
+  RealGraph=Graph:CreateGraphRealtime("ma_netgraph_diff",ma_netgraphframe2,"CENTER","CENTER",0,0,150,150)
+  local z=RealGraph
+  z:SetAutoScale(false)
+  z:SetGridSpacing(1.0,10.0)
+  z:SetYMax(300)
+  z:SetXAxis(-10,0)
+  z:SetMode("RAW")
+  z:SetBarColors({0.2,0.0,0.0,0.4},{0.0,0.0,1.0,1.0})
+  local x = CreateFrame("Frame",name,parent)
+  x.frames=0
+  x.NextUpdate=GetTime()
+  local q=0
+  x:SetScript("OnUpdate",function() 
+      q=q+1
+      if q > 4000 then --20000=approx 5 minutes, 4000= ~1 minute
+          MangAdmin:ChatMsg(".server info")
+          q=0
+          local s = ma_difftext:GetText()
+          --MangAdmin:ChatMsg("Diff="..s)
+          local r="100" -- Trinity says anything over 150 is bad
+          if s > r then
+              z:SetBarColors({1.0,0.0,0.0,1.0},{1.0,0.0,0.0,1.0}) -->150, turn red
+          else  
+              z:SetBarColors({0.0,1.0,0.0,1.0},{0.0,1.0,0.0,1.0}) -- otherwise green
+          end
+          z:AddBar(s)
+          s="0"
+      end
+      if x.NextUpdate>GetTime() then
+        return
+      end
+      --local down, up, lag = GetNetStats();
+--      ma_difftext:SetText(""..lag.." ms")
+      x.NextUpdate=x.NextUpdate + 1
+    end)
+  x:Show()
+
+  
 end
