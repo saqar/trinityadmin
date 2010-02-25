@@ -135,6 +135,14 @@ function InlineScrollUpdate()
     MangAdmin:ChatMsg(".ticket list")
     local ticketCount = 0
     table.foreachi(MangAdmin.db.account.buffer.tickets, function() ticketCount = ticketCount + 1 end)
+    if ticketCount == 0 then
+        ma_ticketscrollframe1:Show()
+            ma_ticketscrollframe1:Disable()
+        ma_ticketscrollframe1:SetText(Locale["ma_TicketsNoTickets"])
+        for i=2,12 do
+            getglobal("ma_ticketscrollframe"..i):Hide()
+        end
+    end
     if ticketCount > 0 then
       --ma_top2text:SetText(Locale["realm"].." "..Locale["tickets"]..ticketCount)
       ma_ticketscrollframe1:SetText("Loading")
@@ -183,7 +191,7 @@ function ReadTicket(tNumber, tChar)
      ma_gocharticketbutton:Enable()
      ma_whisperticketbutton:Enable()
 --   MangAdmin:ChatMsg(tNumber)
-     tNumber=string.gsub(tNumber, "00", "")
+--   tNumber=string.gsub(tNumber, ".", "")
 --   MangAdmin:ChatMsg(tNumber)
     --x = x - 1 
     tNumber = string.match(tNumber, "%d+")
