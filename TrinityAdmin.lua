@@ -22,7 +22,7 @@ local genv = getfenv(0)
 local Mang = genv.Mang
 
 MAJOR_VERSION = "TrinityAdmin-3.3.2"
-MINOR_VERSION = "$Revision: 014 $"
+MINOR_VERSION = "$Revision: 016 $"
 ROOT_PATH     = "Interface\\AddOns\\TrinityAdmin\\"
 local cont = ""
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
@@ -134,12 +134,13 @@ MangAdmin:RegisterDefaults("account",
 Locale:EnableDynamicLocales(true)
 --Locale:EnableDebugging()
 Locale:RegisterTranslations("enUS", function() return Return_enUS() end)
---Locale:RegisterTranslations("deDE", function() return Return_deDE() end)
 Locale:RegisterTranslations("frFR", function() return Return_frFR() end)
+Locale:RegisterTranslations("svSV", function() return Return_svSV() end)
+--Locale:RegisterTranslations("ptBR", function() return Return_ptBR() end)
+--Locale:RegisterTranslations("deDE", function() return Return_deDE() end)
 --Locale:RegisterTranslations("itIT", function() return Return_itIT() end)
 --Locale:RegisterTranslations("fiFI", function() return Return_fiFI() end)
 --Locale:RegisterTranslations("plPL", function() return Return_plPL() end)
-Locale:RegisterTranslations("svSV", function() return Return_svSV() end)
 --Locale:RegisterTranslations("liLI", function() return Return_liLI() end)
 --Locale:RegisterTranslations("roRO", function() return Return_roRO() end)
 --Locale:RegisterTranslations("csCZ", function() return Return_csCZ() end)
@@ -153,12 +154,13 @@ Locale:RegisterTranslations("svSV", function() return Return_svSV() end)
 -- Register String Traslations
 Strings:EnableDynamicLocales(true)
 Strings:RegisterTranslations("enUS", function() return ReturnStrings_enUS() end)
---Strings:RegisterTranslations("deDE", function() return ReturnStrings_deDE() end)
 Strings:RegisterTranslations("frFR", function() return ReturnStrings_frFR() end)
+Strings:RegisterTranslations("svSV", function() return ReturnStrings_svSV() end)
+--Strings:RegisterTranslations("ptBR", function() return ReturnStrings_ptBR() end)
+--Strings:RegisterTranslations("deDE", function() return ReturnStrings_deDE() end)
 --Strings:RegisterTranslations("itIT", function() return ReturnStrings_itIT() end)
 --Strings:RegisterTranslations("fiFI", function() return ReturnStrings_fiFI() end)
 --Strings:RegisterTranslations("plPL", function() return ReturnStrings_plPL() end)
-Strings:RegisterTranslations("svSV", function() return ReturnStrings_svSV() end)
 --Strings:RegisterTranslations("liLI", function() return ReturnStrings_liLI() end)
 --Strings:RegisterTranslations("roRO", function() return ReturnStrings_roRO() end)
 --Strings:RegisterTranslations("csCZ", function() return ReturnStrings_csCZ() end)
@@ -539,7 +541,7 @@ function MangAdmin:TogglePopup(value, param)
     ma_ptabbutton_1:SetText(Locale["ma_Mail"])
     ma_ptabbutton_2:Hide()
     ma_searchbutton:SetText(Locale["ma_Send"])
-    ma_searchbutton:SetScript("OnClick", function() self:SendMail(ma_searcheditbox:GetText(), ma_var1editbox:GetText(), ma_maileditbox:GetText()) end)
+    ma_searchbutton:SetScript("OnClick", function() self:SendMail(ma_searcheditbox:GetText(), ma_var1editbox:GetText(), ma_maileditbox:GetText()); ma_popupframe:Hide() end)
     ma_var2editbox:Hide()
     ma_var2text:Hide()
     if param.subject then
@@ -1971,8 +1973,8 @@ function MangAdmin:InitScrollFrames()
   ma_SubzoneScrollBar:SetScript("OnShow", function() SubzoneScrollUpdate() end)
   --ma_ticketscrollframe:SetScrollChild(ma_ticketeditbox)
   --ma_ticketscrollframe1:SetText("No Data")
-  ma_ticketscrollframe:SetScript("OnVerticalScroll", InlineScrollUpdate(), function(self, offset) FauxScrollFrame_OnVerticalScroll(self, offset-1, 16, InlineScrollUpdate()) end)
-  ma_ticketscrollframe:SetScript("OnShow", function() InlineScrollUpdate() end)
+  ma_ticketscrollframe:SetScript("OnVerticalScroll", InlineScrollUpdate("list"), function(self, offset) FauxScrollFrame_OnVerticalScroll(self, offset-1, 16, InlineScrollUpdate("list")) end)
+  ma_ticketscrollframe:SetScript("OnShow", function() InlineScrollUpdate("list") end)
   ma_whoscrollframe:SetScript("OnVerticalScroll", WhoUpdate(), function(self, offset) FauxScrollFrame_OnVerticalScroll(self, offset-1, 16, WhoUpdate()) end)
   ma_whoscrollframe:SetScript("OnShow", function() WhoUpdate() end)
 

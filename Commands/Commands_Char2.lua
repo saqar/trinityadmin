@@ -41,14 +41,6 @@ function CreateGuildButton()
 
 end
 
-function TeleAddButton()
-  local cname = ma_charactertarget:GetText()
-  local npccname = ma_npccharactertarget:GetText()
-  MangAdmin:ChatMsg(".tele add "..cname)
-  MangAdmin:LogAction("Added .tele location: "..cname..".")
-
-end
-
 function BanInfoButton()
   local cname = ma_charactertarget:GetText()
   local npccname = ma_npccharactertarget:GetText()
@@ -70,14 +62,6 @@ function GuildInviteButton()
   local npccname = ma_npccharactertarget:GetText()
   MangAdmin:ChatMsg(".guild invite "..cname)
   MangAdmin:LogAction("Guild invitation: "..cname..".")
-
-end
-
-function TeleDelButton()
-  local cname = ma_charactertarget:GetText()
-  local npccname = ma_npccharactertarget:GetText()
-  MangAdmin:ChatMsg(".tele del "..cname)
-  MangAdmin:LogAction("Deleted .tele location: "..cname..".")
 
 end
 

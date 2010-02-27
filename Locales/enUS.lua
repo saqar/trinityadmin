@@ -633,6 +633,14 @@ function Return_enUS()
     ["acctgmlvl"] = "Acct GMLvl",
     ["acctpasswd"] = "Acct Passwd",
     ["gmnotify"] = "GM Notify",
+    ["ma_who_customize"]="Customize",
+    ["ma_who_chardelete"]="|c00FF0000Char Del|r",
+    ["ma_who_charrename"] = "Rename",
+    ["ma_who_1daybanbutton"] = "1dayBan",
+    ["ma_who_permbanbutton"] = "PermBan",
+    ["ma_who_jailabutton"] = "Jail(A)",
+    ["ma_who_jailhbutton"] = "Jail(H)",
+    ["ma_who_unjailbutton"] = "UnJail",
     ["tt_gmingamebutton"] = "Shows GMs who are logged in.",
     ["tt_gmlistbutton"] = "Shows the GM accounts on this server",
     ["tt_petcreatebutton"] = "Makes the selected ANIMAL your pet.",
@@ -658,7 +666,14 @@ function Return_enUS()
     ["tt_acctaddonbutton"] = "Sets $account to use #addon(0=WoW, 1=TBC, 2=WotLK) [[Parameters: $accountname #addon]]",
     ["tt_acctgmlvlbutton"] = "Sets $account to #gmlevel (0=Player, 1=Helper, 2=Assistant, 3=GM, 4=Admin) [[Parameters: $accountname #gmlevel]]",
     ["tt_acctpasswdbutton"] = "Sets $account $password [[Parameters: $accountname $password $password]]",
-    ["tt_gmnotifybutton"] = "Sends message $message to all online GMs [[Parameters: $message]]"
-    
+    ["tt_gmnotifybutton"] = "Sends message $message to all online GMs [[Parameters: $message]]",
+    ["tt_who_customize"] = "Flag character for customization at next login.",
+    ["tt_who_chardelete"] = "CAUTION! Deletes the selected character. CAUTION!",
+    ["tt_who_charrename"] = "Flags selected character for rename at next login.",
+    ["tt_who_permbanbutton"] = "Bans the selected character's account PERMANENTLY",
+    ["tt_who_1daybanbutton"] = "Bans the selected character's account for 1 day",
+    ["tt_who_jailabutton"] = "Jails the character in the Alliance Jail",
+    ["tt_who_jailhbutton"] = "Jails the character in the Horde Jail",
+    ["tt_who_unjailbutton"] = "UnJails the character"
 }
 end

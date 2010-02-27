@@ -1,5 +1,23 @@
 TrinityAdmin Changelog
--=[ Revision 13 - "Lucky 13"]=-
+
+-=[ Revision 16 - 2/26/2010 ]=-
+- UPDATE: svSV locale updated
+- UPDATE: Close Mail popup when send button clicked - Thanks, Shocker!
+- ADD: Ticket tab, new button to view tickets of online players only (.ticket onlinelist) Thanks, Shocker!
+- UPDATE: Change minimapicon when a new ticket is received. Now more obvious and with a 'T'. Thanks, Kitharo! Issue #25 closed
+- UPDATE: Moved Tele Add and Tele Del buttons to GM tab, rather than Char2 tab.
+- ADD: On WHO tab: .char customize, .char delete, .char rename, .ban (1 day), .ban (perm), Jail (Alliance), Jail(Horde), UnJail
+
+
+-=[ Revision 15 - 2/25/2010 ]=-
+- FIX: Issue #23 Ticket list not clearing when last ticket closed
+- FIX: Issue #24 Tickets with IDs containing '00' not displaying - ta.sql MUST be reapplied
+- The above two issues found and fixed by Shocker. Thanks m8!
+
+-=[ Revision 14 - 2/24/2010 ]=-
+- Fixed internal revision number, forgotten at last commit.
+
+-=[ Revision 13 - 2/24/2010 ]=-
 This is a major release, incorporating many, mnay fixes along with
 some major new features (Tickets, Who). This release would NOT have 
 happened without the generous and patient assistance of Kitharo (from 
@@ -41,6 +59,8 @@ Supported Locales & translator:
 enUS: iotech
 frFR: Namida 
 svSV: Lyrr123
+ptPT: Morpheux 
+ptBR: Morpheux 
 
 Locales in-progress:
 csCZ: Ravenheart 
@@ -49,8 +69,6 @@ itIT: dracula70
 ruRU: mrlakec 
 deDE: Amok 
 roRO: borgotech 
-ptPT: Morpheux 
-ptBR: Morpheux 
 esES: Georgios 
 
 Unsupported Locales: (Can you read/write/speak one of these languages as well as English? Want to join the project?)

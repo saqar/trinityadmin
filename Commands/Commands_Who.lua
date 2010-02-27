@@ -96,5 +96,36 @@ function Who(value)
   elseif value == "whisper" then
     ChatFrameEditBox:Show()
     ChatFrameEditBox:Insert("/w "..ma_who:GetText().." ");
+  elseif value == "customize" then
+    MangAdmin:ChatMsg(".character customize "..ma_who:GetText())
+  elseif value == "chardelete" then
+    MangAdmin:ChatMsg(".character delete "..ma_who:GetText())
+  elseif value == "charrename" then
+    MangAdmin:ChatMsg(".character rename "..ma_who:GetText())
+  elseif value == "1dayban" then
+    MangAdmin:ChatMsg(".ban character "..ma_who:GetText().." 1d 1Day ban by GM")
+  elseif value == "permban" then
+    MangAdmin:ChatMsg(".ban character "..ma_who:GetText().." -1d Permanent ban by GM")
+  elseif value == "jaila" then
+    cname=ma_who:GetText()
+    MangAdmin:ChatMsg(".tele name "..cname.." ma_AllianceJail")
+    MangAdmin:LogAction("Jailed player "..cname..".")
+    MangAdmin:ChatMsg(".notify "..cname.." has been found guilty and jailed.")
+  elseif value == "jailh" then
+    cname=ma_who:GetText()
+    MangAdmin:ChatMsg(".tele name "..cname.." ma_HordeJail")
+    MangAdmin:LogAction("Jailed player "..cname..".")
+    MangAdmin:ChatMsg(".notify "..cname.." has been found guilty and jailed.")
+  elseif value == "unjail" then
+    cname=ma_who:GetText()
+    MangAdmin:ChatMsg(".recall "..cname)
+    MangAdmin:LogAction("UnJailed player "..cname..".")
+    MangAdmin:ChatMsg(".notify "..cname.." has been pardoned and released from jail.")
+  
+  
   end
+
+
+
+
 end

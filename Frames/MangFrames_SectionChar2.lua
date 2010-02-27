@@ -158,26 +158,6 @@ FrameLib:BuildButton({
     })
 
 FrameLib:BuildButton({
-    name = "ma_teleaddbutton",
-    group = "char2",
-    parent = ma_midframe,
-    texture = {
-      name = "ma_teleaddbutton_texture",
-      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
-    },
-    size = {
-      width = 80,
-      height = 20
-    },
-    setpoint = {
-      pos = "TOPLEFT",
-      offX = 256,
-      offY = -15
-    },
-    text = Locale["ma_teleaddbutton"]
-    })
-
-FrameLib:BuildButton({
     name = "ma_baninfobutton",
     group = "char2",
     parent = ma_midframe,
@@ -237,25 +217,6 @@ FrameLib:BuildButton({
     text = Locale["ma_guildinvitebutton"]
     })
 
-FrameLib:BuildButton({
-    name = "ma_teledelbutton",
-    group = "char2",
-    parent = ma_midframe,
-    texture = {
-      name = "ma_teledelbutton_texture",
-      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
-    },
-    size = {
-      width = 80,
-      height = 20
-    },
-    setpoint = {
-      pos = "TOPLEFT",
-      offX = 256,
-      offY = -37
-    },
-    text = Locale["ma_teledelbutton"]
-    })
 
 FrameLib:BuildButton({
     name = "ma_banlistbutton",
