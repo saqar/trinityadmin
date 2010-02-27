@@ -143,7 +143,7 @@ function Return_svSV()
     ["ma_GUIDButton"] = "Visa GUID",
     ["ma_PinfoButton"] = "SPELAR Info",
     ["ma_DistanceButton"] = "Distans",
-    ["ma_RecallButton"] = "Ångra",
+    ["ma_RecallButton"] = "Ångra Tele",
     ["ma_DemorphButton"] = "Ta bort Morph",
     ["ma_ShowMapsCharButton"] = "Avslöja kartor",
     ["ma_HideMapsCharButton"] = "Dölj kartor",
@@ -311,7 +311,7 @@ function Return_svSV()
     ["ma_NPCUnFreeze_WayButton"] = "Går vägbana",
     ["ma_NPCMove"] = "NPC Flytta",
     ["ma_WayMDel"] = "VägmDel",
-    ["ma_WayEndAdd"] = "VägmSlutTillägg",
+    ["ma_WayEndAdd"] = "VägmSlut",
     ["[WayAdd]"] = "[VägTillägg]",
     ["[WayShow]"] = "[VisaVäg]",
     ["ma_NPCDel"] = "NPC Del",
@@ -451,7 +451,7 @@ function Return_svSV()
 
 
 --[[Event Tab]]
-    ["tabmenu_event"] = "Händelse",
+    ["tabmenu_event"] = "Event",
   --[[Tooltips]]
   --[[Control Labels]]
   --[[Other]]
@@ -467,7 +467,7 @@ function Return_svSV()
 
 
 --[[Vendor Tab]]
-    ["tabmenu_vendor"] = "Försäljare",
+    ["tabmenu_vendor"] = "Vendor",
   --[[Tooltips]]
   --[[Control Labels]]
   --[[Other]]

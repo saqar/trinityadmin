@@ -359,3 +359,18 @@ function GMNotify()
   MangAdmin:ChatMsg(".gmnotify "..param)
   MangAdmin:LogAction("GM Notify: "..param)
 end
+
+function TeleAddButton()
+  local cname = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".tele add "..cname)
+  MangAdmin:LogAction("Added .tele location: "..cname..".")
+
+end
+
+function TeleDelButton()
+  local cname = ma_parameter:GetText()
+  MangAdmin:ChatMsg(".tele del "..cname)
+  MangAdmin:LogAction("Deleted .tele location: "..cname..".")
+
+end
+

@@ -34,46 +34,65 @@ function MangAdmin:CreateTicketSection()
     frm = MangAdmin.db.account.style.color.frames
   }
   
-  FrameLib:BuildButton({
+FrameLib:BuildButton({
     name = "ma_showticketsbutton",
     group = "ticket",
     parent = ma_midframe,
     texture = {
-      name = "ma_loadticketsbutton_texture",
-      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+        name = "ma_loadticketsbutton_texture",
+        color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
-      width = 100,
-      height = 15
+        width = 70,
+        height = 15
     },
     setpoint = {
-      pos = "TOPLEFT",
-      offX = 10,
-      offY = -5
+        pos = "TOPLEFT",
+        offX = 10,
+        offY = -5
     },
-    text = Locale["ma_LoadTicketsButton"]
-  })
-  
-  FrameLib:BuildButton({
+    text = "All tickets"
+})
+
+FrameLib:BuildButton({
+    name = "ma_showonlineticketsbutton",
+    group = "ticket",
+    parent = ma_midframe,
+    texture = {
+        name = "ma_loadticketsbutton_texture",
+        color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+        width = 60,
+        height = 15
+    },
+    setpoint = {
+        pos = "TOPLEFT",
+        offX = 90,
+        offY = -5
+    },
+    text = "Online"
+})
+
+FrameLib:BuildButton({
     name = "ma_resetticketsbutton",
     group = "ticket",
     parent = ma_midframe,
     texture = {
-      name = "ma_loadticketsbutton_texture",
-      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+        name = "ma_loadticketsbutton_texture",
+        color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
-      width = 100,
-      height = 15
+        width = 70,
+        height = 15
     },
     setpoint = {
-      pos = "TOPLEFT",
-      offX = 120,
-      offY = -5
+        pos = "TOPLEFT",
+        offX = 160,
+        offY = -5
     },
     text = "RESET"
-  })
-   
+})   
   FrameLib:BuildButton({
     name = "ma_whisperticketbutton",
     group = "ticket",
@@ -281,7 +300,7 @@ function MangAdmin:CreateTicketSection()
     text = "Who:",
     setpoint = {
       pos = "TOPLEFT",
-      offX = 60,
+      offX = 80,
       offY = -30
     }
   })
@@ -292,7 +311,7 @@ function MangAdmin:CreateTicketSection()
     text = "",
     setpoint = {
       pos = "TOPLEFT",
-      offX = 100,
+      offX = 120,
       offY = -30
     }
   })

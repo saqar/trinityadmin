@@ -86,12 +86,12 @@ function MangAdmin:CreateWhoSection()
     },
     size = {
       width = 80,
-      height = 20
+      height = 15
     },
     setpoint = {
-      pos = "BOTTOMRIGHT",
-      offX = -346,
-      offY = 10
+      pos = "TOPLEFT",
+      offX = 665,
+      offY = 0
     },
     text = Locale["ma_whisperbutton"]
   })
@@ -106,12 +106,12 @@ function MangAdmin:CreateWhoSection()
     },
     size = {
       width = 80,
-      height = 20
+      height = 15
     },
     setpoint = {
-      pos = "BOTTOMRIGHT",
-      offX = -262,
-      offY = 10
+      pos = "TOPLEFT",
+      offX = 665,
+      offY = -15
     },
     text = Locale["ma_SummonWhoButton"]
   })
@@ -126,17 +126,17 @@ function MangAdmin:CreateWhoSection()
     },
     size = {
       width = 80,
-      height = 20
+      height = 15
     },
     setpoint = {
-      pos = "BOTTOMRIGHT",
-      offX = -178,
-      offY = 10
+      pos = "TOPLEFT",
+      offX = 665,
+      offY = -30
     },
     text = Locale["ma_GoCharWhoButton"]
   })
   
-  FrameLib:BuildButton({
+  FrameLib:BuildButton({--Mail
     name = "ma_answerwhobutton",
     group = "who",
     parent = ma_midframe,
@@ -146,17 +146,77 @@ function MangAdmin:CreateWhoSection()
     },
     size = {
       width = 80,
-      height = 20
+      height = 15
     },
     setpoint = {
-      pos = "BOTTOMRIGHT",
-      offX = -94,
-      offY = 10
+      pos = "TOPLEFT",
+      offX = 665,
+      offY = -45
     },
     text = Locale["ma_AnswerWhoButton"]
   })
   
   FrameLib:BuildButton({
+    name = "ma_who_customizebutton",
+    group = "who",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_who_customizebutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 15
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 665,
+      offY = -60
+    },
+    text = Locale["ma_who_customize"]
+  })
+  
+  FrameLib:BuildButton({
+    name = "ma_who_chardeletebutton",
+    group = "who",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_who_chardeletebutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 15
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 665,
+      offY = -75
+    },
+    text = Locale["ma_who_chardelete"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_who_charrenamebutton",
+    group = "who",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_who_charrenamebutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 15
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 665,
+      offY = -90
+    },
+    text = Locale["ma_who_charrename"]
+  })
+
+  FrameLib:BuildButton({--Kick
     name = "ma_deletewhobutton",
     group = "who",
     parent = ma_midframe,
@@ -166,16 +226,116 @@ function MangAdmin:CreateWhoSection()
     },
     size = {
       width = 80,
-      height = 20
+      height = 15
     },
     setpoint = {
-      pos = "BOTTOMRIGHT",
-      offX = -10,
-      offY = 10
+      pos = "TOPLEFT",
+      offX = 665,
+      offY = -105
     },
     text = Locale["ma_DeleteWhoButton"]
   })
   
+  FrameLib:BuildButton({
+    name = "ma_who_1daybanbutton",
+    group = "who",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_who_1daybanbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 15
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 665,
+      offY = -120
+    },
+    text = Locale["ma_who_1daybanbutton"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_who_permbanbutton",
+    group = "who",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_who_permbanbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 15
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 665,
+      offY = -135
+    },
+    text = Locale["ma_who_permbanbutton"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_who_jailabutton",
+    group = "who",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_who_jailabutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 15
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 665,
+      offY = -150
+    },
+    text = Locale["ma_who_jailabutton"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_who_jailhbutton",
+    group = "who",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_who_jailhbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 15
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 665,
+      offY = -165
+    },
+    text = Locale["ma_who_jailhbutton"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_who_unjailbutton",
+    group = "who",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_who_unjailbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 15
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 665,
+      offY = -180
+    },
+    text = Locale["ma_who_unjailbutton"]
+  })
+
   FrameLib:BuildFrame({
     type = "ScrollFrame",
     name = "ma_whoscrollframe",
@@ -311,7 +471,7 @@ function MangAdmin:CreateWhoSection()
     },
     text = "",
     size = {
-      width = 440,
+      width = 390,
       height = 16
     },
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}

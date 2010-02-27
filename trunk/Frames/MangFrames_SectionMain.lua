@@ -1300,7 +1300,48 @@ FrameLib:BuildButton({
     },
         text = Locale["gmnotify"]
   })  
-  
+
+  FrameLib:BuildButton({
+    name = "ma_teleaddbutton",
+    group = "main",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_teleaddbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 234,
+      offY = -130
+    },
+    text = Locale["ma_teleaddbutton"]
+    })
+
+
+FrameLib:BuildButton({
+    name = "ma_teledelbutton",
+    group = "main",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_teledelbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 234,
+      offY = -154
+    },
+    text = Locale["ma_teledelbutton"]
+    })
+
 end
 
 

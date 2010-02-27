@@ -4,6 +4,7 @@ TrinityAdmin is maintained and developed by iotech
 TrinityAdmin also contains code donated by:
 Pryd (teleport work)
 Gimp (teleport work)
+Shocker (various)
 
 Locale Team:
 iotech, Ravenheart, Gimp, Dracula70, MrLakeC, Namida, Amok, Lyrr123, borgotech, Morpheux, Georgios

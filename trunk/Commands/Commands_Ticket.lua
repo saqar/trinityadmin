@@ -33,11 +33,16 @@ function ShowTicketTab()
   --self:LoadTickets(nil)
 end
 
+function RefreshOnlineTickets()
+    MangAdmin.db.char.requests.ticket = true
+    InlineScrollUpdate("onlinelist")
+end
+
 function RefreshTickets()
 --    wipe(MangAdmin.db.account.buffer.tickets)
     --MangAdmin.db.account.buffer.tickets = {}
       MangAdmin.db.char.requests.ticket = true
-      InlineScrollUpdate()
+      InlineScrollUpdate("list")
 end
 
 function ResetTickets()
@@ -48,7 +53,7 @@ function ResetTickets()
     MangAdmin.db.account.buffer.tickets = {}
     MangAdmin.db.account.buffer.tickets = {}
     MangAdmin.db.char.requests.ticket = true
-    InlineScrollUpdate()
+    InlineScrollUpdate("list")
 end
 
 
@@ -129,10 +134,10 @@ end
   MangAdmin:LogAction("Turned receiving new tickets "..value..".")
 end]]
 
-function InlineScrollUpdate()
+function InlineScrollUpdate(tip)
     --wipe(MangAdmin.db.account.buffer.tickets)
     MangAdmin:LogAction("Getting tickets.")
-    MangAdmin:ChatMsg(".ticket list")
+    MangAdmin:ChatMsg(".ticket "..tip)
     local ticketCount = 0
     table.foreachi(MangAdmin.db.account.buffer.tickets, function() ticketCount = ticketCount + 1 end)
     if ticketCount == 0 then
