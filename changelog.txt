@@ -1,5 +1,8 @@
 TrinityAdmin Changelog
 
+-=[ Revision 17 - 3/4/2010 ]=-
+- ADD: deDE localisation
+
 -=[ Revision 16 - 2/26/2010 ]=-
 - UPDATE: svSV locale updated
 - UPDATE: Close Mail popup when send button clicked - Thanks, Shocker!

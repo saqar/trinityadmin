@@ -22,7 +22,7 @@ local genv = getfenv(0)
 local Mang = genv.Mang
 
 MAJOR_VERSION = "TrinityAdmin-3.3.2"
-MINOR_VERSION = "$Revision: 016 $"
+MINOR_VERSION = "$Revision: 017 $"
 ROOT_PATH     = "Interface\\AddOns\\TrinityAdmin\\"
 local cont = ""
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
@@ -136,8 +136,8 @@ Locale:EnableDynamicLocales(true)
 Locale:RegisterTranslations("enUS", function() return Return_enUS() end)
 Locale:RegisterTranslations("frFR", function() return Return_frFR() end)
 Locale:RegisterTranslations("svSV", function() return Return_svSV() end)
+Locale:RegisterTranslations("deDE", function() return Return_deDE() end)
 --Locale:RegisterTranslations("ptBR", function() return Return_ptBR() end)
---Locale:RegisterTranslations("deDE", function() return Return_deDE() end)
 --Locale:RegisterTranslations("itIT", function() return Return_itIT() end)
 --Locale:RegisterTranslations("fiFI", function() return Return_fiFI() end)
 --Locale:RegisterTranslations("plPL", function() return Return_plPL() end)
@@ -156,8 +156,8 @@ Strings:EnableDynamicLocales(true)
 Strings:RegisterTranslations("enUS", function() return ReturnStrings_enUS() end)
 Strings:RegisterTranslations("frFR", function() return ReturnStrings_frFR() end)
 Strings:RegisterTranslations("svSV", function() return ReturnStrings_svSV() end)
+Strings:RegisterTranslations("deDE", function() return ReturnStrings_deDE() end)
 --Strings:RegisterTranslations("ptBR", function() return ReturnStrings_ptBR() end)
---Strings:RegisterTranslations("deDE", function() return ReturnStrings_deDE() end)
 --Strings:RegisterTranslations("itIT", function() return ReturnStrings_itIT() end)
 --Strings:RegisterTranslations("fiFI", function() return ReturnStrings_fiFI() end)
 --Strings:RegisterTranslations("plPL", function() return ReturnStrings_plPL() end)
@@ -1911,7 +1911,7 @@ function MangAdmin:InitDropDowns()
     local info = UIDropDownMenu_CreateInfo()
     local buttons = {
 --      {"Ceský","csCZ"},
---      {"Deutsch","deDE"},
+      {"Deutsch","deDE"},
 --      {"Dutch","nlNL"},
       {"English","enUS"},
 --      {"Spanish","esES"},

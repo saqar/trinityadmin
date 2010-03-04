@@ -7,7 +7,7 @@ Gimp (teleport work)
 Shocker (various)
 
 Locale Team:
-iotech, Ravenheart, Gimp, Dracula70, MrLakeC, Namida, Amok, Lyrr123, borgotech, Morpheux, Georgios
+iotech, Ravenheart, Gimp, Dracula70, MrLakeC, Namida, Amok, Lyrr123, borgotech, Morpheux, Georgios, Kitharo
 
 
 
