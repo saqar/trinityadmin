@@ -63,6 +63,7 @@ Commands\Commands_RPG.lua
 Commands\Commands_Vendor.lua
 Commands\Commands_Ahbot.lua
 Commands\Commands_Who.lua
+dbc.lua
 TeleportTable.lua
 FunctionInit.lua
 TrinityAdmin.lua

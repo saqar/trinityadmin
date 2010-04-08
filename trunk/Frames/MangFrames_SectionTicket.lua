@@ -94,6 +94,26 @@ FrameLib:BuildButton({
     text = "RESET"
 })   
   FrameLib:BuildButton({
+    name = "ma_goticketbutton",
+    group = "ticket",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_goticketbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "BOTTOMRIGHT",
+      offX = -431,
+      offY = 10
+    },
+    text = "Go Ticket" 
+  })
+
+  FrameLib:BuildButton({
     name = "ma_whisperticketbutton",
     group = "ticket",
     parent = ma_midframe,

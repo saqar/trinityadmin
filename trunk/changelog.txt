@@ -1,5 +1,16 @@
 TrinityAdmin Changelog
 
+
+-=[ Revision 18 - 4/7/2010]=-
+Note: This version is compatible with TC2 revision 7757+
+- FIX: WHO tab functioning with new entries in Trinity_String (MANY thanks to TC Devs for the changes!!!)
+- ADD: Map-Zone to WHO tab. Note: this is NOT realtime since it pulls from the database after save
+- Fix: PairsbyKeys startup error
+- Fix: Tickets Online functions
+- MOD: Removed IP address from the list on Who tab. IP is still in details.
+- MOD: In Item search frame, click= add item to target inventory, right-click= list item. Changed this to: click=add, r-click=remove. Multiple amounts work for removing too, can enter either a positive or negative munber to be removed.
+- FIX: Server info no longer spamming chat window
+
 -=[ Revision 17 - 3/4/2010 ]=-
 - ADD: deDE localisation
 

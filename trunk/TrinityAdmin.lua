@@ -22,7 +22,7 @@ local genv = getfenv(0)
 local Mang = genv.Mang
 
 MAJOR_VERSION = "TrinityAdmin-3.3.2"
-MINOR_VERSION = "$Revision: 017 $"
+MINOR_VERSION = "$Revision: 018 $"
 ROOT_PATH     = "Interface\\AddOns\\TrinityAdmin\\"
 local cont = ""
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
@@ -824,7 +824,7 @@ end
     end
     
     --check for info command to update informations in right bottom
-    for revision, platform in string.gmatch(text, Strings["ma_GmatchRevision"]) do
+    for revision in string.gmatch(text, Strings["ma_GmatchRevision"]) do
       ma_inforevisiontext:SetText(Locale["info_revision"]..revision)
       --ma_infoplatformtext:SetText(Locale["info_platform"]..platform)
         catchedSth = true
@@ -900,18 +900,23 @@ end
         
     end
     
-    for acc, char, ip, gmlevel, exp in string.gmatch(text, Strings["ma_GmatchWho"]) do
+    for acc, char, ip, map, zone, exp, gmlevel in string.gmatch(text, Strings["ma_GmatchWho"]) do
     	acc= string.gsub(acc, " ", "")
     	char= string.gsub(char, " ", "")
     	ip= string.gsub(ip, " ", "")
-    	gmlevel= string.gsub(gmlevel, " ", "")
+        map=string.gsub(map, " ", "")
+        zone=string.gsub(zone, " ", "")
     	exp= string.gsub(exp, " ", "")
-
+    	gmlevel= string.gsub(gmlevel, " ", "")
+        gmlevel=strtrim(gmlevel, "]-")
         --self:ChatMsg("Matched Who")
-        table.insert(MangAdmin.db.account.buffer.who, {tAcc = acc, tChar = char, tIP = ip, tGMLevel = gmlevel, tExp = exp})
-        catchedSth = true
-        output = false
-        WhoUpdate()
+        if acc == "Account" then
+        else
+            table.insert(MangAdmin.db.account.buffer.who, {tAcc = acc, tChar = char, tIP = ip, tMap = map, tZone = zone, tExp = exp, tGMLevel = gmlevel})
+        end
+            catchedSth = true
+            output = false
+            WhoUpdate()
     end
 --    ["ma_GmatchAccountInfo"] = "Player(.*) %(guid: (%d+)%) Account: (.*) %(id: (%d+)%) Email: (.*) GMLevel: (%d+) Last IP: (.*) Last login: (.*) Latency: (%d+)ms",
 --    ["ma_GmatchAccountInfo2"] = "Race: (.*) Class: (.*) Played time: (.*) Level: (%d+) Money: (.*)",
@@ -1158,8 +1163,22 @@ function MangAdmin:AddItem(value, state)
     local player = UnitName("target") or UnitName("player")
     local amount = ma_var1editbox:GetText()
     if state == "RightButton" then
-      self:ChatMsg(".list item "..value)
-      self:LogAction("Listed item with id "..value..".")
+      if amount == "" then
+        self:ChatMsg(".additem "..value.." -1")
+    --      self:ChatMsg(".list item "..value)
+        self:LogAction("Removed item with id "..value.." from "..player..".")
+    --      self:LogAction("Listed item with id "..value..".")
+      else
+        local amt=tonumber(amount)
+        if amt >0 then 
+           amt=amt*-1
+           amount=tostring(amt)
+        end
+        self:ChatMsg(".additem "..value.." "..amount)
+        self:LogAction("Removed "..amount.." items with id "..value.." to "..player..".")
+      
+      end
+      
     else
       if amount == "" then
         self:ChatMsg(".additem "..value)
@@ -2561,17 +2580,20 @@ end
 
 
 function pairsByKeys(t, f)
-  local a = {}
-  for n in pairs(t) do table.insert(a, n) end
-  table.sort(a, f)
-  local i = 0      -- iterator variable
-  local iter = function ()   -- iterator function
-    i = i + 1
-    if a[i] == nil then return nil
-    else return a[i], t[a[i]]
+  if t == Nil then
+  else
+    local a = {}
+    for n in pairs(t) do table.insert(a, n) end
+    table.sort(a, f)
+    local i = 0      -- iterator variable
+    local iter = function ()   -- iterator function
+        i = i + 1
+        if a[i] == nil then return nil
+        else return a[i], t[a[i]]
+        end
     end
+    return iter
   end
-  return iter
 end
 
 

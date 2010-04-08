@@ -35,8 +35,8 @@ function WhoUpdate()
         if lineplusoffset <= whoCount then
           local object = MangAdmin.db.account.buffer.who[lineplusoffset]
           if object then
-            getglobal("ma_whoscrollframe"..line):SetText("Acct: |cffffffff"..object["tAcc"].."|r Char: |cffffffff"..object["tChar"].."|r IP: |cffffffff"..object["tIP"].."|r GMLvl: |cffffffff"..object["tGMLevel"].."|r Exp: |cffffffff"..object["tExp"].."|r")
---            MangAdmin.db.account.tickets.selected = object
+            getglobal("ma_whoscrollframe"..line):SetText("Acct: |cffffffff"..object["tAcc"].."|r Char: |cffffffff"..object["tChar"].."|r GMLvl: |cffffffff"..object["tGMLevel"].."|r Exp: |cffffffff"..object["tExp"].."|r")
+--            getglobal("ma_whoscrollframe"..line):SetText("Acct: |cffffffff"..object["tAcc"].."|r Char: |cffffffff"..object["tChar"].."|r IP: |cffffffff"..object["tIP"].."|r GMLvl: |cffffffff"..object["tGMLevel"].."|r Exp: |cffffffff"..object["tExp"].."|r")
             ma_deletewhobutton:Enable()
             ma_answerwhobutton:Enable()
             ma_summonwhobutton:Enable()
@@ -44,7 +44,7 @@ function WhoUpdate()
             ma_whisperwhobutton:Enable()
             getglobal("ma_whoscrollframe"..line):SetScript("OnEnter", function() --[[Do nothing]] end)
             getglobal("ma_whoscrollframe"..line):SetScript("OnLeave", function() --[[Do nothing]] end)
-            getglobal("ma_whoscrollframe"..line):SetScript("OnClick", function() WhoDetail(object["tAcc"], object["tChar"]) end)
+            getglobal("ma_whoscrollframe"..line):SetScript("OnClick", function() WhoDetail(object["tAcc"], object["tChar"], object["tMap"], object["tZone"]) end)
             getglobal("ma_whoscrollframe"..line):Enable()
             getglobal("ma_whoscrollframe"..line):Show()
           end
@@ -61,7 +61,7 @@ function WhoUpdate()
 --MangAdmin.db.char.requests.ticket = false
 end
 
-function WhoDetail(tAcc, tChar)
+function WhoDetail(tAcc, tChar, tMap, tZone)
 --     MangAdmin.db.char.requests.ticket = false
 --   MangAdmin:ChatMsg(tNumber)
 --     tNumber=string.gsub(tNumber, "00", "")
@@ -71,6 +71,9 @@ function WhoDetail(tAcc, tChar)
     MangAdmin:ChatMsg(".pinfo "..tChar)
     ma_whoid:SetText(tAcc)
     ma_who:SetText(tChar)
+    local MapName=ReturnMapName(tMap)
+    local AreaName=ReturnAreaName(tZone)
+    ma_whowhere:SetText(MapName.."-"..AreaName)
     MangAdmin:LogAction("Displaying character detail on "..tAcc..":"..tChar)
 --    local ticketdetail = MangAdmin.db.account.buffer.ticketsfull
 end

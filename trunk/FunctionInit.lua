@@ -225,11 +225,13 @@ function InitControls()
 
   MangAdmin:PrepareScript(ma_resetticketsbutton   , "Not working? Click this, then click REFRESH!"      , function() ResetTickets() end)
   MangAdmin:PrepareScript(ma_showticketsbutton    , nil                             , function() RefreshTickets() end)
+  MangAdmin:PrepareScript(ma_showonlineticketsbutton    , nil                             , function() RefreshOnlineTickets() end)
   MangAdmin:PrepareScript(ma_deleteticketbutton   , nil                             , function() Ticket("delete") end)
   MangAdmin:PrepareScript(ma_answerticketbutton   , nil                             , function() Ticket("answer") end)
   MangAdmin:PrepareScript(ma_getcharticketbutton  , nil                             , function() Ticket("getchar") end)
   MangAdmin:PrepareScript(ma_gocharticketbutton   , nil                             , function() Ticket("gochar") end)
   MangAdmin:PrepareScript(ma_whisperticketbutton  , nil                             , function() Ticket("whisper") end)
+  MangAdmin:PrepareScript(ma_goticketbutton       , nil                             , function() Ticket("goticket") end)
 
 --[[Misc Tab]]
   MangAdmin:PrepareScript(ma_bgcolorshowbutton    , nil                             , function() ShowColorPicker("bg") end)
