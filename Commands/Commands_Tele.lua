@@ -22,7 +22,12 @@ function TeleScrollUpdate()
     if not ma_ZoneScrollBar then 
       MangAdmin:ChatMsg("Lost ma_ZoneScrollBar")
     end
-    cont = MangAdmin.db.char.selectedCont
+    local cont_temp = MangAdmin.db.char.selectedCont
+    cont = "EK_N"
+    if cont_temp == Nil then
+    else
+        cont=cont_temp
+    end
     --MangAdmin.db.char.selectedCont = cont
     --self:ChatMsg("Wrote cont:" ..cont)
     local TeleTable = {}

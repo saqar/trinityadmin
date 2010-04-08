@@ -21,6 +21,7 @@ function ShowTicketTab()
   --ma_tpinfo_text:SetText(Locale["ma_TicketsNoInfo"])
   --ma_ticketeditbox:SetText(Locale["ma_TicketsNotLoaded"])
   --ResetTickets()
+  wipe(MangAdmin.db.account.buffer.tickets)
   ma_deleteticketbutton:Disable()
   ma_answerticketbutton:Disable()
   ma_getcharticketbutton:Disable()
@@ -126,6 +127,8 @@ function Ticket(value)
   elseif value == "whisper" then
     ChatFrameEditBox:Show()
     ChatFrameEditBox:Insert("/w "..ma_ticketwho:GetText().." ");
+  elseif value == "goticket" then
+    MangAdmin:ChatMsg(".go ticket "..ma_ticketid:GetText())
   end
 end
 

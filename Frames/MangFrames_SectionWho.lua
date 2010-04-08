@@ -430,7 +430,30 @@ function MangAdmin:CreateWhoSection()
       offY = -30
     }
   })
- 
+
+--[[   FrameLib:BuildFontString({
+    name = "ma_whowherelabel",
+    group = "who",
+    parent = ma_midframe,
+    text = "Map-Zone:",
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 10,
+      offY = -40
+    }
+  })]]
+  FrameLib:BuildFontString({
+    name = "ma_whowhere",
+    group = "who",
+    parent = ma_midframe,
+    text = "",
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 10,
+      offY = -40
+    }
+  })
+
     FrameLib:BuildFontString({
     name = "ma_wholabel",
     group = "who",
