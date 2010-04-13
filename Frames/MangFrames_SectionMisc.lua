@@ -91,6 +91,60 @@ function MangAdmin:CreateMiscSection()
     inherits = "OptionsCheckButtonTemplate"
   })
   
+  FrameLib:BuildButton({
+    type = "CheckButton",
+    name = "ma_showchatoutputbutton",
+    group = "misc",
+    parent = ma_midframe,
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 160,
+      offY = -94
+    },
+    text = "Show Chat Output",
+    inherits = "OptionsCheckButtonTemplate"
+  })
+
+ FrameLib:BuildFontString({
+    name = "ma_delayparamlabel",
+    group = "misc",
+    parent = ma_midframe,
+    text = "Update Delay",
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 160,
+      offY = -124
+    }
+  })
+ FrameLib:BuildFontString({
+    name = "ma_delayparamlabel2",
+    group = "misc",
+    parent = ma_midframe,
+    text = "Specifies update frequency of Diff graphon Server tab. 4000 = ~1 minute, 20000 =~5 minutes",
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 160,
+      offY = -144
+    }
+  })
+
+ FrameLib:BuildFrame({
+    type = "EditBox",
+    name = "ma_delayparam",
+    group = "misc",
+    parent = ma_midframe,
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 250,
+      offY = -124
+    },
+    inherits = "InputBoxTemplate"
+  })
+
   FrameLib:BuildFrame({
     type = "Slider",
     name = "ma_frmtrslider",

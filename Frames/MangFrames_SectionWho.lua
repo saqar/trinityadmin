@@ -345,17 +345,17 @@ function MangAdmin:CreateWhoSection()
       color = {0,0,0,0.7}
     },
     size = {
-      width = 450,
+      width = 375,
       height = 200
     },
     setpoint = {
       pos = "TOPRIGHT",
-      offX = -30,
+      offX = -105,
       offY = -10
     },
     setpoint2 = {
       pos = "BOTTOMRIGHT",
-      offX = -30,
+      offX = -105,
       offY = 34
     },
     inherits = "FauxScrollFrameTemplate"
@@ -516,7 +516,7 @@ function MangAdmin:CreateWhoSection()
     },
     text = "",
     size = {
-      width = 440,
+      width = 390,
       height = 16
     },
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
@@ -538,7 +538,7 @@ function MangAdmin:CreateWhoSection()
     },
     text = "",
     size = {
-      width = 440,
+      width = 390,
       height = 16
     },
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
@@ -560,7 +560,7 @@ function MangAdmin:CreateWhoSection()
     },
     text = "",
     size = {
-      width = 440,
+      width = 390,
       height = 16
     },
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
@@ -582,7 +582,7 @@ function MangAdmin:CreateWhoSection()
     },
     text = "",
     size = {
-      width = 440,
+      width = 390,
       height = 16
     },
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
@@ -604,7 +604,7 @@ function MangAdmin:CreateWhoSection()
     },
     text = "",
     size = {
-      width = 440,
+      width = 390,
       height = 16
     },
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
@@ -626,7 +626,7 @@ function MangAdmin:CreateWhoSection()
     },
     text = "",
     size = {
-      width = 440,
+      width = 390,
       height = 16
     },
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
@@ -648,7 +648,7 @@ function MangAdmin:CreateWhoSection()
     },
     text = "",
     size = {
-      width = 440,
+      width = 390,
       height = 16
     },
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
@@ -670,7 +670,7 @@ function MangAdmin:CreateWhoSection()
     },
     text = "",
     size = {
-      width = 440,
+      width = 390,
       height = 16
     },
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
@@ -692,7 +692,7 @@ function MangAdmin:CreateWhoSection()
     },
     text = "",
     size = {
-      width = 440,
+      width = 390,
       height = 16
     },
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
@@ -714,7 +714,7 @@ function MangAdmin:CreateWhoSection()
     },
     text = "",
     size = {
-      width = 440,
+      width = 390,
       height = 16
     },
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
@@ -736,7 +736,7 @@ function MangAdmin:CreateWhoSection()
     },
     text = "",
     size = {
-      width = 440,
+      width = 390,
       height = 16
     },
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}

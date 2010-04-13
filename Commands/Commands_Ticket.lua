@@ -18,9 +18,6 @@
 -- Dev Blog: http://trinityadmin.blogspot.com/
 -------------------------------------------------------------------------------------------------------------
 function ShowTicketTab()
-  --ma_tpinfo_text:SetText(Locale["ma_TicketsNoInfo"])
-  --ma_ticketeditbox:SetText(Locale["ma_TicketsNotLoaded"])
-  --ResetTickets()
   wipe(MangAdmin.db.account.buffer.tickets)
   ma_deleteticketbutton:Disable()
   ma_answerticketbutton:Disable()
@@ -28,22 +25,35 @@ function ShowTicketTab()
   ma_gocharticketbutton:Disable()
   ma_whisperticketbutton:Disable()
   MangAdmin:InstantGroupToggle("ticket")
-   ResetTickets()
-   RefreshTickets()
-   RefreshTickets()
-  --self:LoadTickets(nil)
+  ResetTickets()
+ --  RefreshTickets()
+ --  RefreshTickets()
 end
 
 function RefreshOnlineTickets()
+    ma_ticketscrollframe:SetScript("OnVerticalScroll", InlineScrollUpdate(), function(self, offset) FauxScrollFrame_OnVerticalScroll(self, offset-1, 16, InlineScrollUpdate()) end)
+    ma_ticketscrollframe:SetScript("OnShow", function() InlineScrollUpdate() end)
     MangAdmin.db.char.requests.ticket = true
-    InlineScrollUpdate("onlinelist")
+    MangAdmin:LogAction("Getting tickets.")
+    MangAdmin:ChatMsg(".ticket onlinelist")
+    for i=1,12 do
+       getglobal("ma_ticketscrollframe"..i):Hide()
+    end
+    getglobal("ma_showticketsbutton"):Hide()
+    
 end
 
 function RefreshTickets()
---    wipe(MangAdmin.db.account.buffer.tickets)
-    --MangAdmin.db.account.buffer.tickets = {}
-      MangAdmin.db.char.requests.ticket = true
-      InlineScrollUpdate("list")
+
+    ma_ticketscrollframe:SetScript("OnVerticalScroll", InlineScrollUpdate(), function(self, offset) FauxScrollFrame_OnVerticalScroll(self, offset-1, 16, InlineScrollUpdate()) end)
+    ma_ticketscrollframe:SetScript("OnShow", function() InlineScrollUpdate() end)
+    MangAdmin.db.char.requests.ticket = true
+    MangAdmin:LogAction("Getting tickets.")
+    MangAdmin:ChatMsg(".ticket list")
+    for i=1,12 do
+       getglobal("ma_ticketscrollframe"..i):Hide()
+    end
+    getglobal("ma_showonlineticketsbutton"):Hide()
 end
 
 function ResetTickets()
@@ -54,9 +64,17 @@ function ResetTickets()
     MangAdmin.db.account.buffer.tickets = {}
     MangAdmin.db.account.buffer.tickets = {}
     MangAdmin.db.char.requests.ticket = true
-    InlineScrollUpdate("list")
+    for i=1,12 do
+       getglobal("ma_ticketscrollframe"..i):Hide()
+    end
+    getglobal("ma_showticketsbutton"):Show()
+    getglobal("ma_showonlineticketsbutton"):Show()
+    
 end
 
+function ShowTickets()
+ InlineScrollUpdate()
+end
 
 
 --[[function MangAdmin:LoadTickets(number)
@@ -137,22 +155,12 @@ end
   MangAdmin:LogAction("Turned receiving new tickets "..value..".")
 end]]
 
-function InlineScrollUpdate(tip)
-    --wipe(MangAdmin.db.account.buffer.tickets)
-    MangAdmin:LogAction("Getting tickets.")
-    MangAdmin:ChatMsg(".ticket "..tip)
+
+function InlineScrollUpdate()
+    MangAdmin:LogAction("Showing tickets.")
     local ticketCount = 0
     table.foreachi(MangAdmin.db.account.buffer.tickets, function() ticketCount = ticketCount + 1 end)
-    if ticketCount == 0 then
-        ma_ticketscrollframe1:Show()
-            ma_ticketscrollframe1:Disable()
-        ma_ticketscrollframe1:SetText(Locale["ma_TicketsNoTickets"])
-        for i=2,12 do
-            getglobal("ma_ticketscrollframe"..i):Hide()
-        end
-    end
     if ticketCount > 0 then
-      --ma_top2text:SetText(Locale["realm"].." "..Locale["tickets"]..ticketCount)
       ma_ticketscrollframe1:SetText("Loading")
       local lineplusoffset
       local line
@@ -160,11 +168,9 @@ function InlineScrollUpdate(tip)
       FauxScrollFrame_Update(ma_ticketscrollframe,ticketCount,12,16);
       for line = 1,12 do
         lineplusoffset = line + FauxScrollFrame_GetOffset(ma_ticketscrollframe)
---MangAdmin:ChatMsg("L+O:"..lineplusoffset.." Count:"..ticketCount)
         if lineplusoffset <= ticketCount then
           local object = MangAdmin.db.account.buffer.tickets[lineplusoffset]
           if object then
-            --getglobal("ma_ticketscrollframe"..line):SetJustifyH("LEFT")
             getglobal("ma_ticketscrollframe"..line):SetText("Id: |cffffffff"..object["tNumber"].."|r Who: |cffffffff"..object["tChar"].."|r When: |cffffffff"..object["tLCreate"].."|r")
             MangAdmin.db.account.tickets.selected = object
             ma_deleteticketbutton:Enable()
@@ -187,7 +193,7 @@ function InlineScrollUpdate(tip)
     end
 --  else
 --  end
-MangAdmin.db.account.buffer.tickets = {}
+--MangAdmin.db.account.buffer.tickets = {}
 --MangAdmin.db.char.requests.ticket = false
 end
 

@@ -474,25 +474,6 @@ function MangAdmin:CreateNpcSection()
     text = Locale["ma_NPCDel"]
   })
   
-  FrameLib:BuildButton({
-    name = "ma_NPC_guidgetbutton",
-    group = "npc",
-    parent = ma_midframe,
-    texture = {
-      name = "ma_NPC_guidgetbutton_texture",
-      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
-    },
-    size = {
-      width = 80,
-      height = 20
-    },
-    setpoint = {
-      pos = "TOPLEFT",
-      offX = 268,
-      offY = -106
-    },
-    text = Locale["ma_getguid"]
-  })
  
   FrameLib:BuildButton({
     name = "ma_NPC_addbutton",
@@ -632,6 +613,25 @@ FrameLib:BuildButton({
     },
     text = Locale["ma_NPCUnAura"]
     })
+  FrameLib:BuildButton({
+    name = "ma_NPC_guidgetbutton",
+    group = "npc",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_NPC_guidgetbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 268,
+      offY = -106
+    },
+    text = Locale["ma_getguid"]
+  })
 
  FrameLib:BuildFrame({
     type = "EditBox",

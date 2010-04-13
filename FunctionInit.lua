@@ -232,6 +232,7 @@ function InitControls()
   MangAdmin:PrepareScript(ma_gocharticketbutton   , nil                             , function() Ticket("gochar") end)
   MangAdmin:PrepareScript(ma_whisperticketbutton  , nil                             , function() Ticket("whisper") end)
   MangAdmin:PrepareScript(ma_goticketbutton       , nil                             , function() Ticket("goticket") end)
+  MangAdmin:PrepareScript(ma_showbutton           , nil                             , function() ShowTickets() end)
 
 --[[Misc Tab]]
   MangAdmin:PrepareScript(ma_bgcolorshowbutton    , nil                             , function() ShowColorPicker("bg") end)

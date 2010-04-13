@@ -22,7 +22,7 @@ local genv = getfenv(0)
 local Mang = genv.Mang
 
 MAJOR_VERSION = "TrinityAdmin-3.3.2"
-MINOR_VERSION = "$Revision: 018 $"
+MINOR_VERSION = "$Revision: 019 $"
 ROOT_PATH     = "Interface\\AddOns\\TrinityAdmin\\"
 local cont = ""
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
@@ -96,7 +96,9 @@ MangAdmin:RegisterDefaults("account",
       loading = false
     },
     style = {
+      updatedelay = "4000",
       showtooltips = true,
+      showchat = false,
       showminimenu = true,
       transparency = {
         buttons = 1.0,
@@ -600,7 +602,7 @@ end]]
 function MangAdmin:AddMessage(frame, text, r, g, b, id)
   -- frame is the object that was hooked (one of the ChatFrames)  
   local catchedSth = false
-  local output = true
+  local output = MangAdmin.db.account.style.showchat
   if id == 1 then --make sure that the message comes from the server, message id = 1
     --[[ hook all uint32 .getvalue requests
     for guid, field, value in string.gmatch(text, "The uint32 value of (%w+) in (%w+) is: (%w+)") do
@@ -721,7 +723,7 @@ end
             end
             PopupScrollUpdate()
             catchedSth = true
-            output = false  
+            output = MangAdmin.db.account.style.showchat  
         end
       elseif self.db.char.requests.itemset then
         -- hook all itemset lookups
@@ -729,7 +731,7 @@ end
             table.insert(self.db.account.buffer.itemsets, {isId = id, isName = name, checked = false})
             PopupScrollUpdate()
             catchedSth = true
-            output = false
+            output = MangAdmin.db.account.style.showchat
         end
       elseif self.db.char.requests.spell then
         -- hook all spell lookups
@@ -737,7 +739,7 @@ end
             table.insert(self.db.account.buffer.spells, {spId = id, spName = name, checked = false})
             PopupScrollUpdate()
             catchedSth = true
-            output = false
+            output = MangAdmin.db.account.style.showchat
         end
       elseif self.db.char.requests.skill then
         -- hook all skill lookups
@@ -745,7 +747,7 @@ end
             table.insert(self.db.account.buffer.skills, {skId = id, skName = name, checked = false})
             PopupScrollUpdate()
             catchedSth = true
-            output = false
+            output = MangAdmin.db.account.style.showchat
         end
       elseif self.db.char.requests.creature then
         -- hook all creature lookups
@@ -753,7 +755,7 @@ end
             table.insert(self.db.account.buffer.creatures, {crId = id, crName = name, checked = false})
             PopupScrollUpdate()
             catchedSth = true
-            output = false
+            output = MangAdmin.db.account.style.showchat
         end
       elseif self.db.char.requests.object then
         -- hook all object lookups
@@ -761,7 +763,7 @@ end
             table.insert(self.db.account.buffer.objects, {objId = id, objName = name, checked = false})
             PopupScrollUpdate()
             catchedSth = true
-            output = false
+            output = MangAdmin.db.account.style.showchat
         end
       elseif self.db.char.requests.quest then
         -- hook all quest lookups
@@ -769,7 +771,7 @@ end
             table.insert(self.db.account.buffer.quests, {qsId = id, qsName = name, checked = false})
             PopupScrollUpdate()
             catchedSth = true
-            output = false
+            output = MangAdmin.db.account.style.showchat
         end
       elseif self.db.char.requests.tele then
         -- hook all tele lookups
@@ -777,19 +779,19 @@ end
             table.insert(self.db.account.buffer.teles, {tName = name, checked = false})
             PopupScrollUpdate()
             catchedSth = true
-            output = false
+            output = MangAdmin.db.account.style.showchat
         end
         --this is to hide the message shown before the teles
         if string.gmatch(text, Strings["ma_GmatchTeleFound"]) then
           catchedSth = true
-          output = false
+          output = MangAdmin.db.account.style.showchat
         end
       end
     end
     for diff in string.gmatch(text, Strings["ma_GmatchUpdateDiff"]) do
         ma_difftext:SetText(diff)
         catchedSth = true
-        output = false
+        output = MangAdmin.db.account.style.showchat
     end
 
     -- hook all new tickets
@@ -809,7 +811,7 @@ end
         --table.insert(self.db.account.buffer.tpinfo, {char = {pStatus = status, pGuid = guid, pAcc = account, pId = id, pLevel = level, pIp = ip}})
         ma_tpinfo_text:SetText(ma_tpinfo_text:GetText()..Locale["ma_TicketsInfoPlayer"]..char.." ("..guid..")\n"..Locale["ma_TicketsInfoStatus"]..status.."\n"..Locale["ma_TicketsInfoAccount"]..account.." ("..id..")\n"..Locale["ma_TicketsInfoAccLevel"]..level.."\n"..Locale["ma_TicketsInfoLastIP"]..ip.."\n"..Locale["ma_TicketsInfoLatency"]..latency)
         catchedSth = true
-        output = false
+        output = MangAdmin.db.account.style.showchat
       end
     end
     
@@ -818,7 +820,7 @@ end
       if self.db.char.requests.tpinfo then
         ma_tpinfo_text:SetText(ma_tpinfo_text:GetText().."\n"..Locale["ma_TicketsInfoPlayedTime"]..played.."\n"..Locale["ma_TicketsInfoLevel"]..level.."\n"..Locale["ma_TicketsInfoMoney"]..money)
         catchedSth = true
-        output = false
+        output = MangAdmin.db.account.style.showchat
         self.db.char.requests.tpinfo = false
       end
     end
@@ -828,22 +830,22 @@ end
       ma_inforevisiontext:SetText(Locale["info_revision"]..revision)
       --ma_infoplatformtext:SetText(Locale["info_platform"]..platform)
         catchedSth = true
-        output = false
+        output = MangAdmin.db.account.style.showchat
     end
     for users, maxusers in string.gmatch(text, Strings["ma_GmatchOnlinePlayers"]) do
       ma_infoonlinetext:SetText(Locale["info_online"]..users)
       ma_infomaxonlinetext:SetText(Locale["info_maxonline"]..maxusers)
         catchedSth = true
-        output = false
+        output = MangAdmin.db.account.style.showchat
     end
     for uptime in string.gmatch(text, Strings["ma_GmatchUptime"]) do
       ma_infouptimetext:SetText(Locale["info_uptime"]..uptime)
         catchedSth = true
-        output = false
+        output = MangAdmin.db.account.style.showchat
     end
     for match in string.gmatch(text, Strings["ma_GmatchActiveConnections"]) do
         catchedSth = true
-        output = false
+        output = MangAdmin.db.account.style.showchat
     
     end
     -- get results of ticket list. In Trinity, everything will be constructed off the list
@@ -853,7 +855,7 @@ end
         table.foreachi(MangAdmin.db.account.buffer.tickets, function() ticketCount = ticketCount + 1 end)
         ticketCount = 0
         catchedSth = true
-        output = false
+        output = MangAdmin.db.account.style.showchat
         self.db.char.requests.ticketbody = id
         self.db.char.msgDeltaTime = time()
     end
@@ -864,9 +866,9 @@ end
         table.remove(MangAdmin.db.account.buffer.ticketsfull, 1)
         --table.insert(MangAdmin.db.account.buffer.ticketsfull, {tMsg = msg})
         table.insert(MangAdmin.db.account.buffer.ticketsfull, {tMsg = " "})
-        --ma_ticketdetail:SetText("|cffffffff"..msg)
+        ma_ticketdetail:SetText("|cffffffff"..msg)
         catchedSth = true
-        output = false
+        output = MangAdmin.db.account.style.showchat
     end       
 
     if MangAdmin.db.account.buffer.ticketread==true then
@@ -880,7 +882,7 @@ end
             MangAdmin.db.account.buffer.ticketread=false
             ma_ticketdetail:SetText("|cffffffff"..t_msg)
             catchedSth = true
-            output = false
+            output = MangAdmin.db.account.style.showchat
         end
         for msg in string.gmatch(text, "(.*)") do
             local object = MangAdmin.db.account.buffer.ticketsfull[1]
@@ -890,13 +892,13 @@ end
             table.remove(MangAdmin.db.account.buffer.ticketsfull, 1)
             table.insert(MangAdmin.db.account.buffer.ticketsfull, {tMsg = t_msg})
             catchedSth = true
-            output = false
+            output = MangAdmin.db.account.style.showchat
         end
     end
 
-    for eraseme in string.gmatch(text, "Showing list of open tickets.") do
+    for eraseme in string.gmatch(text, "Showing list of open tickets") do
         catchedSth = true
-        output = false
+        output = MangAdmin.db.account.style.showchat
         
     end
     
@@ -915,7 +917,7 @@ end
             table.insert(MangAdmin.db.account.buffer.who, {tAcc = acc, tChar = char, tIP = ip, tMap = map, tZone = zone, tExp = exp, tGMLevel = gmlevel})
         end
             catchedSth = true
-            output = false
+            output = MangAdmin.db.account.style.showchat
             WhoUpdate()
     end
 --    ["ma_GmatchAccountInfo"] = "Player(.*) %(guid: (%d+)%) Account: (.*) %(id: (%d+)%) Email: (.*) GMLevel: (%d+) Last IP: (.*) Last login: (.*) Latency: (%d+)ms",
@@ -923,22 +925,22 @@ end
     for charname, charguid, account, accountid, email, gmlvl, lastip, lastlogin, latency in string.gmatch(text, Strings["ma_GmatchAccountInfo"]) do
        ma_whodetail:SetText("|c00ff00ffCharacter:|r"..charname.." |cffffffff("..charguid..")|r\n".."|c00ff0000Acct:|r|cffffffff"..account.." ("..accountid..")|r\n".."|c00ff0000IP:|r|cffffffff"..lastip.."|r\n".."|c00ff0000Login:|r|cffffffff"..lastlogin.."|r\n".."|c00ff0000Latency:|r|cffffffff"..latency.."ms|r\n")  
        catchedSth = true
-       output = false
+       output = MangAdmin.db.account.style.showchat
     end
     
     for race, class, playedtime, level, money in string.gmatch(text, Strings["ma_GmatchAccountInfo2"]) do
         --self:ChatMsg("Matched Who")
        ma_whodetail2:SetText("|c00ff0000Race:|r|cffffffff"..race.."|r\n".."|c00ff0000Class|r|cffffffff"..class.."|r\n".."|c00ff0000Level:|r|cffffffff"..level.."|r\n".."|c00ff0000Money:|r|cffffffff"..money.."|r\n".."|c00ff0000Played Time:|r|cffffffff"..playedtime.."|r\n")  
        catchedSth = true
-       output = false
+       output = MangAdmin.db.account.style.showchat
     end
     for mymatch in string.gmatch(text, "=====") do
         catchedSth = true
-        output = false
+        output = MangAdmin.db.account.style.showchat
     end
     for mymatch in string.gmatch(text, "Characters Online:") do
         catchedSth = true
-        output = false
+        output = MangAdmin.db.account.style.showchat
     end
  --[[   
     -- get ticket content
@@ -1992,8 +1994,8 @@ function MangAdmin:InitScrollFrames()
   ma_SubzoneScrollBar:SetScript("OnShow", function() SubzoneScrollUpdate() end)
   --ma_ticketscrollframe:SetScrollChild(ma_ticketeditbox)
   --ma_ticketscrollframe1:SetText("No Data")
-  ma_ticketscrollframe:SetScript("OnVerticalScroll", InlineScrollUpdate("list"), function(self, offset) FauxScrollFrame_OnVerticalScroll(self, offset-1, 16, InlineScrollUpdate("list")) end)
-  ma_ticketscrollframe:SetScript("OnShow", function() InlineScrollUpdate("list") end)
+--  ma_ticketscrollframe:SetScript("OnVerticalScroll", InlineScrollUpdate("onlinelist"), function(self, offset) FauxScrollFrame_OnVerticalScroll(self, offset-1, 16, InlineScrollUpdate("onlinelist")) end)
+--  ma_ticketscrollframe:SetScript("OnShow", function() InlineScrollUpdate("onlinelist") end)
   ma_whoscrollframe:SetScript("OnVerticalScroll", WhoUpdate(), function(self, offset) FauxScrollFrame_OnVerticalScroll(self, offset-1, 16, WhoUpdate()) end)
   ma_whoscrollframe:SetScript("OnShow", function() WhoUpdate() end)
 
@@ -2644,6 +2646,10 @@ function MangAdmin:InitCheckButtons()
   ma_checklocalsearchstringsbutton:SetChecked(self.db.account.localesearchstring)
   ma_showminimenubutton:SetChecked(self.db.account.style.showminimenu)
   ma_showtooltipsbutton:SetChecked(self.db.account.style.showtooltips)
+  ma_showchatoutputbutton:SetChecked(self.db.account.style.showchat)
+  local dp = MangAdmin.db.account.style.delayparam
+  if dp == Nil or dp == "" then dp = "4000" end
+  ma_delayparam:SetText(dp)
 end
 
 

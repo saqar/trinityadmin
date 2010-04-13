@@ -81,7 +81,15 @@ function TeleScrollUpdate()
 end
 
 function SubzoneScrollUpdate()
-  cont = MangAdmin.db.char.selectedCont
+ local cont_temp = MangAdmin.db.char.selectedCont
+ cont = "EK_N"
+ if cont_temp == Nil then
+ else
+    cont=cont_temp
+ end
+    
+    
+--    cont = MangAdmin.db.char.selectedCont
   local TeleTable = {}
   local subzoneCount = 0
   local shownZone = "Alterac Mountains"
