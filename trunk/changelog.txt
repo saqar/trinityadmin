@@ -1,5 +1,17 @@
 TrinityAdmin Changelog
 
+-=[ Revision 19 - 4/13/2010]=-
+- FIX issue 36 WHO tab overlap
+- FIX issue 35 TICKET - Online list not working
+- FIX issue with Nil object error in tele scrolling on startup
+- FIX Ticket scrolling issue reported by Kitharo
+- ADD MISC tab, checkbox for Chat Output. When off (default), TrinityAdmin does not display output of most 
+  commands in chat window (for example, .server info) but does display the results in the appropriate part 
+  of TrinityAdmin. When ON, both TrinityAdmin native AND chatwindow outputs are displayed.
+- ADD MISC tab, an editbox to specify how often the Diff graph (on Server tab) is updated. 4000 (~1 minute) is default.
+- It is reported that r19 with Chat Output ON allows all the chat window clickable links to work properly. Please verify.
+- It is also reported that deDe clients with deDe selected in TrintiyAdmin and deDe selected in Core is now working properly.
+
 
 -=[ Revision 18 - 4/7/2010]=-
 Note: This version is compatible with TC2 revision 7757+

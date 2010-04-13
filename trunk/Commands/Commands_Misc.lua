@@ -45,10 +45,19 @@ function ApplyStyleChanges()
   else
     MangAdmin.db.account.style.showtooltips = false
   end
+  if ma_showchatoutputbutton:GetChecked() then
+    MangAdmin.db.account.style.showchat = true
+  else
+    MangAdmin.db.account.style.showchat = false
+  end
   if ma_showminimenubutton:GetChecked() then
     MangAdmin.db.account.style.showminimenu = true
   else
     MangAdmin.db.account.style.showminimenu = false
+  end
+  if ma_delayparam then
+    MangAdmin.db.account.style.delayparam = ma_delayparam:GetText()
+  else
   end
   ReloadUI()
 end

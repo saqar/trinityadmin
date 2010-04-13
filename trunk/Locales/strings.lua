@@ -33,7 +33,7 @@ function ReturnStrings_enUS()
     ["ma_GmatchTeleFound"] = "Locations found are:",
     ["ma_GmatchUpdateDiff"] = "Update time diff: (.*)",
     ["ma_GmatchNewTicket"] = "New ticket from(.+)",
-    ["ma_GmatchTicketsFull"] = "Ticket Message.-:.-(.*)",
+    ["ma_GmatchTicketsFull"] = "Ticket Message.-:.-|c(.*)",
     ["ma_GmatchTickets"] = ".+Ticket.-:(.*)Created by.-:|cff00ccff (.*)|r.+Created.-:(.*)Last change.-:(.*)",
     ["ma_GmatchAccountInfo"] = "Player(.*) %(guid: (%d+)%) Account: (.*) %(id: (%d+)%) Email: (.*) GMLevel: (%d+) Last IP: (.*) Last login: (.*) Latency: (%d+)ms",
     ["ma_GmatchAccountInfo2"] = "Race: (.*) Class: (.*) Played time: (.*) Level: (%d+) Money: (.*)",

@@ -33,29 +33,8 @@ function MangAdmin:CreateTicketSection()
     btn = MangAdmin.db.account.style.color.buttons,
     frm = MangAdmin.db.account.style.color.frames
   }
-  
 FrameLib:BuildButton({
-    name = "ma_showticketsbutton",
-    group = "ticket",
-    parent = ma_midframe,
-    texture = {
-        name = "ma_loadticketsbutton_texture",
-        color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
-    },
-    size = {
-        width = 70,
-        height = 15
-    },
-    setpoint = {
-        pos = "TOPLEFT",
-        offX = 10,
-        offY = -5
-    },
-    text = "All tickets"
-})
-
-FrameLib:BuildButton({
-    name = "ma_showonlineticketsbutton",
+    name = "ma_resetticketsbutton",
     group = "ticket",
     parent = ma_midframe,
     texture = {
@@ -68,14 +47,14 @@ FrameLib:BuildButton({
     },
     setpoint = {
         pos = "TOPLEFT",
-        offX = 90,
+        offX = 10,
         offY = -5
     },
-    text = "Online"
-})
-
+    text = "1.RESET"
+})   
+  
 FrameLib:BuildButton({
-    name = "ma_resetticketsbutton",
+    name = "ma_showticketsbutton",
     group = "ticket",
     parent = ma_midframe,
     texture = {
@@ -83,15 +62,54 @@ FrameLib:BuildButton({
         color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
     },
     size = {
-        width = 70,
+        width = 100,
         height = 15
     },
     setpoint = {
         pos = "TOPLEFT",
-        offX = 160,
+        offX = 80,
+        offY = 0
+    },
+    text = "2.Load All or"
+})
+
+FrameLib:BuildButton({
+    name = "ma_showonlineticketsbutton",
+    group = "ticket",
+    parent = ma_midframe,
+    texture = {
+        name = "ma_loadticketsbutton_texture",
+        color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+        width = 100,
+        height = 15
+    },
+    setpoint = {
+        pos = "TOPLEFT",
+        offX = 80,
+        offY = -15
+    },
+    text = "2.Load Online"
+})
+FrameLib:BuildButton({
+    name = "ma_showbutton",
+    group = "ticket",
+    parent = ma_midframe,
+    texture = {
+        name = "ma_showbutton_texture",
+        color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+        width = 60,
+        height = 15
+    },
+    setpoint = {
+        pos = "TOPLEFT",
+        offX = 200,
         offY = -5
     },
-    text = "RESET"
+    text = "3.SHOW"
 })   
   FrameLib:BuildButton({
     name = "ma_goticketbutton",

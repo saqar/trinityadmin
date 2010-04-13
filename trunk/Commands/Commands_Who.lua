@@ -22,7 +22,6 @@ function WhoUpdate()
     MangAdmin:LogAction("Getting Who.")
     local whoCount = 0
     table.foreachi(MangAdmin.db.account.buffer.who, function() whoCount = whoCount + 1 end)
-    --MangAdmin:ChatMsg("Who:"..whoCount)
     if whoCount > 0 then
       ma_whoscrollframe1:SetText("Loading")
       local lineplusoffset
@@ -31,12 +30,10 @@ function WhoUpdate()
       FauxScrollFrame_Update(ma_whoscrollframe,whoCount,12,16);
       for line = 1,12 do
         lineplusoffset = line + FauxScrollFrame_GetOffset(ma_whoscrollframe)
-        --MangAdmin:ChatMsg("L+O:"..lineplusoffset)
         if lineplusoffset <= whoCount then
           local object = MangAdmin.db.account.buffer.who[lineplusoffset]
           if object then
             getglobal("ma_whoscrollframe"..line):SetText("Acct: |cffffffff"..object["tAcc"].."|r Char: |cffffffff"..object["tChar"].."|r GMLvl: |cffffffff"..object["tGMLevel"].."|r Exp: |cffffffff"..object["tExp"].."|r")
---            getglobal("ma_whoscrollframe"..line):SetText("Acct: |cffffffff"..object["tAcc"].."|r Char: |cffffffff"..object["tChar"].."|r IP: |cffffffff"..object["tIP"].."|r GMLvl: |cffffffff"..object["tGMLevel"].."|r Exp: |cffffffff"..object["tExp"].."|r")
             ma_deletewhobutton:Enable()
             ma_answerwhobutton:Enable()
             ma_summonwhobutton:Enable()
