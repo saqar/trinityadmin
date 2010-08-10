@@ -21,8 +21,8 @@
 local genv = getfenv(0)
 local Mang = genv.Mang
 
-MAJOR_VERSION = "TrinityAdmin-3.3.2"
-MINOR_VERSION = "$Revision: 019 $"
+MAJOR_VERSION = "TrinityAdmin-3.3.5a"
+MINOR_VERSION = "$Revision: 020 $"
 ROOT_PATH     = "Interface\\AddOns\\TrinityAdmin\\"
 local cont = ""
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
@@ -140,7 +140,7 @@ Locale:RegisterTranslations("frFR", function() return Return_frFR() end)
 Locale:RegisterTranslations("svSV", function() return Return_svSV() end)
 Locale:RegisterTranslations("deDE", function() return Return_deDE() end)
 --Locale:RegisterTranslations("ptBR", function() return Return_ptBR() end)
---Locale:RegisterTranslations("itIT", function() return Return_itIT() end)
+Locale:RegisterTranslations("itIT", function() return Return_itIT() end)
 --Locale:RegisterTranslations("fiFI", function() return Return_fiFI() end)
 --Locale:RegisterTranslations("plPL", function() return Return_plPL() end)
 --Locale:RegisterTranslations("liLI", function() return Return_liLI() end)
@@ -160,7 +160,7 @@ Strings:RegisterTranslations("frFR", function() return ReturnStrings_frFR() end)
 Strings:RegisterTranslations("svSV", function() return ReturnStrings_svSV() end)
 Strings:RegisterTranslations("deDE", function() return ReturnStrings_deDE() end)
 --Strings:RegisterTranslations("ptBR", function() return ReturnStrings_ptBR() end)
---Strings:RegisterTranslations("itIT", function() return ReturnStrings_itIT() end)
+Strings:RegisterTranslations("itIT", function() return ReturnStrings_itIT() end)
 --Strings:RegisterTranslations("fiFI", function() return ReturnStrings_fiFI() end)
 --Strings:RegisterTranslations("plPL", function() return ReturnStrings_plPL() end)
 --Strings:RegisterTranslations("liLI", function() return ReturnStrings_liLI() end)
@@ -265,7 +265,7 @@ function MangAdmin:OnEnable()
   self:RegisterEvent("PLAYER_DEAD")
   self:RegisterEvent("PLAYER_ALIVE")
   self:PLAYER_TARGET_CHANGED() --init
-  
+   --ma_mm_revivebutton:Show()
 end
 
 --events
@@ -301,7 +301,7 @@ function MangAdmin:PLAYER_TARGET_CHANGED()
       ma_revivebutton:Enable()
       ma_killbutton:Disable()
     else
-      ma_revivebutton:Disable()
+      --ma_revivebutton:Disable()
       ma_killbutton:Enable()
     end
     if not UnitIsUnit("target", "player") then
@@ -312,13 +312,13 @@ function MangAdmin:PLAYER_TARGET_CHANGED()
     --ma_respawnbutton:Disable()
   elseif not UnitName("target") then
     ma_savebutton:Enable()
-    ma_revivebutton:Disable()
+    --ma_revivebutton:Disable()
     ma_killbutton:Disable()
     ma_kickbutton:Disable()
     --ma_respawnbutton:Disable()
   else
     ma_savebutton:Disable()
-    ma_revivebutton:Disable()
+    --ma_revivebutton:Disable()
     ma_kickbutton:Disable()
     if UnitIsDead("target") then
       --ma_respawnbutton:Enable()
@@ -791,7 +791,8 @@ end
     for diff in string.gmatch(text, Strings["ma_GmatchUpdateDiff"]) do
         ma_difftext:SetText(diff)
         catchedSth = true
-        output = MangAdmin.db.account.style.showchat
+--        output = MangAdmin.db.account.style.showchat
+        output = false
     end
 
     -- hook all new tickets
@@ -830,22 +831,26 @@ end
       ma_inforevisiontext:SetText(Locale["info_revision"]..revision)
       --ma_infoplatformtext:SetText(Locale["info_platform"]..platform)
         catchedSth = true
-        output = MangAdmin.db.account.style.showchat
+--        output = MangAdmin.db.account.style.showchat
+        output = false
     end
     for users, maxusers in string.gmatch(text, Strings["ma_GmatchOnlinePlayers"]) do
       ma_infoonlinetext:SetText(Locale["info_online"]..users)
       ma_infomaxonlinetext:SetText(Locale["info_maxonline"]..maxusers)
         catchedSth = true
-        output = MangAdmin.db.account.style.showchat
+--        output = MangAdmin.db.account.style.showchat
+        output = false
     end
     for uptime in string.gmatch(text, Strings["ma_GmatchUptime"]) do
       ma_infouptimetext:SetText(Locale["info_uptime"]..uptime)
         catchedSth = true
-        output = MangAdmin.db.account.style.showchat
+--        output = MangAdmin.db.account.style.showchat
+        output = false
     end
     for match in string.gmatch(text, Strings["ma_GmatchActiveConnections"]) do
         catchedSth = true
-        output = MangAdmin.db.account.style.showchat
+--        output = MangAdmin.db.account.style.showchat
+        output = false
     
     end
     -- get results of ticket list. In Trinity, everything will be constructed off the list

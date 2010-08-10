@@ -143,8 +143,18 @@ function Ticket(value)
 --    MangAdmin:TogglePopup("mail", {recipient = ma_ticketwho:GetText(), subject = "Ticket("..ma_ticketid:GetText()..")", body = ma_ticketdetail:GetText()})
     ma_maileditbox:SetText(ma_ticketdetail:GetText())
   elseif value == "whisper" then
-    ChatFrameEditBox:Show()
-    ChatFrameEditBox:Insert("/w "..ma_ticketwho:GetText().." ");
+--    ChatFrameEditBox:Show()
+--    ChatFrameEditBox:Insert("/w "..ma_ticketwho:GetText().." ");
+       local editbox = ChatFrame1EditBox
+       if not editbox then
+         -- Support for 3.3.5 and newer
+         editbox = ChatEdit_GetActiveWindow()
+       end 
+       ChatEdit_ActivateChat(editbox);
+       if editbox then
+         editbox:Insert("/w "..ma_ticketwho:GetText().." ");
+       end 
+
   elseif value == "goticket" then
     MangAdmin:ChatMsg(".go ticket "..ma_ticketid:GetText())
   end

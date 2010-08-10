@@ -102,7 +102,7 @@ function Return_enUS()
     ["tt_TaxiOffButton"] = "Deactivate the taxi-cheat and restore the players known taxi-routes.",
     ["tt_ShowMapsButton"] = "Reveals maps for the selected character.",
     ["tt_HideMapsButton"] = "Hides maps for the selected character.",
-    ["tt_SpeedSlider"] = "Increase or decrease the speed for the selected character.",
+    ["tt_SpeedSlider"] = "",
     ["tt_ScaleSlider"] = "Increase or decrease the scale for the selected character.",
     ["tt_instakill"] = "When checked, clicking an enemy creature kills it.",
     ["tt_ScreenButton"] = "Make a screenshot.",

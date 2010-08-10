@@ -94,8 +94,20 @@ function Who(value)
   elseif value == "answer" then
     MangAdmin:TogglePopup("mail", {recipient = ma_who:GetText(), subject = ""})
   elseif value == "whisper" then
-    ChatFrameEditBox:Show()
-    ChatFrameEditBox:Insert("/w "..ma_who:GetText().." ");
+   --ChatFrame1EditBox:Show()
+  -- ChatEdit_GetLastActiveWindow():Show() 
+   --ChatEdit_ActivateChat(ChatEdit_GetActiveWindow());
+--   ChatFrame1EditBox:Insert("/w "..ma_who:GetText().." ".. string.char(10)..string.char(13));
+--   ChatEdit_FocusActiveWindow(1);
+       local editbox = ChatFrame1EditBox
+       if not editbox then
+         -- Support for 3.3.5 and newer
+         editbox = ChatEdit_GetActiveWindow()
+       end 
+       ChatEdit_ActivateChat(editbox);
+       if editbox then
+         editbox:Insert("/w "..ma_who:GetText().." ");
+       end 
   elseif value == "customize" then
     MangAdmin:ChatMsg(".character customize "..ma_who:GetText())
   elseif value == "chardelete" then
