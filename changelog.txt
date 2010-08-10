@@ -1,5 +1,11 @@
 TrinityAdmin Changelog
 
+-=[ Revision 20 - 8/10/2010]=-
+- FIX Whisper issues with 3.3.5a client
+- MOD Revive button on Char tab is now always available
+- FIX Server Info spamming when Show Chat Output is ON.
+
+
 -=[ Revision 19 - 4/13/2010]=-
 - FIX issue 36 WHO tab overlap
 - FIX issue 35 TICKET - Online list not working

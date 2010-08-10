@@ -1,14 +1,14 @@
 ## Interface: 30300
 ## Title: TrinityAdmin
 ## Author: TrinityAdmin Dev team + Manground Dev Team
-## Version: 3.3.2
-## Notes: This addon only works with Trinity-Servers and 3.x clients. Derived from MangAdmin.
-## URL: http://www.assembla.com/spaces/trinityadmin
+## Version: 3.3.5a
+## Notes: This addon only works with Trinity and UltraCore Servers and 3.3.5a clients. Derived from MangAdmin. May or may not work with Mangos.
+## URL: http://code.google.com/p/trinityadmin/
 ## Name: TrinityAdmin
 ## License: GPLv3
-## X-Date: 6.November 2008
-## X-eMail: gsmith@middletonfire.org
-## X-Website: http://www.assembla.com/spaces/trinityadmin
+## X-Date: 10 August 2010
+## X-eMail: 
+## X-Website: http://code.google.com/p/trinityadmin/
 ## OptionalDeps: AceLibrary,AceEvent-2.0,AceHook-2.1,AceDebug-2.0,AceLocale-2.2,AceConsole-2.0,AceAddon-2.0
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
