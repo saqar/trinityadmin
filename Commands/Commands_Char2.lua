@@ -28,7 +28,7 @@ end
 function GoNameButton()
   local cname = ma_charactertarget:GetText()
   local npccname = ma_npccharactertarget:GetText()
-  MangAdmin:ChatMsg(".goname "..cname)
+  MangAdmin:ChatMsg(".appear "..cname)
   MangAdmin:LogAction("Teleported TO player: "..cname..".")
 
 end
@@ -52,7 +52,7 @@ end
 function GroupGoButton()
   local cname = ma_charactertarget:GetText()
   local npccname = ma_npccharactertarget:GetText()
-  MangAdmin:ChatMsg(".groupgo "..cname)
+  MangAdmin:ChatMsg(".groupsummon "..cname)
   MangAdmin:LogAction("Teleported "..cname.." and his/her group TO me.")
 
 end
@@ -76,7 +76,7 @@ end
 function NameGoButton()
   local cname = ma_charactertarget:GetText()
   local npccname = ma_npccharactertarget:GetText()
-  MangAdmin:ChatMsg(".namego "..cname)
+  MangAdmin:ChatMsg(".summon "..cname)
   MangAdmin:LogAction("Teleported "..cname.." TO me.")
 
 end

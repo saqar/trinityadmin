@@ -88,9 +88,9 @@ function Who(value)
     MangAdmin:LogAction("Kicked: "..ma_who:GetText())
     ResetWho()
   elseif value == "gochar" then
-    MangAdmin:ChatMsg(".goname "..ma_who:GetText())
+    MangAdmin:ChatMsg(".appear "..ma_who:GetText())
   elseif value == "getchar" then
-    MangAdmin:ChatMsg(".namego "..ma_who:GetText())
+    MangAdmin:ChatMsg(".summon "..ma_who:GetText())
   elseif value == "answer" then
     MangAdmin:TogglePopup("mail", {recipient = ma_who:GetText(), subject = ""})
   elseif value == "whisper" then
