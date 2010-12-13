@@ -660,7 +660,19 @@ if MangAdmin:ID_Setting_Start_Read() then
       	end	
     else
     end
-    
+
+    b1,e1,pattern = string.find(text, "DisplayID: (%d+).*")
+    if b1 then
+      	b1,e1,pattern = string.find(text, "([0-9]+)")
+    	if b1 then
+      		
+      		--MangAdmin:ID_Setting_Write(1,pattern)
+      		ma_npcdisplayid:SetText(pattern)
+      		self:LogAction("NPC_DisplayID_Get id "..pattern..".")
+      	end	
+    else
+    end
+
 end
 
 if MangAdmin:OID_Setting_Start_Read() then    

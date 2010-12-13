@@ -334,6 +334,10 @@ function Return_enUS()
     ["tt_NPCUnaura"] = "Parameters = #AuraID [[Enter the AuraID of the aura you want to remove]]",
     ["tt_PlayEmote"] = "Play Emote from list at left",
     ["tt_GPSButton"] = "Shows coordinates for the selected character.",
+    ["tt_DisplayUp"] = "Increment NPC DisplayID UP by 1",
+    ["tt_DisplayDown"] = "Decrement NPC DisplayID DOWN by 1",
+    ["tt_IDUp"] = "Increment NPC ID UP by 1",
+    ["tt_IDDown"] = "Decrement NPC ID DOWN by 1",
   --[[Control Labels]]
     ["Morph"] = "Morph",
     ["ma_NPCKillButton"] = "Kill",

@@ -196,6 +196,10 @@ function InitControls()
   MangAdmin:PrepareScript(ma_npcunaurabutton      , Locale["tt_NPCUnaura"]          , function() NPCUnaura() end)
   MangAdmin:PrepareScript(ma_npcemotebutton       , Locale["tt_PlayEmote"]          , function() NpcEmote(UIDropDownMenu_GetSelectedValue(ma_npcemotedropdown)) end)
   MangAdmin:PrepareScript(ma_npcemotebutton_a     , Locale["tt_PlayEmote"]          , function() NpcEmote(UIDropDownMenu_GetSelectedValue(ma_npcemotedropdown_a)) end)
+  MangAdmin:PrepareScript(ma_npcdisplayupbutton   , Locale["tt_DisplayUp"]          , function() DisplayUP() end)
+  MangAdmin:PrepareScript(ma_npcdisplaydownbutton , Locale["tt_DisplayDown"]        , function() DisplayDown() end)
+  MangAdmin:PrepareScript(ma_npcID_UPbutton       , Locale["tt_IDUp"]               , function() ID_UP() end)
+  MangAdmin:PrepareScript(ma_npcID_DOWNbutton     , Locale["tt_IDDown"]             , function() ID_DOWN() end)
 
 --[[Gob Tab]]
   MangAdmin:PrepareScript(ma_objgobutton          , Locale["tt_ObjGo"]              , function() OBJGo() end)
