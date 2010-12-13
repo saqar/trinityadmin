@@ -249,3 +249,30 @@ function NpcEmote(emote)
     MangAdmin:ChatMsg(".npc playemote "..emote)
     MangAdmin:LogAction("Played emote ("..emote..").")
 end
+
+function DisplayUP()
+    local currentid = ma_npcdisplayid:GetText()
+    currentid = currentid + 1
+    ma_npcdisplayid:SetText(currentid)
+    MangAdmin:ChatMsg(".npc set model "..currentid)
+end
+function DisplayDown()
+    local currentid = ma_npcdisplayid:GetText()
+    currentid = currentid - 1
+    ma_npcdisplayid:SetText(currentid)
+    MangAdmin:ChatMsg(".npc set model "..currentid)
+end
+
+function ID_UP()    
+    local currentid = ma_NPC_idbutton:GetText()
+    currentid = currentid + 1
+    ma_NPC_idbutton:SetText(currentid)
+--    MangAdmin:ChatMsg(".npc set model "..currentid)
+end
+
+function ID_DOWN()
+    local currentid = ma_NPC_idbutton:GetText()
+    currentid = currentid - 1
+    ma_NPC_idbutton:SetText(currentid)
+--    MangAdmin:ChatMsg(".npc set model "..currentid)
+end

@@ -668,6 +668,51 @@ FrameLib:BuildButton({
     inherits = "InputBoxTemplate"
   })
   
+
+FrameLib:BuildButton({
+    name = "ma_npcID_UPbutton",
+    group = "npc",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_npcID_UPbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 20,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 452,
+      offY = -130
+    },
+    text = ">>"
+  })
+FrameLib:BuildButton({
+    name = "ma_npcID_DOWNbutton",
+    group = "npc",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_npcID_DOWNbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 20,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 432,
+      offY = -130
+    },
+    text = "<<"
+  })
+ 
+ 
+ 
+ 
+ 
+ 
  FrameLib:BuildFrame({
     type = "EditBox",
     name = "ma_npcunfreeze_random_distancebutton",	-- ma_npccharactertarget
@@ -813,6 +858,62 @@ FrameLib:BuildButton({
     inherits = "UIDropDownMenuTemplate"
   })
   
+FrameLib:BuildButton({
+    name = "ma_npcdisplaydownbutton",
+    group = "npc",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_npcdisplaydownbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPRIGHT",
+      offX = -413,
+      offY = -175
+    },
+    text = "<<"
+    })
+    
+ FrameLib:BuildFrame({
+    type = "EditBox",
+    name = "ma_npcdisplayid",
+    group = "npc",
+    parent = ma_midframe,
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPRIGHT",
+      offX = -330,
+      offY = -175
+    },
+    inherits = "InputBoxTemplate"
+  })
+
+FrameLib:BuildButton({
+    name = "ma_npcdisplayupbutton",
+    group = "npc",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_npcdisplayupbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPRIGHT",
+      offX = -246,
+      offY = -175
+    },
+    text = ">>"
+    })
 
 
 
