@@ -134,9 +134,9 @@ function Ticket(value)
     ResetTickets()
     --InlineScrollUpdate()
   elseif value == "gochar" then
-    MangAdmin:ChatMsg(".goname "..ma_ticketwho:GetText())
+    MangAdmin:ChatMsg(".appear "..ma_ticketwho:GetText())
   elseif value == "getchar" then
-    MangAdmin:ChatMsg(".namego "..ma_ticketwho:GetText())
+    MangAdmin:ChatMsg(".summon "..ma_ticketwho:GetText())
   elseif value == "answer" then
 --    MangAdmin:TogglePopup("mail", {recipient = ma_ticketwho:GetText(), subject = "Ticket("..ma_ticketid:GetText()..")"})
     MangAdmin:TogglePopup("mail", {recipient = ma_ticketwho:GetText(), subject = "Ticket("..ma_ticketid:GetText()..")"})
