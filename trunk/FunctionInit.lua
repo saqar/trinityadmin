@@ -84,6 +84,10 @@ function InitControls()
   MangAdmin:PrepareScript(ma_gmnotifybutton       , Locale["tt_gmnotifybutton"]     , function() GMNotify() end)
   MangAdmin:PrepareScript(ma_teleaddbutton        , Locale["tt_teleaddbutton"]      , function() TeleAddButton() end)
   MangAdmin:PrepareScript(ma_teledelbutton        , Locale["tt_teledelbutton"]      , function() TeleDelButton() end)
+  MangAdmin:PrepareScript(ma_speedsliderreset_button, Locale["tt_SpeedSliderReset"]      , function() ResetSpeed() end)
+  MangAdmin:PrepareScript(ma_scalesliderreset_button, Locale["tt_ScaleSliderReset"]      , function() ResetScale() end)
+
+
 
   -- Speed Slider
   ma_speedslider:SetOrientation("HORIZONTAL")
@@ -118,6 +122,10 @@ function InitControls()
   MangAdmin:PrepareScript(ma_learnlangbutton      , Locale["tt_learnlangbutton"]    , function() LearnSpell(UIDropDownMenu_GetSelectedValue(ma_learnlangdropdown)) end)
   MangAdmin:PrepareScript(ma_modifybutton         , Locale["tt_modifybutton"]       , function() Modify(UIDropDownMenu_GetSelectedValue(ma_modifydropdown),ma_modifyeditbox:GetText()) end)
   MangAdmin:PrepareScript(ma_resetbutton          , Locale["tt_resetbutton"]        , function() Reset(UIDropDownMenu_GetSelectedValue(ma_resetdropdown)) end)
+  MangAdmin:PrepareScript(ma_modelzoominbutton    , Locale["tt_modelzoominbutton"]        , function() CharModelZoomIn() end)
+  MangAdmin:PrepareScript(ma_modelzoomoutbutton   , Locale["tt_modelzoomoutbutton"]        , function() CharModelZoomOut() end)
+  
+  
   LearnLangDropDownInitialize()
   UIDropDownMenu_Initialize(ma_learnlangdropdown, LearnLangDropDownInitialize)
   UIDropDownMenu_SetWidth(ma_learnlangdropdown,100)
@@ -200,7 +208,9 @@ function InitControls()
   MangAdmin:PrepareScript(ma_npcdisplaydownbutton , Locale["tt_DisplayDown"]        , function() DisplayDown() end)
   MangAdmin:PrepareScript(ma_npcID_UPbutton       , Locale["tt_IDUp"]               , function() ID_UP() end)
   MangAdmin:PrepareScript(ma_npcID_DOWNbutton     , Locale["tt_IDDown"]             , function() ID_DOWN() end)
-
+  MangAdmin:PrepareScript(ma_npcmodelzoominbutton , Locale["tt_npcmodelzoominbutton"], function() NPCModelZoomIn() end)
+  MangAdmin:PrepareScript(ma_npcmodelzoomoutbutton, Locale["tt_npcmodelzoomoutbutton"], function() NPCModelZoomOut() end)
+  
 --[[Gob Tab]]
   MangAdmin:PrepareScript(ma_objgobutton          , Locale["tt_ObjGo"]              , function() OBJGo() end)
   MangAdmin:PrepareScript(ma_objaddbutton         , Locale["tt_ObjAdd"]             , function() OBJAdd() end)
