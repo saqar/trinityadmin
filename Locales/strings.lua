@@ -19,8 +19,8 @@
 -------------------------------------------------------------------------------------------------------------
 function ReturnStrings_enUS()
   return {
---    ["ma_GmatchRevision"] = "TrinityCore Rev: (%d+)",
-    ["ma_GmatchRevision"] = "TrinityCore Rev: (.*) Release",
+    ["ma_GmatchRevision"] = "TrinityCore Rev: (%d+)",
+--    ["ma_GmatchRevision"] = "TrinityCore Rev: (.*) Release",
     ["ma_GmatchGPS"] = "X: (.*) Y: (.*) Z",
     ["ma_GmatchItem"] = "%|cffffffff%|Hitem:(%d+).*%[(.*)%]%|h%|r",
     ["ma_GmatchQuest"] = ".-(%d+).*%[(.*)%]%|h%|r",
