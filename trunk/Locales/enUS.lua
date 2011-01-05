@@ -102,7 +102,7 @@ function Return_enUS()
     ["tt_TaxiOffButton"] = "Deactivate the taxi-cheat and restore the players known taxi-routes.",
     ["tt_ShowMapsButton"] = "Reveals maps for the selected character.",
     ["tt_HideMapsButton"] = "Hides maps for the selected character.",
-    ["tt_SpeedSlider"] = "",
+    ["tt_SpeedSlider"] = "Increase or decrease the speed for the selected character.",
     ["tt_ScaleSlider"] = "Increase or decrease the scale for the selected character.",
     ["tt_instakill"] = "When checked, clicking an enemy creature kills it.",
     ["tt_ScreenButton"] = "Make a screenshot.",
@@ -121,6 +121,9 @@ function Return_enUS()
     ["tt_accountlockonbutton"] = "Lock your account",  
     ["tt_accountlockoffbutton"] = "UnLock your account",
     ["tt_DisplayAccountLvl"] = "Display your account level.",
+    ["tt_SpeedSliderReset"] = "Reset Speed to 1.0",
+    ["tt_ScaleSliderReset"] = "Reset Scale to 1.0",
+    
   --[[Control Labels]]
     ["ma_OffButton"] = "Off",
     ["ma_displaylevelbutton"] = "Display Account Level",
@@ -173,6 +176,9 @@ function Return_enUS()
     ["tt_learnlangbutton"] = "Learn selected langauge(s)",
     ["tt_modifybutton"] = "Modify the selected attribute by the entered amount",
     ["tt_resetbutton"] = "Reset the selected attribute",
+    ["tt_modelzoominbutton"] = "Zoom in the selected model",
+    ["tt_modelzoomoutbutton"] = "Zoom out the selected model",
+
   --[[Control Labels]]
     ["ma_KillButton"] = "Kill",
     ["ma_ReviveButton"] = "Revive",
@@ -338,6 +344,9 @@ function Return_enUS()
     ["tt_DisplayDown"] = "Decrement NPC DisplayID DOWN by 1",
     ["tt_IDUp"] = "Increment NPC ID UP by 1",
     ["tt_IDDown"] = "Decrement NPC ID DOWN by 1",
+    ["tt_npcmodelzoominbutton"] = "Zoom in the selected model",
+    ["tt_npcmodelzoomoutbutton"] = "Zoom out the selected model",
+
   --[[Control Labels]]
     ["Morph"] = "Morph",
     ["ma_NPCKillButton"] = "Kill",
@@ -368,7 +377,7 @@ function Return_enUS()
     ["ma_NPCYell"] = "NPC Yell",
     ["ma_NPCAura"] = "NPC Aura",
     ["ma_NPCUnAura"] = "NPC Unaura",
-    ["ma_ParameterBox"] = "Parameter(s)",
+    ["ma_ParameterBox"] = "Params",
     ["ma_PlayEmote"] = "Play Emote",
   --[[Other]]
 
