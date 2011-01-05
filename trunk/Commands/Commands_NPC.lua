@@ -250,6 +250,32 @@ function NpcEmote(emote)
     MangAdmin:LogAction("Played emote ("..emote..").")
 end
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function DisplayUP()
     local currentid = ma_npcdisplayid:GetText()
     currentid = currentid + 1
@@ -275,4 +301,22 @@ function ID_DOWN()
     currentid = currentid - 1
     ma_NPC_idbutton:SetText(currentid)
 --    MangAdmin:ChatMsg(".npc set model "..currentid)
+end
+
+function NPCModelZoomIn()
+    ma_npcmodelframe:SetCamera(0)
+--    ma_modelframe:SetModelScale(ma_modelframe:GetModelScale() + .1)
+    --ma_modelframe:SetPosition(1,ma_modelframe:GetModelScale()*3,0)
+    --ma_modelframe:RefreshUnit()
+end
+
+function NPCModelZoomOut()
+    ma_npcmodelframe:SetCamera(1)
+    ma_npcmodelframe:RefreshUnit()
+    
+   -- ma_modelframe:SetCamera(2)
+    --ma_modelframe:SetModelScale(ma_modelframe:GetModelScale() * .5)
+    --ma_modelframe:SetPosition(0,0,0)
+    --ma_modelframe:RefreshUnit()
+
 end
