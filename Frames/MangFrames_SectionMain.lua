@@ -626,6 +626,26 @@ FrameLib:BuildButton({
     inherits = "OptionsSliderTemplate"
   })
 
+FrameLib:BuildButton({
+    name = "ma_speedsliderreset_button",
+    group = "main",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_speedsliderreset_button_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 15,
+      height = 15
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 265,
+      offY = -50
+    },
+    text = "R"
+  })
+
   FrameLib:BuildFrame({
     type = "Slider",
     name = "ma_scaleslider",
@@ -642,6 +662,26 @@ FrameLib:BuildButton({
     inherits = "OptionsSliderTemplate"
   })
   
+FrameLib:BuildButton({
+    name = "ma_scalesliderreset_button",
+    group = "main",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_scalesliderreset_button_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 15,
+      height = 15
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 265,
+      offY = -85
+    },
+    text = "R"
+  })
+
   FrameLib:BuildFontString({
     name = "ma_gridnavigatortext",
     group = "main",

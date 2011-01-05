@@ -140,13 +140,13 @@ function MangAdmin:CreateCharSection()
     group = "char",
     parent = ma_midframe,
     size = {
-      width = 233,
-      height = 300
+      width = 210,
+      height = 210
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = -70,
-      offY = 10
+      offX = 10,
+      offY = -35
     },
     inherits = nil
   })
@@ -192,6 +192,46 @@ function MangAdmin:CreateCharSection()
   })
   
   FrameLib:BuildButton({
+    name = "ma_modelzoominbutton",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_modelzoominbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 15,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 80,
+      offY = -10
+    },
+    text = "+"
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_modelzoomoutbutton",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_modelzoomoutbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 15,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 100,
+      offY = -10
+    },
+    text = "-"
+  })
+  
+  FrameLib:BuildButton({
     name = "ma_killbutton",
     group = "char",
     parent = ma_midframe,
@@ -205,7 +245,7 @@ function MangAdmin:CreateCharSection()
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 100,
+      offX = 230,
       offY = -10
     },
     text = Locale["ma_KillButton"]
@@ -225,7 +265,7 @@ function MangAdmin:CreateCharSection()
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 100,
+      offX = 230,
       offY = -34
     },
     text = Locale["ma_ReviveButton"]
@@ -245,7 +285,7 @@ function MangAdmin:CreateCharSection()
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 100,
+      offX = 230,
       offY = -58
     },
     text = Locale["ma_SaveButton"]
@@ -265,7 +305,7 @@ function MangAdmin:CreateCharSection()
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 100,
+      offX = 230,
       offY = -82
     },
     text = Locale["ma_KickButton"]
@@ -285,7 +325,7 @@ function MangAdmin:CreateCharSection()
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 100,
+      offX = 230,
       offY = -106
     },
     text = Locale["ma_CooldownButton"]
@@ -305,7 +345,7 @@ function MangAdmin:CreateCharSection()
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 184,
+      offX = 315,
       offY = -106
     },
     text = Locale["ma_DemorphButton"]
@@ -325,7 +365,7 @@ function MangAdmin:CreateCharSection()
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 268,
+      offX = 400,
       offY = -10
     },
     text = Locale["ma_ShowMapsCharButton"]
@@ -345,7 +385,7 @@ function MangAdmin:CreateCharSection()
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 268,
+      offX = 400,
       offY = -34
     },
     text = Locale["ma_HideMapsButton"]
@@ -365,7 +405,7 @@ FrameLib:BuildButton({
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 268,
+      offX = 400,
       offY = -58
     },
     text = Locale["ma_GPSButton"]
@@ -385,7 +425,7 @@ FrameLib:BuildButton({
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 184,
+      offX = 315,
       offY = -10
     },
     text = Locale["ma_GUIDButton"]
@@ -406,7 +446,7 @@ FrameLib:BuildButton({
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 184,
+      offX = 315,
       offY = -34
     },
     text = Locale["ma_PinfoButton"]
@@ -426,7 +466,7 @@ FrameLib:BuildButton({
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 184,
+      offX = 315,
       offY = -58
     },
     text = Locale["ma_DistanceButton"]
@@ -446,7 +486,7 @@ FrameLib:BuildButton({
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 184,
+      offX = 315,
       offY = -82
     },
     text = Locale["ma_RecallButton"]
