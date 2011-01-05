@@ -1,5 +1,10 @@
 TrinityAdmin Changelog
 
+-=[ Revision 36 - 1/4/2011]=-
+- You'd think fter years of programming experience, I'd not get in this sort of mess. Like letting my code on two
+different machines get out of sync. Like trying to commit with conflicts o' plenty. Fixed. Ignore r25-r35.
+
+
 -=[ Revision 24 - 1/4/2011]=-
 - Merry (Belated) Christmas!
 - Numerous bugs fixed from issue tracker
