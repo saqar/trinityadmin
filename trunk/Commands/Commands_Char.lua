@@ -322,3 +322,20 @@ function ResetDropDownInitialize()
     end
     UIDropDownMenu_SetSelectedValue(ma_resetdropdown, "talents")
 end  
+
+function CharModelZoomIn()
+    ma_modelframe:SetCamera(0)
+--    ma_modelframe:SetModelScale(ma_modelframe:GetModelScale() + .1)
+    --ma_modelframe:SetPosition(1,ma_modelframe:GetModelScale()*3,0)
+    --ma_modelframe:RefreshUnit()
+end
+function CharModelZoomOut()
+    ma_modelframe:SetCamera(1)
+    ma_modelframe:RefreshUnit()
+    
+   -- ma_modelframe:SetCamera(2)
+    --ma_modelframe:SetModelScale(ma_modelframe:GetModelScale() * .5)
+    --ma_modelframe:SetPosition(0,0,0)
+    --ma_modelframe:RefreshUnit()
+
+end

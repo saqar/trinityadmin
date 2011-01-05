@@ -374,3 +374,15 @@ function TeleDelButton()
 
 end
 
+function ResetSpeed()
+    ma_speedslider:SetValue(1)
+    ma_speedsliderText:SetText("Speed: 1.0")
+    MangAdmin:ChatMsg(".mod aspeed 1")
+    
+end
+
+function ResetScale()
+  ma_scaleslider:SetValue(1)
+  ma_scalesliderText:SetText("Scale: 1.0")
+  MangAdmin:ChatMsg(".mod scale 1")
+end
