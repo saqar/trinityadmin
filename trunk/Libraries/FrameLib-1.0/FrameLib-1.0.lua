@@ -158,6 +158,11 @@ function FrameLib:BuildFrame(def)
     frame:SetMaxLines(def.maxLines or 1000000)
   end
   
+  if def.type == "PlayerModel" then
+        frame:SetResizable(false)
+  
+  end
+  
   if def.type == "EditBox" then
     frame:SetAutoFocus(false)
     frame:ClearFocus()
