@@ -1,5 +1,22 @@
 TrinityAdmin Changelog
 
+-=[ Revision 24 - 1/4/2011]=-
+- Merry (Belated) Christmas!
+- Numerous bugs fixed from issue tracker
+- New camera functions and rearrangement of model frame on Char and NPC tabs
+- Speed and Scale sliders now have Reset buttons
+- Tweak to DisplayID browser 
+- Found some more .namego and .goname, changed to .appear and .summon
+
+-=[ Revision 23 - 12/12/2010]=-
+- ADD NPC DisplayID broser
+
+-=[ Revision 22 - 9/6/2010]=-
+- FIX version string
+
+-=[ Revision 21 - 9/6/2010]=-
+- FIX for new .summon, .appear, .groupsummon commands
+
 -=[ Revision 20 - 8/10/2010]=-
 - FIX Whisper issues with 3.3.5a client
 - MOD Revive button on Char tab is now always available
