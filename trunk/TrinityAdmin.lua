@@ -22,7 +22,7 @@ local genv = getfenv(0)
 local Mang = genv.Mang
 
 MAJOR_VERSION = "TrinityAdmin-3.3.5a"
-MINOR_VERSION = "$Revision: 022 $"
+MINOR_VERSION = "$Revision: 024 $"
 ROOT_PATH     = "Interface\\AddOns\\TrinityAdmin\\"
 local cont = ""
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
@@ -804,7 +804,7 @@ end
         ma_difftext:SetText(diff)
         catchedSth = true
 --        output = MangAdmin.db.account.style.showchat
-        output = false
+        output = MangAdmin.db.account.style.showchat  
     end
 
     -- hook all new tickets
@@ -844,25 +844,25 @@ end
       --ma_infoplatformtext:SetText(Locale["info_platform"]..platform)
         catchedSth = true
 --        output = MangAdmin.db.account.style.showchat
-        output = false
+        output = MangAdmin.db.account.style.showchat  
     end
     for users, maxusers in string.gmatch(text, Strings["ma_GmatchOnlinePlayers"]) do
       ma_infoonlinetext:SetText(Locale["info_online"]..users)
       ma_infomaxonlinetext:SetText(Locale["info_maxonline"]..maxusers)
         catchedSth = true
 --        output = MangAdmin.db.account.style.showchat
-        output = false
+        output = MangAdmin.db.account.style.showchat  
     end
     for uptime in string.gmatch(text, Strings["ma_GmatchUptime"]) do
       ma_infouptimetext:SetText(Locale["info_uptime"]..uptime)
         catchedSth = true
 --        output = MangAdmin.db.account.style.showchat
-        output = false
+        output = MangAdmin.db.account.style.showchat  
     end
     for match in string.gmatch(text, Strings["ma_GmatchActiveConnections"]) do
         catchedSth = true
 --        output = MangAdmin.db.account.style.showchat
-        output = false
+        output = MangAdmin.db.account.style.showchat  
     
     end
     -- get results of ticket list. In Trinity, everything will be constructed off the list
@@ -1244,10 +1244,10 @@ end
 
 function MangAdmin:TelePlayer(value, player)
   if value == "gochar" then
-    self:ChatMsg(".goname "..player)
+    self:ChatMsg(".appear "..player)
     self:LogAction("Teleported to player "..player..".")
   elseif value == "getchar" then
-    self:ChatMsg(".namego "..player)
+    self:ChatMsg(".summon "..player)
     self:LogAction("Summoned player "..player..".")
   end
 end
@@ -1365,11 +1365,14 @@ function MangAdmin:WayModify()
 end
 
 function MangAdmin:NPC_GUID_Get_org()                            
-    local player = UnitName("target") or UnitName("player") -- 멀록채집꾼	
+    local player = UnitName("target") or UnitName("player") 
     
-    --local val1 = UnitGUID("target")                     -- F13000002E013D79 -> Object GUID is lowpart 81273  highpart F130
-    --local val2 = string.sub(tostring(val1),13,18)   	-- 013D79 -> string.sub(myString, start, end)
-    --local str1 = string.format("0x%s",val2)             -- 0x013D79
+    --local val1 = UnitGUID("target")                     
+    -- F13000002E013D79 -> Object GUID is lowpart 81273  highpart F130
+    --local val2 = string.sub(tostring(val1),13,18)   	
+    -- 013D79 -> string.sub(myString, start, end)
+    --local str1 = string.format("0x%s",val2)             
+    -- 0x013D79
     --local str2 = tonumber(str1)
  
     local str1 = ID_Setting_Read(0)
@@ -1382,12 +1385,11 @@ function MangAdmin:NPC_GUID_Get_org()
 
 end
 
+
 function MangAdmin:CreateGuild(leader, name)
   self:ChatMsg(".guild create "..leader.." "..name)
   self:LogAction("Created guild '"..name.."' with leader "..leader..".")
 end
-
-
 
 function MangAdmin:SendMail(recipient, subject, body)
   recipient = string.gsub(recipient, " ", "")
