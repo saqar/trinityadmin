@@ -232,7 +232,7 @@ function FrameLib:BuildButton(def)
       local max = t.gradient.max
       texture:SetGradientAlpha(t.gradient.orientation, min.r or min[1], min.g or min[2], min.b or min[3], min.a or min[4] or 1, max.r or max[2], max.g or max[2], max.b or max[3], max.a or max[4] or 1)
     end
-  end
+  end 
   if def.disabled then button:Disable() end
   t = def.script
   if type(t) == "function" then

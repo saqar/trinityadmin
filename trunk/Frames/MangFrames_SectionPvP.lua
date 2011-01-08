@@ -46,9 +46,5 @@ function MangAdmin:CreatePvPSection()
       offY = 0
     }
   })
-  
-MySimpleHTMLObject = CreateFrame('SimpleHTML');
-MySimpleHTMLObject:SetText('<html><body><h1>Heading1</h1><p>A paragraph</p></body></html>');
 
-MySimpleHTMLObject:SetFont('Fonts\\FRIZQT__.TTF', 11);
 end

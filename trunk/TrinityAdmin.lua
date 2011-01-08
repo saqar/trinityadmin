@@ -22,7 +22,7 @@ local genv = getfenv(0)
 local Mang = genv.Mang
 
 MAJOR_VERSION = "TrinityAdmin-3.3.5a"
-MINOR_VERSION = "$Revision: 024 $"
+MINOR_VERSION = "$Revision: 038 $"
 ROOT_PATH     = "Interface\\AddOns\\TrinityAdmin\\"
 local cont = ""
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
@@ -893,7 +893,7 @@ end
             local object = MangAdmin.db.account.buffer.ticketsfull[1]
             local t_msg = ""
             t_msg = object["tMsg"]
-            t_msg = t_msg.." ".."|c00000000"..msg
+            t_msg = t_msg.." ".."|cffffffff"..msg
             table.remove(MangAdmin.db.account.buffer.ticketsfull, 1)
             table.insert(MangAdmin.db.account.buffer.ticketsfull, {tMsg = t_msg})
             MangAdmin.db.account.buffer.ticketread=false
@@ -905,7 +905,7 @@ end
             local object = MangAdmin.db.account.buffer.ticketsfull[1]
             local t_msg = "" 
             t_msg = object["tMsg"]
-            t_msg = t_msg.." ".."|c00000000"..msg
+            t_msg = t_msg.." ".."|cffffffff"..msg
             table.remove(MangAdmin.db.account.buffer.ticketsfull, 1)
             table.insert(MangAdmin.db.account.buffer.ticketsfull, {tMsg = t_msg})
             catchedSth = true
@@ -1719,79 +1719,37 @@ function MangAdmin:InitDropDowns()
     local level = 1
     local info = UIDropDownMenu_CreateInfo()
     local buttons = { -- data taken from source code
-      {"all","all"},
-      {"all_area","all_area"},
-      {"all_item","all_item"},
-      {"all_locales","all_locales"},
-      {"all_loot","all_loot"},
-      {"all_npc","all_npc"},
-      {"all_quest","all_quest"},
-      {"all_scripts","all_scripts"},
-      {"all_spell","all_spell"},
-      {"areatrigger_involvedrelation","areatrigger_involvedrelation"},
+      {"All","all"},
+      {"All gossips","all gossips"},
+      {"All item","all item"},
+      {"All locales","all locales"},
+      {"All loot","all loot"},
+      {"All_npc","all npc"},
+      {"All_quest","all quest"},
+      {"All scripts","all scripts"},
+      {"All spell","all spell"},
       {"areatrigger_tavern","areatrigger_tavern"},
       {"areatrigger_teleport","areatrigger_teleport"},
       {"autobroadcast","autobroadcast"},
       {"command","command"},
+      {"conditions","conditions"},
       {"config","config"},
-      {"creature_involvedrelation","creature_involvedrelation"},
       {"creature_linked_respawn","creature_linked_respawn"},
-      {"creature_loot_template","creature_loot_template"},
-      {"creature_questrelation","creature_questrelation"},
-      {"disenchant_loot_template","disenchant_loot_template"},
-      {"event_scripts","event_scripts"},
-      {"fishing_loot_template","fishing_loot_template"},
-      {"gameobject_involvedrelation","gameobject_involvedrelation"},
-      {"gameobject_loot_template","gameobject_loot_template"},
-      {"gameobject_questrelation","gameobject_questrelation"},
-      {"gameobject_scripts","gameobject_scripts"},
+      {"creature_onkill_reputation","creature_onkill_reputation"},
+      {"creature_template","creature_template"},
+      {"creature_text","creature_text"},
+      {"disables","disables"},
       {"game_graveyard_zone","game_graveyard_zone"},
       {"game_tele","game_tele"},
       {"gm_tickets","gm_tickets"},
-      {"item_enchantment_template","item_enchantment_template"},
-      {"item_loot_template","item_loot_template"},
-      {"locales_creature","locales_creature"},
-      {"locales_gameobject","locales_gameobject"},
-      {"locales_item","locales_item"},
-      {"locales_npc_text","locales_npc_text"},
-      {"locales_page_text","locales_page_text"},
-      {"locales_points_of_interest","locales_points_of_interest"},
-      {"locales_quest","locales_quest"},
-      {"milling_loot_template","milling_loot_template"},
-      {"npc_gossip","npc_gossip"},
-      {"npc_option","npc_option"},
-      {"npc_trainer","npc_trainer"},
-      {"npc_vendor","npc_vendor"},
-      {"page_text","page_text"},
-      {"pickpocketing_loot_template","pickpocketing_loot_template"},
-      {"points_of_interest","points_of_interest"},
-      {"prospecting_loot_template","prospecting_loot_template"},
-      {"quest_end_scripts","quest_end_scripts"},
-      {"quest_mail_loot_template","quest_mail_loot_template"},
-      {"quest_start_scripts","quest_start_scripts"},
-      {"quest_template","quest_template"},
-      {"reference_loot_template","reference_loot_template"},
+      {"item_set_names","item_set_names"},
+      {"lfg_dungeon_encounters","lfg_dungeon_encounters"},
+      {"lfg_dungeon_rewards","lfg_dungeon_rewards"},
       {"reserved_name","reserved_name"},
       {"skill_discovery_template","skill_discovery_template"},
       {"skill_extra_item_template","skill_extra_item_template"},
       {"skill_fishing_base_level","skill_fishing_base_level"},
-      {"skinning_loot_template","skinning_loot_template"},
-      {"spell_area","spell_area"},
-      {"spell_bonus_data","spell_bonus_data"},
-      {"spell_disabled","spell_disabled"},
-      {"spell_elixir","spell_elixir"},
-      {"spell_learn_spell","spell_learn_spell"},
-      {"spell_linked_spell","spell_linked_spell"},
-      {"spell_loot_template","spell_loot_template"},
-      {"spell_pet_auras","spell_pet_auras"},
-      {"spell_proc_event","spell_proc_event"},
-      {"spell_required","spell_required"},
-      {"spell_scripts","spell_scripts"},
-      {"spell_script_target","spell_script_target"},
-      {"spell_target_position","spell_target_position"},
-      {"spell_threats","spell_threats"},
       {"trinity_string","trinity_string"},
-      {"waypoint_scripts","waypoint_scripts"},
     }
     for k,v in pairs(buttons) do
       info.text = v[1]

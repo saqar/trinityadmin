@@ -105,7 +105,7 @@ function MangAdmin:CreateMiscSection()
     inherits = "OptionsCheckButtonTemplate"
   })
 
- FrameLib:BuildFontString({
+  FrameLib:BuildFontString({
     name = "ma_delayparamlabel",
     group = "misc",
     parent = ma_midframe,
@@ -116,7 +116,8 @@ function MangAdmin:CreateMiscSection()
       offY = -124
     }
   })
- FrameLib:BuildFontString({
+ 
+  FrameLib:BuildFontString({
     name = "ma_delayparamlabel2",
     group = "misc",
     parent = ma_midframe,
@@ -128,7 +129,7 @@ function MangAdmin:CreateMiscSection()
     }
   })
 
- FrameLib:BuildFrame({
+  FrameLib:BuildFrame({
     type = "EditBox",
     name = "ma_delayparam",
     group = "misc",
@@ -202,9 +203,9 @@ function MangAdmin:CreateMiscSection()
     parent = ma_midframe,
     text = "Backgroundcolor",
     setpoint = {
-      pos = "LEFT",
-      relTo = ma_bgcolorshowbutton,
-      offX = 25
+      pos = "TOPLEFT",
+      offX = 35,
+      offY = -114
     }
   })
   
@@ -233,9 +234,9 @@ function MangAdmin:CreateMiscSection()
     parent = ma_midframe,
     text = "Framecolor",
     setpoint = {
-      pos = "LEFT",
-      relTo = ma_frmcolorshowbutton,
-      offX = 25
+      pos = "TOPLEFT",
+      offX = 35,
+      offY = -138
     }
   })
   
@@ -264,9 +265,9 @@ function MangAdmin:CreateMiscSection()
     parent = ma_midframe,
     text = "Buttoncolor",
     setpoint = {
-      pos = "LEFT",
-      relTo = ma_btncolorshowbutton,
-      offX = 25
+      pos = "TOPLEFT",
+      offX = 35,
+      offY = -162
     }
   })
   
@@ -295,9 +296,9 @@ function MangAdmin:CreateMiscSection()
     parent = ma_midframe,
     text = "MangLinkifier",
     setpoint = {
-      pos = "LEFT",
-      relTo = ma_linkifiercolorbutton,
-      offX = 25
+      pos = "TOPLEFT",
+      offX = 35,
+      offY = -186
     }
   })
   
@@ -330,8 +331,8 @@ function MangAdmin:CreateMiscSection()
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -110,
+      pos = "TOPLEFT",
+      offX = 500,
       offY = -8
     },
     inherits = "UIDropDownMenuTemplate"
@@ -350,8 +351,8 @@ function MangAdmin:CreateMiscSection()
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -10,
+      pos = "TOPLEFT",
+      offX = 630,
       offY = -10
     },
     text = "Change weather"

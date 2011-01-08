@@ -53,7 +53,7 @@ function MangAdmin:CreateServerSection()
     inherits = nil
   })
   
-    FrameLib:BuildFontString({
+  FrameLib:BuildFontString({
     name = "ma_lagmetertext",
     group = "server",
     parent = ma_midframe,
@@ -97,9 +97,9 @@ function MangAdmin:CreateServerSection()
       height = 20
     },
     setpoint = {
-      pos = "BOTTOMLEFT",
+      pos = "TOPLEFT",
       offX = 15,
-      offY = 10
+      offY = -226
     },
     inherits = "InputBoxTemplate"
   })
@@ -117,9 +117,9 @@ function MangAdmin:CreateServerSection()
       height = 20
     },
     setpoint = {
-      pos = "BOTTOMRIGHT",
-      offX = -94,
-      offY = 10
+      pos = "TOPLEFT",
+      offX = 480,
+      offY = -226
     },
     text = Locale["ma_AnnounceButton"]
   })
@@ -137,9 +137,9 @@ function MangAdmin:CreateServerSection()
       height = 20
     },
     setpoint = {
-      pos = "BOTTOMRIGHT",
-      offX = -10,
-      offY = 10
+      pos = "TOPLEFT",
+      offX = 585,
+      offY = -226
     },
     text = Locale["ma_ResetButton"]
   })
@@ -153,8 +153,8 @@ function MangAdmin:CreateServerSection()
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -95,
+      pos = "TOPLEFT",
+      offX = 505,
       offY = -10
     },
     inherits = "UIDropDownMenuTemplate"
@@ -173,33 +173,13 @@ function MangAdmin:CreateServerSection()
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -10,
+      pos = "TOPLEFT",
+      offX = 650,
       offY = -10
     },
     text = "Reload table"
   })
   
- --[[ FrameLib:BuildButton({
-    name = "ma_saveallbutton",
-    group = "server",
-    parent = ma_midframe,
-    texture = {
-      name = "ma_saveallbutton_texture",
-      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
-    },
-    size = {
-      width = 80,
-      height = 20
-    },
-    setpoint = {
-      pos = "TOPRIGHT",
-      offX = -10,
-      offY = -44
-    },
-    text = "Save all"
-  })
-  ]]
   FrameLib:BuildButton({
     name = "ma_loadscriptsbutton",
     group = "server",
@@ -213,9 +193,9 @@ function MangAdmin:CreateServerSection()
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -99,
-      offY = -44
+      pos = "TOPLEFT",
+      offX = 630,
+      offY = -35
     },
     text = "(Re-)Load Scripts"
   })
@@ -230,8 +210,8 @@ function MangAdmin:CreateServerSection()
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -118,
+      pos = "TOPLEFT",
+      offX = 600,
       offY = -68
     },
     inherits = "InputBoxTemplate"
@@ -250,15 +230,14 @@ function MangAdmin:CreateServerSection()
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -10,
+      pos = "TOPLEFT",
+      offX = 635,
       offY = -68
     },
     text = Locale["ma_ShutdownButton"]
   })
-  
-  
-    FrameLib:BuildFrame({
+ 
+  FrameLib:BuildFrame({
     name = "ma_netgraphframe2",
     group = "server",
     parent = ma_midframe,
@@ -277,7 +256,7 @@ function MangAdmin:CreateServerSection()
     inherits = nil
   })
   
-    FrameLib:BuildFontString({
+  FrameLib:BuildFontString({
     name = "ma_lagmetertext2",
     group = "server",
     parent = ma_midframe,
@@ -288,7 +267,8 @@ function MangAdmin:CreateServerSection()
       offY = -170
     }
   })
-    FrameLib:BuildFontString({
+
+  FrameLib:BuildFontString({
     name = "ma_difftext",
     group = "server",
     parent = ma_midframe,
