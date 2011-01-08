@@ -306,7 +306,7 @@ function MangAdmin:CreateNpcSection()
     setpoint = {
       pos = "TOPLEFT",
       offX = 225,
-      offY = -110
+      offY = -136
     },
     text = Locale["ma_NPCDel"]
   })
@@ -941,5 +941,45 @@ function MangAdmin:CreateNpcSection()
     },
     text = Locale["ma_NPCUnAura"]
     })
+
+  FrameLib:BuildButton({
+    name = "ma_npcbindsight",
+    group = "npc",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_npcbindsight_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 225,
+      offY = -82
+    },
+    text = Locale["ma_NPCBindsight"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_npcunbindsight",
+    group = "npc",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_npcunbindsight_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 310,
+      offY = -82
+    },
+    text = Locale["ma_NPCUnBindsight"]
+  })
 
 end

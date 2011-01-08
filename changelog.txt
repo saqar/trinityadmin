@@ -1,5 +1,13 @@
 TrinityAdmin Changelog
 
+-=[ Revision 39 - 1/8/2011]=-
+- ADD .bindsight to NPC tab
+- ADD .unbindsight to NPC tab. Note: this command is broken in core on my core revision. 
+- ADD .bindsight to CHAR tab
+- ADD .unbindsight to CHAR tab. Note: this command is broken in core on my core revision. 
+- ADD .char rename, customize, changerace, and changefaction to CHAR tab
+- ADD enUS locale for the above items
+
 -=[ Revision 38 - 1/8/2011]=-
 - Misc code formatting cleanup
 - ADD aspeed, arena, bwalk, drunk, fly, gender, honor, mount, phase, runicpower, speed, standstate, swim, and tp to Modify
@@ -16,7 +24,6 @@ TrinityAdmin Changelog
 -=[ Revision 36 - 1/4/2011]=-
 - You'd think after years of programming experience, I'd not get in this sort of mess. Like letting my code on two
 different machines get out of sync. Like trying to commit with conflicts o' plenty. Fixed. Ignore r25-r35.
-
 
 -=[ Revision 24 - 1/4/2011]=-
 - Merry (Belated) Christmas!

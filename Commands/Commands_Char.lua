@@ -396,3 +396,39 @@ function CharModelZoomOut()
     --ma_modelframe:SetPosition(0,0,0)
     --ma_modelframe:RefreshUnit()
 end
+
+function CharBindSight()
+    local cname = ma_charactertarget:GetText()
+    MangAdmin:ChatMsg(".bindsight")
+    MangAdmin:LogAction("Sight bound to "..cname)
+end
+
+function CharUnBindSight()
+    local cname = ma_charactertarget:GetText()
+    MangAdmin:ChatMsg(".unbindsight")
+    MangAdmin:LogAction("Sight unbound to "..cname)
+end
+
+function CharRename() 
+    local cname = ma_charactertarget:GetText()
+    MangAdmin:ChatMsg(".character rename")
+    MangAdmin:LogAction("Forced rename of "..cname)
+end
+
+function CharCustomize()
+    local cname = ma_charactertarget:GetText()
+    MangAdmin:ChatMsg(".character customize")
+    MangAdmin:LogAction("Forced customization of "..cname)
+end
+
+function CharChangeRace()
+    local cname = ma_charactertarget:GetText()
+    MangAdmin:ChatMsg(".character changerace")
+    MangAdmin:LogAction("Forced race change of "..cname)
+end
+
+function CharChangeFaction()
+    local cname = ma_charactertarget:GetText()
+    MangAdmin:ChatMsg(".character changefaction")
+    MangAdmin:LogAction("Forced faction change of "..cname)
+end

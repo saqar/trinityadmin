@@ -515,5 +515,125 @@ function MangAdmin:CreateCharSection()
     },
     text = Locale["ma_Reset"]
   })
+
+  FrameLib:BuildButton({
+    name = "ma_charbindsight",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_charbindsight_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 400,
+      offY = -82
+    },
+    text = Locale["ma_CharBindsight"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_charunbindsight",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_charunbindsight_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 400,
+      offY = -106
+    },
+    text = Locale["ma_CharUnBindsight"]
+  })
      
+  FrameLib:BuildButton({
+    name = "ma_charrenamebutton",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_charrenamebutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 230,
+      offY = -130
+    },
+    text = Locale["ma_charrename"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_charcustomizebutton",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_charcustomizebutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 315,
+      offY = -130
+    },
+    text = Locale["ma_charcustomize"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_charchangeracebutton",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_charchangeracebutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 400,
+      offY = -130
+    },
+    text = Locale["ma_charchangerace"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_charchangefactionbutton",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_charchangefactionbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 485,
+      offY = -130
+    },
+    text = Locale["ma_charchnagefaction"]
+  })
+
 end

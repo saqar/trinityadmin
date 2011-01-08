@@ -250,8 +250,17 @@ function NpcEmote(emote)
     MangAdmin:LogAction("Played emote ("..emote..").")
 end
 
+function NPCBindSight()
+    local npccname = ma_npccharactertarget:GetText()
+    MangAdmin:ChatMsg(".bindsight")
+    MangAdmin:LogAction("Sight bound to "..npccname)
+end
 
-
+function NPCUnBindSight()
+    local npccname = ma_npccharactertarget:GetText()
+    MangAdmin:ChatMsg(".unbindsight")
+    MangAdmin:LogAction("Sight unbound to "..npccname)
+end
 
 
 
