@@ -40,6 +40,7 @@ function MangAdmin:CreateMainSection()
     texture = {
       name = "ma_displaylevelbutton_texture",
       color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+      --file = "Interface\\Buttons\\UI-Panel-Button-Up"
     },
     size = {
       width = 164,
@@ -293,46 +294,6 @@ function MangAdmin:CreateMainSection()
     text = Locale["ma_OffButton"]
   })
   
---  FrameLib:BuildButton({
---    name = "ma_ticketonbutton",
---    group = "main",
---    parent = ma_midframe,
---    texture = {
---      name = "ma_ticketonbutton_texture",
---      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
---    },
---    size = {
---      width = 120,
---      height = 20
---    },
---    setpoint = {
---      pos = "TOPLEFT",
---      offX = 10,
---      offY = -178
---    },
---    text = "Announce tickets"
---  })
-
---  FrameLib:BuildButton({
---    name = "ma_ticketoffbutton",
---    group = "main",
---    parent = ma_midframe,
---    texture = {
---      name = "ma_ticketoffbutton_texture",
---      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
---    },
---    size = {
---      width = 40,
---      height = 20
---    },
---    setpoint = {
---      pos = "TOPLEFT",
---      offX = 134,
---      offY = -178
---    },
---    text = Locale["ma_OffButton"]
---  })
-  
   FrameLib:BuildButton({
     name = "ma_mapsonbutton",
     group = "main",
@@ -373,8 +334,7 @@ function MangAdmin:CreateMainSection()
     text = Locale["ma_OffButton"]
   })
 
-  
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_chatonbutton",
     group = "main",
     parent = ma_midframe,
@@ -414,8 +374,7 @@ function MangAdmin:CreateMainSection()
     text = Locale["ma_OffButton"]
   })
   
-
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_waterwalkonbutton",
     group = "main",
     parent = ma_midframe,
@@ -455,8 +414,7 @@ function MangAdmin:CreateMainSection()
     text = Locale["ma_OffButton"]
   })  
   
-
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_accountlockonbutton",
     group = "main",
     parent = ma_midframe,
@@ -556,7 +514,7 @@ function MangAdmin:CreateMainSection()
     text = Locale["ma_DismountButton"]
   })
   
-FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_setjail_a_button",
     group = "main",
     parent = ma_midframe,
@@ -626,7 +584,7 @@ FrameLib:BuildButton({
     inherits = "OptionsSliderTemplate"
   })
 
-FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_speedsliderreset_button",
     group = "main",
     parent = ma_midframe,
@@ -662,7 +620,7 @@ FrameLib:BuildButton({
     inherits = "OptionsSliderTemplate"
   })
   
-FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_scalesliderreset_button",
     group = "main",
     parent = ma_midframe,
@@ -804,7 +762,7 @@ FrameLib:BuildButton({
     }
   })
   
-      FrameLib:BuildFrame({
+  FrameLib:BuildFrame({
     type = "EditBox",
     name = "ma_parameter",
     group = "main",
@@ -821,7 +779,7 @@ FrameLib:BuildButton({
     inherits = "InputBoxTemplate"
   })
   
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_gmingamebutton",
     group = "main",
     parent = ma_midframe,
@@ -841,7 +799,7 @@ FrameLib:BuildButton({
     text = Locale["gmingame"]
   })  
   
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_gmlistbutton",
     group = "main",
     parent = ma_midframe,
@@ -861,7 +819,7 @@ FrameLib:BuildButton({
     text = Locale["gmlist"]
   })  
   
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_petcreatebutton",
     group = "main",
     parent = ma_midframe,
@@ -881,7 +839,7 @@ FrameLib:BuildButton({
     text = Locale["petcreate"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_petlearnbutton",
     group = "main",
     parent = ma_midframe,
@@ -901,7 +859,7 @@ FrameLib:BuildButton({
     text = Locale["petlearn"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_petunlearnbutton",
     group = "main",
     parent = ma_midframe,
@@ -921,7 +879,7 @@ FrameLib:BuildButton({
     text = Locale["petunlearn"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_pettpbutton",
     group = "main",
     parent = ma_midframe,
@@ -941,7 +899,7 @@ FrameLib:BuildButton({
     text = Locale["pettp"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_lookuptaxibutton",
     group = "main",
     parent = ma_midframe,
@@ -961,7 +919,7 @@ FrameLib:BuildButton({
     text = Locale["lookuptaxi"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_gotaxinodebutton",
     group = "main",
     parent = ma_midframe,
@@ -981,7 +939,7 @@ FrameLib:BuildButton({
     text = Locale["gotaxinode"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_gotriggerbutton",
     group = "main",
     parent = ma_midframe,
@@ -1001,7 +959,7 @@ FrameLib:BuildButton({
     text = Locale["gotrigger"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_goxybutton",
     group = "main",
     parent = ma_midframe,
@@ -1021,7 +979,7 @@ FrameLib:BuildButton({
     text = Locale["goxy"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_goxyzbutton",
     group = "main",
     parent = ma_midframe,
@@ -1041,7 +999,7 @@ FrameLib:BuildButton({
     text = Locale["goxyz"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_gozonexybutton",
     group = "main",
     parent = ma_midframe,
@@ -1061,7 +1019,7 @@ FrameLib:BuildButton({
         text = Locale["gozonexy"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_lookupzonebutton",
     group = "main",
     parent = ma_midframe,
@@ -1081,7 +1039,7 @@ FrameLib:BuildButton({
         text = Locale["lookupzone"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_castbutton",
     group = "main",
     parent = ma_midframe,
@@ -1101,7 +1059,7 @@ FrameLib:BuildButton({
         text = Locale["cast"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_castbackbutton",
     group = "main",
     parent = ma_midframe,
@@ -1121,7 +1079,7 @@ FrameLib:BuildButton({
         text = Locale["castback"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_castdistbutton",
     group = "main",
     parent = ma_midframe,
@@ -1141,7 +1099,7 @@ FrameLib:BuildButton({
         text = Locale["castdist"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_castselfbutton",
     group = "main",
     parent = ma_midframe,
@@ -1161,7 +1119,7 @@ FrameLib:BuildButton({
         text = Locale["castself"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_casttargetbutton",
     group = "main",
     parent = ma_midframe,
@@ -1181,7 +1139,7 @@ FrameLib:BuildButton({
         text = Locale["casttarget"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_listitembutton",
     group = "main",
     parent = ma_midframe,
@@ -1201,7 +1159,7 @@ FrameLib:BuildButton({
         text = Locale["listitem"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_gmclearbutton",
     group = "main",
     parent = ma_midframe,
@@ -1221,7 +1179,7 @@ FrameLib:BuildButton({
         text = Locale["GmClear"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_acctcreatebutton",
     group = "main",
     parent = ma_midframe,
@@ -1241,7 +1199,7 @@ FrameLib:BuildButton({
         text = Locale["acctcreate"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_acctdeletebutton",
     group = "main",
     parent = ma_midframe,
@@ -1261,7 +1219,7 @@ FrameLib:BuildButton({
         text = Locale["acctdelete"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_acctaddonbutton",
     group = "main",
     parent = ma_midframe,
@@ -1281,7 +1239,7 @@ FrameLib:BuildButton({
         text = Locale["acctaddon"]
   })  
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_acctgmlvlbutton",
     group = "main",
     parent = ma_midframe,
@@ -1301,7 +1259,7 @@ FrameLib:BuildButton({
         text = Locale["acctgmlvl"]
   })  
   
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_acctpasswdbutton",
     group = "main",
     parent = ma_midframe,
@@ -1321,7 +1279,7 @@ FrameLib:BuildButton({
         text = Locale["acctpasswd"]
   })  
   
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_gmnotifybutton",
     group = "main",
     parent = ma_midframe,
@@ -1361,8 +1319,7 @@ FrameLib:BuildButton({
     text = Locale["ma_teleaddbutton"]
     })
 
-
-FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_teledelbutton",
     group = "main",
     parent = ma_midframe,

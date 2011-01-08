@@ -91,7 +91,7 @@ function MangAdmin:CreateNpcSection()
     text = "=>>"
   })
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_npcmodelzoominbutton",
     group = "npc",
     parent = ma_midframe,
@@ -211,7 +211,7 @@ function MangAdmin:CreateNpcSection()
     text = Locale["ma_NPCGUIDButton"]
   })
 
- FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_npcinfobutton",
     group = "npc",
     parent = ma_midframe,
@@ -251,7 +251,7 @@ function MangAdmin:CreateNpcSection()
     text = Locale["ma_NPCDemorph"]
   })
   
- FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_movestackbutton",
     group = "npc",
     parent = ma_midframe,
@@ -271,7 +271,7 @@ function MangAdmin:CreateNpcSection()
     text = Locale["ma_MoveStackButton"]
   })
 
- FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_npcmovebutton",
     group = "npc",
     parent = ma_midframe,
@@ -311,7 +311,7 @@ function MangAdmin:CreateNpcSection()
     text = Locale["ma_NPCDel"]
   })
 
- FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_npcgobutton",
     group = "npc",
     parent = ma_midframe,
@@ -331,7 +331,7 @@ function MangAdmin:CreateNpcSection()
     text = Locale["ma_NPCGo"]
   })
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_npcfreezebutton",
     group = "npc",
     parent = ma_midframe,
@@ -453,7 +453,7 @@ function MangAdmin:CreateNpcSection()
     text = Locale["ma_WayMDel"]
   })
 
- FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_way_showonbutton",
     group = "npc",
     parent = ma_midframe,
@@ -493,7 +493,7 @@ function MangAdmin:CreateNpcSection()
     text = Locale["ma_WayShow0"]
   })
  
- FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_npcunfreeze_addway_showonbutton",
     group = "npc",
     parent = ma_midframe,
@@ -513,7 +513,7 @@ function MangAdmin:CreateNpcSection()
     text = Locale["[WayShow]"]
   })
  
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_npcunfreeze_waybutton",
     group = "npc",
     parent = ma_midframe,
@@ -533,7 +533,7 @@ function MangAdmin:CreateNpcSection()
     text = Locale["ma_NPCUnFreeze_WayButton"]
   })
  
- FrameLib:BuildFrame({
+  FrameLib:BuildFrame({
     type = "EditBox",
     name = "ma_npcunfreeze_random_distancebutton",	-- ma_npccharactertarget
     group = "npc",
@@ -550,7 +550,7 @@ function MangAdmin:CreateNpcSection()
     inherits = "InputBoxTemplate"
   })
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_npcunfreeze_randombutton",
     group = "npc",
     parent = ma_midframe,
@@ -583,8 +583,8 @@ function MangAdmin:CreateNpcSection()
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -10,
+      pos = "TOPLEFT",
+      offX = 660,
       offY = -15
     },
     text = Locale["ma_PlayEmote"]
@@ -599,8 +599,8 @@ function MangAdmin:CreateNpcSection()
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -90,
+      pos = "TOPLEFT",
+      offX = 525,
       offY = -10
     },
     inherits = "UIDropDownMenuTemplate"
@@ -619,8 +619,8 @@ function MangAdmin:CreateNpcSection()
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -10,
+      pos = "TOPLEFT",
+      offX = 660,
       offY = -39
     },
     text = Locale["ma_PlayEmote"]
@@ -635,14 +635,14 @@ function MangAdmin:CreateNpcSection()
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -90,
+      pos = "TOPLEFT",
+      offX = 525,
       offY = -34
     },
     inherits = "UIDropDownMenuTemplate"
   })
   
-FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_npcdisplaydownbutton",
     group = "npc",
     parent = ma_midframe,
@@ -662,7 +662,7 @@ FrameLib:BuildButton({
     text = "<<"
     })
     
- FrameLib:BuildFrame({
+  FrameLib:BuildFrame({
     type = "EditBox",
     name = "ma_npcdisplayid",
     group = "npc",
@@ -679,7 +679,7 @@ FrameLib:BuildButton({
     inherits = "InputBoxTemplate"
   })
 
-FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_npcdisplayupbutton",
     group = "npc",
     parent = ma_midframe,
@@ -699,7 +699,7 @@ FrameLib:BuildButton({
     text = ">>"
     })
  
- FrameLib:BuildFrame({
+  FrameLib:BuildFrame({
     type = "EditBox",
     name = "ma_NPC_idbutton",
     group = "npc",
@@ -716,8 +716,7 @@ FrameLib:BuildButton({
     inherits = "InputBoxTemplate"
   })
   
-
-FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_npcID_UPbutton",
     group = "npc",
     parent = ma_midframe,
@@ -736,7 +735,8 @@ FrameLib:BuildButton({
     },
     text = ">>"
   })
-FrameLib:BuildButton({
+
+  FrameLib:BuildButton({
     name = "ma_npcID_DOWNbutton",
     group = "npc",
     parent = ma_midframe,
@@ -796,7 +796,7 @@ FrameLib:BuildButton({
     text = Locale["ma_getguid"]
   })
 
- FrameLib:BuildFrame({
+  FrameLib:BuildFrame({
     type = "EditBox",
     name = "ma_NPC_guidbutton",
     group = "npc",
@@ -813,7 +813,7 @@ FrameLib:BuildButton({
     inherits = "InputBoxTemplate"
   })
 
- FrameLib:BuildFontString({
+  FrameLib:BuildFontString({
     name = "ma_npcparameterboxtext",
     group = "npc",
     parent = ma_midframe,
@@ -825,7 +825,7 @@ FrameLib:BuildButton({
     }
   })
   
- FrameLib:BuildFrame({
+  FrameLib:BuildFrame({
     type = "EditBox",
     name = "ma_npccharactertarget",
     group = "npc",
@@ -842,7 +842,7 @@ FrameLib:BuildButton({
     inherits = "InputBoxTemplate"
   })
 
-FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_npcmorphbutton",
     group = "npc",
     parent = ma_midframe,
@@ -862,7 +862,7 @@ FrameLib:BuildButton({
     text = Locale["ma_NPCMorph"]
     })
     
-FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_npcsaybutton",
     group = "npc",
     parent = ma_midframe,
@@ -882,7 +882,7 @@ FrameLib:BuildButton({
     text = Locale["ma_NPCSay"]
     })
 
-FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_npcyellbutton",
     group = "npc",
     parent = ma_midframe,
@@ -901,7 +901,8 @@ FrameLib:BuildButton({
     },
     text = Locale["ma_NPCYell"]
     })
-FrameLib:BuildButton({
+
+  FrameLib:BuildButton({
     name = "ma_npcaurabutton",
     group = "npc",
     parent = ma_midframe,
@@ -921,7 +922,7 @@ FrameLib:BuildButton({
     text = Locale["ma_NPCAura"]
     })
 
-FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_npcunaurabutton",
     group = "npc",
     parent = ma_midframe,
@@ -940,7 +941,5 @@ FrameLib:BuildButton({
     },
     text = Locale["ma_NPCUnAura"]
     })
-
-
 
 end

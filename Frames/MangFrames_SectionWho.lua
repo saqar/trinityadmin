@@ -35,7 +35,6 @@ function MangAdmin:CreateWhoSection()
     linkifier = MangAdmin.db.account.style.color.linkifier
   }
   
- 
   FrameLib:BuildButton({
     name = "ma_showwhobutton",
     group = "who",
@@ -349,20 +348,15 @@ function MangAdmin:CreateWhoSection()
       height = 200
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -105,
+      pos = "TOPLEFT",
+      offX = 270,
       offY = -10
-    },
-    setpoint2 = {
-      pos = "BOTTOMRIGHT",
-      offX = -105,
-      offY = 34
     },
     inherits = "FauxScrollFrameTemplate"
 --    inherits = "UIPanelScrollFrameTemplate"
   })
   
- FrameLib:BuildFrame({
+  FrameLib:BuildFrame({
     type = "EditBox",
     name = "ma_whodetail",
     group = "who",
@@ -373,7 +367,7 @@ function MangAdmin:CreateWhoSection()
     },
     size = {
       width = 260,
-      height = 300
+      height = 85
     },
     setpoint = {
       pos = "TOPLEFT",
@@ -385,7 +379,7 @@ function MangAdmin:CreateWhoSection()
     textcolor = {1, 1, 1, 1.0}
   })
  
- FrameLib:BuildFrame({
+  FrameLib:BuildFrame({
     type = "EditBox",
     name = "ma_whodetail2",
     group = "who",
@@ -396,7 +390,7 @@ function MangAdmin:CreateWhoSection()
     },
     size = {
       width = 260,
-      height = 300
+      height = 110
     },
     setpoint = {
       pos = "TOPLEFT",
@@ -408,7 +402,7 @@ function MangAdmin:CreateWhoSection()
     textcolor = {1, 1, 1, 1.0}
   })
   
-   FrameLib:BuildFontString({
+  FrameLib:BuildFontString({
     name = "ma_whoidlabel",
     group = "who",
     parent = ma_midframe,
@@ -419,7 +413,8 @@ function MangAdmin:CreateWhoSection()
       offY = -30
     }
   })
-    FrameLib:BuildFontString({
+  
+  FrameLib:BuildFontString({
     name = "ma_whoid",
     group = "who",
     parent = ma_midframe,
@@ -431,17 +426,6 @@ function MangAdmin:CreateWhoSection()
     }
   })
 
---[[   FrameLib:BuildFontString({
-    name = "ma_whowherelabel",
-    group = "who",
-    parent = ma_midframe,
-    text = "Map-Zone:",
-    setpoint = {
-      pos = "TOPLEFT",
-      offX = 10,
-      offY = -40
-    }
-  })]]
   FrameLib:BuildFontString({
     name = "ma_whowhere",
     group = "who",
@@ -454,7 +438,7 @@ function MangAdmin:CreateWhoSection()
     }
   })
 
-    FrameLib:BuildFontString({
+  FrameLib:BuildFontString({
     name = "ma_wholabel",
     group = "who",
     parent = ma_midframe,
@@ -465,7 +449,8 @@ function MangAdmin:CreateWhoSection()
       offY = -30
     }
   })
-    FrameLib:BuildFontString({
+ 
+  FrameLib:BuildFontString({
     name = "ma_who",
     group = "who",
     parent = ma_midframe,
@@ -477,7 +462,7 @@ function MangAdmin:CreateWhoSection()
     }
   })
  
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_whoscrollframe1",
     JustifyH = "LEFT",
     group = "who",

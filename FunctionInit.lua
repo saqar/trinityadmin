@@ -219,6 +219,11 @@ function InitControls()
   MangAdmin:PrepareScript(ma_objdelbutton         , Locale["tt_ObjDel"]             , function() OBJDel() end)
   MangAdmin:PrepareScript(ma_objnearbutton        , Locale["tt_ObjNear"]            , function() OBJNear() end)
   MangAdmin:PrepareScript(ma_objtargetbutton      , Locale["tt_ObjTarget"]          , function() OBJTarget() end)
+  MangAdmin:PrepareScript(ma_gobactivatebutton    , Locale["tt_ObjActivate"]        , function() OBJActivate() end)
+  MangAdmin:PrepareScript(ma_gobaddtempbutton     , Locale["tt_ObjAddTemp"]         , function() OBJAddTemp() end)
+  MangAdmin:PrepareScript(ma_gobinfobutton        , Locale["tt_ObjInfo"]            , function() OBJInfo() end)
+  MangAdmin:PrepareScript(ma_gobsetphasebutton    , Locale["tt_ObjSetPhase"]        , function() OBJSetPhase() end)
+  
 
 --[[Tele Tab]]
   MangAdmin:PrepareScript(ma_ContScrollBarEntry1  , nil , function() MangAdmin.db.char.selectedCont = "EK_N"; cont=MangAdmin.db.char.selectedCont; TeleScrollUpdate() end)

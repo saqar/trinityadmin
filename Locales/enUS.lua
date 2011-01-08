@@ -197,7 +197,7 @@ function Return_enUS()
     ["ma_Modify"] = "Modify",
     ["ma_Reset"] = "Reset",
   --[[Other]]
-      ["ma_LevelUp"] = "Level up",
+    ["ma_LevelUp"] = "Level up",
     ["ma_LevelDown"] = "Level down",
     ["ma_Money"] = "Money",
     ["ma_Energy"] = "Energy",
@@ -210,6 +210,22 @@ function Return_enUS()
     ["ma_Honor"] = "Honor",
     ["ma_Level"] = "Level",
     ["ma_AllLang"] = "All Languages",
+
+    ["ma_AllSpeeds"] = "AllSpeeds",
+    ["ma_Arena"] = "Arena",
+    ["ma_BackWalk"] = "BackWalk",
+    ["ma_Drunk"] = "Drunk",
+    ["ma_FlySpeed"] = "FlySpeed",
+    ["ma_Gender"] = "Gender",
+    ["ma_Honor"] = "Honor",
+    ["ma_MountSpeed"] = "MountSpeed",
+    ["ma_Phase"] = "Phase",
+    ["ma_RunicPower"] = "RunicPower",
+    ["ma_Speed"] = "Speed",
+    ["ma_StandSate"] = "StandState",
+    ["ma_SwimSpeed"] = "SwimSpeed",
+    ["ma_TalentPoints"] = "TalentPoints",
+    
     -- languages
     ["Common"] = "Common",
     ["Orcish"] = "Orcish",
@@ -395,6 +411,11 @@ function Return_enUS()
     ["tt_ObjDel"] = "Deletes the targeted object",
     ["tt_ObjNear"] = "Returns info on objects near you",
     ["tt_ObjTarget"] = "Targets the nearest object",
+    ["tt_ObjActivate"] = "Activates the targeted object",
+    ["tt_ObjAddTemp"] = "Adds a temporary copy of the object",
+    ["tt_ObjInfo"] = "Gets extended info about the object",
+    ["tt_ObjSetPhase"] = "Sets the phase of the object",
+    
   --[[Control Labels]]
     ["ma_OBJGo"] = "Obj Go",
     ["ma_OBJAdd"] = "Obj Add",
@@ -403,6 +424,11 @@ function Return_enUS()
     ["ma_OBJDel"] = "Obj Del",
     ["ma_OBJNear"] = "Obj Near",
     ["ma_OBJTarget"] = "Obj Target",
+    ["ma_OBJActivate"] = "Obj Activate",
+    ["ma_OBJAddTemp"] = "Obj Add Tmp",
+    ["ma_OBJInfo"] = "Obj Info",
+    ["ma_OBJSetPhase"] = "Obj Phase",
+    
   --[[Other]]
 --[[Tele Tab]]
   --[[Name]]

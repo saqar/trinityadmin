@@ -34,106 +34,6 @@ function MangAdmin:CreateCharSection()
     frm = MangAdmin.db.account.style.color.frames
   }
   
-  --[[FrameLib:BuildButton({
-    name = "ma_learnallbutton",
-    group = "char",
-    parent = ma_midframe,
-    texture = {
-      name = "ma_learnallbutton_texture",
-      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
-    },
-    size = {
-      width = 120,
-      height = 20
-    },
-    setpoint = {
-      pos = "TOPLEFT",
-      offX = 10,
-      offY = -4
-    },
-    text = Locale["ma_LearnAllButton"]
-  })
-
-  FrameLib:BuildButton({
-    name = "ma_learncraftsbutton",
-    group = "char",
-    parent = ma_midframe,
-    texture = {
-      name = "ma_learncraftsbutton_texture",
-      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
-    },
-    size = {
-      width = 180,
-      height = 20
-    },
-    setpoint = {
-      pos = "TOPLEFT",
-      offX = 134,
-      offY = -4
-    },
-    text = Locale["ma_LearnCraftsButton"]
-  })
-
-  FrameLib:BuildButton({
-    name = "ma_learngmbutton",
-    group = "char",
-    parent = ma_midframe,
-    texture = {
-      name = "ma_learngmbutton_texture",
-      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
-    },
-    size = {
-      width = 140,
-      height = 20
-    },
-    setpoint = {
-      pos = "TOPLEFT",
-      offX = 318,
-      offY = -4
-    },
-    text = Locale["ma_LearnGMButton"]
-  })
-
-  FrameLib:BuildButton({
-    name = "ma_learnclassbutton",
-    group = "char",
-    parent = ma_midframe,
-    texture = {
-      name = "ma_learnclassbutton_texture",
-      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
-    },
-    size = {
-      width = 200,
-      height = 20
-    },
-    setpoint = {
-      pos = "TOPLEFT",
-      offX = 462,
-      offY = -4
-    },
-    text = Locale["ma_LearnClassButton"]
-  })
-
-  FrameLib:BuildButton({
-    name = "ma_learnlangbutton",
-    group = "char",
-    parent = ma_midframe,
-    texture = {
-      name = "ma_learnlangbutton_texture",
-      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
-    },
-    size = {
-      width = 120,
-      height = 20
-    },
-    setpoint = {
-      pos = "TOPLEFT",
-      offX = 10,
-      offY = -28
-    },
-    text = Locale["ma_LearnLangButton"]
-  })]]
-  
   FrameLib:BuildFrame({
     type = "PlayerModel",
     name = "ma_modelframe",
@@ -391,7 +291,7 @@ function MangAdmin:CreateCharSection()
     text = Locale["ma_HideMapsButton"]
   })
 
-FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_gpsbutton",
     group = "char",
     parent = ma_midframe,
@@ -431,8 +331,7 @@ FrameLib:BuildButton({
     text = Locale["ma_GUIDButton"]
   })
 
-
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_pinfobutton",
     group = "char",
     parent = ma_midframe,
@@ -452,7 +351,7 @@ FrameLib:BuildButton({
     text = Locale["ma_PinfoButton"]
   })
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_distancebutton",
     group = "char",
     parent = ma_midframe,
@@ -472,7 +371,7 @@ FrameLib:BuildButton({
     text = Locale["ma_DistanceButton"]
   })
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_recallbutton",
     group = "char",
     parent = ma_midframe,
@@ -492,7 +391,6 @@ FrameLib:BuildButton({
     text = Locale["ma_RecallButton"]
   })
 
-  
   FrameLib:BuildFrame({
     name = "ma_learnlangdropdown",
     group = "char",
@@ -502,8 +400,8 @@ FrameLib:BuildButton({
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -90,
+      pos = "TOPLEFT",
+      offX = 520,
       offY = -10
     },
     inherits = "UIDropDownMenuTemplate"
@@ -522,8 +420,8 @@ FrameLib:BuildButton({
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -10,
+      pos = "TOPLEFT",
+      offX = 660,
       offY = -15
     },
     text = Locale["ma_Learn"]
@@ -538,8 +436,8 @@ FrameLib:BuildButton({
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -130,
+      pos = "TOPLEFT",
+      offX = 480,
       offY = -40
     },
     inherits = "UIDropDownMenuTemplate"
@@ -555,8 +453,8 @@ FrameLib:BuildButton({
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -100,
+      pos = "TOPLEFT",
+      offX = 620,
       offY = -45
     },
     inherits = "InputBoxTemplate"
@@ -575,8 +473,8 @@ FrameLib:BuildButton({
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -10,
+      pos = "TOPLEFT",
+      offX = 660,
       offY = -45
     },
     text = Locale["ma_Modify"]
@@ -591,8 +489,8 @@ FrameLib:BuildButton({
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -90,
+      pos = "TOPLEFT",
+      offX = 520,
       offY = -70
     },
     inherits = "UIDropDownMenuTemplate"
@@ -611,14 +509,11 @@ FrameLib:BuildButton({
       height = 20
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -10,
+      pos = "TOPLEFT",
+      offX = 660,
       offY = -75
     },
     text = Locale["ma_Reset"]
   })
- 
-   
-
-    
+     
 end

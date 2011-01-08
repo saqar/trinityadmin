@@ -64,3 +64,30 @@ function OBJTarget()
     MangAdmin:ChatMsg(".gobject target")
     MangAdmin:LogAction("Object Target for player "..player..".")
 end
+
+function OBJActivate()
+    local player = UnitName("target") or UnitName("player")
+    MangAdmin:ChatMsg(".gobject activate "..ma_Obj_guidbutton:GetText())
+    MangAdmin:LogAction("Object "..ma_Obj_guidbutton:GetText().." activated for player "..player..".")
+end
+
+function OBJAddTemp()
+    local player = UnitName("target") or UnitName("player")
+    local obj =	ma_Obj_idbutton:GetText()
+    MangAdmin:ChatMsg(".gobject add temp "..obj)
+    MangAdmin:LogAction("Object Add(Temp) for player "..player..".")
+end
+
+function OBJInfo()
+    local player = UnitName("target") or UnitName("player")
+    MangAdmin:ChatMsg(".gobject info")
+    MangAdmin:LogAction("Object "..ma_Obj_guidbutton:GetText().." info obtained for player "..player..".")
+end
+
+function OBJSetPhase()
+    local player = UnitName("target") or UnitName("player")
+    local obj =	ma_Obj_guidbutton:GetText()
+    local phase = ma_gobsetphaseinput:GetText()
+    MangAdmin:ChatMsg(".gobject set phase "..obj.." "..phase)
+    MangAdmin:LogAction("Object "..obj.." phase set to "..phase.." for player "..player..".")
+end

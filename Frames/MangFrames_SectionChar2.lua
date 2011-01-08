@@ -34,9 +34,7 @@ function MangAdmin:CreateChar2Section()
     frm = MangAdmin.db.account.style.color.frames
   }
   
-  
-  
-  FrameLib:BuildFontString({
+ FrameLib:BuildFontString({
     name = "ma_char2placeholder",
     group = "char2",
     parent = ma_midframe,
@@ -54,13 +52,13 @@ function MangAdmin:CreateChar2Section()
     parent = ma_midframe,
     text = Locale["ma_parameter"],
     setpoint = {
-      pos = "BOTTOMLEFT",
+      pos = "TOPLEFT",
       offX = 10,
-      offY = 10
+      offY = -230
     }
   })
   
-    FrameLib:BuildFrame({
+ FrameLib:BuildFrame({
     type = "EditBox",
     name = "ma_charactertarget",
     group = "char2",
@@ -70,14 +68,14 @@ function MangAdmin:CreateChar2Section()
       height = 20
     },
     setpoint = {
-      pos = "BOTTOMLEFT",
+      pos = "TOPLEFT",
       offX = 100,
-      offY = 5
+      offY = -230
     },
     inherits = "InputBoxTemplate"
   })
 
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_banbutton",
     group = "char2",
     parent = ma_midframe,
@@ -97,7 +95,7 @@ FrameLib:BuildButton({
     text = Locale["ma_banbutton"]
     })
 
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_charmorphbutton",
     group = "char2",
     parent = ma_midframe,
@@ -117,7 +115,7 @@ FrameLib:BuildButton({
     text = Locale["ma_Morph"]
     })
 
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_gonamebutton",
     group = "char2",
     parent = ma_midframe,
@@ -137,7 +135,7 @@ FrameLib:BuildButton({
     text = Locale["ma_gonamebutton"]
     })
 
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_createguildbutton",
     group = "char2",
     parent = ma_midframe,
@@ -157,7 +155,7 @@ FrameLib:BuildButton({
     text = Locale["ma_createguildbutton"]
     })
 
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_baninfobutton",
     group = "char2",
     parent = ma_midframe,
@@ -177,7 +175,7 @@ FrameLib:BuildButton({
     text = Locale["ma_baninfobutton"]
     })
 
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_groupgobutton",
     group = "char2",
     parent = ma_midframe,
@@ -197,7 +195,7 @@ FrameLib:BuildButton({
     text = Locale["ma_groupgobutton"]
     })
 
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_guildinvitebutton",
     group = "char2",
     parent = ma_midframe,
@@ -217,8 +215,7 @@ FrameLib:BuildButton({
     text = Locale["ma_guildinvitebutton"]
     })
 
-
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_banlistbutton",
     group = "char2",
     parent = ma_midframe,
@@ -238,7 +235,7 @@ FrameLib:BuildButton({
     text = Locale["ma_banlistbutton"]
     })
 
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_namegobutton",
     group = "char2",
     parent = ma_midframe,
@@ -258,7 +255,7 @@ FrameLib:BuildButton({
     text = Locale["ma_namegobutton"]
     })
 
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_guildrankbutton",
     group = "char2",
     parent = ma_midframe,
@@ -278,7 +275,7 @@ FrameLib:BuildButton({
     text = Locale["ma_guildrankbutton"]
     })
 
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_telegroupbutton",
     group = "char2",
     parent = ma_midframe,
@@ -298,7 +295,7 @@ FrameLib:BuildButton({
     text = Locale["ma_telegroupbutton"]
     })
 
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_unbanbutton",
     group = "char2",
     parent = ma_midframe,
@@ -318,7 +315,7 @@ FrameLib:BuildButton({
     text = Locale["ma_unbanbutton"]
     })
 
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_guilddeletebutton",
     group = "char2",
     parent = ma_midframe,
@@ -338,7 +335,7 @@ FrameLib:BuildButton({
     text = Locale["ma_guilddeletebutton"]
     })
 
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_guilduninvitebutton",
     group = "char2",
     parent = ma_midframe,
@@ -358,7 +355,7 @@ FrameLib:BuildButton({
     text = Locale["ma_guilduninvitebutton"]
     })
 
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_telenamebutton",
     group = "char2",
     parent = ma_midframe,
@@ -378,7 +375,7 @@ FrameLib:BuildButton({
     text = Locale["ma_telenamebutton"]
     })
 
-  FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_mutebutton",
     group = "char2",
     parent = ma_midframe,
@@ -398,7 +395,7 @@ FrameLib:BuildButton({
     text = Locale["ma_mutebutton"]
 })
 
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_charaurabutton",
     group = "char2",
     parent = ma_midframe,
@@ -418,7 +415,7 @@ FrameLib:BuildButton({
     text = Locale["ma_Aura"]
     })
 
-FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_charunaurabutton",
     group = "char2",
     parent = ma_midframe,
@@ -438,7 +435,7 @@ FrameLib:BuildButton({
     text = Locale["ma_UnAura"]
     })
       
-  FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_jailabutton",
     group = "char2",
     parent = ma_midframe,
@@ -458,7 +455,7 @@ FrameLib:BuildButton({
     text = Locale["ma_JailAButton"]
     })
 
-  FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_jailhbutton",
     group = "char2",
     parent = ma_midframe,
@@ -478,7 +475,7 @@ FrameLib:BuildButton({
     text = Locale["ma_JailHButton"]
   })
 
-  FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_unjailbutton",
     group = "char2",
     parent = ma_midframe,
@@ -498,7 +495,7 @@ FrameLib:BuildButton({
     text = Locale["ma_UnJailButton"]
   })
 
-  FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_unmutebutton",
     group = "char2",
     parent = ma_midframe,
@@ -518,7 +515,7 @@ FrameLib:BuildButton({
     text = Locale["ma_UnMuteButton"]
   })
 
-  FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_questaddbutton",
     group = "char2",
     parent = ma_midframe,
@@ -538,7 +535,7 @@ FrameLib:BuildButton({
     text = Locale["ma_QuestAddButton"]
   })
 
-  FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_questcompletebutton",
     group = "char2",
     parent = ma_midframe,
@@ -558,7 +555,7 @@ FrameLib:BuildButton({
     text = Locale["ma_QuestCompleteButton"]
   })
 
-  FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_questremovebutton",
     group = "char2",
     parent = ma_midframe,
@@ -578,7 +575,7 @@ FrameLib:BuildButton({
     text = Locale["ma_QuestRemoveButton"]
   })
 
-  FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_damagebutton",
     group = "char2",
     parent = ma_midframe,
@@ -598,8 +595,7 @@ FrameLib:BuildButton({
     text = Locale["ma_DamageButton"]
   })
 
-
-  FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_hideareabutton",
     group = "char2",
     parent = ma_midframe,
@@ -619,7 +615,7 @@ FrameLib:BuildButton({
     text = Locale["ma_HideAreaButton"]
   })
 
-  FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_showareabutton",
     group = "char2",
     parent = ma_midframe,
@@ -639,7 +635,7 @@ FrameLib:BuildButton({
     text = Locale["ma_ShowAreaButton"]
   })
 
-  FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_honoraddbutton",
     group = "char2",
     parent = ma_midframe,
@@ -659,7 +655,7 @@ FrameLib:BuildButton({
     text = Locale["ma_HonorAddButton"]
   })
 
-  FrameLib:BuildButton({
+ FrameLib:BuildButton({
     name = "ma_honorupdatebutton",
     group = "char2",
     parent = ma_midframe,
@@ -678,6 +674,5 @@ FrameLib:BuildButton({
     },
     text = Locale["ma_HonorUpdateButton"]
   })
-
 
 end

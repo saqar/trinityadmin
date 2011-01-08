@@ -901,5 +901,4 @@ function MangAdmin:CreateTeleSection()
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
   })
   
-
 end

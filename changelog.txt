@@ -1,7 +1,20 @@
 TrinityAdmin Changelog
 
+-=[ Revision 38 - 1/8/2011]=-
+- Misc code formatting cleanup
+- ADD aspeed, arena, bwalk, drunk, fly, gender, honor, mount, phase, runicpower, speed, standstate, swim, and tp to Modify
+- Updated enUS locale for above adds
+- Rearranged GOB tab, added labels. Preparing to add more content here.
+- ADD .gob activate, add temp, info, phase to GOB tab
+- updated enUS locale for above adds
+- ADD/MOD added missing tables to Reload. Removed individual tables that are reloaded with an all_xxxx command... 
+	so now the list fits the screen, but you may have to choose an all_xxxx command to reload the table you want.
+
+-=[ Revision 37 - 1/4/2011]=-
+- Wiki changes
+
 -=[ Revision 36 - 1/4/2011]=-
-- You'd think fter years of programming experience, I'd not get in this sort of mess. Like letting my code on two
+- You'd think after years of programming experience, I'd not get in this sort of mess. Like letting my code on two
 different machines get out of sync. Like trying to commit with conflicts o' plenty. Fixed. Ignore r25-r35.
 
 

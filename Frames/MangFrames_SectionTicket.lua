@@ -33,7 +33,8 @@ function MangAdmin:CreateTicketSection()
     btn = MangAdmin.db.account.style.color.buttons,
     frm = MangAdmin.db.account.style.color.frames
   }
-FrameLib:BuildButton({
+
+  FrameLib:BuildButton({
     name = "ma_resetticketsbutton",
     group = "ticket",
     parent = ma_midframe,
@@ -53,7 +54,7 @@ FrameLib:BuildButton({
     text = "1.RESET"
 })   
   
-FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_showticketsbutton",
     group = "ticket",
     parent = ma_midframe,
@@ -73,7 +74,7 @@ FrameLib:BuildButton({
     text = "2.Load All or"
 })
 
-FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_showonlineticketsbutton",
     group = "ticket",
     parent = ma_midframe,
@@ -92,7 +93,8 @@ FrameLib:BuildButton({
     },
     text = "2.Load Online"
 })
-FrameLib:BuildButton({
+
+  FrameLib:BuildButton({
     name = "ma_showbutton",
     group = "ticket",
     parent = ma_midframe,
@@ -111,6 +113,7 @@ FrameLib:BuildButton({
     },
     text = "3.SHOW"
 })   
+
   FrameLib:BuildButton({
     name = "ma_goticketbutton",
     group = "ticket",
@@ -124,9 +127,9 @@ FrameLib:BuildButton({
       height = 20
     },
     setpoint = {
-      pos = "BOTTOMRIGHT",
-      offX = -431,
-      offY = 10
+      pos = "TOPLEFT",
+      offX = 240,
+      offY = -226
     },
     text = "Go Ticket" 
   })
@@ -144,9 +147,9 @@ FrameLib:BuildButton({
       height = 20
     },
     setpoint = {
-      pos = "BOTTOMRIGHT",
-      offX = -346,
-      offY = 10
+      pos = "TOPLEFT",
+      offX = 325,
+      offY = -226
     },
     text = "Whisper" --Locale["ma_WhisperButton"]
   })
@@ -164,9 +167,9 @@ FrameLib:BuildButton({
       height = 20
     },
     setpoint = {
-      pos = "BOTTOMRIGHT",
-      offX = -262,
-      offY = 10
+      pos = "TOPLEFT",
+      offX = 410,
+      offY = -226
     },
     text = Locale["ma_GetCharTicketButton"]
   })
@@ -184,9 +187,9 @@ FrameLib:BuildButton({
       height = 20
     },
     setpoint = {
-      pos = "BOTTOMRIGHT",
-      offX = -178,
-      offY = 10
+      pos = "TOPLEFT",
+      offX = 495,
+      offY = -226
     },
     text = Locale["ma_GoCharTicketButton"]
   })
@@ -204,9 +207,9 @@ FrameLib:BuildButton({
       height = 20
     },
     setpoint = {
-      pos = "BOTTOMRIGHT",
-      offX = -94,
-      offY = 10
+      pos = "TOPLEFT",
+      offX = 580,
+      offY = -226
     },
     text = Locale["ma_AnswerButton"]
   })
@@ -224,9 +227,9 @@ FrameLib:BuildButton({
       height = 20
     },
     setpoint = {
-      pos = "BOTTOMRIGHT",
-      offX = -10,
-      offY = 10
+      pos = "TOPLEFT",
+      offX = 665,
+      offY = -226
     },
     text = Locale["ma_DeleteButton"]
   })
@@ -244,48 +247,20 @@ FrameLib:BuildButton({
       height = 200
     },
     setpoint = {
-      pos = "TOPRIGHT",
-      offX = -30,
+      pos = "TOPLEFT",
+      offX = 270,
       offY = -10
     },
-    setpoint2 = {
+    --[[setpoint2 = {
       pos = "BOTTOMRIGHT",
       offX = -30,
       offY = 34
-    },
+    },]]
     inherits = "FauxScrollFrameTemplate"
 --    inherits = "UIPanelScrollFrameTemplate"
   })
   
- --[[FrameLib:BuildFrame({
-    type = "EditBox",
-    name = "ma_ticketeditbox",
-    group = "ticket",
-    parent = ma_ticketscrollframe,
-    texture = {
-      name = "ma_ticketeditbox_texture",
-      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
-    },
-    size = {
-      width = 450,
-      height = 200
-    },
-    setpoint = {
-      pos = "TOPLEFT",
-      offX = 0,
-      offY = 0
-    },
-    setpoint2 = {
-      pos = "BOTTOMRIGHT",
-      offX = 0,
-      offY = 0
-    },
-    maxletters = 100000,
-    multiline = true,
-    textcolor = {0, 0, 0, 1.0}
-  })
- ]]
- FrameLib:BuildFrame({
+  FrameLib:BuildFrame({
     type = "EditBox",
     name = "ma_ticketdetail",
     group = "ticket",
@@ -296,7 +271,7 @@ FrameLib:BuildButton({
     },
     size = {
       width = 260,
-      height = 300
+      height = 165
     },
     setpoint = {
       pos = "TOPLEFT",
@@ -307,8 +282,8 @@ FrameLib:BuildButton({
     multiline = true,
     textcolor = {1, 1, 1, 1.0}
   })
- 
-   FrameLib:BuildFontString({
+  
+  FrameLib:BuildFontString({
     name = "ma_ticketidlabel",
     group = "ticket",
     parent = ma_midframe,
@@ -319,7 +294,8 @@ FrameLib:BuildButton({
       offY = -30
     }
   })
-    FrameLib:BuildFontString({
+
+  FrameLib:BuildFontString({
     name = "ma_ticketid",
     group = "ticket",
     parent = ma_midframe,
@@ -331,7 +307,7 @@ FrameLib:BuildButton({
     }
   })
  
-    FrameLib:BuildFontString({
+  FrameLib:BuildFontString({
     name = "ma_ticketwholabel",
     group = "ticket",
     parent = ma_midframe,
@@ -342,7 +318,8 @@ FrameLib:BuildButton({
       offY = -30
     }
   })
-    FrameLib:BuildFontString({
+
+  FrameLib:BuildFontString({
     name = "ma_ticketwho",
     group = "ticket",
     parent = ma_midframe,
@@ -354,7 +331,7 @@ FrameLib:BuildButton({
     }
   })
  
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_ticketscrollframe1",
     JustifyH = "LEFT",
     group = "ticket",
@@ -377,7 +354,7 @@ FrameLib:BuildButton({
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
   })
   
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_ticketscrollframe2",
     group = "ticket",
     parent = ma_midframe,
@@ -399,7 +376,7 @@ FrameLib:BuildButton({
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
   })
   
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_ticketscrollframe3",
     group = "ticket",
     parent = ma_midframe,
@@ -421,7 +398,7 @@ FrameLib:BuildButton({
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
   })
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_ticketscrollframe4",
     group = "ticket",
     parent = ma_midframe,
@@ -443,7 +420,7 @@ FrameLib:BuildButton({
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
   })
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_ticketscrollframe5",
     group = "ticket",
     parent = ma_midframe,
@@ -465,7 +442,7 @@ FrameLib:BuildButton({
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
   })
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_ticketscrollframe6",
     group = "ticket",
     parent = ma_midframe,
@@ -487,7 +464,7 @@ FrameLib:BuildButton({
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
   })
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_ticketscrollframe7",
     group = "ticket",
     parent = ma_midframe,
@@ -509,7 +486,7 @@ FrameLib:BuildButton({
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
   })
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_ticketscrollframe8",
     group = "ticket",
     parent = ma_midframe,
@@ -531,7 +508,7 @@ FrameLib:BuildButton({
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
   })
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_ticketscrollframe9",
     group = "ticket",
     parent = ma_midframe,
@@ -553,7 +530,7 @@ FrameLib:BuildButton({
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
   })
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_ticketscrollframe10",
     group = "ticket",
     parent = ma_midframe,
@@ -575,7 +552,7 @@ FrameLib:BuildButton({
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
   })
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_ticketscrollframe11",
     group = "ticket",
     parent = ma_midframe,
@@ -597,7 +574,7 @@ FrameLib:BuildButton({
     script = {{"OnShow", function() this:RegisterForClicks("LeftButtonDown", "RightButtonDown") end}}
   })
 
-    FrameLib:BuildButton({
+  FrameLib:BuildButton({
     name = "ma_ticketscrollframe12",
     group = "ticket",
     parent = ma_midframe,
