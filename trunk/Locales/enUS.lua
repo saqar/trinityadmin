@@ -178,6 +178,12 @@ function Return_enUS()
     ["tt_resetbutton"] = "Reset the selected attribute",
     ["tt_modelzoominbutton"] = "Zoom in the selected model",
     ["tt_modelzoomoutbutton"] = "Zoom out the selected model",
+    ["tt_charbindsight"] = "Binds your vision to the selected Unit",
+    ["tt_charunbindsight"] = "UnBinds your vision to the selected Unit (BROKEN in CORE - right-click gear icon in buffs area)",
+    ["tt_charrename"] = "Toggles selected character for rename at next login",
+    ["tt_charcustomize"] = "Toggles selected character for customization at next login",
+    ["tt_charchangerace"] = "Toggles selected character for race change at next login",
+    ["tt_charchnagefaction"] = "Toggles selected character for faction change at next login",
 
   --[[Control Labels]]
     ["ma_KillButton"] = "Kill",
@@ -196,6 +202,13 @@ function Return_enUS()
     ["ma_Learn"] = "Learn",
     ["ma_Modify"] = "Modify",
     ["ma_Reset"] = "Reset",
+    ["ma_CharBindsight"] = "Bindsight",
+    ["ma_CharUnBindsight"] = "UnBindsight",
+    ["ma_charrename"] = "Rename",
+    ["ma_charcustomize"] = "Customize",
+    ["ma_charchangerace"] = "Chng Race",
+    ["ma_charchnagefaction"] = "Chng Faction",
+    
   --[[Other]]
     ["ma_LevelUp"] = "Level up",
     ["ma_LevelDown"] = "Level down",
@@ -362,6 +375,8 @@ function Return_enUS()
     ["tt_IDDown"] = "Decrement NPC ID DOWN by 1",
     ["tt_npcmodelzoominbutton"] = "Zoom in the selected model",
     ["tt_npcmodelzoomoutbutton"] = "Zoom out the selected model",
+    ["tt_npcbindsight"] = "Binds your vision to the selected NPC",
+    ["tt_npcunbindsight"] = "UnBinds your vision to the selected NPC (BROKEN in CORE - right-click gear icon in buffs area)",
 
   --[[Control Labels]]
     ["Morph"] = "Morph",
@@ -395,6 +410,9 @@ function Return_enUS()
     ["ma_NPCUnAura"] = "NPC Unaura",
     ["ma_ParameterBox"] = "Params",
     ["ma_PlayEmote"] = "Play Emote",
+    ["ma_NPCBindsight"] = "Bindsight",
+    ["ma_NPCUnBindsight"] = "UnBindsight",
+
   --[[Other]]
 
 
