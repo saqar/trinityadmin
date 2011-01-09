@@ -982,4 +982,24 @@ function MangAdmin:CreateNpcSection()
     text = Locale["ma_NPCUnBindsight"]
   })
 
+  FrameLib:BuildButton({
+    name = "ma_npccometomebutton",
+    group = "npc",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_npccometomebutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 395,
+      offY = -82
+    },
+    text = Locale["ma_NPCComeToMe"]
+  })
+
 end

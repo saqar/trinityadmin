@@ -262,7 +262,12 @@ function NPCUnBindSight()
     MangAdmin:LogAction("Sight unbound to "..npccname)
 end
 
+function NPCComeToMe()
+    local npccname = ma_npccharactertarget:GetText()
+    MangAdmin:ChatMsg(".cometome 1")
+    MangAdmin:LogAction("Forced "..npccname.." using ComeToMe")
 
+end
 
 
 

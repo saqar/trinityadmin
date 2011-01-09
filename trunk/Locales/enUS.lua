@@ -377,7 +377,8 @@ function Return_enUS()
     ["tt_npcmodelzoomoutbutton"] = "Zoom out the selected model",
     ["tt_npcbindsight"] = "Binds your vision to the selected NPC",
     ["tt_npcunbindsight"] = "UnBinds your vision to the selected NPC (BROKEN in CORE - right-click gear icon in buffs area)",
-
+    ["tt_npccometome"]  = "Forces the selected NPC to come to your location. Location NOT stored in DB.",
+    
   --[[Control Labels]]
     ["Morph"] = "Morph",
     ["ma_NPCKillButton"] = "Kill",
@@ -412,7 +413,7 @@ function Return_enUS()
     ["ma_PlayEmote"] = "Play Emote",
     ["ma_NPCBindsight"] = "Bindsight",
     ["ma_NPCUnBindsight"] = "UnBindsight",
-
+    ["ma_NPCComeToMe"] = "ComeToMe",
   --[[Other]]
 
 
