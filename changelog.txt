@@ -1,5 +1,9 @@
 TrinityAdmin Changelog
 
+-=[ Revision 40 - 1/8/2011]=-
+- ADD .cometome command to NPC tab
+- Added enUS locale for above
+
 -=[ Revision 39 - 1/8/2011]=-
 - ADD .bindsight to NPC tab
 - ADD .unbindsight to NPC tab. Note: this command is broken in core on my core revision. 

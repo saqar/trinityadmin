@@ -218,6 +218,7 @@ function InitControls()
   MangAdmin:PrepareScript(ma_npcmodelzoomoutbutton, Locale["tt_npcmodelzoomoutbutton"], function() NPCModelZoomOut() end)
   MangAdmin:PrepareScript(ma_npcbindsight         , Locale["tt_npcbindsight"]        , function() NPCBindSight() end)
   MangAdmin:PrepareScript(ma_npcunbindsight       , Locale["tt_npcunbindsight"]      , function() NPCUnBindSight() end)
+  MangAdmin:PrepareScript(ma_npccometomebutton    , Locale["tt_npccometome"]         , function() NPCComeToMe() end)
   
 --[[Gob Tab]]
   MangAdmin:PrepareScript(ma_objgobutton          , Locale["tt_ObjGo"]              , function() OBJGo() end)
