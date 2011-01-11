@@ -56,6 +56,7 @@ Commands\Commands_Ticket.lua
 Commands\Commands_Misc.lua
 Commands\Commands_Server.lua
 Commands\Commands_NPC.lua
+Commands\Commands_NPC2.lua
 Commands\Commands_GO.lua
 Commands\Commands_PvP.lua
 Commands\Commands_Event.lua
@@ -83,6 +84,7 @@ Frames\MangFrames_SectionTicket.lua
 Frames\MangFrames_SectionMisc.lua
 Frames\MangFrames_SectionServer.lua
 Frames\MangFrames_SectionNpc.lua
+Frames\MangFrames_SectionNpc2.lua
 Frames\MangFrames_SectionGO.lua
 Frames\MangFrames_SectionPvP.lua
 Frames\MangFrames_SectionEvent.lua

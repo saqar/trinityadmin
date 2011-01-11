@@ -80,12 +80,6 @@ function NPCDistance()
     MangAdmin:LogAction("Got distance to player "..player..".")
 end
 
-function WayShowOn()
-    local player = UnitName("target") or UnitName("player")
-    MangAdmin:ChatMsg(".wp show on")
-    MangAdmin:LogAction("WayPoint Show On for player "..player..".")
-end
-
 function NPCShowGUID()
     local player = UnitName("target") or UnitName("player")
     MangAdmin:ChatMsg(".guid")
@@ -104,50 +98,6 @@ function NPCDemorph()
     MangAdmin:LogAction("Demorphed player "..player..".")
 end
 
-function WayShowOff()
-    local player = UnitName("target") or UnitName("player")
-    MangAdmin:ChatMsg(".wp show off")
-    MangAdmin:LogAction("WayPoint Show Off for player "..player..".")
-end
-
-function ShowMove()
-    local player = UnitName("target") or UnitName("player")
-    MangAdmin:ChatMsg(".movegens")
-    MangAdmin:LogAction("Got Movement Stack for player "..player..".")
-end
-
-function NPCFreeze()
-    local player = UnitName("target") or UnitName("player") 
-    MangAdmin:ChatMsg(".npc setmovetype stay NODEL")          
-    MangAdmin:LogAction("Set NPC movement to STAY for player "..player..".")
-end
-
-function NPCFreezeDEL()
-    local player = UnitName("target") or UnitName("player") 
-    MangAdmin:ChatMsg(".npc setmovetype stay")          
-    MangAdmin:LogAction("Set NPC movement to STAY for player "..player..".")
-end
-
-function WayModifyAdd()
-    local player = UnitName("target") or UnitName("player")
-    MangAdmin:ChatMsg(".wp modify add")
-    MangAdmin:LogAction("WayPoint(Modify) Add for player "..player..".")
-end
-
-function NPCUnFreeze_Random()
-    local player = UnitName("target") or UnitName("player")
-    local rdistancecname = ma_npcunfreeze_random_distancebutton:GetText()
-    MangAdmin:ChatMsg(".npc spawndist "..rdistancecname)
-    MangAdmin:LogAction("Set NPC spawndist "..rdistancecname..".")
-    MangAdmin:ChatMsg(".npc setmovetype random NODEL")
-    MangAdmin:LogAction("Set NPC movement type to RANDOM for player "..player..".")
-end
-
-function NPCUnFreeze_Way()
-    local player = UnitName("target") or UnitName("player")
-    MangAdmin:ChatMsg(".npc setmovetype way NODEL")
-    MangAdmin:LogAction("Set NPC movement type to WAYPOINT for player "..player..".")
-end
 
 function NPCMove()
     local player = UnitName("target") or UnitName("player")
@@ -155,33 +105,7 @@ function NPCMove()
     MangAdmin:LogAction("Set NPC move for player "..player..".")
 end
 
-function WayModifyDel()
-    local player = UnitName("target") or UnitName("player")
-    MangAdmin:ChatMsg(".wp modify del")
-    MangAdmin:LogAction("WayPoint(Modify) Del for player "..player..".")
-end
 
-function WayEndAdd()                            
-    local player = UnitName("target") or UnitName("player")
-    MangAdmin:ChatMsg(".wp add")
-    MangAdmin:LogAction("WayPoint Add for player "..player..".")
-end
-
-function NPCAdd_Way()                            
-    local player = UnitName("target") or UnitName("player")
-    local npc =	ma_NPC_guidbutton:GetText()
-    MangAdmin:ChatMsg(".wp add "..npc) 
-    --MangAdmin:Way_Point_Add_Start_Write(1)
-    MangAdmin:ChatMsg(".wp show on "..npc)
-    MangAdmin:LogAction("WayPoint Add for player "..player..".")
-end
-
-function NPCAdd_WayShowOn()                            
-    local player = UnitName("target") or UnitName("player")
-    local npc =	ma_NPC_guidbutton:GetText()
-    MangAdmin:ChatMsg(".wp show on "..npc)
-    MangAdmin:LogAction("WayPoint Show On for player "..player..".")
-end
 
 function NPCDel()
     local player = UnitName("target") or UnitName("player")
@@ -332,5 +256,18 @@ function NPCModelZoomOut()
     --ma_modelframe:SetModelScale(ma_modelframe:GetModelScale() * .5)
     --ma_modelframe:SetPosition(0,0,0)
     --ma_modelframe:RefreshUnit()
+
+end
+
+function NPCPossess() 
+    local player = UnitName("target") or UnitName("player")
+    MangAdmin:ChatMsg(".possess")
+    MangAdmin:LogAction("Possessed "..player)
+
+end
+function NPCUnPossess() 
+    local player = UnitName("target") or UnitName("player")
+    MangAdmin:ChatMsg(".unpossess")
+    MangAdmin:LogAction("UnPossessed "..player)
 
 end

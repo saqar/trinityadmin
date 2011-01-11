@@ -1,5 +1,15 @@
 TrinityAdmin Changelog
 
+-=[ Revision 41 - 1/10/2011]=-
+- ADD new NPC2 tab - Please close WoW and restart to load new files!!!
+- Moved all NPC Waypoint/movement related buttons to NPC2
+- Fixed MvRandom, NPCStay, NPCStayDEl, and MvWaypt buttons
+- ADD .reset all spells, all talents, and achievements to Reset subroutine
+- ADD .combatstop, .maxskill, .freeze, .unfreeze, .listfreeze, .possess, .unpossess to CHAR tab
+- ADD .possess and .unpossess to NPC tab
+- ADD .recall and .repairitems to CHAR tab
+
+
 -=[ Revision 40 - 1/8/2011]=-
 - ADD .cometome command to NPC tab
 - Added enUS locale for above

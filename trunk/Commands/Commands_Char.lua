@@ -363,11 +363,14 @@ function ResetDropDownInitialize()
     local level = 1
     local info = UIDropDownMenu_CreateInfo()
     local buttons = {
-      {Locale["ma_Talents"],"talents"},
-      {Locale["ma_Stats"],"stats"},
-      {Locale["ma_Spells"],"spells"},
+      {Locale["ma_resetallspells"],"all spells"},
+      {Locale["ma_resetalltalents"],"all talents"},
+      {Locale["ma_achievements"],"achievements"},
       {Locale["ma_Honor"],"honor"},
-      {Locale["ma_Level"],"level"}
+      {Locale["ma_Level"],"level"},
+      {Locale["ma_Spells"],"spells"},
+      {Locale["ma_Stats"],"stats"},
+      {Locale["ma_Talents"],"talents"}
     }
     for k,v in pairs(buttons) do
       info.text = v[1]
@@ -432,3 +435,57 @@ function CharChangeFaction()
     MangAdmin:ChatMsg(".character changefaction")
     MangAdmin:LogAction("Forced faction change of "..cname)
 end
+
+function CharCombatStop()
+    local player = UnitName("target") or UnitName("player")
+    MangAdmin:ChatMsg(".combatstop")
+    MangAdmin:LogAction("Forced combat stop on "..player)
+end
+
+function CharMaxSkill() 
+    local player = UnitName("target") or UnitName("player")
+    MangAdmin:ChatMsg(".maxskill")
+    MangAdmin:LogAction("Set player MaxSkill for "..player)
+end
+
+function CharFreeze() 
+    local player = UnitName("target") or UnitName("player")
+    MangAdmin:ChatMsg(".freeze")
+    MangAdmin:LogAction("Set Freeze for "..player)
+end
+
+function CharUnFreeze() 
+    local player = UnitName("target") or UnitName("player")
+    MangAdmin:ChatMsg(".unfreeze")
+    MangAdmin:LogAction("UnFroze "..player)
+end
+
+function CharListFreeze() 
+    MangAdmin:ChatMsg(".listfreeze")
+    MangAdmin:LogAction("Listed Frozen players")
+end
+
+function CharPossess() 
+    local player = UnitName("target") or UnitName("player")
+    MangAdmin:ChatMsg(".possess")
+    MangAdmin:LogAction("Possessed "..player)
+end
+
+function CharUnPossess() 
+    local player = UnitName("target") or UnitName("player")
+    MangAdmin:ChatMsg(".unpossess")
+    MangAdmin:LogAction("UnPossessed "..player)
+end
+
+function CharRecall() 
+    local player = UnitName("target") or UnitName("player")
+    MangAdmin:ChatMsg(".recall")
+    MangAdmin:LogAction("Recalled "..player)
+end
+
+function CharRepair() 
+    local player = UnitName("target") or UnitName("player")
+    MangAdmin:ChatMsg(".repairitems")
+    MangAdmin:LogAction("Repaired  "..player.."'s items")
+end
+
