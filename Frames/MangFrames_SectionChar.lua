@@ -630,10 +630,190 @@ function MangAdmin:CreateCharSection()
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 485,
-      offY = -130
+      offX = 230,
+      offY = -154
     },
     text = Locale["ma_charchnagefaction"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_charcombatstopbutton",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_charcombatstopbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 315,
+      offY = -154
+    },
+    text = Locale["ma_charcombatstop"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_charmaxskillbutton",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_charmaxskillbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 400,
+      offY = -154
+    },
+    text = Locale["ma_charmaxskill"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_charfreezebutton",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_charfreezebutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 230,
+      offY = -178
+    },
+    text = Locale["ma_charfreeze"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_charunfreezebutton",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_charunfreezebutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 315,
+      offY = -178
+    },
+    text = Locale["ma_charunfreeze"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_charlistfreezebutton",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_charlistfreezebutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 400,
+      offY = -178
+    },
+    text = Locale["ma_charlistfreeze"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_charpossessbutton",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_charpossessbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 230,
+      offY = -202
+    },
+    text = Locale["ma_charpossess"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_charunpossessbutton",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_charunpossessbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 315,
+      offY = -202
+    },
+    text = Locale["ma_charunpossess"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_charrecallbutton",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_charrecallbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 400,
+      offY = -202
+    },
+    text = Locale["ma_charrecall"]
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_charrepairitemsbutton",
+    group = "char",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_charreppairitemsbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 80,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 230,
+      offY = -226
+    },
+    text = Locale["ma_charrepair"]
   })
 
 end

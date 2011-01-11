@@ -22,7 +22,7 @@ local genv = getfenv(0)
 local Mang = genv.Mang
 
 MAJOR_VERSION = "TrinityAdmin-3.3.5a"
-MINOR_VERSION = "$Revision: 038 $"
+MINOR_VERSION = "$Revision: 041 $"
 ROOT_PATH     = "Interface\\AddOns\\TrinityAdmin\\"
 local cont = ""
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
@@ -563,6 +563,7 @@ function MangAdmin:HideAllGroups()
   FrameLib:HandleGroup("char", function(frame) frame:Hide() end)
   FrameLib:HandleGroup("char2", function(frame) frame:Hide() end)
   FrameLib:HandleGroup("npc", function(frame) frame:Hide() end)
+  FrameLib:HandleGroup("npc2", function(frame) frame:Hide() end)
   FrameLib:HandleGroup("go", function(frame) frame:Hide() end)
   FrameLib:HandleGroup("tele", function(frame) frame:Hide() end)
   FrameLib:HandleGroup("ticket", function(frame) frame:Hide() end)
@@ -1654,6 +1655,7 @@ function MangAdmin:InitButtons()
   self:PrepareScript(ma_tabbutton_char       , Locale["tt_CharButton"]         , function() MangAdmin:InstantGroupToggle("char") end)
   self:PrepareScript(ma_tabbutton_char2      , Locale["tt_Char2Button"]        , function() MangAdmin:InstantGroupToggle("char2") end)
   self:PrepareScript(ma_tabbutton_npc        , Locale["tt_NpcButton"]          , function() MangAdmin:InstantGroupToggle("npc"); end)
+  self:PrepareScript(ma_tabbutton_npc2       , Locale["tt_Npc2Button"]         , function() MangAdmin:InstantGroupToggle("npc2"); end)
   self:PrepareScript(ma_tabbutton_go         , Locale["tt_GOButton"]           , function() MangAdmin:InstantGroupToggle("go"); end)
   self:PrepareScript(ma_tabbutton_tele       , Locale["tt_TeleButton"]         , function() MangAdmin:InstantGroupToggle("tele"); end)
   self:PrepareScript(ma_tabbutton_misc       , Locale["tt_MiscButton"]         , function() MangAdmin:InstantGroupToggle("misc") end)
@@ -1672,6 +1674,7 @@ function MangAdmin:InitButtons()
   self:PrepareScript(ma_mm_charbutton        , Locale["tt_CharButton"]         , function() MangAdmin:InstantGroupToggle("char") end)
   self:PrepareScript(ma_mm_char2button       , Locale["tt_Char2Button"]        , function() MangAdmin:InstantGroupToggle("char2") end)
   self:PrepareScript(ma_mm_npcbutton         , Locale["tt_NpcButton"]          , function() MangAdmin:InstantGroupToggle("npc") end)
+  self:PrepareScript(ma_mm_npc2button        , Locale["tt_Npc2Button"]         , function() MangAdmin:InstantGroupToggle("npc2") end)
   self:PrepareScript(ma_mm_gobutton          , Locale["tt_GOButton"]           , function() MangAdmin:InstantGroupToggle("go") end)
   self:PrepareScript(ma_mm_telebutton        , Locale["tt_TeleButton"]         , function() MangAdmin:InstantGroupToggle("tele") end)
   self:PrepareScript(ma_mm_ticketbutton      , Locale["tt_TicketButton"]       , function() ShowTicketTab() end)
