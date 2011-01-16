@@ -47,6 +47,7 @@ Locales\ruRU.lua
 Locales\nlNL.lua
 Locales\buBU.lua
 Locales\strings.lua
+models.lua
 Commands\Commands_Main.lua
 Commands\Commands_Tele.lua
 Commands\Commands_Log.lua

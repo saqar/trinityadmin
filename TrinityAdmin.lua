@@ -20,9 +20,21 @@
 
 local genv = getfenv(0)
 local Mang = genv.Mang
+GPS = '.gps'
+cWorking = 0
+cMap = 0
+cX = 0
+cY = 0
+cZ = 0
+incX = 0
+incY = 0
+incZ = 0
+fID = 0
+gettingGOBinfo=0
+gettingGOBinfoinfo=0
 
 MAJOR_VERSION = "TrinityAdmin-3.3.5a"
-MINOR_VERSION = "$Revision: 041 $"
+MINOR_VERSION = "$Revision: 042 $"
 ROOT_PATH     = "Interface\\AddOns\\TrinityAdmin\\"
 local cont = ""
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
@@ -236,6 +248,9 @@ function MangAdmin:OnInitialize()
   self:InitSliders()
   self:InitScrollFrames()
   self:InitCheckButtons()
+  ma_gobmovedistforwardback:SetText("1")
+  ma_gobmovedistleftright:SetText("1")
+  ma_gobmovedistupdown:SetText("1")
   MangAdmin.db.account.buffer.who = {}
   --clear color buffer
   self.db.account.style.color.buffer = {}
@@ -605,25 +620,86 @@ function MangAdmin:AddMessage(frame, text, r, g, b, id)
   local catchedSth = false
   local output = MangAdmin.db.account.style.showchat
   if id == 1 then --make sure that the message comes from the server, message id = 1
-    --[[ hook all uint32 .getvalue requests
-    for guid, field, value in string.gmatch(text, "The uint32 value of (%w+) in (%w+) is: (%w+)") do
-      catchedSth = true
-      output = self:GetValueCallHandler(guid, field, value)
-    end]]
-    
-    --[[if self.db.char.requests.ticket then
-      if (time() - self.db.char.msgDeltaTime) > 0 then
-          self.db.char.requests.ticketbody = 0
-          self:RequestTickets()
-      else
-        self:ChatMsg("ads")
-      end
-      self.db.char.msgDeltaTime = time()
-    end]]
     --Catches if Toggle is still on for some reason, but search frame is not up, and disables it so messages arent caught
     if self.db.char.requests.toggle and not ma_popupframe:IsVisible() then
       self.db.char.requests.toggle = false
     end
+
+--********************************************************************    
+    if gettingGOBinfoinfo > 0 then
+        if gettingGOBinfoinfo == 1 then
+            ma_gobinfoinfo:SetText(ma_gobinfoinfo:GetText()..text)
+        else
+            ma_gobinfoinfo:SetText(ma_gobinfoinfo:GetText().."\n"..text)
+        end
+        gettingGOBinfoinfo=gettingGOBinfoinfo+1
+        if gettingGOBinfoinfo==5 then 
+            gettingGOBinfoinfo=0
+        end
+    end
+    if gettingGOBinfo > 0 then
+        if gettingGOBinfo==1 then
+            ma_gobtargetinfo:SetText(ma_gobtargetinfo:GetText().."|cffffffff"..string.gsub(text, ']', ']\n|cffffffff'))
+        else
+            ma_gobtargetinfo:SetText(ma_gobtargetinfo:GetText().."\n|cffffffff"..string.gsub(text, ']', ']\n|cffffffff'))
+        end
+        gettingGOBinfo=gettingGOBinfo+1
+        if gettingGOBinfo==7 then 
+            gettingGOBinfo=0
+            gettingGOBinfoinfo=1
+        end
+    end
+
+    
+    
+    if cWorking == 1 then
+        WorkString = string.gsub(text, '(|.........)', '') -- This removes any color formating
+        --SendChatMessage("Workstring:"..WorkString)
+        for cMap in string.gmatch(WorkString,'Map: %d')do
+            --SendChatMessage("Mapo: "..cMap)
+        end
+        t = {}
+        cnt = 1
+         for cX, cY, cZ, cO in string.gmatch(WorkString, 'X: (.*) Y: (.*) Z: (.*) .*Orientation: (.*)') do
+--[[            for w in string.gmatch(WorkString,'%s.%d*%p%d%d') do
+                t[cnt] = string.gsub(w," ","")
+                cnt = cnt + 1
+            end
+            cX = t[1]
+            cY = t[2]
+            cZ = t[3]
+            cO = t[4] ]]
+            --Calulate the new x y bassed on incX
+        --SendChatMessage(cX)
+        --SendChatMessage(cY)
+        --SendChatMessage(cZ)
+        --SendChatMessage(cO)
+        nX = cX + (math.cos(cO) * incX)
+        nY = cY + (math.sin(cO) * incX)
+        --rotate the O so we can do some math
+        tD = math.deg(cO) + 90
+        if tD > 360 then tD = tD - 360 end
+        nO = math.rad(tD)
+        --Calulate the new x y bassed on incX
+        nX = nX + (math.cos(nO) * incY)
+        nY = nY + (math.sin(nO) * incY)
+        --Send the port
+        SendChatMessage('.go xyz '..' '..nX..' '..nY..' '..(cZ+incZ))
+        --console reloadui
+        incX = 0
+        incY = 0
+        incZ = 0
+        isChecked = ma_spawnonmovecheck:GetChecked()
+        if isChecked == 1 then
+            ObjectN = ma_Obj_idbutton:GetText()
+            SendChatMessage('.gob add '..ObjectN)
+        end
+        cWorking = 0
+        end
+    end
+--***************************************************************    
+
+
     -- hook .gps for gridnavigation
     for x, y in string.gmatch(text, Strings["ma_GmatchGPS"]) do
       for k,v in pairs(self.db.char.functionQueue) do
@@ -635,92 +711,108 @@ function MangAdmin:AddMessage(frame, text, r, g, b, id)
       end
     end
 
-if MangAdmin:ID_Setting_Start_Read() then    
-    local b1,e1,pattern = string.find(text, "GUID: (%d+)%.")
-    --local b1,e1,pattern = string.find(text, "GUID:")
-    if b1 then
-      	b1,e1,pattern = string.find(text, "([0-9]+)")
-    	if b1 then
-    		MangAdmin:ID_Setting_Start_Write(0)
-      		
-      		MangAdmin:ID_Setting_Write(0,pattern)
-      		ma_NPC_guidbutton:SetText(pattern)
-      		self:LogAction("NPC_GUID_Get id "..pattern..".")
-      	end	
-    else
-    end
-
-    b1,e1,pattern = string.find(text, "Entry: (%d+)%.")
-    if b1 then
-      	b1,e1,pattern = string.find(text, "([0-9]+)")
-    	if b1 then
-      		
-      		MangAdmin:ID_Setting_Write(1,pattern)
-      		ma_NPC_idbutton:SetText(pattern)
-      		self:LogAction("NPC_EntryID_Get id "..pattern..".")
-      	end	
-    else
-    end
-
-    b1,e1,pattern = string.find(text, "DisplayID: (%d+).*")
-    if b1 then
-      	b1,e1,pattern = string.find(text, "([0-9]+)")
-    	if b1 then
-      		
-      		--MangAdmin:ID_Setting_Write(1,pattern)
-      		ma_npcdisplayid:SetText(pattern)
-      		self:LogAction("NPC_DisplayID_Get id "..pattern..".")
-      	end	
-    else
-    end
-
-end
-
-if MangAdmin:OID_Setting_Start_Read() then    
-    local b1,e1,pattern = string.find(text, "GUID: (%d+) ")
-    --local b1,e1,pattern = string.find(text, "GUID:")
-    if b1 then
-      	b1,e1,pattern = string.find(text, "([0-9]+)")
-    	if b1 then
-    		MangAdmin:OID_Setting_Start_Write(0)
-      		
-      		MangAdmin:OID_Setting_Write(0,pattern)
-      		ma_Obj_guidbutton:SetText(pattern)
-      		self:LogAction("OBJECT_GUID_Get id "..pattern..".")
-      	end	
-    else
-    end
+    if MangAdmin:ID_Setting_Start_Read() then    
+        local b1,e1,pattern = string.find(text, "GUID: (%d+)%.")
+        --local b1,e1,pattern = string.find(text, "GUID:")
+        if b1 then
+            b1,e1,pattern = string.find(text, "([0-9]+)")
+            if b1 then
+                MangAdmin:ID_Setting_Start_Write(0)
+                
+                MangAdmin:ID_Setting_Write(0,pattern)
+                ma_NPC_guidbutton:SetText(pattern)
+                self:LogAction("NPC_GUID_Get id "..pattern..".")
+            end	
+        else
+        end
     
-    --b1,e1,pattern = string.find(text, "ID: (%d+)% ")
-    --b1,e1,pattern = string.find(text, "GUID: (%d+) ID: (%d+)")
-    b1,e1,xpattern = string.find(text, " ID: (%d+)")
-    if b1 then
-      	--b1,e1,pattern = string.find(text, "([0-9]+)")
-      	b1,e1,pattern = string.find(xpattern, "([0-9]+)")
-    	if b1 then
-      		
-      		MangAdmin:OID_Setting_Write(1,pattern)
-      		ma_Obj_idbutton:SetText(pattern)
-      		self:LogAction("OBJECT_EntryID_Get id "..pattern..".")
-      		
-      	end	
-    else
-    end
+        b1,e1,pattern = string.find(text, "Entry: (%d+)%.")
+        if b1 then
+            b1,e1,pattern = string.find(text, "([0-9]+)")
+            if b1 then
+                
+                MangAdmin:ID_Setting_Write(1,pattern)
+                ma_NPC_idbutton:SetText(pattern)
+                self:LogAction("NPC_EntryID_Get id "..pattern..".")
+            end	
+        else
+        end
     
-end
+        b1,e1,pattern = string.find(text, "DisplayID: (%d+).*")
+        if b1 then
+            b1,e1,pattern = string.find(text, "([0-9]+)")
+            if b1 then
+                
+                --MangAdmin:ID_Setting_Write(1,pattern)
+                ma_npcdisplayid:SetText(pattern)
+                self:LogAction("NPC_DisplayID_Get id "..pattern..".")
+            end	
+        else
+        end
+    
+    end
 
-if MangAdmin:Way_Point_Add_Start_Read() then    
-    b1,e1,pattern = string.find(text, "Waypoint (%d+)")
-    if b1 then
-    	MangAdmin:Way_Point_Add_Start_Write(0)
-    	
-    	local wnpc =	ma_NPC_guidbutton:GetText()
-    	self:ChatMsg(".wp show on "..wnpc)
-      	self:LogAction("Waypoint set OK")
-    else
-    end
+    if MangAdmin:OID_Setting_Start_Read() then    
+        local b1,e1,pattern = string.find(text, "GUID: (%d+) ")
+        --local b1,e1,pattern = string.find(text, "GUID:")
+        if b1 then
+            b1,e1,pattern = string.find(text, "([0-9]+)")
+            if b1 then
+                MangAdmin:OID_Setting_Start_Write(0)
+                
+                MangAdmin:OID_Setting_Write(0,pattern)
+                ma_Obj_guidbutton:SetText(pattern)
+                self:LogAction("OBJECT_GUID_Get id "..pattern..".")
+            end	
+        else
+        end
+        
+        --b1,e1,pattern = string.find(text, "ID: (%d+)% ")
+        --b1,e1,pattern = string.find(text, "GUID: (%d+) ID: (%d+)")
+        b1,e1,xpattern = string.find(text, " ID: (%d+)")
+        if b1 then
+            --b1,e1,pattern = string.find(text, "([0-9]+)")
+            b1,e1,pattern = string.find(xpattern, "([0-9]+)")
+            if b1 then
+                
+    --      		MangAdmin:OID_Setting_Write(1,pattern)
+                ma_Obj_idbutton:SetText(pattern)
+                self:LogAction("OBJECT_EntryID_Get id "..pattern..".")
+                
+            end	
+        else
+        end
     
-end
+        
+        b1,e1,xpattern = string.find(text, "DisplayID: (%d+)")
+        if b1 then
+            --b1,e1,pattern = string.find(text, "([0-9]+)")
+            b1,e1,pattern = string.find(xpattern, "([0-9]+)")
+            if b1 then
+                
+    --      		MangAdmin:OID_Setting_Write(1,pattern)
+    --      		ma_Obj_idbutton:SetText(pattern)
+                ma_gobdisplayid:SetText(pattern)
+                self:LogAction("OBJECT DisplayID"..pattern..".")
+                
+            end	
+        else
+        end
+    
+    end
+
+    if MangAdmin:Way_Point_Add_Start_Read() then    
+        b1,e1,pattern = string.find(text, "Waypoint (%d+)")
+        if b1 then
+            MangAdmin:Way_Point_Add_Start_Write(0)
+            
+            local wnpc =	ma_NPC_guidbutton:GetText()
+            self:ChatMsg(".wp show on "..wnpc)
+            self:LogAction("Waypoint set OK")
+        else
+        end
+        
+    end
     
     if self.db.char.requests.toggle then
       if self.db.char.requests.item then

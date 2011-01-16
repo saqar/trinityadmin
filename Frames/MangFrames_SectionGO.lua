@@ -336,4 +336,460 @@ function MangAdmin:CreateGOSection()
     multiline = false,
     inherits = "InputBoxTemplate"
   })
+  
+    FrameLib:BuildButton({
+    name = "ma_gobmodelrotatelbutton",
+    group = "go",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_gobmodelrotatelbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 30,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 191,
+      offY = -12
+    },
+    text = "<<"
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_gobmodelrotaterbutton",
+    group = "go",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_gobmodelrotaterbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 30,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 227,
+      offY = -12
+    },
+    text = ">>"
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_gobmodelzoominbutton",
+    group = "go",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_gobmodelzoominbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 15,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 261,
+      offY = -12
+    },
+    text = "+"
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_gobmodelzoomoutbutton",
+    group = "go",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_gobmodelzoomoutbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 15,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 282,
+      offY = -12
+    },
+    text = "-"
+  })
+
+  FrameLib:BuildFrame({
+    type = "PlayerModel",
+    name = "ma_gobjectmodel",
+    group = "go",
+    parent = ma_midframe,
+    size = {
+      width = 210,
+      height = 210
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 182,
+      offY = -38
+    },
+    inherits = nil
+  })
+
+  FrameLib:BuildFrame({
+    type = "EditBox",
+    name = "ma_gobtargetinfo",
+    group = "go",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_gobtargetinfo_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 180,
+      height = 80
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 398,
+      offY = 0
+    },
+    maxLetters = 1000,
+    multiline = true,
+    textcolor = {1, 1, 1, 1.0}
+  })
+
+  
+  FrameLib:BuildFrame({
+    type = "EditBox",
+    name = "ma_gobinfoinfo",
+    group = "go",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_gobinfoinfo_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 180,
+      height = 80
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 398,
+      offY = -145
+    },
+    maxLetters = 1000,
+    multiline = true,
+    textcolor = {1, 1, 1, 1.0}
+  })
+
+  FrameLib:BuildFrame({
+    type = "EditBox",
+    name = "ma_gobdisplayid",
+    group = "go",
+    parent = ma_midframe,
+    size = {
+      width = 60,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 116,
+      offY = -79
+    },
+    maxLetters = 10,
+    multiline = false,
+    inherits = "InputBoxTemplate"
+  })
+
+  FrameLib:BuildFontString({
+    name = "ma_gobdisplayidlabel",
+    group = "go",
+    parent = ma_midframe,
+    text = "DisplayID:",
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 42,
+      offY = -82
+    },
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_gobmoveforwardbutton",
+    group = "go",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_gobmoveforwardbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 50,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 640,
+      offY = -12
+    },
+    text = "FWD"
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_gobmoveleftbutton",
+    group = "go",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_gobmoveleftbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 50,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 584,
+      offY = -38
+    },
+    text = "LEFT"
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_gobmoverightbutton",
+    group = "go",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_gobmoverightbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 50,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 696,
+      offY = -38
+    },
+    text = "RIGHT"
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_gobmovebackbutton",
+    group = "go",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_gobmovebackbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 50,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 640,
+      offY = -64
+    },
+    text = "BACK"
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_gobspawnherebutton",
+    group = "go",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_gobspawnherebutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 50,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 640,
+      offY = -38
+    },
+    text = "HERE"
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_gobmoveupbutton",
+    group = "go",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_gobmoveupbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 40,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 706,
+      offY = -12
+    },
+    text = "UP"
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_gobmovedownbutton",
+    group = "go",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_gobmovedownbutton_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 40,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 706,
+      offY = -64
+    },
+    text = "DOWN"
+  })
+
+  FrameLib:BuildButton({
+    type = "CheckButton",
+    name = "ma_spawnonmovecheck",
+    group = "go",
+    parent = ma_midframe,
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 615,
+      offY = -100
+    },
+    text = "Spawn On Move?",
+    inherits = "OptionsCheckButtonTemplate"
+  })
+
+  FrameLib:BuildFrame({
+    type = "EditBox",
+    name = "ma_gobmovedistforwardback",
+    group = "go",
+    parent = ma_midframe,
+    size = {
+      width = 50,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 696,
+      offY = -155
+    },
+    maxLetters = 10,
+    multiline = false,
+    inherits = "InputBoxTemplate"
+  })
+
+  FrameLib:BuildFrame({
+    type = "EditBox",
+    name = "ma_gobmovedistleftright",
+    group = "go",
+    parent = ma_midframe,
+    size = {
+      width = 50,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 696,
+      offY = -181
+    },
+    maxLetters = 10,
+    multiline = false,
+    inherits = "InputBoxTemplate"
+  })
+
+  FrameLib:BuildFrame({
+    type = "EditBox",
+    name = "ma_gobmovedistupdown",
+    group = "go",
+    parent = ma_midframe,
+    size = {
+      width = 50,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 696,
+      offY = -207
+    },
+    maxLetters = 10,
+    multiline = false,
+    inherits = "InputBoxTemplate"
+  })
+
+  FrameLib:BuildFontString({
+    name = "ma_gobmovedistanceslabel",
+    group = "go",
+    parent = ma_midframe,
+    text = "Move Distances",
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 602,
+      offY = -131
+    },
+  })
+
+  FrameLib:BuildFontString({
+    name = "ma_gobmovedistforwardbacklabel",
+    group = "go",
+    parent = ma_midframe,
+    text = "Fwd/Back:",
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 605,
+      offY = -158
+    },
+  })
+
+  FrameLib:BuildFontString({
+    name = "ma_gobmovedistleftrightlabel",
+    group = "go",
+    parent = ma_midframe,
+    text = "Left/Right:",
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 605,
+      offY = -184
+    },
+  })
+
+  FrameLib:BuildFontString({
+    name = "ma_gobmovedistupdownlabel",
+    group = "go",
+    parent = ma_midframe,
+    text = "Up/Down:",
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 605,
+      offY = -210
+    },
+  })
+
+  FrameLib:BuildButton({
+    name = "ma_gobshowmodel",
+    group = "go",
+    parent = ma_midframe,
+    texture = {
+      name = "ma_gobshowmodel_texture",
+      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
+    },
+    size = {
+      width = 60,
+      height = 20
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 303,
+      offY = -12
+    },
+    text = "Show"
+  })
+
+
 end

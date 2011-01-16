@@ -17,6 +17,9 @@
 -- Subversion Repository: http://trinityadmin.googlecode.com/svn/
 -- Dev Blog: http://trinityadmin.blogspot.com/
 -------------------------------------------------------------------------------------------------------------
+
+
+
 function OBJGo()
     local player = UnitName("target") or UnitName("player")
     local obj =	ma_Obj_guidbutton:GetText()
@@ -59,10 +62,15 @@ function OBJNear()
 end
 
 function OBJTarget()
-	MangAdmin:OID_Setting_Start_Write(1)
+	gettingGOBinfo=1
+    ma_gobtargetinfo:SetText("|cffffffff")
+    ma_gobinfoinfo:SetText("|cffffffff")
+    
     local player = UnitName("target") or UnitName("player")
     MangAdmin:ChatMsg(".gobject target")
     MangAdmin:LogAction("Object Target for player "..player..".")
+	--gettingGOBinfoinfo=1
+    MangAdmin:ChatMsg(".gobject info")
 end
 
 function OBJActivate()
@@ -90,4 +98,180 @@ function OBJSetPhase()
     local phase = ma_gobsetphaseinput:GetText()
     MangAdmin:ChatMsg(".gobject set phase "..obj.." "..phase)
     MangAdmin:LogAction("Object "..obj.." phase set to "..phase.." for player "..player..".")
+end
+
+function ShowGobModel()
+    local Scale = UIParent:GetEffectiveScale();
+    local Hypotenuse = ( ( GetScreenWidth() * Scale ) ^ 2 + ( GetScreenHeight() * Scale ) ^ 2 ) ^ 0.5;
+    local CoordRight = ( ma_gobjectmodel:GetRight() - ma_gobjectmodel:GetLeft() ) / Hypotenuse 
+    local CoordTop = ( ma_gobjectmodel:GetTop() - ma_gobjectmodel:GetBottom() ) / Hypotenuse 
+    local Radian = 0.0174532925
+    local gobdisplay = ma_gobdisplayid:GetText()
+    local fu = tonumber(gobdisplay)
+    ma_gobjectmodel:SetSequence(0)
+	ma_gobjectmodel:SetCamera(2)
+    ma_gobjectmodel:SetModelScale(0.5)
+    ma_gobjectmodel:SetPosition((CoordRight/2),(CoordTop/2),0)
+    ma_gobjectmodel:SetLight(1, 0, 0, -0.707, -0.707, 0.7, 1.0, 1.0, 1.0, 0.8, 1.0, 1.0, 0.8)
+    tVar=""
+    tVar = ModelA[fu]
+    if not tVar then
+        ma_gobinfoinfo="No data for this model"
+    else 
+        ma_gobjectmodel:SetModel(tVar)
+    end
+end
+
+function GobModelRotateLeft()
+  ma_gobjectmodel.rotation = ma_gobjectmodel.rotation - 0.3
+  ma_gobjectmodel:SetRotation(ma_gobjectmodel.rotation)
+  PlaySound("igInventoryRotateCharacter")
+end
+
+function GobModelRotateRight()
+  ma_gobjectmodel.rotation = ma_gobjectmodel.rotation + 0.3
+  ma_gobjectmodel:SetRotation(ma_gobjectmodel.rotation)
+  PlaySound("igInventoryRotateCharacter")
+end
+
+--ma_gobjectmodel:SetRotation((RotValSlider:GetValue() * Radian))
+
+function InitGobModelFrame()
+  ma_gobjectmodel:SetScript("OnUpdate", function() MangAdminModelOnUpdate(arg1) end)
+  ma_gobjectmodel.rotation = 0.61
+  ma_gobjectmodel:SetRotation(0.61)
+  --ma_gobjectmodel:SetUnit("player") 
+  
+end  
+
+function GobModelZoomIn()
+    --ma_gobjectmodel:SetCamera(0)
+    ma_gobjectmodel:SetModelScale(ma_gobjectmodel:GetModelScale() + .1)
+    --ma_modelframe:SetPosition(1,ma_modelframe:GetModelScale()*3,0)
+    --ma_modelframe:RefreshUnit()
+end
+
+function GobModelZoomOut()
+    --ma_gobjectmodel:SetCamera(1)
+    --ma_gobjectmodel:RefreshUnit()
+   -- ma_modelframe:SetCamera(2)
+    ma_gobjectmodel:SetModelScale(ma_gobjectmodel:GetModelScale() - .1)
+    --ma_modelframe:SetPosition(0,0,0)
+    --ma_modelframe:RefreshUnit()
+end
+
+--[[function CHAT_MSG_SYSTEM()
+
+    if string.find(arg1,"Selected object") ~= nil then
+        if fID == 1 then
+            SendChatMessage('.gob info')
+            fID = 2
+        end
+    end
+    if string.find(arg1,"GUID:") ~= nil then
+        if fID == 2 then
+            WorkString = string.gsub(arg1, '(|.........)', '')
+            WorkString = string.gsub(WorkString, 'GUID:', '')
+            ObjectIDTxT:SetText(WorkString)
+            fID = 3
+        end        
+    end
+    if string.find(arg1,"Model:") ~= nil then
+        if fID == 3 then
+            WorkString = string.gsub(arg1, '(|.........)', '')
+            WorkString = string.gsub(WorkString, 'Model:', '')
+            ObjectMTxt:SetText(WorkString)
+            fID = 0
+        end        
+    end
+    if string.find(arg1,"Model:") ~= nil then
+        WorkString = string.gsub(arg1, '(|.........)', '')
+        WorkString = string.match(WorkString, '%d*%d')
+        --ObjectPlay:LoadModel(WorkString)
+    end
+    if string.find(arg1,"No inrange GameObject") ~= nil then
+        if fID == 1 then
+            fID = 0
+        end        
+    end
+end ]]
+
+function CheckToggle()
+    isChecked = ma_spawnonmovecheck:GetChecked()
+    if isChecked == 1 then
+        ma_spawnonmovecheck:SetChecked(false)
+    else
+        ma_spawnonmovecheck:SetChecked(true)
+    end
+end
+
+--[[function GetOID()
+    if fID == 0 then
+        fID = 1
+        SendChatMessage('.gob near')
+    end
+end]]
+
+function DMUP()
+    if cWorking == 0 then
+        cWorking = 1
+        incZ = ma_gobmovedistupdown:GetText()
+        SendChatMessage(GPS)
+    end
+end
+
+function DMDown()
+    if cWorking == 0 then
+        cWorking = 1
+        incZ = 0 - ma_gobmovedistupdown:GetText()
+        SendChatMessage(GPS)
+    end
+end
+
+function DMLeft()
+    if cWorking == 0 then
+        cWorking = 1
+        incY = ma_gobmovedistleftright:GetText()
+        SendChatMessage(GPS)
+    end
+end
+
+function DMRight()
+    if cWorking == 0 then
+        cWorking = 1
+        incY = 0 - ma_gobmovedistleftright:GetText()
+        SendChatMessage(GPS)
+    end
+end
+
+function DMSS()
+    if cWorking == 0 then
+        cWorking = 1
+        SendChatMessage(GPS)
+    end
+end
+
+function DMSS2()
+    isChecked = ma_spawnonmovecheck:GetChecked()
+    ObjectN = ma_Obj_idbutton:GetText()
+    if isChecked == 1 then
+        SendChatMessage('.gob add '..ObjectN)
+    else
+    end
+end
+
+function DMFront()
+    if cWorking == 0 then
+        cWorking = 1
+        incX = ma_gobmovedistforwardback:GetText()
+        SendChatMessage(GPS)
+    end
+end
+
+function DMBack()
+    if cWorking == 0 then
+        cWorking = 1
+        incX = 0 - ma_gobmovedistforwardback:GetText()
+        SendChatMessage(GPS)
+    end
 end
