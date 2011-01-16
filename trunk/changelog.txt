@@ -1,5 +1,22 @@
 TrinityAdmin Changelog
 
+-=[ Revision 42 - 1/15/2011]=-
+- Major changes to GOB tab: 
+- ADD Model viewer to see targeted model with rotate/zoom
+- ADD Move/spawn system for builders
+- ADD detailed gobject info displayed when you target
+- New file added, models.lua. Please close WoW and restart to load new file.
+Note: Displaying gobject models was NOT a straightforward thing. The Model widget is capable, if
+passed the path (in the MPQs) to the model. We get this path from the GameObjectDisplayInfo.dbc
+file. I created the models.lua file as a crossreference between DisplayID (of a gobject) and the 
+path (in the MPQs) where the model is... and this models.lua file is ginormous (I have 45,621 model 
+paths in this file). As a result, TrinityAdmin now takes up a tad over 8Mb of RAM. If this is unacceptable
+for you, open models.lua and delete all but the first line. You might get an occaisional error, but you
+can ignore them. Credits: I swiped most of the Spawn/Move code and some of the gobject model view code 
+from an addon called Glitchy's Object Playground. Glitchy wrote OP for ArcEmu, and released it on MMOwned
+a long time ago. I updated and converted pieces of his code to make this work. Props to Glitchy.
+
+
 -=[ Revision 41 - 1/10/2011]=-
 - ADD new NPC2 tab - Please close WoW and restart to load new files!!!
 - Moved all NPC Waypoint/movement related buttons to NPC2
