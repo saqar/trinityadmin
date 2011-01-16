@@ -1,7 +1,10 @@
 TrinityAdmin Changelog
 
+-=[ Revision 44 - 1/15/2011]=-
+- Forgot to update internal revision string, fixed
+
 -=[ Revision 43 - 1/15/2011]=-
-Touchups to r42 chnages. Changed "Spawn on Move" to "Add on Move", then added "Move on Move" so you
+Touchups to r42 changes. Changed "Spawn on Move" to "Add on Move", then added "Move on Move" so you
 can "move" gobs finely (it actually deletes and recreates the gob to get around the .gob move bug)
 
 -=[ Revision 42 - 1/15/2011]=-
