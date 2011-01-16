@@ -1,10 +1,14 @@
 TrinityAdmin Changelog
 
+-=[ Revision 43 - 1/15/2011]=-
+Touchups to r42 chnages. Changed "Spawn on Move" to "Add on Move", then added "Move on Move" so you
+can "move" gobs finely (it actually deletes and recreates the gob to get around the .gob move bug)
+
 -=[ Revision 42 - 1/15/2011]=-
 - Major changes to GOB tab: 
 - ADD Model viewer to see targeted model with rotate/zoom
 - ADD Move/spawn system for builders
-- ADD detailed gobject info displayed when you target
+- ADD detailed gobject info displayed when you click OBJTarget
 - New file added, models.lua. Please close WoW and restart to load new file.
 Note: Displaying gobject models was NOT a straightforward thing. The Model widget is capable, if
 passed the path (in the MPQs) to the model. We get this path from the GameObjectDisplayInfo.dbc
@@ -15,6 +19,8 @@ for you, open models.lua and delete all but the first line. You might get an occ
 can ignore them. Credits: I swiped most of the Spawn/Move code and some of the gobject model view code 
 from an addon called Glitchy's Object Playground. Glitchy wrote OP for ArcEmu, and released it on MMOwned
 a long time ago. I updated and converted pieces of his code to make this work. Props to Glitchy.
+Note2: The Gob info boxes can become messy due to a race condition. Since WoW LUA has no Sleep() function, 
+I cannot prevent this. Click the Obj Target button to reset the info boxes.
 
 
 -=[ Revision 41 - 1/10/2011]=-

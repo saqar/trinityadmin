@@ -62,15 +62,18 @@ function OBJNear()
 end
 
 function OBJTarget()
-	gettingGOBinfo=1
-    ma_gobtargetinfo:SetText("|cffffffff")
-    ma_gobinfoinfo:SetText("|cffffffff")
-    
-    local player = UnitName("target") or UnitName("player")
-    MangAdmin:ChatMsg(".gobject target")
-    MangAdmin:LogAction("Object Target for player "..player..".")
-	--gettingGOBinfoinfo=1
-    MangAdmin:ChatMsg(".gobject info")
+	if gettingGOBinfo == 0 and gettingGOBinfoinfo == 0 then
+        gettingGOBinfo=1
+        --ma_gobtargetinfo:SetText("|cffffffff")
+        --ma_gobinfoinfo:SetText("|cffffffff")
+        
+        local player =  UnitName("player")
+        MangAdmin:ChatMsg(".gobject target")
+        MangAdmin:LogAction("Object Target for player "..player..".")
+        --gettingGOBinfoinfo=1
+        MangAdmin:ChatMsg(".gobject info")
+        --ShowGobModel()
+    end
 end
 
 function OBJActivate()
@@ -196,13 +199,20 @@ end
     end
 end ]]
 
-function CheckToggle()
-    isChecked = ma_spawnonmovecheck:GetChecked()
+function CheckToggle(action)
+    if action == "spawn" then
+        ma_moveonmovecheck:SetChecked(false)
+    elseif action == "move" then
+        ma_spawnonmovecheck:SetChecked(false)
+    else
+    end
+
+--[[    isChecked = ma_spawnonmovecheck:GetChecked()
     if isChecked == 1 then
         ma_spawnonmovecheck:SetChecked(false)
     else
         ma_spawnonmovecheck:SetChecked(true)
-    end
+    end]]
 end
 
 --[[function GetOID()
@@ -252,12 +262,18 @@ function DMSS()
 end
 
 function DMSS2()
-    isChecked = ma_spawnonmovecheck:GetChecked()
-    ObjectN = ma_Obj_idbutton:GetText()
-    if isChecked == 1 then
-        SendChatMessage('.gob add '..ObjectN)
-    else
-    end
+        isChecked = ma_spawnonmovecheck:GetChecked()
+        isChecked2 = ma_moveonmovecheck:GetChecked()
+        if isChecked == 1 then  --AddonMove
+            ObjectN = ma_Obj_idbutton:GetText()
+            SendChatMessage('.gob add '..ObjectN)
+        elseif isChecked2 == 1 then --MoveonMove
+            SendChatMessage('.gob del '..ma_Obj_guidbutton:GetText())
+            ObjectN = ma_Obj_idbutton:GetText()
+            SendChatMessage('.gob add '..ObjectN)
+        else
+        end
+        OBJTarget()
 end
 
 function DMFront()
