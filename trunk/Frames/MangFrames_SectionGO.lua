@@ -660,9 +660,23 @@ function MangAdmin:CreateGOSection()
     setpoint = {
       pos = "TOPLEFT",
       offX = 615,
-      offY = -100
+      offY = -80
     },
-    text = "Spawn On Move?",
+    text = "Add On Move",
+    inherits = "OptionsCheckButtonTemplate"
+  })
+
+  FrameLib:BuildButton({
+    type = "CheckButton",
+    name = "ma_moveonmovecheck",
+    group = "go",
+    parent = ma_midframe,
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 615,
+      offY = -105
+    },
+    text = "Move on Move",
     inherits = "OptionsCheckButtonTemplate"
   })
 
@@ -791,5 +805,40 @@ function MangAdmin:CreateGOSection()
     text = "Show"
   })
 
+ --[[ FrameLib:BuildFrame({
+    type = "Slider",
+    name = "ma_cameraleftrightslider",
+    group = "go",
+    parent = ma_midframe,
+    size = {
+      width = 190,
+      height = 10
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 182,
+      offY = -223
+    },
+    inherits = "OptionsSliderTemplate",
+    orientation="HORIZONTAL"
+  })
+
+  FrameLib:BuildFrame({
+    type = "Slider",
+    name = "ma_cameraupdownslider",
+    group = "go",
+    parent = ma_midframe,
+    size = {
+      width = 10,
+      height = 190
+    },
+    setpoint = {
+      pos = "TOPLEFT",
+      offX = 376,
+      offY = -37
+    },
+    inherits = "OptionsSliderTemplate",
+    orientation="VERTICAL"
+  })]]
 
 end

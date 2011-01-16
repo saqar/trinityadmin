@@ -158,6 +158,14 @@ function FrameLib:BuildFrame(def)
     frame:SetMaxLines(def.maxLines or 1000000)
   end
   
+  if def.type == "Slider" then
+    if def.orientation == "HORIZONTAL" then
+        frame:SetOrientation("HORIZONTAL")
+    elseif def.orientation == "VERTICAL" then
+        frame:SetOrientation("VERTICAL")
+    end
+  end
+  
   if def.type == "PlayerModel" then
         frame:SetResizable(false)
   

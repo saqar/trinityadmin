@@ -628,23 +628,25 @@ function MangAdmin:AddMessage(frame, text, r, g, b, id)
 --********************************************************************    
     if gettingGOBinfoinfo > 0 then
         if gettingGOBinfoinfo == 1 then
+            ma_gobinfoinfo:SetText('')
             ma_gobinfoinfo:SetText(ma_gobinfoinfo:GetText()..text)
         else
             ma_gobinfoinfo:SetText(ma_gobinfoinfo:GetText().."\n"..text)
         end
         gettingGOBinfoinfo=gettingGOBinfoinfo+1
-        if gettingGOBinfoinfo==5 then 
+        if gettingGOBinfoinfo>=5 then 
             gettingGOBinfoinfo=0
         end
     end
     if gettingGOBinfo > 0 then
         if gettingGOBinfo==1 then
+            ma_gobtargetinfo:SetText("")
             ma_gobtargetinfo:SetText(ma_gobtargetinfo:GetText().."|cffffffff"..string.gsub(text, ']', ']\n|cffffffff'))
         else
             ma_gobtargetinfo:SetText(ma_gobtargetinfo:GetText().."\n|cffffffff"..string.gsub(text, ']', ']\n|cffffffff'))
         end
         gettingGOBinfo=gettingGOBinfo+1
-        if gettingGOBinfo==7 then 
+        if gettingGOBinfo>=7 then 
             gettingGOBinfo=0
             gettingGOBinfoinfo=1
         end
@@ -690,12 +692,20 @@ function MangAdmin:AddMessage(frame, text, r, g, b, id)
         incY = 0
         incZ = 0
         isChecked = ma_spawnonmovecheck:GetChecked()
-        if isChecked == 1 then
+        isChecked2 = ma_moveonmovecheck:GetChecked()
+        if isChecked == 1 then  --AddonMove
             ObjectN = ma_Obj_idbutton:GetText()
             SendChatMessage('.gob add '..ObjectN)
+        elseif isChecked2 == 1 then --MoveonMove
+            SendChatMessage('.gob del '..ma_Obj_guidbutton:GetText())
+            ObjectN = ma_Obj_idbutton:GetText()
+            SendChatMessage('.gob add '..ObjectN)
+        else -- Just move player
         end
         cWorking = 0
         end
+        OBJTarget()
+        
     end
 --***************************************************************    
 
