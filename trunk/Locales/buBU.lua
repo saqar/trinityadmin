@@ -207,6 +207,7 @@ function Return_buBU()
     --linkifier
     ["lfer_Spawn"] = "Spawn",
     ["lfer_List"] = "Lijst",
+	["lfer_Reload"] = "Reload",
     ["lfer_Goto"] = "Go naar",
     ["lfer_Move"] = "Verplaats",
     ["lfer_Turn"] = "Draai",

@@ -544,6 +544,7 @@ function Return_frFR()
 --[[Linkifier]]
     ["lfer_Spawn"] = "Spawn",
     ["lfer_List"] = "Liste",
+	["lfer_Reload"] = "Recharger",
     ["lfer_Goto"] = "Aller A",
     ["lfer_Move"] = "Déplacer",
     ["lfer_Turn"] = "Tourner",
