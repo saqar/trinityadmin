@@ -207,6 +207,7 @@ function Return_nlNL()
     --linkifier
     ["lfer_Spawn"] = "Spawn",
     ["lfer_List"] = "Lijst",
+	["lfer_Reload"] = "Overladen",
     ["lfer_Goto"] = "Go naar",
     ["lfer_Move"] = "Verplaats",
     ["lfer_Turn"] = "Draai",

@@ -679,6 +679,7 @@ function Return_enUS()
 --[[Linkifier]]
     ["lfer_Spawn"] = "Spawn",
     ["lfer_List"] = "List",
+    ["lfer_Reload"] = "Reload",
     ["lfer_Goto"] = "Goto",
     ["lfer_Move"] = "Move",
     ["lfer_Turn"] = "Turn",

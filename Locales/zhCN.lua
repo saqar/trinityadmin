@@ -207,6 +207,7 @@ function Return_zhCN()
     --linkifier
     ["lfer_Spawn"] = "Spawn",
     ["lfer_List"] = "List",
+	["lfer_Reload"] = "刷新",
     ["lfer_Goto"] = "Goto",
     ["lfer_Move"] = "Move",
     ["lfer_Turn"] = "Turn",

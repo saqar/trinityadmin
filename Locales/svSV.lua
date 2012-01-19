@@ -552,6 +552,7 @@ function Return_svSV()
 --[[Linkifier]]
     ["lfer_Spawn"] = "Spawn",
     ["lfer_List"] = "Lista",
+	["lfer_Reload"] = "Återladda",
     ["lfer_Goto"] = "Gåtill",
     ["lfer_Move"] = "Flytta",
     ["lfer_Turn"] = "Vrid",

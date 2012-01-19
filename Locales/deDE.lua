@@ -558,6 +558,7 @@ function Return_deDE()
 --[[Linkifier]]
     ["lfer_Spawn"] = "Spawn",
     ["lfer_List"] = "List",
+	["lfer_Reload"] = "Nachladen",
     ["lfer_Goto"] = "Gehe zu",
     ["lfer_Move"] = "Bewege",
     ["lfer_Turn"] = "Drehe",
